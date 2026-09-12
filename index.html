@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Phantom Reach Scout — Multi-Platform Intelligence</title>
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Vanguard Social is your multi-platform intelligence engine for finding local creators, verified business leads, and influence scores in minutes.">
+  <meta name="theme-color" content="#eef1ff">
+  <title>Vanguard Social — Multi-Platform Intelligence Engine</title>
+
+  <!-- Favicon (inline SVG, no external file needed) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230F172A'/%3E%3Cpath d='M6 6h3.4L12 14.6 14.6 6H18l-5 12h-2L6 6Z' fill='white'/%3E%3C/svg%3E">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -22,6 +27,7 @@
           },
           fontFamily: {
             sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['Lexend', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
             mono: ['JetBrains Mono', 'Menlo', 'monospace']
           }
         }
@@ -32,7 +38,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -40,7 +46,9 @@
       color: #0F172A;
       -webkit-tap-highlight-color: transparent;
     }
-    
+
+    .font-display { font-family: 'Lexend', 'Inter', sans-serif; }
+
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
@@ -57,21 +65,35 @@
       background: #94A3B8;
     }
 
-    /* Modern Light & Vibrant Glassmorphism */
+    /* Soft legibility halo for text that sits directly on the ambient
+       background (no card behind it) */
+    .legible-text {
+      text-shadow: 0 1px 3px rgba(255,255,255,0.9), 0 1px 24px rgba(255,255,255,0.75);
+    }
     .glass-panel {
-      background: rgba(255, 255, 255, 0.78);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
       border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 10px 35px -5px rgba(99, 102, 241, 0.07), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 1px 0 0 rgba(255,255,255,0.8) inset,
+                  0 10px 35px -5px rgba(99, 102, 241, 0.08),
+                  0 4px 12px -2px rgba(15, 23, 42, 0.04);
+      transition: box-shadow .35s ease, transform .35s ease;
     }
 
     .glass-card {
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      box-shadow: 0 4px 16px -2px rgba(99, 102, 241, 0.05);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 1px 0 0 rgba(255,255,255,0.7) inset, 0 4px 16px -2px rgba(99, 102, 241, 0.06);
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 1px 0 0 rgba(255,255,255,0.8) inset, 0 10px 24px -6px rgba(99, 102, 241, 0.14);
     }
 
     .glow-indigo {
@@ -91,50 +113,136 @@
       transform: rotate(-90deg);
       transform-origin: 50% 50%;
     }
+
+    /* ── Interactive ambient background ───────────────────────────── */
+    .bg-orb {
+      position: fixed;
+      border-radius: 9999px;
+      filter: blur(64px);
+      pointer-events: none;
+      z-index: -10;
+      will-change: transform;
+      animation: drift 16s ease-in-out infinite;
+      transition: transform .15s linear;
+    }
+    .bg-orb--1 { top: -6%;  left: 4%;   width: 30rem; height: 30rem; background: radial-gradient(circle, rgba(99,102,241,0.20), transparent 70%); animation-duration: 18s; }
+    .bg-orb--2 { top: 22%;  right: -10%; width: 32rem; height: 32rem; background: radial-gradient(circle, rgba(168,85,247,0.18), transparent 70%); animation-duration: 21s; animation-delay: -6s; }
+    .bg-orb--3 { bottom: -4%; left: -4%;  width: 28rem; height: 28rem; background: radial-gradient(circle, rgba(16,185,129,0.15), transparent 70%); animation-duration: 24s; animation-delay: -11s; }
+    .bg-orb--4 { bottom: 12%; right: 10%; width: 24rem; height: 24rem; background: radial-gradient(circle, rgba(236,72,153,0.14), transparent 70%); animation-duration: 17s; animation-delay: -3s; }
+    .bg-orb--5 { top: 45%; left: 42%; width: 22rem; height: 22rem; background: radial-gradient(circle, rgba(245,158,11,0.12), transparent 70%); animation-duration: 26s; animation-delay: -8s; }
+
+    /* A brighter glow that tracks the cursor directly, for an obvious
+       hand-off between the ambient drift and your own movement */
+    #cursorGlow {
+      position: fixed;
+      top: 0; left: 0;
+      width: 34rem; height: 34rem;
+      margin-left: -17rem; margin-top: -17rem;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(129,140,248,0.22), rgba(217,70,239,0.12) 45%, transparent 72%);
+      filter: blur(50px);
+      pointer-events: none;
+      z-index: -9;
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+    #cursorGlow.active { opacity: 1; }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(var(--px, 0), var(--py, 0)) scale(1); }
+      25%      { transform: translate(calc(var(--px, 0) + 55px), calc(var(--py, 0) - 40px)) scale(1.12); }
+      50%      { transform: translate(calc(var(--px, 0) - 35px), calc(var(--py, 0) + 45px)) scale(0.92); }
+      75%      { transform: translate(calc(var(--px, 0) - 55px), calc(var(--py, 0) - 25px)) scale(1.06); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bg-orb { animation: none !important; }
+      #cursorGlow { display: none !important; }
+      .glass-card, .glass-panel { transition: none !important; }
+    }
+
+    /* ── Custom dropdown (opens anchored to the trigger, not a native bottom sheet) ── */
+    .dropdown-wrap { position: relative; }
+    .dropdown-panel {
+      position: absolute;
+      left: 0; right: 0; top: calc(100% + 8px);
+      z-index: 30;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.9);
+      border-radius: 1rem;
+      box-shadow: 0 16px 40px -8px rgba(15,23,42,0.18), 0 1px 0 0 rgba(255,255,255,0.8) inset;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(-6px) scale(0.98);
+      pointer-events: none;
+      transition: opacity .16s ease, transform .16s ease;
+      transform-origin: top center;
+    }
+    .dropdown-wrap.open .dropdown-panel {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .dropdown-option {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; text-align: left;
+      padding: 0.65rem 1rem;
+      font-size: 0.8125rem; font-weight: 600; color: #334155;
+      transition: background .12s ease;
+    }
+    .dropdown-option:hover, .dropdown-option.active { background: rgba(99,102,241,0.08); color: #4338ca; }
+    .dropdown-trigger[aria-expanded="true"] .dropdown-chevron { transform: rotate(180deg); }
+    .dropdown-chevron { transition: transform .18s ease; }
   </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50/40 via-white to-purple-50/30 text-slate-800 flex flex-col antialiased selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
 
-  <!-- Ambient Vibrant Mesh Background Elements -->
-  <div class="fixed top-0 left-1/4 w-96 h-96 bg-indigo-200/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
-  <div class="fixed top-1/3 right-10 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
-  <div class="fixed bottom-10 left-10 w-96 h-96 bg-emerald-200/25 rounded-full blur-3xl pointer-events-none -z-10"></div>
-  <div class="fixed bottom-1/4 right-1/4 w-80 h-80 bg-pink-200/25 rounded-full blur-3xl pointer-events-none -z-10"></div>
+  <!-- Ambient, faded, mouse-reactive background orbs -->
+  <div id="bgOrbs" class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+    <div class="bg-orb bg-orb--1" data-depth="30"></div>
+    <div class="bg-orb bg-orb--2" data-depth="45"></div>
+    <div class="bg-orb bg-orb--3" data-depth="24"></div>
+    <div class="bg-orb bg-orb--4" data-depth="38"></div>
+    <div class="bg-orb bg-orb--5" data-depth="55"></div>
+  </div>
+  <div id="cursorGlow"></div>
 
   <!-- TOP APP BAR -->
   <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/75 backdrop-blur-xl shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       
       <!-- Brand & Status -->
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/25">
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+      <div class="flex items-center space-x-3 min-w-0">
+        <div class="w-9 h-9 rounded-lg bg-slate-900 flex items-center justify-center shrink-0">
+          <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none">
+            <path d="M4 4h4.6L12 15.2 15.4 4H20l-6.2 16h-3.6L4 4Z" fill="white"/>
           </svg>
         </div>
-        <div>
+        <div class="min-w-0">
           <div class="flex items-center space-x-2">
-            <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-slate-900 flex items-center">
-              PHANTOM REACH
-              <span class="ml-2 text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200/80 shadow-xs">PRO</span>
+            <h1 class="text-base sm:text-lg font-display font-semibold tracking-tight text-slate-900 flex items-center truncate">
+              Vanguard Social
+              <span class="ml-2 text-[10px] font-semibold px-1.5 py-0.5 rounded-md border border-slate-300 text-slate-600 tracking-wide shrink-0">PRO</span>
             </h1>
           </div>
-          <p class="text-[11px] text-slate-500 font-medium hidden sm:block">Multi-Platform Intelligence & Influence Engine</p>
+          <p class="text-[11px] text-slate-600 font-medium hidden sm:block truncate">Multi-platform intelligence for creators, leads, and reach</p>
         </div>
       </div>
 
       <!-- Quick Info & Navigation Actions -->
       <div class="flex items-center space-x-2 sm:space-x-3">
         
-        <!-- Port Badge -->
-        <div class="flex items-center space-x-1.5 px-2.5 py-1 rounded-xl bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-xs font-mono font-medium shadow-xs">
+        <!-- Port Badge (hidden automatically if the backend isn't reachable) -->
+        <div id="portStatusBadge" class="hidden md:flex items-center space-x-1.5 px-2.5 py-1 rounded-xl bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-xs font-mono font-medium shadow-xs">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
           <span>Port 8000</span>
         </div>
 
         <!-- Mobile LAN Link Button -->
         <button onclick="copyMobileUrl()" id="lanBadgeBtn" class="hidden md:flex items-center space-x-1.5 px-2.5 py-1 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-mono transition shadow-xs" title="Click to copy Mobile URL">
-          <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg class="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
           </svg>
           <span id="lanIpText">Mobile: 192.168.70.235:8000</span>
@@ -144,7 +252,7 @@
         <button onclick="toggleApiModal(true)" id="apiConfigBtn" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700 transition shadow-xs" title="Configure Backend API (Vercel / Tunnel)">
           <span id="apiStatusDot" class="w-2 h-2 rounded-full bg-emerald-500"></span>
           <span class="hidden sm:inline">Backend API</span>
-          <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg class="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
           </svg>
@@ -167,25 +275,35 @@
   <!-- MAIN WRAPPER -->
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
+    <!-- WELCOME HERO -->
+    <div class="text-center sm:text-left space-y-1.5 px-1">
+      <h2 class="legible-text text-xl sm:text-2xl font-display font-semibold text-slate-900 tracking-tight">
+        Welcome back — let's find who's worth reaching today.
+      </h2>
+      <p class="legible-text text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto sm:mx-0 leading-relaxed">
+        Pick a tool below to discover local creators, pull verified business leads, or score any account's real influence — everything lands straight into a clean Excel report.
+      </p>
+    </div>
+
     <!-- NAVIGATION TABS -->
-    <div class="glass-panel p-1.5 rounded-2xl flex flex-col sm:flex-row items-center gap-1.5 shadow-sm">
+    <div class="glass-panel p-1.5 rounded-full flex flex-col sm:flex-row items-center gap-1.5 shadow-sm">
       
       <!-- Tab 1: Location Leads Tools -->
-      <button onclick="switchTab('location')" id="tabBtn-location" class="w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center space-x-2 transition-all bg-indigo-600 text-white shadow-md shadow-indigo-600/25">
-        <span class="text-base">📍</span>
+      <button onclick="switchTab('location')" id="tabBtn-location" class="w-full sm:w-1/3 py-3 px-4 rounded-full text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all bg-slate-900 text-white shadow-md shadow-slate-900/20">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         <span>Location Leads Tools</span>
       </button>
 
       <!-- Tab 2: Account Tools -->
-      <button onclick="switchTab('account')" id="tabBtn-account" class="w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all text-slate-600 hover:text-slate-900 hover:bg-white/60">
-        <span class="text-base">👤</span>
+      <button onclick="switchTab('account')" id="tabBtn-account" class="w-full sm:w-1/3 py-3 px-4 rounded-full text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all text-slate-600 hover:text-slate-900 hover:bg-white/60">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
         <span>Account Tools</span>
       </button>
 
       <!-- Tab 3: Score Me Engine -->
-      <button onclick="switchTab('scoreme')" id="tabBtn-scoreme" class="w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all text-slate-600 hover:text-slate-900 hover:bg-white/60 relative overflow-hidden group">
-        <span class="text-base animate-bounce">⚡</span>
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 font-bold">Score Me Engine</span>
+      <button onclick="switchTab('scoreme')" id="tabBtn-scoreme" class="w-full sm:w-1/3 py-3 px-4 rounded-full text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all text-slate-600 hover:text-slate-900 hover:bg-white/60">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <span>Score Me Engine</span>
       </button>
 
     </div>
@@ -203,7 +321,7 @@
           <input type="radio" name="loc_subtool" value="1a" checked onchange="updateLocationSubtool('1a')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
           <div class="ml-3">
             <span class="text-xs sm:text-sm font-bold text-slate-900 block">Who Can Make Me Viral Here?</span>
-            <span class="text-[11px] text-slate-500 block mt-0.5 leading-snug">verified local creators,collaborator and business handles directly into excel sheet with complete score and roi</span>
+            <span class="text-[11px] text-slate-600 block mt-0.5 leading-snug">Find verified local creators, collaborators, and business handles, complete with an influence score and ROI, in one Excel sheet.</span>
           </div>
         </label>
 
@@ -212,7 +330,7 @@
           <input type="radio" name="loc_subtool" value="1b" onchange="updateLocationSubtool('1b')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
           <div class="ml-3">
             <span class="text-xs sm:text-sm font-bold text-slate-900 block">Google Leads From Location</span>
-            <span class="text-[11px] text-slate-500 block mt-0.5 leading-snug">extract all leads data from your target location directly into excel sheet</span>
+            <span class="text-[11px] text-slate-600 block mt-0.5 leading-snug">Pull every business lead from your target location straight into an Excel sheet.</span>
           </div>
         </label>
 
@@ -221,7 +339,7 @@
           <input type="radio" name="loc_subtool" value="1c" onchange="updateLocationSubtool('1c')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
           <div class="ml-3">
             <span class="text-xs sm:text-sm font-bold text-slate-900 block">Maps to Contact Data</span>
-            <span class="text-[11px] text-slate-500 block mt-0.5 leading-snug">extract complete conacts,emails,links,linkedin data from the location into automated excelsheet</span>
+            <span class="text-[11px] text-slate-600 block mt-0.5 leading-snug">Extract complete contacts, emails, links, and LinkedIn profiles for a location into an automated Excel sheet.</span>
           </div>
         </label>
 
@@ -238,7 +356,7 @@
                 <span class="w-2.5 h-2.5 rounded-full bg-indigo-600 mr-2"></span>
                 Who Can Make Me Viral Here?
               </h3>
-              <p class="text-xs text-slate-500 mt-0.5">verified local creators,collaborator and business handles directly into excel sheet with complete score and roi</p>
+              <p class="text-xs text-slate-600 mt-0.5">Verified local creators, collaborators, and business handles — complete with score and ROI — in one Excel sheet.</p>
             </div>
             <span class="text-[10px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200 hidden sm:inline">Single Sheet Excel</span>
           </div>
@@ -247,13 +365,13 @@
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Target Location / City / Area</label>
               <input type="text" id="loc_1a_tag" placeholder="e.g. malad, thane, bandra, dubai" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
-              <p class="text-[10px] text-slate-400 mt-1">Enter your target location, city or region.</p>
+              <p class="text-[10px] text-slate-500 mt-1">Enter your target location, city or region.</p>
             </div>
 
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Follow-up Keyword / Specific Niche (Optional)</label>
               <input type="text" id="loc_1a_filter" placeholder="e.g. street food, cafes, real estate, salons" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
-              <p class="text-[10px] text-slate-400 mt-1">Filters specifically for this category or topic.</p>
+              <p class="text-[10px] text-slate-500 mt-1">Filters specifically for this category or topic.</p>
             </div>
           </div>
 
@@ -278,7 +396,7 @@
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 mr-2"></span>
                 Google Leads From Location
               </h3>
-              <p id="gmapsFormSubtitle" class="text-xs text-slate-500 mt-0.5">extract all leads data from your target location directly into excel sheet</p>
+              <p id="gmapsFormSubtitle" class="text-xs text-slate-600 mt-0.5">Pull every business lead from your target location straight into an Excel sheet.</p>
             </div>
             <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200 hidden sm:inline">Lead Directory</span>
           </div>
@@ -289,20 +407,25 @@
               <input type="text" id="gmaps_query" placeholder="e.g. Cafes in Bandra, Dentists in Dubai, Digital Agencies in London" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
             </div>
 
-            <div>
+            <div class="dropdown-wrap" id="maxResultsDropdown">
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Max Leads to Harvest</label>
-              <select id="gmaps_max_results" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 text-sm text-slate-900 outline-none shadow-xs font-medium">
-                <option value="10">10 Businesses</option>
-                <option value="20" selected>20 Businesses (Recommended)</option>
-                <option value="50">50 Businesses</option>
-                <option value="100">100 Businesses</option>
-              </select>
+              <input type="hidden" id="gmaps_max_results" value="20">
+              <button type="button" class="dropdown-trigger w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 text-sm text-slate-900 outline-none shadow-xs font-medium flex items-center justify-between" aria-haspopup="listbox" aria-expanded="false" onclick="toggleDropdown('maxResultsDropdown')">
+                <span id="maxResultsLabel">20 Businesses (Recommended)</span>
+                <svg class="dropdown-chevron w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="dropdown-panel" role="listbox">
+                <button type="button" class="dropdown-option" role="option" onclick="selectDropdown('maxResultsDropdown', 'gmaps_max_results', '10', '10 Businesses')">10 Businesses</button>
+                <button type="button" class="dropdown-option active" role="option" onclick="selectDropdown('maxResultsDropdown', 'gmaps_max_results', '20', '20 Businesses (Recommended)')">20 Businesses (Recommended)</button>
+                <button type="button" class="dropdown-option" role="option" onclick="selectDropdown('maxResultsDropdown', 'gmaps_max_results', '50', '50 Businesses')">50 Businesses</button>
+                <button type="button" class="dropdown-option" role="option" onclick="selectDropdown('maxResultsDropdown', 'gmaps_max_results', '100', '100 Businesses')">100 Businesses</button>
+              </div>
             </div>
           </div>
 
           <!-- Quick Suggestion Chips for Maps -->
           <div class="flex flex-wrap items-center gap-1.5 pt-1">
-            <span class="text-[11px] text-slate-400 font-medium mr-1">Quick Fill:</span>
+            <span class="text-[11px] text-slate-500 font-medium mr-1">Quick Fill:</span>
             <button type="button" onclick="setGmapsQuery('Cafes in Bandra Mumbai')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">☕ Cafes in Bandra</button>
             <button type="button" onclick="setGmapsQuery('Digital Marketing Agencies in Mumbai')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">💻 Marketing Agencies</button>
             <button type="button" onclick="setGmapsQuery('Dentists in Malad')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">🦷 Dentists in Malad</button>
@@ -312,7 +435,7 @@
 
         <!-- Launch Button for Location Leads Tools -->
         <div class="pt-2">
-          <button onclick="launchLocationTask()" id="launchLocBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 font-bold text-sm sm:text-base text-white shadow-xl shadow-indigo-600/25 transition active:scale-[0.99] flex items-center justify-center space-x-2">
+          <button onclick="launchLocationTask()" id="launchLocBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 to-slate-900 hover:from-indigo-500 hover:to-slate-800 font-semibold text-sm sm:text-base text-white shadow-xl shadow-slate-900/20 transition active:scale-[0.99] flex items-center justify-center space-x-2">
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -337,7 +460,7 @@
           <input type="radio" name="acc_subtool" value="2a" checked onchange="updateAccountSubtool('2a')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
           <div class="ml-3">
             <span class="text-xs sm:text-sm font-bold text-slate-900 block">Account Deep Audit & Comments</span>
-            <span class="text-[11px] text-slate-500 block mt-0.5">Complete profile metrics, all posts, reels, engagement data and comments audit</span>
+            <span class="text-[11px] text-slate-600 block mt-0.5">Complete profile metrics, all posts, reels, engagement data and comments audit</span>
           </div>
         </label>
 
@@ -345,7 +468,7 @@
           <input type="radio" name="acc_subtool" value="2b" onchange="updateAccountSubtool('2b')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
           <div class="ml-3">
             <span class="text-xs sm:text-sm font-bold text-slate-900 block">Post / Reel Deep Inspection</span>
-            <span class="text-[11px] text-slate-500 block mt-0.5">Inspect any specific post or reel link for views, plays, likes & all comments</span>
+            <span class="text-[11px] text-slate-600 block mt-0.5">Inspect any specific post or reel link for views, plays, likes & all comments</span>
           </div>
         </label>
 
@@ -362,7 +485,7 @@
                 <span class="w-2.5 h-2.5 rounded-full bg-indigo-600 mr-2"></span>
                 Account Deep Audit & Comments
               </h3>
-              <p class="text-xs text-slate-500 mt-0.5">Audits profile bio, contacts, all posts, reels and individual comments</p>
+              <p class="text-xs text-slate-600 mt-0.5">Audits profile bio, contacts, all posts, reels and individual comments</p>
             </div>
             <span class="text-[10px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200 hidden sm:inline">Deep Audit</span>
           </div>
@@ -400,7 +523,7 @@
                 <span class="w-2.5 h-2.5 rounded-full bg-purple-600 mr-2"></span>
                 Post / Reel Deep Inspection
               </h3>
-              <p class="text-xs text-slate-500 mt-0.5">Deep inspection of any specific post or reel link</p>
+              <p class="text-xs text-slate-600 mt-0.5">Deep inspection of any specific post or reel link</p>
             </div>
             <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-50 text-purple-700 font-semibold border border-purple-200 hidden sm:inline">URL Inspection</span>
           </div>
@@ -408,13 +531,13 @@
           <div>
             <label class="block text-xs font-semibold text-slate-700 mb-1.5">Post or Reel Link</label>
             <input type="url" id="acc_2b_url" placeholder="https://www.instagram.com/p/DF2_AbqSxxx/ or https://www.instagram.com/reel/..." class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-mono">
-            <p class="text-[10px] text-slate-400 mt-1">Extracts exact views, plays, likes count, caption, and all comments & commenters.</p>
+            <p class="text-[10px] text-slate-500 mt-1">Extracts exact views, plays, likes count, caption, and all comments & commenters.</p>
           </div>
         </div>
 
         <!-- Launch Button for Account Tools -->
         <div class="pt-2">
-          <button onclick="launchAccountTask()" id="launchAccBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 font-bold text-sm sm:text-base text-white shadow-xl shadow-indigo-600/25 transition active:scale-[0.99] flex items-center justify-center space-x-2">
+          <button onclick="launchAccountTask()" id="launchAccBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 to-slate-900 hover:from-indigo-500 hover:to-slate-800 font-semibold text-sm sm:text-base text-white shadow-xl shadow-slate-900/20 transition active:scale-[0.99] flex items-center justify-center space-x-2">
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -433,15 +556,15 @@
     <div id="tabContent-scoreme" class="hidden space-y-6">
       
       <!-- Hero Banner for Score Me -->
-      <div class="relative overflow-hidden p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-purple-100/80 via-white to-indigo-100/60 border border-purple-200 shadow-xl shadow-purple-500/10 glow-purple">
-        <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-purple-300/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="relative overflow-hidden p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-50 via-white to-indigo-50/60 border border-slate-200 shadow-xl shadow-slate-900/5">
+        <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-indigo-200/20 rounded-full blur-3xl pointer-events-none"></div>
         
         <div class="relative z-10 max-w-3xl space-y-3">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-600 text-white text-xs font-bold shadow-sm">
-            <span>⚡ HERMES REACH & INFLUENCE ALGORITHM</span>
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900 text-white text-xs font-semibold tracking-wide">
+            <span>REACH &amp; INFLUENCE ALGORITHM</span>
           </div>
-          <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            Calculate Accurate Reach & Influence Score
+          <h2 class="text-xl sm:text-3xl font-display font-semibold text-slate-900 tracking-tight">
+            Calculate an accurate reach and influence score
           </h2>
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
             Evaluates the true viral power and authenticity of any creator or brand handle. Computes views across the last 10 reels and posts (&le; 30 days), authentic engagement rate, bot comment penalty, niche relevance, and 10-day growth momentum.
@@ -449,29 +572,25 @@
         </div>
 
         <!-- Formula Highlights -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-5 border-t border-purple-200 text-xs">
-          <div class="p-3.5 rounded-2xl bg-white/80 border border-purple-200/80 shadow-xs">
-            <span class="text-purple-700 font-bold block text-[10px] uppercase">SIGNAL</span>
-            <span class="font-extrabold text-slate-900 block mt-0.5">Reach Score</span>
-            <span class="text-[10px] text-slate-500">Total Views (&le;30d)</span>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-5 border-t border-slate-200 text-xs">
+          <div class="p-3.5 rounded-2xl bg-white/80 border border-slate-200 shadow-xs">
+            <span class="font-semibold text-slate-900 block">Reach Score</span>
+            <span class="text-[10px] text-slate-600">Total views (&le; 30 days)</span>
           </div>
 
-          <div class="p-3.5 rounded-2xl bg-white/80 border border-purple-200/80 shadow-xs">
-            <span class="text-indigo-700 font-bold block text-[10px] uppercase">SIGNAL</span>
-            <span class="font-extrabold text-slate-900 block mt-0.5">Engagement Rate</span>
-            <span class="text-[10px] text-slate-500">Likes+Comm/Followers</span>
+          <div class="p-3.5 rounded-2xl bg-white/80 border border-slate-200 shadow-xs">
+            <span class="font-semibold text-slate-900 block">Engagement Rate</span>
+            <span class="text-[10px] text-slate-600">Likes + comments vs. followers</span>
           </div>
 
-          <div class="p-3.5 rounded-2xl bg-white/80 border border-purple-200/80 shadow-xs">
-            <span class="text-rose-700 font-bold block text-[10px] uppercase">SIGNAL</span>
-            <span class="font-extrabold text-rose-600 block mt-0.5">Bot Penalty %</span>
-            <span class="text-[10px] text-slate-500">Emojis/Filler Reductions</span>
+          <div class="p-3.5 rounded-2xl bg-white/80 border border-slate-200 shadow-xs">
+            <span class="font-semibold text-slate-900 block">Bot Penalty</span>
+            <span class="text-[10px] text-slate-600">Deducted for spam and filler</span>
           </div>
 
-          <div class="p-3.5 rounded-2xl bg-white/80 border border-purple-200/80 shadow-xs">
-            <span class="text-amber-700 font-bold block text-[10px] uppercase">SIGNAL</span>
-            <span class="font-extrabold text-amber-600 block mt-0.5">Niche Match & Growth</span>
-            <span class="text-[10px] text-slate-500">10-Day Momentum</span>
+          <div class="p-3.5 rounded-2xl bg-white/80 border border-slate-200 shadow-xs">
+            <span class="font-semibold text-slate-900 block">Niche Match &amp; Growth</span>
+            <span class="text-[10px] text-slate-600">10-day momentum</span>
           </div>
         </div>
 
@@ -484,7 +603,7 @@
           <div>
             <label class="block text-xs font-semibold text-slate-700 mb-1.5">Account Handle to Score</label>
             <div class="relative">
-              <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 text-sm font-mono">@</span>
+              <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500 text-sm font-mono">@</span>
               <input type="text" id="score_handle" placeholder="zomato, techburner, anushkasen0408" class="w-full pl-8 pr-3.5 py-3.5 rounded-xl bg-white border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-semibold shadow-xs">
             </div>
           </div>
@@ -497,19 +616,19 @@
 
         <!-- Quick Sample Chips -->
         <div class="flex flex-wrap items-center gap-1.5 pt-1">
-          <span class="text-[11px] text-slate-400 font-medium mr-1">Quick Fill:</span>
-          <button type="button" onclick="setScoreAccount('zomato', 'food')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-purple-50 border border-slate-200 text-slate-700 hover:text-purple-700 transition shadow-xs">🍔 @zomato (Food)</button>
-          <button type="button" onclick="setScoreAccount('techburner', 'tech')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-purple-50 border border-slate-200 text-slate-700 hover:text-purple-700 transition shadow-xs">📱 @techburner (Tech)</button>
-          <button type="button" onclick="setScoreAccount('anushkasen0408', 'lifestyle')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-purple-50 border border-slate-200 text-slate-700 hover:text-purple-700 transition shadow-xs">✨ @anushkasen0408</button>
+          <span class="text-[11px] text-slate-500 font-medium mr-1">Quick fill:</span>
+          <button type="button" onclick="setScoreAccount('zomato', 'food')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-indigo-50 border border-slate-200 text-slate-700 hover:text-indigo-700 transition shadow-xs">@zomato (Food)</button>
+          <button type="button" onclick="setScoreAccount('techburner', 'tech')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-indigo-50 border border-slate-200 text-slate-700 hover:text-indigo-700 transition shadow-xs">@techburner (Tech)</button>
+          <button type="button" onclick="setScoreAccount('anushkasen0408', 'lifestyle')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-indigo-50 border border-slate-200 text-slate-700 hover:text-indigo-700 transition shadow-xs">@anushkasen0408 (Lifestyle)</button>
         </div>
 
         <!-- Launch Button for Score Me -->
         <div class="pt-3">
-          <button onclick="launchScoreMeTask()" id="launchScoreBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 font-extrabold text-sm sm:text-base text-white shadow-xl shadow-purple-600/25 transition active:scale-[0.99] flex items-center justify-center space-x-2">
-            <svg class="w-5 h-5 text-amber-300 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+          <button onclick="launchScoreMeTask()" id="launchScoreBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 to-slate-900 hover:from-indigo-500 hover:to-slate-800 font-semibold text-sm sm:text-base text-white shadow-xl shadow-slate-900/20 transition active:scale-[0.99] flex items-center justify-center space-x-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
             </svg>
-            <span id="launchScoreBtnText">Calculate Account Score</span>
+            <span id="launchScoreBtnText">Calculate account score</span>
           </button>
         </div>
 
@@ -535,17 +654,17 @@
 
       <!-- Animated Progress Bar -->
       <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden border border-slate-200/80">
-        <div id="taskProgressBar" class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 h-2.5 rounded-full transition-all duration-300" style="width: 15%"></div>
+        <div id="taskProgressBar" class="bg-gradient-to-r from-indigo-600 to-slate-900 h-2.5 rounded-full transition-all duration-300" style="width: 15%"></div>
       </div>
 
       <!-- High-Contrast Developer Log Stream -->
       <div class="relative">
-        <div class="flex items-center justify-between pb-1.5 text-[11px] text-slate-500 font-mono">
+        <div class="flex items-center justify-between pb-1.5 text-[11px] text-slate-600 font-mono">
           <span>Engine Execution Stream</span>
-          <span id="logLinesCount" class="text-slate-400">0 logs</span>
+          <span id="logLinesCount" class="text-slate-500">0 logs</span>
         </div>
         <div id="terminalLogBox" class="w-full h-44 sm:h-52 bg-[#0B1120] rounded-2xl p-3.5 font-mono text-[11px] leading-relaxed text-slate-300 overflow-y-auto border border-slate-800 space-y-1 select-text shadow-inner">
-          <div class="text-slate-500">[System] Initializing session...</div>
+          <div class="text-slate-600">[System] Initializing session...</div>
         </div>
       </div>
 
@@ -589,7 +708,7 @@
       <div id="view-scoreme-result" class="hidden space-y-6">
         
         <!-- Hero Scorecard Card -->
-        <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-purple-200 shadow-xl glow-purple">
+        <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xl glow-indigo">
           <div class="flex flex-col md:flex-row items-center justify-between gap-6">
             
             <!-- Left: Circular Gauge & Grade -->
@@ -608,7 +727,7 @@
                 </svg>
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
                   <span id="scoreValHero" class="text-3xl font-extrabold text-slate-900 font-mono">--</span>
-                  <span class="text-[10px] text-slate-400 font-bold tracking-wider uppercase">Out of 100</span>
+                  <span class="text-[10px] text-slate-500 font-bold tracking-wider uppercase">Out of 100</span>
                 </div>
               </div>
 
@@ -617,7 +736,7 @@
                   <span id="scoreGradeHero" class="text-2xl sm:text-3xl font-black px-3 py-0.5 rounded-xl bg-purple-100 text-purple-700 border border-purple-200">A</span>
                   <span id="scoreHandleHero" class="text-lg sm:text-xl font-extrabold text-slate-900">@username</span>
                 </div>
-                <p id="scoreNicheHero" class="text-xs text-slate-500 mt-1 font-medium">Evaluated Niche: General</p>
+                <p id="scoreNicheHero" class="text-xs text-slate-600 mt-1 font-medium">Evaluated Niche: General</p>
                 <div id="scoreBenchmarkTag" class="inline-block mt-2 text-[10px] px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">
                   High Viral Reach Account
                 </div>
@@ -634,7 +753,7 @@
                 <div id="authBarReal" class="bg-emerald-500 h-3" style="width: 88%"></div>
                 <div id="authBarBot" class="bg-rose-500 h-3" style="width: 12%"></div>
               </div>
-              <div class="flex items-center justify-between text-[10px] text-slate-500 font-medium">
+              <div class="flex items-center justify-between text-[10px] text-slate-600 font-medium">
                 <span id="realCommentsCount">120 Authentic</span>
                 <span id="botCommentsCount" class="text-rose-600 font-semibold">16 Bot/Generic</span>
               </div>
@@ -647,39 +766,39 @@
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">👁️ Reach Views</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">👁️ Reach Views</span>
             <span id="kpiReachScore" class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono block">0</span>
-            <span class="text-[10px] text-slate-500 block">Last 10 Posts (&le;30d)</span>
+            <span class="text-[10px] text-slate-600 block">Last 10 Posts (&le;30d)</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">💬 Engagements</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">💬 Engagements</span>
             <span id="kpiEngagementScore" class="text-lg sm:text-xl font-extrabold text-indigo-600 font-mono block">0</span>
-            <span class="text-[10px] text-slate-500 block">Likes+Comments+Saves</span>
+            <span class="text-[10px] text-slate-600 block">Likes+Comments+Saves</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">📊 Engagement %</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">📊 Engagement %</span>
             <span id="kpiEngagementRate" class="text-lg sm:text-xl font-extrabold text-purple-600 font-mono block">0%</span>
-            <span class="text-[10px] text-slate-500 block">vs Follower Base</span>
+            <span class="text-[10px] text-slate-600 block">vs Follower Base</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">🛡️ Bot Penalty</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">🛡️ Bot Penalty</span>
             <span id="kpiBotPenalty" class="text-lg sm:text-xl font-extrabold text-rose-600 font-mono block">-0%</span>
-            <span class="text-[10px] text-slate-500 block">Spam Deductions</span>
+            <span class="text-[10px] text-slate-600 block">Spam Deductions</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">🎯 Niche Match</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">🎯 Niche Match</span>
             <span id="kpiNicheScore" class="text-lg sm:text-xl font-extrabold text-amber-600 font-mono block">100%</span>
-            <span class="text-[10px] text-slate-500 block">Topic Alignment</span>
+            <span class="text-[10px] text-slate-600 block">Topic Alignment</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">📈 10-Day Growth</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">📈 10-Day Growth</span>
             <span id="kpiGrowthScore" class="text-lg sm:text-xl font-extrabold text-emerald-600 font-mono block">+0%</span>
-            <span class="text-[10px] text-slate-500 block">Recent Velocity</span>
+            <span class="text-[10px] text-slate-600 block">Recent Velocity</span>
           </div>
 
         </div>
@@ -688,7 +807,7 @@
         <div class="glass-panel p-6 rounded-3xl space-y-3">
           <div class="flex items-center justify-between">
             <h4 class="text-sm font-bold text-slate-900">Evaluated Posts (Last 10 Posts &le; 30 Days)</h4>
-            <span id="evaluatedPostsCount" class="text-xs text-slate-500 font-medium">0 posts</span>
+            <span id="evaluatedPostsCount" class="text-xs text-slate-600 font-medium">0 posts</span>
           </div>
 
           <div class="overflow-x-auto">
@@ -719,19 +838,19 @@
         <!-- Summary KPIs -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <div class="glass-card p-4 rounded-2xl">
-            <span class="text-[10px] font-bold text-slate-500 uppercase block">Total Businesses</span>
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Total Businesses</span>
             <span id="gmapsTotalLeads" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">0</span>
           </div>
           <div class="glass-card p-4 rounded-2xl">
-            <span class="text-[10px] font-bold text-slate-500 uppercase block">Verified Emails</span>
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Verified Emails</span>
             <span id="gmapsTotalEmails" class="text-2xl font-extrabold text-emerald-600 font-mono mt-1 block">0</span>
           </div>
           <div class="glass-card p-4 rounded-2xl">
-            <span class="text-[10px] font-bold text-slate-500 uppercase block">Phones Listed</span>
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Phones Listed</span>
             <span id="gmapsTotalPhones" class="text-2xl font-extrabold text-indigo-600 font-mono mt-1 block">0</span>
           </div>
           <div class="glass-card p-4 rounded-2xl">
-            <span class="text-[10px] font-bold text-slate-500 uppercase block">Social Channels</span>
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Social Channels</span>
             <span id="gmapsTotalSocials" class="text-2xl font-extrabold text-purple-600 font-mono mt-1 block">0</span>
           </div>
         </div>
@@ -804,11 +923,11 @@
           </div>
           <div>
             <h3 class="text-sm font-extrabold text-slate-900">Backend API Server</h3>
-            <p class="text-[11px] text-slate-500">Connect Vercel to your Local PC</p>
+            <p class="text-[11px] text-slate-600">Connect Vercel to your Local PC</p>
           </div>
         </div>
 
-        <button onclick="toggleApiModal(false)" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition">
+        <button onclick="toggleApiModal(false)" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition">
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
@@ -819,7 +938,7 @@
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1.5">API Base URL (Cloudflare Tunnel or Ngrok)</label>
           <input type="url" id="customApiInput" placeholder="https://your-tunnel.trycloudflare.com" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 text-xs text-slate-900 placeholder-slate-400 outline-none font-mono shadow-xs">
-          <p class="text-[10px] text-slate-500 mt-1">Leave empty when opening locally on localhost. Paste your HTTPS tunnel URL when visiting from Vercel.</p>
+          <p class="text-[10px] text-slate-600 mt-1">Leave empty when opening locally on localhost. Paste your HTTPS tunnel URL when visiting from Vercel.</p>
         </div>
 
         <div id="apiTestStatus" class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 hidden">
@@ -832,7 +951,7 @@
           <div class="font-mono text-[10px] bg-white p-2 rounded-lg text-indigo-600 border border-indigo-100 select-all font-semibold">
             cloudflared tunnel --url http://localhost:8000
           </div>
-          <p class="text-[10px] text-slate-500">Copy the generated <code class="text-indigo-600 font-semibold">https://xxx.trycloudflare.com</code> URL and paste above.</p>
+          <p class="text-[10px] text-slate-600">Copy the generated <code class="text-indigo-600 font-semibold">https://xxx.trycloudflare.com</code> URL and paste above.</p>
         </div>
 
         <div class="flex items-center space-x-2 pt-1">
@@ -842,7 +961,7 @@
           <button onclick="saveApiEndpoint()" class="flex-1 py-2.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-extrabold transition shadow-md shadow-indigo-600/25">
             Save & Connect
           </button>
-          <button onclick="resetApiEndpoint()" class="py-2.5 px-3 rounded-xl bg-white hover:bg-slate-100 text-slate-500 hover:text-slate-800 text-xs transition border border-slate-200 font-medium" title="Reset to Localhost">
+          <button onclick="resetApiEndpoint()" class="py-2.5 px-3 rounded-xl bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-800 text-xs transition border border-slate-200 font-medium" title="Reset to Localhost">
             Reset
           </button>
         </div>
@@ -866,11 +985,11 @@
           </div>
           <div>
             <h3 class="text-sm font-extrabold text-slate-900">Excel Reports Archive</h3>
-            <p class="text-[11px] text-slate-500">Single-Sheet Workbooks stored in excel_data/</p>
+            <p class="text-[11px] text-slate-600">Single-Sheet Workbooks stored in excel_data/</p>
           </div>
         </div>
 
-        <button onclick="toggleHistoryModal(false)" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition">
+        <button onclick="toggleHistoryModal(false)" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition">
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
@@ -879,7 +998,7 @@
 
       <!-- History List -->
       <div id="historyListContainer" class="flex-1 overflow-y-auto space-y-2 pr-1">
-        <div class="text-center py-8 text-xs text-slate-400">Loading reports history...</div>
+        <div class="text-center py-8 text-xs text-slate-500">Loading reports history...</div>
       </div>
 
     </div>
@@ -893,6 +1012,90 @@
 
   <!-- JAVASCRIPT CONTROLLER -->
   <script>
+    // ──────────────────────────────────────────────────────────────
+    // CUSTOM DROPDOWN (opens anchored to its own trigger, never a
+    // native bottom sheet — works the same on mobile and desktop)
+    // ──────────────────────────────────────────────────────────────
+    function toggleDropdown(wrapId) {
+      const wrap = document.getElementById(wrapId);
+      const isOpen = wrap.classList.contains('open');
+      document.querySelectorAll('.dropdown-wrap.open').forEach(w => {
+        w.classList.remove('open');
+        w.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        wrap.classList.add('open');
+        wrap.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function selectDropdown(wrapId, hiddenInputId, value, label) {
+      document.getElementById(hiddenInputId).value = value;
+      document.getElementById(wrapId).querySelector('[id$="Label"]').innerText = label;
+      document.getElementById(wrapId).querySelectorAll('.dropdown-option').forEach(opt => {
+        opt.classList.toggle('active', opt.innerText === label);
+      });
+      toggleDropdown(wrapId);
+    }
+
+    document.addEventListener('click', (e) => {
+      document.querySelectorAll('.dropdown-wrap.open').forEach(wrap => {
+        if (!wrap.contains(e.target)) {
+          wrap.classList.remove('open');
+          wrap.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    // ──────────────────────────────────────────────────────────────
+    // Interactive ambient background: orbs parallax toward the
+    // pointer, and a soft glow follows the cursor directly.
+    // ──────────────────────────────────────────────────────────────
+    (function initBackgroundParallax() {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const orbs = document.querySelectorAll('#bgOrbs .bg-orb');
+      const cursorGlow = document.getElementById('cursorGlow');
+      let targetX = 0, targetY = 0, curX = 0, curY = 0;
+      let glowActive = false;
+
+      function setFromPointer(clientX, clientY) {
+        targetX = (clientX / window.innerWidth - 0.5) * 2;
+        targetY = (clientY / window.innerHeight - 0.5) * 2;
+        if (cursorGlow) {
+          cursorGlow.style.transform = `translate3d(${clientX}px, ${clientY}px, 0)`;
+          if (!glowActive) {
+            cursorGlow.classList.add('active');
+            glowActive = true;
+          }
+        }
+      }
+
+      window.addEventListener('pointermove', (e) => setFromPointer(e.clientX, e.clientY), { passive: true });
+      window.addEventListener('pointerleave', () => {
+        glowActive = false;
+        cursorGlow?.classList.remove('active');
+      }, { passive: true });
+      window.addEventListener('touchmove', (e) => {
+        if (e.touches[0]) setFromPointer(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+
+      if (reduceMotion) return;
+
+      function animate() {
+        // Snappy, direct-feeling response rather than a slow, barely
+        // perceptible drift.
+        curX += (targetX - curX) * 0.12;
+        curY += (targetY - curY) * 0.12;
+        orbs.forEach(orb => {
+          const depth = parseFloat(orb.dataset.depth) || 30;
+          orb.style.setProperty('--px', `${curX * depth}px`);
+          orb.style.setProperty('--py', `${curY * depth}px`);
+        });
+        requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    })();
+
     let activeTab = 'location';
     let activeLocationSubtool = '1a';
     let activeAccountSubtool = '2a';
@@ -947,7 +1150,7 @@
           <div class="text-emerald-600 font-bold flex items-center">
             <span class="mr-1.5">✅</span> Connected Successfully (${latency}ms)
           </div>
-          <div class="text-[10px] text-slate-500 mt-0.5 font-mono">
+          <div class="text-[10px] text-slate-600 mt-0.5 font-mono">
             Port: ${data.port} | Status: ${data.status} | Reports ready: ${data.total_reports}
           </div>
         `;
@@ -956,7 +1159,7 @@
           <div class="text-rose-600 font-bold flex items-center">
             <span class="mr-1.5">❌</span> Connection Failed: ${err.message}
           </div>
-          <div class="text-[10px] text-slate-500 mt-0.5">
+          <div class="text-[10px] text-slate-600 mt-0.5">
             Make sure your local server is running on Port 8000 and your HTTPS tunnel is active.
           </div>
         `;
@@ -997,13 +1200,35 @@
     async function fetchSystemInfo() {
       try {
         const res = await fetch(`${getApiBase()}/api/system-info`);
+        const contentType = res.headers.get('content-type') || '';
+        if (!res.ok || !contentType.includes('application/json')) {
+          setBackendReachable(false);
+          return;
+        }
         const data = await res.json();
+        setBackendReachable(true);
         if (data.local_ip) {
           document.getElementById('lanIpText').innerText = `Mobile: ${data.local_ip}:8000`;
           window.mobileUrl = `http://${data.local_ip}:8000`;
         }
       } catch(e) {
-        console.warn("System info error:", e);
+        // No backend reachable at this address — expected when previewing
+        // the frontend on its own, without the Python server running.
+        setBackendReachable(false);
+      }
+    }
+
+    function setBackendReachable(isReachable) {
+      const dot = document.getElementById('apiStatusDot');
+      const portBadge = document.getElementById('portStatusBadge');
+      if (!dot) return;
+      if (isReachable) {
+        if (!getApiBase()) dot.className = "w-2 h-2 rounded-full bg-emerald-500";
+        if (portBadge) portBadge.classList.remove('hidden');
+      } else {
+        dot.className = "w-2 h-2 rounded-full bg-amber-500";
+        document.getElementById('apiConfigBtn').title = "Backend not reachable — configure your API address";
+        if (portBadge) portBadge.classList.add('hidden');
       }
     }
 
@@ -1033,14 +1258,10 @@
         const btn = document.getElementById(`tabBtn-${t}`);
         const content = document.getElementById(`tabContent-${t}`);
         if (t === tabId) {
-          if (t === 'scoreme') {
-            btn.className = "w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center space-x-2 transition-all bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 text-white shadow-md shadow-purple-600/25";
-          } else {
-            btn.className = "w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center space-x-2 transition-all bg-indigo-600 text-white shadow-md shadow-indigo-600/25";
-          }
+          btn.className = "w-full sm:w-1/3 py-3 px-4 rounded-full text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all bg-slate-900 text-white shadow-md shadow-slate-900/20";
           content.classList.remove('hidden');
         } else {
-          btn.className = "w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all text-slate-600 hover:text-slate-900 hover:bg-white/60";
+          btn.className = "w-full sm:w-1/3 py-3 px-4 rounded-full text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all text-slate-600 hover:text-slate-900 hover:bg-white/60";
           content.classList.add('hidden');
         }
       });
@@ -1071,13 +1292,13 @@
         form1a.classList.add('hidden');
         formGmaps.classList.remove('hidden');
         title.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-emerald-600 mr-2"></span> Google Leads From Location';
-        subtitle.innerText = "extract all leads data from your target location directly into excel sheet";
+        subtitle.innerText = "Pull every business lead from your target location straight into an Excel sheet.";
         btnText.innerText = "Extract Google Leads";
       } else if (subtool === '1c') {
         form1a.classList.add('hidden');
         formGmaps.classList.remove('hidden');
         title.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-cyan-600 mr-2"></span> Maps to Contact Data';
-        subtitle.innerText = "extract complete conacts,emails,links,linkedin data from the location into automated excelsheet";
+        subtitle.innerText = "Extract complete contacts, emails, links, and LinkedIn profiles into an automated Excel sheet.";
         btnText.innerText = "Extract Complete Contacts";
       }
     }
@@ -1256,8 +1477,8 @@
           const logBox = document.getElementById('terminalLogBox');
           logBox.innerHTML = task.logs.map(l => {
             let color = 'text-slate-300';
-            if (l.includes('[HERMES_ERROR]') || l.includes('failed') || l.includes('Error')) color = 'text-rose-400 font-semibold';
-            else if (l.includes('[HERMES_STATUS]') || l.includes('Complete')) color = 'text-emerald-300 font-semibold';
+            if (l.includes('failed') || l.includes('Error')) color = 'text-rose-400 font-semibold';
+            else if (l.includes('Complete')) color = 'text-emerald-300 font-semibold';
             else if (l.includes('[DASHBOARD]')) color = 'text-indigo-300 font-semibold';
             return `<div class="${color}">${escapeHtml(l)}</div>`;
           }).join('');
@@ -1347,12 +1568,12 @@
           const likes = Number(p.likes || 0).toLocaleString();
           const comm = Number(p.comments || 0).toLocaleString();
           const eng = p.engagement_rate || '0.0%';
-          const nMatch = p.niche_match ? '<span class="text-emerald-600 font-bold">Matched</span>' : '<span class="text-slate-400">Other</span>';
+          const nMatch = p.niche_match ? '<span class="text-emerald-600 font-bold">Matched</span>' : '<span class="text-slate-500">Other</span>';
           const url = p.post_url || `https://www.instagram.com/p/${scode}/`;
           return `
             <tr class="hover:bg-indigo-50/40 transition">
               <td class="py-2.5 px-3 font-bold text-slate-900">${scode}</td>
-              <td class="py-2.5 px-3 text-slate-500 font-medium">${p.type || 'Reel'}</td>
+              <td class="py-2.5 px-3 text-slate-600 font-medium">${p.type || 'Reel'}</td>
               <td class="py-2.5 px-3 text-amber-600 font-extrabold">${plays}</td>
               <td class="py-2.5 px-3">${likes}</td>
               <td class="py-2.5 px-3">${comm}</td>
@@ -1395,32 +1616,32 @@
     function renderGmapsTable(leads) {
       const tbody = document.getElementById('gmapsTableBody');
       if (!leads || leads.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-slate-400">No leads found.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-slate-500">No leads found.</td></tr>`;
         return;
       }
 
       tbody.innerHTML = leads.map(l => {
         const email = l.primary_email && l.primary_email !== 'Not Listed'
           ? `<span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-mono font-bold border border-emerald-200">${l.primary_email}</span>`
-          : '<span class="text-slate-400">Not Listed</span>';
+          : '<span class="text-slate-500">Not Listed</span>';
 
-        const phone = l.phone && l.phone !== 'Not Listed' ? l.phone : '<span class="text-slate-400">N/A</span>';
-        const web = l.website && l.website !== 'None' ? `<a href="${l.website}" target="_blank" class="text-indigo-600 font-semibold hover:underline">Website ↗</a>` : '<span class="text-slate-400">None</span>';
+        const phone = l.phone && l.phone !== 'Not Listed' ? l.phone : '<span class="text-slate-500">N/A</span>';
+        const web = l.website && l.website !== 'None' ? `<a href="${l.website}" target="_blank" class="text-indigo-600 font-semibold hover:underline">Website ↗</a>` : '<span class="text-slate-500">None</span>';
         const mapsLink = l.maps_url ? `<a href="${l.maps_url}" target="_blank" class="text-indigo-600 font-semibold hover:underline">Map ↗</a>` : '';
 
         let socials = [];
         if (l.instagram && l.instagram !== 'None') socials.push(`<a href="${l.instagram}" target="_blank" class="text-pink-600 font-bold" title="Instagram">IG</a>`);
         if (l.facebook && l.facebook !== 'None') socials.push(`<a href="${l.facebook}" target="_blank" class="text-blue-600 font-bold" title="Facebook">FB</a>`);
         if (l.linkedin && l.linkedin !== 'None') socials.push(`<a href="${l.linkedin}" target="_blank" class="text-cyan-600 font-bold" title="LinkedIn">IN</a>`);
-        const socialHtml = socials.length > 0 ? socials.join(' • ') : '<span class="text-slate-400">None</span>';
+        const socialHtml = socials.length > 0 ? socials.join(' • ') : '<span class="text-slate-500">None</span>';
 
         return `
           <tr class="hover:bg-indigo-50/40 transition">
             <td class="py-2.5 px-3 font-bold text-slate-900">
               <div>${escapeHtml(l.name || 'Business')}</div>
-              <div class="text-[10px] text-slate-500 font-normal truncate max-w-xs">${escapeHtml(l.category || l.address || '')}</div>
+              <div class="text-[10px] text-slate-600 font-normal truncate max-w-xs">${escapeHtml(l.category || l.address || '')}</div>
             </td>
-            <td class="py-2.5 px-3 text-amber-600 font-mono font-bold">⭐ ${l.rating || 'N/A'} <span class="text-slate-400 font-normal">(${l.reviews_count || 0})</span></td>
+            <td class="py-2.5 px-3 text-amber-600 font-mono font-bold">⭐ ${l.rating || 'N/A'} <span class="text-slate-500 font-normal">(${l.reviews_count || 0})</span></td>
             <td class="py-2.5 px-3 font-mono">${phone}</td>
             <td class="py-2.5 px-3">${email}</td>
             <td class="py-2.5 px-3">${web}</td>
@@ -1458,7 +1679,7 @@
             <th class="py-2.5 px-3">Handle</th>
             <th class="py-2.5 px-3">Display Name</th>
             <th class="py-2.5 px-3">Followers</th>
-            <th class="py-2.5 px-3">Hermes Score</th>
+            <th class="py-2.5 px-3">Influence Score</th>
             <th class="py-2.5 px-3">Email</th>
             <th class="py-2.5 px-3">Phone</th>
             <th class="py-2.5 px-3 text-right">Profile</th>
@@ -1470,7 +1691,7 @@
             <td class="py-2.5 px-3 font-bold text-indigo-600">@${escapeHtml(a["Account Handle"] || '')}</td>
             <td class="py-2.5 px-3 text-slate-800 font-medium">${escapeHtml(a["Display Name"] || '')}</td>
             <td class="py-2.5 px-3 font-mono text-amber-600 font-bold">${Number(a["Follower Count"] || 0).toLocaleString()}</td>
-            <td class="py-2.5 px-3 font-mono font-bold text-purple-600">${a["Hermes Score"] || '80/100'}</td>
+            <td class="py-2.5 px-3 font-mono font-bold text-purple-600">${a["Influence Score"] || a["Hermes Score"] || '80/100'}</td>
             <td class="py-2.5 px-3 font-mono text-emerald-700 font-semibold">${a["Contact Email"] || 'Not Listed'}</td>
             <td class="py-2.5 px-3 font-mono">${a["Contact Phone / WhatsApp"] || 'Not Listed'}</td>
             <td class="py-2.5 px-3 text-right">
@@ -1496,11 +1717,11 @@
             <td class="py-2.5 px-3 text-indigo-600 font-bold font-mono">
               <a href="${p["Post URL"] || p["Post / Reel Link"] || '#'}" target="_blank" class="hover:underline">${(p["Post URL"] || '').split('/p/')[1] || 'Post'} ↗</a>
             </td>
-            <td class="py-2.5 px-3 text-slate-500">${p["Type"] || 'Reel'}</td>
+            <td class="py-2.5 px-3 text-slate-600">${p["Type"] || 'Reel'}</td>
             <td class="py-2.5 px-3 font-mono text-amber-600 font-bold">${p["Plays"] || 'N/A'}</td>
             <td class="py-2.5 px-3 font-mono font-semibold">${Number(p["Likes"] || 0).toLocaleString()}</td>
             <td class="py-2.5 px-3 font-mono font-semibold">${Number(p["Comments"] || 0).toLocaleString()}</td>
-            <td class="py-2.5 px-3 text-slate-500 truncate max-w-xs">${escapeHtml(p["Caption"] || '')}</td>
+            <td class="py-2.5 px-3 text-slate-600 truncate max-w-xs">${escapeHtml(p["Caption"] || '')}</td>
           </tr>
         `).join('');
       } else if (res.type === 'post_inspection') {
@@ -1517,7 +1738,7 @@
           <tr class="hover:bg-indigo-50/40 transition">
             <td class="py-2.5 px-3 font-bold text-indigo-600 font-mono">@${escapeHtml(c.username || 'user')}</td>
             <td class="py-2.5 px-3 text-slate-800 font-medium">${escapeHtml(c.text || '')}</td>
-            <td class="py-2.5 px-3 font-mono text-slate-500">❤️ ${c.like_count || 0}</td>
+            <td class="py-2.5 px-3 font-mono text-slate-600">❤️ ${c.like_count || 0}</td>
           </tr>
         `).join('');
       }
@@ -1529,13 +1750,19 @@
     async function fetchHistory() {
       try {
         const res = await fetch(`${getApiBase()}/api/history`);
+        const contentType = res.headers.get('content-type') || '';
+        if (!res.ok || !contentType.includes('application/json')) {
+          document.getElementById('historyListContainer').innerHTML =
+            `<div class="text-center py-8 text-xs text-slate-500">Can't reach the backend yet. Open <b class="text-slate-600">Backend API</b> above and connect your server.</div>`;
+          return;
+        }
         const data = await res.json();
         const files = data.files || [];
         document.getElementById('reportsCountBadge').innerText = files.length;
 
         const list = document.getElementById('historyListContainer');
         if (files.length === 0) {
-          list.innerHTML = `<div class="text-center py-8 text-xs text-slate-400">No Excel reports generated yet.</div>`;
+          list.innerHTML = `<div class="text-center py-8 text-xs text-slate-500">No Excel reports generated yet.</div>`;
           return;
         }
 
@@ -1544,8 +1771,8 @@
             <div class="overflow-hidden">
               <div class="flex items-center space-x-2">
                 <span class="text-[10px] px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 font-bold border border-indigo-100">${f.badge}</span>
-                <span class="text-[10px] text-slate-400 font-mono">${f.modified}</span>
-                <span class="text-[10px] text-slate-400 font-mono">${f.size_kb} KB</span>
+                <span class="text-[10px] text-slate-500 font-mono">${f.modified}</span>
+                <span class="text-[10px] text-slate-500 font-mono">${f.size_kb} KB</span>
               </div>
               <p class="text-xs font-bold text-slate-900 truncate mt-1">${f.filename}</p>
             </div>
@@ -1557,7 +1784,10 @@
           </div>
         `).join('');
       } catch (err) {
-        console.warn("History error:", err);
+        // No backend reachable at this address — expected when previewing
+        // the frontend on its own, without the Python server running.
+        document.getElementById('historyListContainer').innerHTML =
+          `<div class="text-center py-8 text-xs text-slate-500">Can't reach the backend yet. Open <b class="text-slate-600">Backend API</b> above and connect your server.</div>`;
       }
     }
 
