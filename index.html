@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -9,7 +9,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           colors: {
@@ -19,13 +18,6 @@
               500: '#6366f1',
               600: '#4f46e5',
               700: '#4338ca',
-            },
-            dark: {
-              950: '#070A11',
-              900: '#0B0F19',
-              850: '#111827',
-              800: '#1E293B',
-              700: '#334155',
             }
           },
           fontFamily: {
@@ -45,8 +37,7 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #070A11;
-      color: #F1F5F9;
+      color: #0F172A;
       -webkit-tap-highlight-color: transparent;
     }
     
@@ -56,39 +47,43 @@
       height: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #0B0F19;
+      background: #F1F5F9;
     }
     ::-webkit-scrollbar-thumb {
-      background: #1E293B;
+      background: #CBD5E1;
       border-radius: 9999px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #334155;
+      background: #94A3B8;
     }
 
+    /* Modern Light & Vibrant Glassmorphism */
     .glass-panel {
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 10px 35px -5px rgba(99, 102, 241, 0.07), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
     }
 
     .glass-card {
-      background: rgba(30, 41, 59, 0.5);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 16px -2px rgba(99, 102, 241, 0.05);
     }
 
     .glow-indigo {
-      box-shadow: 0 0 35px -5px rgba(99, 102, 241, 0.25);
+      box-shadow: 0 10px 30px -5px rgba(99, 102, 241, 0.18);
     }
 
     .glow-purple {
-      box-shadow: 0 0 40px -5px rgba(168, 85, 247, 0.3);
+      box-shadow: 0 12px 35px -5px rgba(168, 85, 247, 0.22);
     }
 
     .glow-emerald {
-      box-shadow: 0 0 30px -5px rgba(16, 185, 129, 0.25);
+      box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.18);
     }
 
     .circle-meter {
@@ -98,40 +93,47 @@
     }
   </style>
 </head>
-<body class="min-h-screen bg-[#070A11] text-slate-100 flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+<body class="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50/40 via-white to-purple-50/30 text-slate-800 flex flex-col antialiased selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
+
+  <!-- Ambient Vibrant Mesh Background Elements -->
+  <div class="fixed top-0 left-1/4 w-96 h-96 bg-indigo-200/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
+  <div class="fixed top-1/3 right-10 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
+  <div class="fixed bottom-10 left-10 w-96 h-96 bg-emerald-200/25 rounded-full blur-3xl pointer-events-none -z-10"></div>
+  <div class="fixed bottom-1/4 right-1/4 w-80 h-80 bg-pink-200/25 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
   <!-- TOP APP BAR -->
-  <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-[#070A11]/90 backdrop-blur-xl">
+  <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/75 backdrop-blur-xl shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       
       <!-- Brand & Status -->
       <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/25">
           <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
           </svg>
         </div>
         <div>
           <div class="flex items-center space-x-2">
-            <h1 class="text-base sm:text-lg font-bold tracking-tight text-white flex items-center">
+            <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-slate-900 flex items-center">
               PHANTOM REACH
-              <span class="ml-2 text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">v5.2</span>
+              <span class="ml-2 text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200/80 shadow-xs">PRO</span>
             </h1>
           </div>
-          <p class="text-[11px] text-slate-400 font-medium hidden sm:block">Multi-Platform Intelligence & Influence Engine</p>
+          <p class="text-[11px] text-slate-500 font-medium hidden sm:block">Multi-Platform Intelligence & Influence Engine</p>
         </div>
       </div>
 
-      <!-- Quick Info & History Toggle -->
+      <!-- Quick Info & Navigation Actions -->
       <div class="flex items-center space-x-2 sm:space-x-3">
+        
         <!-- Port Badge -->
-        <div class="flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-medium">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <div class="flex items-center space-x-1.5 px-2.5 py-1 rounded-xl bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-xs font-mono font-medium shadow-xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
           <span>Port 8000</span>
         </div>
 
         <!-- Mobile LAN Link Button -->
-        <button onclick="copyMobileUrl()" id="lanBadgeBtn" class="hidden md:flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs font-mono transition" title="Click to copy Mobile URL">
+        <button onclick="copyMobileUrl()" id="lanBadgeBtn" class="hidden md:flex items-center space-x-1.5 px-2.5 py-1 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-mono transition shadow-xs" title="Click to copy Mobile URL">
           <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
           </svg>
@@ -139,8 +141,8 @@
         </button>
 
         <!-- Backend API Config Button (Vercel / Remote Tunnel) -->
-        <button onclick="toggleApiModal(true)" id="apiConfigBtn" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-xs font-medium text-slate-200 transition" title="Configure Backend API (Vercel / Tunnel)">
-          <span id="apiStatusDot" class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <button onclick="toggleApiModal(true)" id="apiConfigBtn" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700 transition shadow-xs" title="Configure Backend API (Vercel / Tunnel)">
+          <span id="apiStatusDot" class="w-2 h-2 rounded-full bg-emerald-500"></span>
           <span class="hidden sm:inline">Backend API</span>
           <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
@@ -149,13 +151,14 @@
         </button>
 
         <!-- Reports Archive Button -->
-        <button onclick="toggleHistoryModal(true)" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 hover:bg-indigo-600/30 border border-slate-700 hover:border-indigo-500/40 text-xs font-medium text-slate-200 transition">
-          <svg class="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <button onclick="toggleHistoryModal(true)" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-indigo-50/50 border border-slate-200 text-xs font-semibold text-slate-700 hover:text-indigo-600 transition shadow-xs">
+          <svg class="w-4 h-4 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
           </svg>
           <span class="hidden sm:inline">Excel Reports</span>
-          <span id="reportsCountBadge" class="px-1.5 py-0.2 rounded-full bg-indigo-500/30 text-[10px] text-indigo-300">0</span>
+          <span id="reportsCountBadge" class="px-1.5 py-0.2 rounded-full bg-indigo-100 text-[10px] text-indigo-700 font-bold">0</span>
         </button>
+
       </div>
 
     </div>
@@ -165,124 +168,130 @@
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
     <!-- NAVIGATION TABS -->
-    <div class="glass-panel p-1.5 rounded-2xl flex flex-col sm:flex-row items-center gap-1.5">
+    <div class="glass-panel p-1.5 rounded-2xl flex flex-col sm:flex-row items-center gap-1.5 shadow-sm">
       
-      <!-- Tab 1: Location Tools -->
-      <button onclick="switchTab('location')" id="tabBtn-location" class="w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all bg-indigo-600 text-white shadow-md shadow-indigo-600/30">
+      <!-- Tab 1: Location Leads Tools -->
+      <button onclick="switchTab('location')" id="tabBtn-location" class="w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center space-x-2 transition-all bg-indigo-600 text-white shadow-md shadow-indigo-600/25">
         <span class="text-base">📍</span>
-        <span>1. Location Tools</span>
-        <span class="text-[10px] px-1.5 py-0.5 rounded bg-white/20 text-white font-mono">1a • 1b • 1c</span>
+        <span>Location Leads Tools</span>
       </button>
 
       <!-- Tab 2: Account Tools -->
-      <button onclick="switchTab('account')" id="tabBtn-account" class="w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/60">
+      <button onclick="switchTab('account')" id="tabBtn-account" class="w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all text-slate-600 hover:text-slate-900 hover:bg-white/60">
         <span class="text-base">👤</span>
-        <span>2. Account Tools</span>
-        <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-700/50 text-slate-300 font-mono">2a • 2b</span>
+        <span>Account Tools</span>
       </button>
 
-      <!-- Tab 3: Score Me (Special Highlight) -->
-      <button onclick="switchTab('scoreme')" id="tabBtn-scoreme" class="w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/60 relative overflow-hidden group">
+      <!-- Tab 3: Score Me Engine -->
+      <button onclick="switchTab('scoreme')" id="tabBtn-scoreme" class="w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all text-slate-600 hover:text-slate-900 hover:bg-white/60 relative overflow-hidden group">
         <span class="text-base animate-bounce">⚡</span>
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-amber-300 font-bold">3. Score Me Engine</span>
-        <span class="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30 font-mono">Reach & ROI</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 font-bold">Score Me Engine</span>
       </button>
 
     </div>
 
     <!-- ================================================================ -->
-    <!-- TAB 1 CONTENT: LOCATION TOOLS (1a, 1b, 1c) -->
+    <!-- TAB 1 CONTENT: LOCATION LEADS TOOLS -->
     <!-- ================================================================ -->
     <div id="tabContent-location" class="space-y-6">
       
       <!-- Sub-Tool Selector -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
         
-        <label class="relative flex items-center p-3.5 rounded-xl border border-slate-800 bg-slate-900/60 hover:bg-slate-800/50 cursor-pointer transition">
-          <input type="radio" name="loc_subtool" value="1a" checked onchange="updateLocationSubtool('1a')" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-slate-900">
+        <!-- Tool: Who Can Make Me Viral Here? -->
+        <label class="relative flex items-start p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md shadow-indigo-500/5 cursor-pointer transition" id="subtoolCard-1a">
+          <input type="radio" name="loc_subtool" value="1a" checked onchange="updateLocationSubtool('1a')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
           <div class="ml-3">
-            <span class="text-xs sm:text-sm font-semibold text-white block">🏷️ 1a. Instagram Tag Search</span>
-            <span class="text-[11px] text-slate-400 block">Hashtags, local creators & collaborators</span>
+            <span class="text-xs sm:text-sm font-bold text-slate-900 block">Who Can Make Me Viral Here?</span>
+            <span class="text-[11px] text-slate-500 block mt-0.5 leading-snug">verified local creators,collaborator and business handles directly into excel sheet with complete score and roi</span>
           </div>
         </label>
 
-        <label class="relative flex items-center p-3.5 rounded-xl border border-slate-800 bg-slate-900/60 hover:bg-slate-800/50 cursor-pointer transition">
-          <input type="radio" name="loc_subtool" value="1b" onchange="updateLocationSubtool('1b')" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-slate-900">
+        <!-- Tool: Google Leads From Location -->
+        <label class="relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs" id="subtoolCard-1b">
+          <input type="radio" name="loc_subtool" value="1b" onchange="updateLocationSubtool('1b')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
           <div class="ml-3">
-            <span class="text-xs sm:text-sm font-semibold text-white block">🗺️ 1b. Google Maps Export</span>
-            <span class="text-[11px] text-slate-400 block">Local business directory & place data</span>
+            <span class="text-xs sm:text-sm font-bold text-slate-900 block">Google Leads From Location</span>
+            <span class="text-[11px] text-slate-500 block mt-0.5 leading-snug">extract all leads data from your target location directly into excel sheet</span>
           </div>
         </label>
 
-        <label class="relative flex items-center p-3.5 rounded-xl border border-slate-800 bg-slate-900/60 hover:bg-slate-800/50 cursor-pointer transition">
-          <input type="radio" name="loc_subtool" value="1c" onchange="updateLocationSubtool('1c')" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-slate-900">
+        <!-- Tool: Maps to Contact Data -->
+        <label class="relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs" id="subtoolCard-1c">
+          <input type="radio" name="loc_subtool" value="1c" onchange="updateLocationSubtool('1c')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
           <div class="ml-3">
-            <span class="text-xs sm:text-sm font-semibold text-white block">📧 1c. Maps to Contact Data</span>
-            <span class="text-[11px] text-slate-400 block">Automated Emails, Phones & Social links</span>
+            <span class="text-xs sm:text-sm font-bold text-slate-900 block">Maps to Contact Data</span>
+            <span class="text-[11px] text-slate-500 block mt-0.5 leading-snug">extract complete conacts,emails,links,linkedin data from the location into automated excelsheet</span>
           </div>
         </label>
 
       </div>
 
-      <!-- Form Container: Location Tools -->
-      <div class="glass-panel p-5 sm:p-7 rounded-2xl space-y-5">
+      <!-- Form Container: Location Leads Tools -->
+      <div class="glass-panel p-6 sm:p-8 rounded-3xl space-y-5">
         
-        <!-- Form for 1a: Instagram Tag Search -->
+        <!-- Form for Who Can Make Me Viral Here? -->
         <div id="form-1a" class="space-y-4">
           <div class="flex items-center justify-between">
-            <h3 class="text-sm sm:text-base font-semibold text-slate-200 flex items-center">
-              <span class="w-2 h-2 rounded-full bg-indigo-500 mr-2"></span>
-              Instagram Location / Tag Discovery
-            </h3>
-            <span class="text-[11px] text-slate-400">Single-Sheet Output</span>
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full bg-indigo-600 mr-2"></span>
+                Who Can Make Me Viral Here?
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">verified local creators,collaborator and business handles directly into excel sheet with complete score and roi</p>
+            </div>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200 hidden sm:inline">Single Sheet Excel</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1.5">Target Location / Hashtag</label>
-              <input type="text" id="loc_1a_tag" placeholder="e.g. malad, thane, bandra, dubai" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm text-white placeholder-slate-500 outline-none transition">
-              <p class="text-[10px] text-slate-500 mt-1">Hashtag symbol (#) is automatically handled.</p>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Target Location / City / Area</label>
+              <input type="text" id="loc_1a_tag" placeholder="e.g. malad, thane, bandra, dubai" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+              <p class="text-[10px] text-slate-400 mt-1">Enter your target location, city or region.</p>
             </div>
 
             <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1.5">Follow-up Keyword / Niche (Optional)</label>
-              <input type="text" id="loc_1a_filter" placeholder="e.g. street food, cafes, real estate, salons" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm text-white placeholder-slate-500 outline-none transition">
-              <p class="text-[10px] text-slate-500 mt-1">Filters specifically for this niche or keyword.</p>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Follow-up Keyword / Specific Niche (Optional)</label>
+              <input type="text" id="loc_1a_filter" placeholder="e.g. street food, cafes, real estate, salons" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+              <p class="text-[10px] text-slate-400 mt-1">Filters specifically for this category or topic.</p>
             </div>
           </div>
 
           <div>
-            <label class="block text-xs font-medium text-slate-300 mb-1.5">Follower Reach Filter</label>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Follower Reach Threshold</label>
             <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
-              <button type="button" onclick="set1aReach(0)" id="reachBtn-0" class="py-2 px-3 rounded-lg text-xs font-medium bg-indigo-600 text-white transition border border-indigo-500/40">All Reach (0+)</button>
-              <button type="button" onclick="set1aReach(1000)" id="reachBtn-1000" class="py-2 px-3 rounded-lg text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 transition border border-slate-800">1,000+</button>
-              <button type="button" onclick="set1aReach(5000)" id="reachBtn-5000" class="py-2 px-3 rounded-lg text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 transition border border-slate-800">5,000+</button>
-              <button type="button" onclick="set1aReach(10000)" id="reachBtn-10000" class="py-2 px-3 rounded-lg text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 transition border border-slate-800">10,000+</button>
-              <button type="button" onclick="set1aReach(25000)" id="reachBtn-25000" class="py-2 px-3 rounded-lg text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 transition border border-slate-800">25,000+</button>
+              <button type="button" onclick="set1aReach(0)" id="reachBtn-0" class="py-2.5 px-3 rounded-xl text-xs font-bold bg-indigo-600 text-white transition shadow-sm">All Reach (0+)</button>
+              <button type="button" onclick="set1aReach(1000)" id="reachBtn-1000" class="py-2.5 px-3 rounded-xl text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 transition border border-slate-200">1,000+</button>
+              <button type="button" onclick="set1aReach(5000)" id="reachBtn-5000" class="py-2.5 px-3 rounded-xl text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 transition border border-slate-200">5,000+</button>
+              <button type="button" onclick="set1aReach(10000)" id="reachBtn-10000" class="py-2.5 px-3 rounded-xl text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 transition border border-slate-200">10,000+</button>
+              <button type="button" onclick="set1aReach(25000)" id="reachBtn-25000" class="py-2.5 px-3 rounded-xl text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 transition border border-slate-200">25,000+</button>
             </div>
             <input type="hidden" id="loc_1a_min_followers" value="0">
           </div>
         </div>
 
-        <!-- Form for 1b & 1c: Google Maps -->
+        <!-- Form for Google Maps Tools -->
         <div id="form-gmaps" class="hidden space-y-4">
           <div class="flex items-center justify-between">
-            <h3 id="gmapsFormTitle" class="text-sm sm:text-base font-semibold text-slate-200 flex items-center">
-              <span class="w-2 h-2 rounded-full bg-emerald-500 mr-2"></span>
-              Google Maps Search Export
-            </h3>
-            <span id="gmapsFormSubtitle" class="text-[11px] text-slate-400">Direct Business Directory</span>
+            <div>
+              <h3 id="gmapsFormTitle" class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 mr-2"></span>
+                Google Leads From Location
+              </h3>
+              <p id="gmapsFormSubtitle" class="text-xs text-slate-500 mt-0.5">extract all leads data from your target location directly into excel sheet</p>
+            </div>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200 hidden sm:inline">Lead Directory</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="sm:col-span-2">
-              <label class="block text-xs font-medium text-slate-300 mb-1.5">Search Query</label>
-              <input type="text" id="gmaps_query" placeholder="e.g. Cafes in Bandra, Dentists in Dubai, Digital Agencies in London" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm text-white placeholder-slate-500 outline-none transition">
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Target Query & Location</label>
+              <input type="text" id="gmaps_query" placeholder="e.g. Cafes in Bandra, Dentists in Dubai, Digital Agencies in London" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
             </div>
 
             <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1.5">Max Results to Harvest</label>
-              <select id="gmaps_max_results" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 text-sm text-white outline-none">
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Max Leads to Harvest</label>
+              <select id="gmaps_max_results" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 text-sm text-slate-900 outline-none shadow-xs font-medium">
                 <option value="10">10 Businesses</option>
                 <option value="20" selected>20 Businesses (Recommended)</option>
                 <option value="50">50 Businesses</option>
@@ -293,22 +302,22 @@
 
           <!-- Quick Suggestion Chips for Maps -->
           <div class="flex flex-wrap items-center gap-1.5 pt-1">
-            <span class="text-[11px] text-slate-500 font-medium mr-1">Quick Fill:</span>
-            <button type="button" onclick="setGmapsQuery('Cafes in Bandra, Mumbai')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition">☕ Cafes in Bandra</button>
-            <button type="button" onclick="setGmapsQuery('Digital Marketing Agencies in Mumbai')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition">💻 Marketing Agencies</button>
-            <button type="button" onclick="setGmapsQuery('Dentists in Malad')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition">🦷 Dentists in Malad</button>
-            <button type="button" onclick="setGmapsQuery('Real Estate Consultants in Thane')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition">🏠 Real Estate</button>
+            <span class="text-[11px] text-slate-400 font-medium mr-1">Quick Fill:</span>
+            <button type="button" onclick="setGmapsQuery('Cafes in Bandra Mumbai')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">☕ Cafes in Bandra</button>
+            <button type="button" onclick="setGmapsQuery('Digital Marketing Agencies in Mumbai')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">💻 Marketing Agencies</button>
+            <button type="button" onclick="setGmapsQuery('Dentists in Malad')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">🦷 Dentists in Malad</button>
+            <button type="button" onclick="setGmapsQuery('Real Estate Consultants in Thane')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">🏠 Real Estate</button>
           </div>
         </div>
 
-        <!-- Launch Button for Location Tools -->
+        <!-- Launch Button for Location Leads Tools -->
         <div class="pt-2">
-          <button onclick="launchLocationTask()" id="launchLocBtn" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 font-semibold text-sm text-white shadow-lg shadow-indigo-600/25 transition active:scale-[0.99] flex items-center justify-center space-x-2">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <button onclick="launchLocationTask()" id="launchLocBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 font-bold text-sm sm:text-base text-white shadow-xl shadow-indigo-600/25 transition active:scale-[0.99] flex items-center justify-center space-x-2">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
-            <span id="launchLocBtnText">Run Location Tool</span>
+            <span id="launchLocBtnText">Find Viral Creators</span>
           </button>
         </div>
 
@@ -317,90 +326,96 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- TAB 2 CONTENT: ACCOUNT TOOLS (2a, 2b) -->
+    <!-- TAB 2 CONTENT: ACCOUNT TOOLS -->
     <!-- ================================================================ -->
     <div id="tabContent-account" class="hidden space-y-6">
       
       <!-- Sub-Tool Selector -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         
-        <label class="relative flex items-center p-3.5 rounded-xl border border-slate-800 bg-slate-900/60 hover:bg-slate-800/50 cursor-pointer transition">
-          <input type="radio" name="acc_subtool" value="2a" checked onchange="updateAccountSubtool('2a')" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-slate-900">
+        <label class="relative flex items-start p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md shadow-indigo-500/5 cursor-pointer transition" id="subtoolCard-2a">
+          <input type="radio" name="acc_subtool" value="2a" checked onchange="updateAccountSubtool('2a')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
           <div class="ml-3">
-            <span class="text-xs sm:text-sm font-semibold text-white block">📊 2a. Account Deep Audit & Comments</span>
-            <span class="text-[11px] text-slate-400 block">Complete profile metrics, all posts/reels & 30-day comments</span>
+            <span class="text-xs sm:text-sm font-bold text-slate-900 block">Account Deep Audit & Comments</span>
+            <span class="text-[11px] text-slate-500 block mt-0.5">Complete profile metrics, all posts, reels, engagement data and comments audit</span>
           </div>
         </label>
 
-        <label class="relative flex items-center p-3.5 rounded-xl border border-slate-800 bg-slate-900/60 hover:bg-slate-800/50 cursor-pointer transition">
-          <input type="radio" name="acc_subtool" value="2b" onchange="updateAccountSubtool('2b')" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-slate-900">
+        <label class="relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs" id="subtoolCard-2b">
+          <input type="radio" name="acc_subtool" value="2b" onchange="updateAccountSubtool('2b')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
           <div class="ml-3">
-            <span class="text-xs sm:text-sm font-semibold text-white block">🔗 2b. Post / Reel URL Deep Inspection</span>
-            <span class="text-[11px] text-slate-400 block">Inspect any specific URL for views, likes & all comments</span>
+            <span class="text-xs sm:text-sm font-bold text-slate-900 block">Post / Reel Deep Inspection</span>
+            <span class="text-[11px] text-slate-500 block mt-0.5">Inspect any specific post or reel link for views, plays, likes & all comments</span>
           </div>
         </label>
 
       </div>
 
       <!-- Form Container: Account Tools -->
-      <div class="glass-panel p-5 sm:p-7 rounded-2xl space-y-5">
+      <div class="glass-panel p-6 sm:p-8 rounded-3xl space-y-5">
         
-        <!-- Form for 2a: Account Deep Audit -->
+        <!-- Form for Account Deep Audit -->
         <div id="form-2a" class="space-y-4">
           <div class="flex items-center justify-between">
-            <h3 class="text-sm sm:text-base font-semibold text-slate-200 flex items-center">
-              <span class="w-2 h-2 rounded-full bg-indigo-500 mr-2"></span>
-              Instagram Account Deep Audit
-            </h3>
-            <span class="text-[11px] text-slate-400">Strict Single-Sheet Outputs</span>
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full bg-indigo-600 mr-2"></span>
+                Account Deep Audit & Comments
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">Audits profile bio, contacts, all posts, reels and individual comments</p>
+            </div>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200 hidden sm:inline">Deep Audit</span>
           </div>
 
           <div>
-            <label class="block text-xs font-medium text-slate-300 mb-1.5">Account Handle or Person Name</label>
-            <input type="text" id="acc_2a_handle" placeholder="e.g. zomato, anushkasen0408, techburner" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 text-sm text-white placeholder-slate-500 outline-none transition">
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Account Handle or Person / Business Name</label>
+            <input type="text" id="acc_2a_handle" placeholder="e.g. zomato, anushkasen0408, techburner" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
           </div>
 
           <!-- Comments Extraction Options -->
-          <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800 space-y-3">
+          <div class="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 space-y-3">
             <div class="flex items-center justify-between">
               <label class="flex items-center cursor-pointer">
-                <input type="checkbox" id="acc_2a_comments" checked class="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 bg-slate-950 border-slate-700">
-                <span class="ml-2.5 text-xs font-semibold text-white">Extract Full Comments from Posts</span>
+                <input type="checkbox" id="acc_2a_comments" checked class="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 bg-white border-slate-300">
+                <span class="ml-2.5 text-xs font-bold text-slate-800">Extract Full Comments from Posts</span>
               </label>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-medium">Comments Audit</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-indigo-100 text-indigo-700 font-semibold">Comments Harvest</span>
             </div>
 
             <div id="acc_2a_comments_scope_box" class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
-              <button type="button" onclick="setCommentsDays(30)" id="cScope-30" class="py-1.5 px-2 rounded-lg text-xs font-medium bg-indigo-600 text-white transition border border-indigo-500/40">Last 30 Days (Default)</button>
-              <button type="button" onclick="setCommentsDays(60)" id="cScope-60" class="py-1.5 px-2 rounded-lg text-xs font-medium bg-slate-950 text-slate-400 hover:text-white transition border border-slate-800">Last 60 Days</button>
-              <button type="button" onclick="setCommentsDays(90)" id="cScope-90" class="py-1.5 px-2 rounded-lg text-xs font-medium bg-slate-950 text-slate-400 hover:text-white transition border border-slate-800">Last 90 Days</button>
-              <button type="button" onclick="setCommentsDays(0)" id="cScope-0" class="py-1.5 px-2 rounded-lg text-xs font-medium bg-slate-950 text-slate-400 hover:text-white transition border border-slate-800">All Harvested</button>
+              <button type="button" onclick="setCommentsDays(30)" id="cScope-30" class="py-2 px-3 rounded-xl text-xs font-bold bg-indigo-600 text-white transition shadow-sm">Last 30 Days (Default)</button>
+              <button type="button" onclick="setCommentsDays(60)" id="cScope-60" class="py-2 px-3 rounded-xl text-xs font-semibold bg-white text-slate-700 hover:bg-slate-100 transition border border-slate-200">Last 60 Days</button>
+              <button type="button" onclick="setCommentsDays(90)" id="cScope-90" class="py-2 px-3 rounded-xl text-xs font-semibold bg-white text-slate-700 hover:bg-slate-100 transition border border-slate-200">Last 90 Days</button>
+              <button type="button" onclick="setCommentsDays(0)" id="cScope-0" class="py-2 px-3 rounded-xl text-xs font-semibold bg-white text-slate-700 hover:bg-slate-100 transition border border-slate-200">All Harvested</button>
             </div>
             <input type="hidden" id="acc_2a_days" value="30">
           </div>
         </div>
 
-        <!-- Form for 2b: Post / Reel URL Inspection -->
+        <!-- Form for Post / Reel Inspection -->
         <div id="form-2b" class="hidden space-y-4">
           <div class="flex items-center justify-between">
-            <h3 class="text-sm sm:text-base font-semibold text-slate-200 flex items-center">
-              <span class="w-2 h-2 rounded-full bg-purple-500 mr-2"></span>
-              Single Post / Reel URL Deep Inspection
-            </h3>
-            <span class="text-[11px] text-slate-400">URL Deep Dive</span>
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full bg-purple-600 mr-2"></span>
+                Post / Reel Deep Inspection
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">Deep inspection of any specific post or reel link</p>
+            </div>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-50 text-purple-700 font-semibold border border-purple-200 hidden sm:inline">URL Inspection</span>
           </div>
 
           <div>
-            <label class="block text-xs font-medium text-slate-300 mb-1.5">Instagram Post or Reel URL</label>
-            <input type="url" id="acc_2b_url" placeholder="https://www.instagram.com/p/DF2_AbqSxxx/ or https://www.instagram.com/reel/..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 text-sm text-white placeholder-slate-500 outline-none transition font-mono">
-            <p class="text-[10px] text-slate-500 mt-1">Extracts exact views, plays, likes count, reposts, caption, and all comments & commenters.</p>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Post or Reel Link</label>
+            <input type="url" id="acc_2b_url" placeholder="https://www.instagram.com/p/DF2_AbqSxxx/ or https://www.instagram.com/reel/..." class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-mono">
+            <p class="text-[10px] text-slate-400 mt-1">Extracts exact views, plays, likes count, caption, and all comments & commenters.</p>
           </div>
         </div>
 
         <!-- Launch Button for Account Tools -->
         <div class="pt-2">
-          <button onclick="launchAccountTask()" id="launchAccBtn" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 font-semibold text-sm text-white shadow-lg shadow-indigo-600/25 transition active:scale-[0.99] flex items-center justify-center space-x-2">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <button onclick="launchAccountTask()" id="launchAccBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 font-bold text-sm sm:text-base text-white shadow-xl shadow-indigo-600/25 transition active:scale-[0.99] flex items-center justify-center space-x-2">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
@@ -413,88 +428,88 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- TAB 3 CONTENT: SCORE ME (HERMES REACH ENGINE) -->
+    <!-- TAB 3 CONTENT: SCORE ME ENGINE -->
     <!-- ================================================================ -->
     <div id="tabContent-scoreme" class="hidden space-y-6">
       
       <!-- Hero Banner for Score Me -->
-      <div class="relative overflow-hidden p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-purple-900/40 via-slate-900/70 to-indigo-900/40 border border-purple-500/30 glow-purple">
-        <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="relative overflow-hidden p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-purple-100/80 via-white to-indigo-100/60 border border-purple-200 shadow-xl shadow-purple-500/10 glow-purple">
+        <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-purple-300/20 rounded-full blur-3xl pointer-events-none"></div>
         
         <div class="relative z-10 max-w-3xl space-y-3">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-300 text-xs font-semibold">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-600 text-white text-xs font-bold shadow-sm">
             <span>⚡ HERMES REACH & INFLUENCE ALGORITHM</span>
           </div>
-          <h2 class="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             Calculate Accurate Reach & Influence Score
           </h2>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Evaluates the true viral power and authenticity of any creator or brand handle. Computes views across the last 10 reels/posts (&le; 30 days), authentic engagement rate, bot comment penalty, niche relevance, and 10-day growth momentum.
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Evaluates the true viral power and authenticity of any creator or brand handle. Computes views across the last 10 reels and posts (&le; 30 days), authentic engagement rate, bot comment penalty, niche relevance, and 10-day growth momentum.
           </p>
         </div>
 
         <!-- Formula Highlights -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-5 border-t border-purple-500/20 text-xs">
-          <div class="p-3 rounded-xl bg-slate-950/60 border border-purple-500/20">
-            <span class="text-slate-400 block text-[10px] font-mono">SIGNAL 1</span>
-            <span class="font-bold text-white block mt-0.5">Reach Score</span>
-            <span class="text-[10px] text-slate-400">Total Views (&le;30d)</span>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-5 border-t border-purple-200 text-xs">
+          <div class="p-3.5 rounded-2xl bg-white/80 border border-purple-200/80 shadow-xs">
+            <span class="text-purple-700 font-bold block text-[10px] uppercase">SIGNAL</span>
+            <span class="font-extrabold text-slate-900 block mt-0.5">Reach Score</span>
+            <span class="text-[10px] text-slate-500">Total Views (&le;30d)</span>
           </div>
 
-          <div class="p-3 rounded-xl bg-slate-950/60 border border-purple-500/20">
-            <span class="text-slate-400 block text-[10px] font-mono">SIGNAL 2</span>
-            <span class="font-bold text-white block mt-0.5">Engagement Rate</span>
-            <span class="text-[10px] text-slate-400">Likes+Comm/Followers</span>
+          <div class="p-3.5 rounded-2xl bg-white/80 border border-purple-200/80 shadow-xs">
+            <span class="text-indigo-700 font-bold block text-[10px] uppercase">SIGNAL</span>
+            <span class="font-extrabold text-slate-900 block mt-0.5">Engagement Rate</span>
+            <span class="text-[10px] text-slate-500">Likes+Comm/Followers</span>
           </div>
 
-          <div class="p-3 rounded-xl bg-slate-950/60 border border-purple-500/20">
-            <span class="text-slate-400 block text-[10px] font-mono">SIGNAL 3</span>
-            <span class="font-bold text-rose-400 block mt-0.5">Bot Penalty %</span>
-            <span class="text-[10px] text-slate-400">Emojis/Filler Reductions</span>
+          <div class="p-3.5 rounded-2xl bg-white/80 border border-purple-200/80 shadow-xs">
+            <span class="text-rose-700 font-bold block text-[10px] uppercase">SIGNAL</span>
+            <span class="font-extrabold text-rose-600 block mt-0.5">Bot Penalty %</span>
+            <span class="text-[10px] text-slate-500">Emojis/Filler Reductions</span>
           </div>
 
-          <div class="p-3 rounded-xl bg-slate-950/60 border border-purple-500/20">
-            <span class="text-slate-400 block text-[10px] font-mono">SIGNAL 4</span>
-            <span class="font-bold text-amber-400 block mt-0.5">Niche Match & Growth</span>
-            <span class="text-[10px] text-slate-400">10-Day Momentum</span>
+          <div class="p-3.5 rounded-2xl bg-white/80 border border-purple-200/80 shadow-xs">
+            <span class="text-amber-700 font-bold block text-[10px] uppercase">SIGNAL</span>
+            <span class="font-extrabold text-amber-600 block mt-0.5">Niche Match & Growth</span>
+            <span class="text-[10px] text-slate-500">10-Day Momentum</span>
           </div>
         </div>
 
       </div>
 
       <!-- Input Form for Score Me -->
-      <div class="glass-panel p-5 sm:p-7 rounded-2xl space-y-4">
+      <div class="glass-panel p-6 sm:p-8 rounded-3xl space-y-4">
         
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-medium text-slate-300 mb-1.5">Instagram Handle to Score</label>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Account Handle to Score</label>
             <div class="relative">
-              <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500 text-sm font-mono">@</span>
-              <input type="text" id="score_handle" placeholder="zomato, techburner, anushkasen0408" class="w-full pl-8 pr-3.5 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 text-sm text-white placeholder-slate-500 outline-none transition font-medium">
+              <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 text-sm font-mono">@</span>
+              <input type="text" id="score_handle" placeholder="zomato, techburner, anushkasen0408" class="w-full pl-8 pr-3.5 py-3.5 rounded-xl bg-white border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-semibold shadow-xs">
             </div>
           </div>
 
           <div>
-            <label class="block text-xs font-medium text-slate-300 mb-1.5">Target Niche (Optional / Auto-detect)</label>
-            <input type="text" id="score_niche" placeholder="e.g. food, tech, lifestyle, travel, real estate" class="w-full px-3.5 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 text-sm text-white placeholder-slate-500 outline-none transition">
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Target Niche (Optional / Auto-detect)</label>
+            <input type="text" id="score_niche" placeholder="e.g. food, tech, lifestyle, travel, real estate" class="w-full px-4 py-3.5 rounded-xl bg-white border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-medium shadow-xs">
           </div>
         </div>
 
         <!-- Quick Sample Chips -->
         <div class="flex flex-wrap items-center gap-1.5 pt-1">
-          <span class="text-[11px] text-slate-500 font-medium mr-1">Quick Test:</span>
-          <button type="button" onclick="setScoreAccount('zomato', 'food')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-purple-950/40 border border-slate-800 hover:border-purple-500/40 text-slate-300 transition">🍔 @zomato (Food)</button>
-          <button type="button" onclick="setScoreAccount('techburner', 'tech')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-purple-950/40 border border-slate-800 hover:border-purple-500/40 text-slate-300 transition">📱 @techburner (Tech)</button>
-          <button type="button" onclick="setScoreAccount('anushkasen0408', 'lifestyle')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-purple-950/40 border border-slate-800 hover:border-purple-500/40 text-slate-300 transition">✨ @anushkasen0408</button>
+          <span class="text-[11px] text-slate-400 font-medium mr-1">Quick Fill:</span>
+          <button type="button" onclick="setScoreAccount('zomato', 'food')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-purple-50 border border-slate-200 text-slate-700 hover:text-purple-700 transition shadow-xs">🍔 @zomato (Food)</button>
+          <button type="button" onclick="setScoreAccount('techburner', 'tech')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-purple-50 border border-slate-200 text-slate-700 hover:text-purple-700 transition shadow-xs">📱 @techburner (Tech)</button>
+          <button type="button" onclick="setScoreAccount('anushkasen0408', 'lifestyle')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-purple-50 border border-slate-200 text-slate-700 hover:text-purple-700 transition shadow-xs">✨ @anushkasen0408</button>
         </div>
 
         <!-- Launch Button for Score Me -->
         <div class="pt-3">
-          <button onclick="launchScoreMeTask()" id="launchScoreBtn" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 font-bold text-sm sm:text-base text-white shadow-xl shadow-purple-600/30 transition active:scale-[0.99] flex items-center justify-center space-x-2">
+          <button onclick="launchScoreMeTask()" id="launchScoreBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 font-extrabold text-sm sm:text-base text-white shadow-xl shadow-purple-600/25 transition active:scale-[0.99] flex items-center justify-center space-x-2">
             <svg class="w-5 h-5 text-amber-300 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
             </svg>
-            <span id="launchScoreBtnText">⚡ Calculate Account Score Me</span>
+            <span id="launchScoreBtnText">Calculate Account Score</span>
           </button>
         </div>
 
@@ -505,31 +520,31 @@
     <!-- ================================================================ -->
     <!-- REAL-TIME PROGRESS & LIVE LOGS DRAWER -->
     <!-- ================================================================ -->
-    <div id="liveProgressContainer" class="hidden glass-panel p-5 rounded-2xl space-y-4 border border-indigo-500/30 glow-indigo">
+    <div id="liveProgressContainer" class="hidden glass-panel p-6 rounded-3xl space-y-4 border border-indigo-200 shadow-xl glow-indigo">
       
       <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2.5">
-          <div class="w-3 h-3 rounded-full bg-indigo-500 animate-ping"></div>
-          <h3 id="taskTitleText" class="text-sm font-semibold text-white">Running Task...</h3>
+          <div class="w-3 h-3 rounded-full bg-indigo-600 animate-ping"></div>
+          <h3 id="taskTitleText" class="text-sm font-bold text-slate-900">Running Task...</h3>
         </div>
         <div class="flex items-center space-x-2">
-          <span id="taskProgressPercent" class="text-xs font-mono font-bold text-indigo-400">15%</span>
-          <span id="taskStatusBadge" class="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-medium">In Progress</span>
+          <span id="taskProgressPercent" class="text-xs font-mono font-bold text-indigo-600">15%</span>
+          <span id="taskStatusBadge" class="text-[10px] px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-700 font-bold">In Progress</span>
         </div>
       </div>
 
       <!-- Animated Progress Bar -->
-      <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-slate-800">
-        <div id="taskProgressBar" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-2 rounded-full transition-all duration-300" style="width: 15%"></div>
+      <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden border border-slate-200/80">
+        <div id="taskProgressBar" class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 h-2.5 rounded-full transition-all duration-300" style="width: 15%"></div>
       </div>
 
-      <!-- Real-time Terminal Log Viewer -->
+      <!-- High-Contrast Developer Log Stream -->
       <div class="relative">
-        <div class="flex items-center justify-between pb-1.5 text-[11px] text-slate-400 font-mono">
+        <div class="flex items-center justify-between pb-1.5 text-[11px] text-slate-500 font-mono">
           <span>Engine Execution Stream</span>
-          <span id="logLinesCount" class="text-slate-500">0 logs</span>
+          <span id="logLinesCount" class="text-slate-400">0 logs</span>
         </div>
-        <div id="terminalLogBox" class="w-full h-44 sm:h-52 bg-slate-950 rounded-xl p-3 font-mono text-[11px] leading-relaxed text-slate-300 overflow-y-auto border border-slate-800/80 space-y-1 select-text">
+        <div id="terminalLogBox" class="w-full h-44 sm:h-52 bg-[#0B1120] rounded-2xl p-3.5 font-mono text-[11px] leading-relaxed text-slate-300 overflow-y-auto border border-slate-800 space-y-1 select-text shadow-inner">
           <div class="text-slate-500">[System] Initializing session...</div>
         </div>
       </div>
@@ -542,25 +557,25 @@
     <div id="dashboardResultsWrapper" class="hidden space-y-6 pt-2">
       
       <!-- Prominent Excel Download Bar -->
-      <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-emerald-950/60 via-slate-900 to-slate-900 border border-emerald-500/40 glow-emerald flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="p-5 rounded-3xl bg-gradient-to-r from-emerald-50 via-white to-emerald-50/60 border border-emerald-200 shadow-xl shadow-emerald-500/10 glow-emerald flex flex-col sm:flex-row items-center justify-between gap-4">
         
         <div class="flex items-center space-x-3.5 w-full sm:w-auto">
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center shrink-0">
-            <svg class="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-emerald-500/30">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
             </svg>
           </div>
           <div class="overflow-hidden">
             <div class="flex items-center space-x-2">
-              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Report Generated</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono">Single Sheet</span>
+              <span class="text-xs font-extrabold text-emerald-700 uppercase tracking-wider">Report Ready</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-mono font-bold">Single Sheet Excel</span>
             </div>
-            <p id="resultFileNameText" class="text-sm font-semibold text-white truncate max-w-xs sm:max-w-md">report.xlsx</p>
+            <p id="resultFileNameText" class="text-sm font-bold text-slate-900 truncate max-w-xs sm:max-w-md mt-0.5">report.xlsx</p>
           </div>
         </div>
 
         <div class="flex items-center space-x-2 w-full sm:w-auto">
-          <a id="excelDownloadBtn" href="#" download class="w-full sm:w-auto py-2.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-xs sm:text-sm text-white shadow-lg shadow-emerald-600/30 transition flex items-center justify-center space-x-2">
+          <a id="excelDownloadBtn" href="#" download class="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-xs sm:text-sm text-white shadow-lg shadow-emerald-600/25 transition flex items-center justify-center space-x-2 active:scale-[0.99]">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
             </svg>
@@ -570,18 +585,18 @@
 
       </div>
 
-      <!-- DYNAMIC CONTAINER: TOOL 3 (SCORE ME VIEW) -->
+      <!-- DYNAMIC CONTAINER: SCORE ME VIEW -->
       <div id="view-scoreme-result" class="hidden space-y-6">
         
         <!-- Hero Scorecard Card -->
-        <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-purple-500/30 glow-purple">
+        <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-purple-200 shadow-xl glow-purple">
           <div class="flex flex-col md:flex-row items-center justify-between gap-6">
             
             <!-- Left: Circular Gauge & Grade -->
             <div class="flex items-center space-x-6">
               <div class="relative w-32 h-32 flex items-center justify-center">
                 <svg class="w-32 h-32">
-                  <circle cx="64" cy="64" r="54" stroke="#1E293B" stroke-width="12" fill="none"/>
+                  <circle cx="64" cy="64" r="54" stroke="#E2E8F0" stroke-width="12" fill="none"/>
                   <circle id="scoreRadialCircle" class="circle-meter" cx="64" cy="64" r="54" stroke="url(#scoreGradient)" stroke-width="12" stroke-linecap="round" stroke-dasharray="339.29" stroke-dashoffset="339.29" fill="none"/>
                   <defs>
                     <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -592,36 +607,36 @@
                   </defs>
                 </svg>
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-                  <span id="scoreValHero" class="text-3xl font-extrabold text-white font-mono">--</span>
-                  <span class="text-[10px] text-slate-400 font-semibold tracking-wider uppercase">Out of 100</span>
+                  <span id="scoreValHero" class="text-3xl font-extrabold text-slate-900 font-mono">--</span>
+                  <span class="text-[10px] text-slate-400 font-bold tracking-wider uppercase">Out of 100</span>
                 </div>
               </div>
 
               <div>
-                <div class="flex items-center space-x-2">
-                  <span id="scoreGradeHero" class="text-2xl sm:text-3xl font-black px-3 py-0.5 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/40">A</span>
-                  <span id="scoreHandleHero" class="text-lg sm:text-xl font-bold text-white">@username</span>
+                <div class="flex items-center space-x-2.5">
+                  <span id="scoreGradeHero" class="text-2xl sm:text-3xl font-black px-3 py-0.5 rounded-xl bg-purple-100 text-purple-700 border border-purple-200">A</span>
+                  <span id="scoreHandleHero" class="text-lg sm:text-xl font-extrabold text-slate-900">@username</span>
                 </div>
-                <p id="scoreNicheHero" class="text-xs text-slate-400 mt-1">Evaluated Niche: General</p>
-                <div id="scoreBenchmarkTag" class="inline-block mt-2 text-[10px] px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 font-medium">
+                <p id="scoreNicheHero" class="text-xs text-slate-500 mt-1 font-medium">Evaluated Niche: General</p>
+                <div id="scoreBenchmarkTag" class="inline-block mt-2 text-[10px] px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">
                   High Viral Reach Account
                 </div>
               </div>
             </div>
 
             <!-- Right: Comment Authenticity Bar -->
-            <div class="w-full md:w-80 p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-2">
-              <div class="flex items-center justify-between text-xs font-semibold">
-                <span class="text-slate-300">Comment Authenticity</span>
-                <span id="authPercentText" class="text-emerald-400 font-mono">88% Authentic</span>
+            <div class="w-full md:w-80 p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm space-y-2">
+              <div class="flex items-center justify-between text-xs font-bold">
+                <span class="text-slate-700">Comment Authenticity</span>
+                <span id="authPercentText" class="text-emerald-600 font-mono">88% Authentic</span>
               </div>
-              <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden flex">
-                <div id="authBarReal" class="bg-emerald-500 h-2.5" style="width: 88%"></div>
-                <div id="authBarBot" class="bg-rose-500 h-2.5" style="width: 12%"></div>
+              <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden flex">
+                <div id="authBarReal" class="bg-emerald-500 h-3" style="width: 88%"></div>
+                <div id="authBarBot" class="bg-rose-500 h-3" style="width: 12%"></div>
               </div>
-              <div class="flex items-center justify-between text-[10px] text-slate-400">
+              <div class="flex items-center justify-between text-[10px] text-slate-500 font-medium">
                 <span id="realCommentsCount">120 Authentic</span>
-                <span id="botCommentsCount" class="text-rose-400">16 Bot/Generic</span>
+                <span id="botCommentsCount" class="text-rose-600 font-semibold">16 Bot/Generic</span>
               </div>
             </div>
 
@@ -632,53 +647,53 @@
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">👁️ Reach Views</span>
-            <span id="kpiReachScore" class="text-lg sm:text-xl font-bold text-white font-mono block">0</span>
-            <span class="text-[10px] text-slate-500 block">Last 10 Reels (&le;30d)</span>
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">👁️ Reach Views</span>
+            <span id="kpiReachScore" class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono block">0</span>
+            <span class="text-[10px] text-slate-500 block">Last 10 Posts (&le;30d)</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">💬 Total Engagements</span>
-            <span id="kpiEngagementScore" class="text-lg sm:text-xl font-bold text-indigo-400 font-mono block">0</span>
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">💬 Engagements</span>
+            <span id="kpiEngagementScore" class="text-lg sm:text-xl font-extrabold text-indigo-600 font-mono block">0</span>
             <span class="text-[10px] text-slate-500 block">Likes+Comments+Saves</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">📊 Engagement %</span>
-            <span id="kpiEngagementRate" class="text-lg sm:text-xl font-bold text-purple-400 font-mono block">0%</span>
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">📊 Engagement %</span>
+            <span id="kpiEngagementRate" class="text-lg sm:text-xl font-extrabold text-purple-600 font-mono block">0%</span>
             <span class="text-[10px] text-slate-500 block">vs Follower Base</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">🛡️ Bot Penalty</span>
-            <span id="kpiBotPenalty" class="text-lg sm:text-xl font-bold text-rose-400 font-mono block">-0%</span>
-            <span class="text-[10px] text-slate-500 block">Spam/Emoji Deductions</span>
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">🛡️ Bot Penalty</span>
+            <span id="kpiBotPenalty" class="text-lg sm:text-xl font-extrabold text-rose-600 font-mono block">-0%</span>
+            <span class="text-[10px] text-slate-500 block">Spam Deductions</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">🎯 Niche Match</span>
-            <span id="kpiNicheScore" class="text-lg sm:text-xl font-bold text-amber-400 font-mono block">100%</span>
-            <span class="text-[10px] text-slate-500 block">Content Consistency</span>
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">🎯 Niche Match</span>
+            <span id="kpiNicheScore" class="text-lg sm:text-xl font-extrabold text-amber-600 font-mono block">100%</span>
+            <span class="text-[10px] text-slate-500 block">Topic Alignment</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">📈 10-Day Growth</span>
-            <span id="kpiGrowthScore" class="text-lg sm:text-xl font-bold text-emerald-400 font-mono block">+0%</span>
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">📈 10-Day Growth</span>
+            <span id="kpiGrowthScore" class="text-lg sm:text-xl font-extrabold text-emerald-600 font-mono block">+0%</span>
             <span class="text-[10px] text-slate-500 block">Recent Velocity</span>
           </div>
 
         </div>
 
         <!-- Evaluated Posts Table -->
-        <div class="glass-panel p-5 rounded-2xl space-y-3">
+        <div class="glass-panel p-6 rounded-3xl space-y-3">
           <div class="flex items-center justify-between">
-            <h4 class="text-sm font-semibold text-white">Evaluated Posts (Last 10 Posts &le; 30 Days)</h4>
-            <span id="evaluatedPostsCount" class="text-xs text-slate-400">0 posts</span>
+            <h4 class="text-sm font-bold text-slate-900">Evaluated Posts (Last 10 Posts &le; 30 Days)</h4>
+            <span id="evaluatedPostsCount" class="text-xs text-slate-500 font-medium">0 posts</span>
           </div>
 
           <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs text-slate-300">
-              <thead class="text-[11px] uppercase bg-slate-950/80 text-slate-400 font-mono border-b border-slate-800">
+            <table class="w-full text-left text-xs text-slate-700">
+              <thead class="text-[11px] uppercase bg-slate-100/80 text-slate-600 font-mono border-b border-slate-200">
                 <tr>
                   <th class="py-2.5 px-3">Post</th>
                   <th class="py-2.5 px-3">Type</th>
@@ -690,8 +705,7 @@
                   <th class="py-2.5 px-3 text-right">Link</th>
                 </tr>
               </thead>
-              <tbody id="scorePostsTableBody" class="divide-y divide-slate-800/60 font-mono">
-                <!-- Populated dynamically -->
+              <tbody id="scorePostsTableBody" class="divide-y divide-slate-100 font-mono">
               </tbody>
             </table>
           </div>
@@ -699,43 +713,43 @@
 
       </div>
 
-      <!-- DYNAMIC CONTAINER: GOOGLE MAPS LEADS VIEW (1b & 1c) -->
+      <!-- DYNAMIC CONTAINER: GOOGLE MAPS LEADS VIEW -->
       <div id="view-gmaps-result" class="hidden space-y-6">
         
         <!-- Summary KPIs -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <div class="glass-card p-4 rounded-2xl">
-            <span class="text-[10px] font-semibold text-slate-400 uppercase block">Total Businesses</span>
-            <span id="gmapsTotalLeads" class="text-2xl font-bold text-white font-mono mt-1 block">0</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase block">Total Businesses</span>
+            <span id="gmapsTotalLeads" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">0</span>
           </div>
           <div class="glass-card p-4 rounded-2xl">
-            <span class="text-[10px] font-semibold text-slate-400 uppercase block">Verified Emails</span>
-            <span id="gmapsTotalEmails" class="text-2xl font-bold text-emerald-400 font-mono mt-1 block">0</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase block">Verified Emails</span>
+            <span id="gmapsTotalEmails" class="text-2xl font-extrabold text-emerald-600 font-mono mt-1 block">0</span>
           </div>
           <div class="glass-card p-4 rounded-2xl">
-            <span class="text-[10px] font-semibold text-slate-400 uppercase block">Phones Available</span>
-            <span id="gmapsTotalPhones" class="text-2xl font-bold text-indigo-400 font-mono mt-1 block">0</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase block">Phones Listed</span>
+            <span id="gmapsTotalPhones" class="text-2xl font-extrabold text-indigo-600 font-mono mt-1 block">0</span>
           </div>
           <div class="glass-card p-4 rounded-2xl">
-            <span class="text-[10px] font-semibold text-slate-400 uppercase block">Social Links</span>
-            <span id="gmapsTotalSocials" class="text-2xl font-bold text-purple-400 font-mono mt-1 block">0</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase block">Social Channels</span>
+            <span id="gmapsTotalSocials" class="text-2xl font-extrabold text-purple-600 font-mono mt-1 block">0</span>
           </div>
         </div>
 
         <!-- Filter & Leads Table -->
-        <div class="glass-panel p-5 rounded-2xl space-y-4">
+        <div class="glass-panel p-6 rounded-3xl space-y-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <h4 class="text-sm font-semibold text-white flex items-center">
+            <h4 class="text-sm font-bold text-slate-900 flex items-center">
               <span>Harvested Business Directory</span>
-              <span id="gmapsLeadsCountBadge" class="ml-2 text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">0 Leads</span>
+              <span id="gmapsLeadsCountBadge" class="ml-2 text-[10px] px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 font-mono font-bold">0 Leads</span>
             </h4>
 
-            <input type="text" id="gmapsTableFilter" oninput="filterGmapsTable()" placeholder="Quick filter by name, phone, email..." class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-white placeholder-slate-500 outline-none w-full sm:w-64">
+            <input type="text" id="gmapsTableFilter" oninput="filterGmapsTable()" placeholder="Quick filter by name, phone, email..." class="px-3.5 py-2 rounded-xl bg-white border border-slate-200 text-xs text-slate-900 placeholder-slate-400 outline-none w-full sm:w-64 shadow-xs">
           </div>
 
           <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs text-slate-300">
-              <thead class="text-[11px] uppercase bg-slate-950/80 text-slate-400 font-mono border-b border-slate-800">
+            <table class="w-full text-left text-xs text-slate-700">
+              <thead class="text-[11px] uppercase bg-slate-100/80 text-slate-600 font-mono border-b border-slate-200">
                 <tr>
                   <th class="py-2.5 px-3">Business Name</th>
                   <th class="py-2.5 px-3">Rating</th>
@@ -746,8 +760,7 @@
                   <th class="py-2.5 px-3 text-right">Maps</th>
                 </tr>
               </thead>
-              <tbody id="gmapsTableBody" class="divide-y divide-slate-800/60">
-                <!-- Populated dynamically -->
+              <tbody id="gmapsTableBody" class="divide-y divide-slate-100">
               </tbody>
             </table>
           </div>
@@ -755,22 +768,16 @@
 
       </div>
 
-      <!-- DYNAMIC CONTAINER: ACCOUNT DEEP AUDIT VIEW (2a & 2b & 1a) -->
+      <!-- DYNAMIC CONTAINER: ACCOUNT AUDIT / VIRAL RESULTS VIEW -->
       <div id="view-generic-result" class="hidden space-y-6">
         
-        <!-- Profile Card -->
-        <div id="genericProfileCard" class="glass-panel p-6 rounded-2xl hidden">
-          <!-- Populated dynamically -->
-        </div>
-
-        <!-- Items Table -->
-        <div class="glass-panel p-5 rounded-2xl space-y-3">
-          <h4 id="genericTableTitle" class="text-sm font-semibold text-white">Extracted Items</h4>
+        <div class="glass-panel p-6 rounded-3xl space-y-3">
+          <h4 id="genericTableTitle" class="text-sm font-bold text-slate-900">Extracted Accounts</h4>
           <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs text-slate-300">
-              <thead id="genericTableHead" class="text-[11px] uppercase bg-slate-950/80 text-slate-400 font-mono border-b border-slate-800">
+            <table class="w-full text-left text-xs text-slate-700">
+              <thead id="genericTableHead" class="text-[11px] uppercase bg-slate-100/80 text-slate-600 font-mono border-b border-slate-200">
               </thead>
-              <tbody id="genericTableBody" class="divide-y divide-slate-800/60">
+              <tbody id="genericTableBody" class="divide-y divide-slate-100">
               </tbody>
             </table>
           </div>
@@ -785,23 +792,23 @@
   <!-- ================================================================ -->
   <!-- BACKEND API CONFIG MODAL (FOR VERCEL / REMOTE ACCESS) -->
   <!-- ================================================================ -->
-  <div id="apiConfigModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="glass-panel max-w-md w-full rounded-3xl p-6 space-y-4 flex flex-col border border-slate-800">
+  <div id="apiConfigModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="glass-panel max-w-md w-full rounded-3xl p-6 space-y-4 flex flex-col border border-white shadow-2xl">
       
-      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200">
         <div class="flex items-center space-x-2.5">
-          <div class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+          <div class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
             </svg>
           </div>
           <div>
-            <h3 class="text-sm font-bold text-white">Backend API Server</h3>
-            <p class="text-[11px] text-slate-400">Connect Vercel to your Local PC</p>
+            <h3 class="text-sm font-extrabold text-slate-900">Backend API Server</h3>
+            <p class="text-[11px] text-slate-500">Connect Vercel to your Local PC</p>
           </div>
         </div>
 
-        <button onclick="toggleApiModal(false)" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition">
+        <button onclick="toggleApiModal(false)" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition">
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
@@ -810,32 +817,32 @@
 
       <div class="space-y-3">
         <div>
-          <label class="block text-xs font-medium text-slate-300 mb-1.5">API Base URL (Cloudflare Tunnel or Ngrok)</label>
-          <input type="url" id="customApiInput" placeholder="https://your-tunnel.trycloudflare.com" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 text-xs text-white placeholder-slate-500 outline-none font-mono">
-          <p class="text-[10px] text-slate-400 mt-1">Leave empty when browsing on localhost. Paste your HTTPS tunnel URL when accessing from Vercel.</p>
+          <label class="block text-xs font-semibold text-slate-700 mb-1.5">API Base URL (Cloudflare Tunnel or Ngrok)</label>
+          <input type="url" id="customApiInput" placeholder="https://your-tunnel.trycloudflare.com" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 text-xs text-slate-900 placeholder-slate-400 outline-none font-mono shadow-xs">
+          <p class="text-[10px] text-slate-500 mt-1">Leave empty when opening locally on localhost. Paste your HTTPS tunnel URL when visiting from Vercel.</p>
         </div>
 
-        <div id="apiTestStatus" class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-400 hidden">
+        <div id="apiTestStatus" class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 hidden">
         </div>
 
-        <div class="p-3 rounded-xl bg-indigo-950/30 border border-indigo-500/20 text-[11px] text-slate-300 space-y-1">
-          <div class="font-semibold text-indigo-300 flex items-center">
+        <div class="p-3.5 rounded-2xl bg-indigo-50/60 border border-indigo-200 text-[11px] text-slate-700 space-y-1">
+          <div class="font-bold text-indigo-700 flex items-center">
             <span class="mr-1.5">💡</span> Free 10-Second HTTPS Tunnel on your PC:
           </div>
-          <div class="font-mono text-[10px] bg-slate-950/80 p-2 rounded text-emerald-400 select-all">
+          <div class="font-mono text-[10px] bg-white p-2 rounded-lg text-indigo-600 border border-indigo-100 select-all font-semibold">
             cloudflared tunnel --url http://localhost:8000
           </div>
-          <p class="text-[10px] text-slate-400">Copy the generated <code class="text-indigo-300">https://xxx.trycloudflare.com</code> and paste above.</p>
+          <p class="text-[10px] text-slate-500">Copy the generated <code class="text-indigo-600 font-semibold">https://xxx.trycloudflare.com</code> URL and paste above.</p>
         </div>
 
         <div class="flex items-center space-x-2 pt-1">
-          <button onclick="testApiConnection()" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-medium border border-slate-700 transition">
+          <button onclick="testApiConnection()" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold border border-slate-200 transition">
             ⚡ Test Ping
           </button>
-          <button onclick="saveApiEndpoint()" class="flex-1 py-2.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition shadow-md shadow-indigo-600/30">
+          <button onclick="saveApiEndpoint()" class="flex-1 py-2.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-extrabold transition shadow-md shadow-indigo-600/25">
             Save & Connect
           </button>
-          <button onclick="resetApiEndpoint()" class="py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white text-xs transition border border-slate-800" title="Reset to Localhost">
+          <button onclick="resetApiEndpoint()" class="py-2.5 px-3 rounded-xl bg-white hover:bg-slate-100 text-slate-500 hover:text-slate-800 text-xs transition border border-slate-200 font-medium" title="Reset to Localhost">
             Reset
           </button>
         </div>
@@ -844,26 +851,26 @@
     </div>
   </div>
 
-    <!-- ================================================================ -->
+  <!-- ================================================================ -->
   <!-- EXCEL REPORTS HISTORY MODAL -->
   <!-- ================================================================ -->
-  <div id="historyModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="glass-panel max-w-2xl w-full rounded-3xl p-6 space-y-4 max-h-[85vh] flex flex-col border border-slate-800">
+  <div id="historyModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="glass-panel max-w-2xl w-full rounded-3xl p-6 space-y-4 max-h-[85vh] flex flex-col border border-white shadow-2xl">
       
-      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-        <div class="flex items-center space-x-2">
-          <div class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+        <div class="flex items-center space-x-2.5">
+          <div class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
             </svg>
           </div>
           <div>
-            <h3 class="text-sm font-bold text-white">Excel Reports Archive</h3>
-            <p class="text-[11px] text-slate-400">Single-Sheet Workbooks stored in excel_data/</p>
+            <h3 class="text-sm font-extrabold text-slate-900">Excel Reports Archive</h3>
+            <p class="text-[11px] text-slate-500">Single-Sheet Workbooks stored in excel_data/</p>
           </div>
         </div>
 
-        <button onclick="toggleHistoryModal(false)" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition">
+        <button onclick="toggleHistoryModal(false)" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition">
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
@@ -872,14 +879,14 @@
 
       <!-- History List -->
       <div id="historyListContainer" class="flex-1 overflow-y-auto space-y-2 pr-1">
-        <div class="text-center py-8 text-xs text-slate-500">Loading reports history...</div>
+        <div class="text-center py-8 text-xs text-slate-400">Loading reports history...</div>
       </div>
 
     </div>
   </div>
 
   <!-- TOAST NOTIFICATION -->
-  <div id="toastNotification" class="fixed bottom-5 right-5 z-50 px-4 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-medium border border-slate-800 shadow-2xl transition-all duration-300 transform translate-y-20 opacity-0 flex items-center space-x-2">
+  <div id="toastNotification" class="fixed bottom-5 right-5 z-50 px-4 py-2.5 rounded-2xl bg-slate-900 text-white text-xs font-semibold shadow-2xl transition-all duration-300 transform translate-y-20 opacity-0 flex items-center space-x-2">
     <span id="toastIcon">📋</span>
     <span id="toastMessage">Copied to clipboard!</span>
   </div>
@@ -904,10 +911,10 @@
       const dot = document.getElementById('apiStatusDot');
       if (!dot) return;
       if (base) {
-        dot.className = "w-2 h-2 rounded-full bg-indigo-400 animate-pulse";
+        dot.className = "w-2 h-2 rounded-full bg-indigo-600 animate-pulse";
         document.getElementById('apiConfigBtn').title = `Connected to Tunnel: ${base}`;
       } else {
-        dot.className = "w-2 h-2 rounded-full bg-emerald-400";
+        dot.className = "w-2 h-2 rounded-full bg-emerald-500";
         document.getElementById('apiConfigBtn').title = `Using Local Origin`;
       }
     }
@@ -928,7 +935,7 @@
       const testUrl = inputUrl ? `${inputUrl}/api/system-info` : `/api/system-info`;
       const statusBox = document.getElementById('apiTestStatus');
       statusBox.classList.remove('hidden');
-      statusBox.innerHTML = `<span class="text-indigo-300">Pinging backend API...</span>`;
+      statusBox.innerHTML = `<span class="text-indigo-600 font-semibold">Pinging backend API...</span>`;
 
       const startTime = Date.now();
       try {
@@ -937,20 +944,20 @@
         const data = await res.json();
         const latency = Date.now() - startTime;
         statusBox.innerHTML = `
-          <div class="text-emerald-400 font-semibold flex items-center">
+          <div class="text-emerald-600 font-bold flex items-center">
             <span class="mr-1.5">✅</span> Connected Successfully (${latency}ms)
           </div>
-          <div class="text-[10px] text-slate-400 mt-0.5">
+          <div class="text-[10px] text-slate-500 mt-0.5 font-mono">
             Port: ${data.port} | Status: ${data.status} | Reports ready: ${data.total_reports}
           </div>
         `;
       } catch (err) {
         statusBox.innerHTML = `
-          <div class="text-rose-400 font-semibold flex items-center">
+          <div class="text-rose-600 font-bold flex items-center">
             <span class="mr-1.5">❌</span> Connection Failed: ${err.message}
           </div>
-          <div class="text-[10px] text-slate-400 mt-0.5">
-            Check that your local server is running on Port 8000 and your HTTPS tunnel is active.
+          <div class="text-[10px] text-slate-500 mt-0.5">
+            Make sure your local server is running on Port 8000 and your HTTPS tunnel is active.
           </div>
         `;
       }
@@ -967,7 +974,6 @@
       }
       updateApiStatusIndicator();
       toggleApiModal(false);
-      updateApiStatusIndicator();
       fetchSystemInfo();
       fetchHistory();
     }
@@ -977,11 +983,9 @@
       document.getElementById('customApiInput').value = '';
       updateApiStatusIndicator();
       showToast("Reset to default localhost origin");
-      updateApiStatusIndicator();
       fetchSystemInfo();
       fetchHistory();
     }
-
 
     // System info on load
     window.addEventListener('DOMContentLoaded', () => {
@@ -1025,15 +1029,18 @@
     function switchTab(tabId) {
       activeTab = tabId;
 
-      // Update button styles
       ['location', 'account', 'scoreme'].forEach(t => {
         const btn = document.getElementById(`tabBtn-${t}`);
         const content = document.getElementById(`tabContent-${t}`);
         if (t === tabId) {
-          btn.className = "w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all bg-indigo-600 text-white shadow-md shadow-indigo-600/30";
+          if (t === 'scoreme') {
+            btn.className = "w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center space-x-2 transition-all bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 text-white shadow-md shadow-purple-600/25";
+          } else {
+            btn.className = "w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center space-x-2 transition-all bg-indigo-600 text-white shadow-md shadow-indigo-600/25";
+          }
           content.classList.remove('hidden');
         } else {
-          btn.className = "w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/60";
+          btn.className = "w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center space-x-2 transition-all text-slate-600 hover:text-slate-900 hover:bg-white/60";
           content.classList.add('hidden');
         }
       });
@@ -1047,22 +1054,31 @@
       const subtitle = document.getElementById('gmapsFormSubtitle');
       const btnText = document.getElementById('launchLocBtnText');
 
+      ['1a', '1b', '1c'].forEach(st => {
+        const card = document.getElementById(`subtoolCard-${st}`);
+        if (st === subtool) {
+          card.className = "relative flex items-start p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md shadow-indigo-500/5 cursor-pointer transition";
+        } else {
+          card.className = "relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs";
+        }
+      });
+
       if (subtool === '1a') {
         form1a.classList.remove('hidden');
         formGmaps.classList.add('hidden');
-        btnText.innerText = "Run 1a. Instagram Tag Discovery";
+        btnText.innerText = "Find Viral Creators";
       } else if (subtool === '1b') {
         form1a.classList.add('hidden');
         formGmaps.classList.remove('hidden');
-        title.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-500 mr-2"></span> Google Maps Search Export';
-        subtitle.innerText = "Business Directory & Place Details";
-        btnText.innerText = "Run 1b. Google Maps Export";
+        title.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-emerald-600 mr-2"></span> Google Leads From Location';
+        subtitle.innerText = "extract all leads data from your target location directly into excel sheet";
+        btnText.innerText = "Extract Google Leads";
       } else if (subtool === '1c') {
         form1a.classList.add('hidden');
         formGmaps.classList.remove('hidden');
-        title.innerHTML = '<span class="w-2 h-2 rounded-full bg-cyan-500 mr-2"></span> Google Maps to Contact Data';
-        subtitle.innerText = "Auto-Crawl Website Emails, Phones & Socials";
-        btnText.innerText = "Run 1c. Maps Contact Enrichment";
+        title.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-cyan-600 mr-2"></span> Maps to Contact Data';
+        subtitle.innerText = "extract complete conacts,emails,links,linkedin data from the location into automated excelsheet";
+        btnText.innerText = "Extract Complete Contacts";
       }
     }
 
@@ -1072,14 +1088,23 @@
       const form2b = document.getElementById('form-2b');
       const btnText = document.getElementById('launchAccBtnText');
 
+      ['2a', '2b'].forEach(st => {
+        const card = document.getElementById(`subtoolCard-${st}`);
+        if (st === subtool) {
+          card.className = "relative flex items-start p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md shadow-indigo-500/5 cursor-pointer transition";
+        } else {
+          card.className = "relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs";
+        }
+      });
+
       if (subtool === '2a') {
         form2a.classList.remove('hidden');
         form2b.classList.add('hidden');
-        btnText.innerText = "Start 2a. Account Deep Audit";
+        btnText.innerText = "Start Account Audit";
       } else {
         form2a.classList.add('hidden');
         form2b.classList.remove('hidden');
-        btnText.innerText = "Inspect 2b. Post/Reel URL";
+        btnText.innerText = "Inspect Post / Reel";
       }
     }
 
@@ -1088,9 +1113,9 @@
       [0, 1000, 5000, 10000, 25000].forEach(r => {
         const btn = document.getElementById(`reachBtn-${r}`);
         if (r === val) {
-          btn.className = "py-2 px-3 rounded-lg text-xs font-medium bg-indigo-600 text-white transition border border-indigo-500/40";
+          btn.className = "py-2.5 px-3 rounded-xl text-xs font-bold bg-indigo-600 text-white transition shadow-sm";
         } else {
-          btn.className = "py-2 px-3 rounded-lg text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 transition border border-slate-800";
+          btn.className = "py-2.5 px-3 rounded-xl text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 transition border border-slate-200";
         }
       });
     }
@@ -1100,9 +1125,9 @@
       [30, 60, 90, 0].forEach(d => {
         const btn = document.getElementById(`cScope-${d}`);
         if (d === days) {
-          btn.className = "py-1.5 px-2 rounded-lg text-xs font-medium bg-indigo-600 text-white transition border border-indigo-500/40";
+          btn.className = "py-2 px-3 rounded-xl text-xs font-bold bg-indigo-600 text-white transition shadow-sm";
         } else {
-          btn.className = "py-1.5 px-2 rounded-lg text-xs font-medium bg-slate-950 text-slate-400 hover:text-white transition border border-slate-800";
+          btn.className = "py-2 px-3 rounded-xl text-xs font-semibold bg-white text-slate-700 hover:bg-slate-100 transition border border-slate-200";
         }
       });
     }
@@ -1122,18 +1147,18 @@
     function launchLocationTask() {
       let payload = { tool: activeLocationSubtool };
       if (activeLocationSubtool === '1a') {
-        const tag = document.getElementById('loc_1a_tag').value.trim();
+        const tag = document.getElementById('loc_1a_tag').value.trim().replace(/#/g, '');
         if (!tag) {
-          alert("Please enter a target location or hashtag.");
+          alert("Please enter a target location or city.");
           return;
         }
         payload.target_tag = tag;
-        payload.content_filter = document.getElementById('loc_1a_filter').value.trim();
+        payload.content_filter = document.getElementById('loc_1a_filter').value.trim().replace(/#/g, '');
         payload.min_followers = parseInt(document.getElementById('loc_1a_min_followers').value) || 0;
       } else {
         const q = document.getElementById('gmaps_query').value.trim();
         if (!q) {
-          alert("Please enter a Google Maps search query.");
+          alert("Please enter a target search query.");
           return;
         }
         payload.query = q;
@@ -1145,7 +1170,7 @@
     function launchAccountTask() {
       let payload = { tool: activeAccountSubtool };
       if (activeAccountSubtool === '2a') {
-        const handle = document.getElementById('acc_2a_handle').value.trim();
+        const handle = document.getElementById('acc_2a_handle').value.trim().replace(/@/g, '');
         if (!handle) {
           alert("Please enter an account handle or name.");
           return;
@@ -1156,7 +1181,7 @@
       } else {
         const url = document.getElementById('acc_2b_url').value.trim();
         if (!url) {
-          alert("Please enter an Instagram Post or Reel URL.");
+          alert("Please enter an Instagram Post or Reel link.");
           return;
         }
         payload.post_url = url;
@@ -1165,9 +1190,9 @@
     }
 
     function launchScoreMeTask() {
-      const handle = document.getElementById('score_handle').value.trim();
+      const handle = document.getElementById('score_handle').value.trim().replace(/@/g, '');
       if (!handle) {
-        alert("Please enter an Instagram handle to score.");
+        alert("Please enter an account handle to score.");
         return;
       }
       const payload = {
@@ -1182,13 +1207,21 @@
     // TASK EXECUTION & POLLING
     // ──────────────────────────────────────────────────────────────
     async function startJob(payload) {
-      // Hide results, show progress container
       document.getElementById('dashboardResultsWrapper').classList.add('hidden');
       const progBox = document.getElementById('liveProgressContainer');
       progBox.classList.remove('hidden');
       progBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-      document.getElementById('taskTitleText').innerText = `Running Tool ${payload.tool.toUpperCase()}...`;
+      // Clean task title without numerical references
+      let taskName = "Intelligence Task";
+      if (payload.tool === '1a') taskName = "Finding Viral Creators...";
+      else if (payload.tool === '1b') taskName = "Extracting Google Leads...";
+      else if (payload.tool === '1c') taskName = "Extracting Complete Contacts...";
+      else if (payload.tool === '2a') taskName = "Auditing Account Profile...";
+      else if (payload.tool === '2b') taskName = "Inspecting Post / Reel...";
+      else if (payload.tool === '3') taskName = "Calculating Reach & Influence Score...";
+
+      document.getElementById('taskTitleText').innerText = taskName;
       document.getElementById('taskProgressBar').style.width = '10%';
       document.getElementById('taskProgressPercent').innerText = '10%';
       document.getElementById('terminalLogBox').innerHTML = `<div class="text-indigo-400 font-semibold">[System] Dispatching background task on Port 8000...</div>`;
@@ -1215,41 +1248,38 @@
         if (!res.ok) return;
         const task = await res.json();
 
-        // Update progress & logs
         const pct = task.progress || 10;
         document.getElementById('taskProgressBar').style.width = `${pct}%`;
         document.getElementById('taskProgressPercent').innerText = `${pct}%`;
 
-        // Render logs
         if (task.logs && task.logs.length > 0) {
           const logBox = document.getElementById('terminalLogBox');
           logBox.innerHTML = task.logs.map(l => {
             let color = 'text-slate-300';
             if (l.includes('[HERMES_ERROR]') || l.includes('failed') || l.includes('Error')) color = 'text-rose-400 font-semibold';
-            else if (l.includes('[HERMES_STATUS]') || l.includes('Complete')) color = 'text-emerald-300';
-            else if (l.includes('[DASHBOARD]')) color = 'text-indigo-300';
+            else if (l.includes('[HERMES_STATUS]') || l.includes('Complete')) color = 'text-emerald-300 font-semibold';
+            else if (l.includes('[DASHBOARD]')) color = 'text-indigo-300 font-semibold';
             return `<div class="${color}">${escapeHtml(l)}</div>`;
           }).join('');
           logBox.scrollTop = logBox.scrollHeight;
           document.getElementById('logLinesCount').innerText = `${task.logs.length} logs`;
         }
 
-        // Completion
         if (task.status === 'completed') {
           clearInterval(pollingInterval);
           pollingInterval = null;
           document.getElementById('taskProgressBar').style.width = '100%';
           document.getElementById('taskProgressPercent').innerText = '100%';
           document.getElementById('taskStatusBadge').innerText = 'Completed';
-          document.getElementById('taskStatusBadge').className = 'text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-medium';
+          document.getElementById('taskStatusBadge').className = 'text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold';
 
-          fetchHistory(); // Refresh history
+          fetchHistory();
           renderDashboardResults(task);
         } else if (task.status === 'failed') {
           clearInterval(pollingInterval);
           pollingInterval = null;
           document.getElementById('taskStatusBadge').innerText = 'Failed';
-          document.getElementById('taskStatusBadge').className = 'text-[10px] px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 font-medium';
+          document.getElementById('taskStatusBadge').className = 'text-[10px] px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 font-bold';
           alert("Task encountered an error: " + (task.error || "Unknown error"));
         }
       } catch (err) {
@@ -1265,12 +1295,10 @@
       resultsWrapper.classList.remove('hidden');
       resultsWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-      // Configure Excel download button
       const fn = task.excel_file || 'report.xlsx';
       document.getElementById('resultFileNameText').innerText = fn;
       document.getElementById('excelDownloadBtn').href = `${getApiBase()}/api/download/${fn}`;
 
-      // Reset view containers
       document.getElementById('view-scoreme-result').classList.add('hidden');
       document.getElementById('view-gmaps-result').classList.add('hidden');
       document.getElementById('view-generic-result').classList.add('hidden');
@@ -1283,18 +1311,15 @@
         const sc = res.score_card || {};
         document.getElementById('view-scoreme-result').classList.remove('hidden');
 
-        // Score Hero
         const comp = sc.composite_score || 0;
         document.getElementById('scoreValHero').innerText = comp;
         document.getElementById('scoreGradeHero').innerText = sc.grade || 'A';
         document.getElementById('scoreHandleHero').innerText = `@${res.handle || 'account'}`;
         document.getElementById('scoreNicheHero').innerText = `Evaluated Niche: ${res.niche || 'General'}`;
 
-        // Radial gauge offset (Circumference ~339.29)
         const offset = 339.29 - (339.29 * (comp / 100));
         document.getElementById('scoreRadialCircle').style.strokeDashoffset = offset;
 
-        // KPI cards
         document.getElementById('kpiReachScore').innerText = Number(sc.reach_score || 0).toLocaleString();
         document.getElementById('kpiEngagementScore').innerText = Number(sc.engagement_score || 0).toLocaleString();
         document.getElementById('kpiEngagementRate').innerText = `${sc.overall_engagement_rate || 0}%`;
@@ -1302,7 +1327,6 @@
         document.getElementById('kpiNicheScore').innerText = `${sc.niche_score || 0}%`;
         document.getElementById('kpiGrowthScore').innerText = `${sc.growth_momentum_10d >= 0 ? '+' : ''}${sc.growth_momentum_10d || 0}%`;
 
-        // Authenticity bar
         const ca = sc.comment_analysis || {};
         const totalC = ca.total_analyzed || 0;
         const botC = ca.bot_comments || 0;
@@ -1314,7 +1338,6 @@
         document.getElementById('realCommentsCount').innerText = `${realC} Authentic Comments`;
         document.getElementById('botCommentsCount').innerText = `${botC} Bot / Generic Spam`;
 
-        // Evaluated Posts Table
         const posts = sc.evaluated_posts || [];
         document.getElementById('evaluatedPostsCount').innerText = `${posts.length} posts evaluated`;
         const tbody = document.getElementById('scorePostsTableBody');
@@ -1324,26 +1347,26 @@
           const likes = Number(p.likes || 0).toLocaleString();
           const comm = Number(p.comments || 0).toLocaleString();
           const eng = p.engagement_rate || '0.0%';
-          const nMatch = p.niche_match ? '<span class="text-emerald-400 font-semibold">Matched</span>' : '<span class="text-slate-500">Other</span>';
+          const nMatch = p.niche_match ? '<span class="text-emerald-600 font-bold">Matched</span>' : '<span class="text-slate-400">Other</span>';
           const url = p.post_url || `https://www.instagram.com/p/${scode}/`;
           return `
-            <tr class="hover:bg-slate-800/40 transition">
-              <td class="py-2 px-3 font-semibold text-white">${scode}</td>
-              <td class="py-2 px-3 text-slate-400">${p.type || 'Reel'}</td>
-              <td class="py-2 px-3 text-amber-300 font-bold">${plays}</td>
-              <td class="py-2 px-3">${likes}</td>
-              <td class="py-2 px-3">${comm}</td>
-              <td class="py-2 px-3 text-purple-300">${eng}</td>
-              <td class="py-2 px-3">${nMatch}</td>
-              <td class="py-2 px-3 text-right">
-                <a href="${url}" target="_blank" class="text-indigo-400 hover:text-indigo-300 hover:underline">View ↗</a>
+            <tr class="hover:bg-indigo-50/40 transition">
+              <td class="py-2.5 px-3 font-bold text-slate-900">${scode}</td>
+              <td class="py-2.5 px-3 text-slate-500 font-medium">${p.type || 'Reel'}</td>
+              <td class="py-2.5 px-3 text-amber-600 font-extrabold">${plays}</td>
+              <td class="py-2.5 px-3">${likes}</td>
+              <td class="py-2.5 px-3">${comm}</td>
+              <td class="py-2.5 px-3 text-purple-600 font-bold">${eng}</td>
+              <td class="py-2.5 px-3">${nMatch}</td>
+              <td class="py-2.5 px-3 text-right">
+                <a href="${url}" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-bold hover:underline">View ↗</a>
               </td>
             </tr>
           `;
         }).join('');
       }
 
-      // Case 2: Google Maps Leads View (1b & 1c)
+      // Case 2: Google Maps Leads View
       else if (type === 'gmaps_export' || type === 'gmaps_contacts') {
         document.getElementById('view-gmaps-result').classList.remove('hidden');
         rawGmapsLeads = res.leads || [];
@@ -1362,7 +1385,7 @@
         renderGmapsTable(rawGmapsLeads);
       }
 
-      // Case 3: Tag Discovery (1a) or Account Audit (2a, 2b)
+      // Case 3: Viral Creators or Account Audit
       else {
         document.getElementById('view-generic-result').classList.remove('hidden');
         renderGenericResults(res);
@@ -1372,33 +1395,32 @@
     function renderGmapsTable(leads) {
       const tbody = document.getElementById('gmapsTableBody');
       if (!leads || leads.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-slate-500">No leads found.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-slate-400">No leads found.</td></tr>`;
         return;
       }
 
       tbody.innerHTML = leads.map(l => {
         const email = l.primary_email && l.primary_email !== 'Not Listed'
-          ? `<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono font-medium">${l.primary_email}</span>`
-          : '<span class="text-slate-600">Not Listed</span>';
+          ? `<span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-mono font-bold border border-emerald-200">${l.primary_email}</span>`
+          : '<span class="text-slate-400">Not Listed</span>';
 
-        const phone = l.phone && l.phone !== 'Not Listed' ? l.phone : '<span class="text-slate-600">N/A</span>';
-        const web = l.website && l.website !== 'None' ? `<a href="${l.website}" target="_blank" class="text-indigo-400 hover:underline">Website ↗</a>` : '<span class="text-slate-600">None</span>';
-        const mapsLink = l.maps_url ? `<a href="${l.maps_url}" target="_blank" class="text-indigo-400 hover:underline">Map ↗</a>` : '';
+        const phone = l.phone && l.phone !== 'Not Listed' ? l.phone : '<span class="text-slate-400">N/A</span>';
+        const web = l.website && l.website !== 'None' ? `<a href="${l.website}" target="_blank" class="text-indigo-600 font-semibold hover:underline">Website ↗</a>` : '<span class="text-slate-400">None</span>';
+        const mapsLink = l.maps_url ? `<a href="${l.maps_url}" target="_blank" class="text-indigo-600 font-semibold hover:underline">Map ↗</a>` : '';
 
-        // Social icons
         let socials = [];
-        if (l.instagram && l.instagram !== 'None') socials.push(`<a href="${l.instagram}" target="_blank" class="text-pink-400 font-semibold" title="Instagram">IG</a>`);
-        if (l.facebook && l.facebook !== 'None') socials.push(`<a href="${l.facebook}" target="_blank" class="text-blue-400 font-semibold" title="Facebook">FB</a>`);
-        if (l.linkedin && l.linkedin !== 'None') socials.push(`<a href="${l.linkedin}" target="_blank" class="text-cyan-400 font-semibold" title="LinkedIn">IN</a>`);
-        const socialHtml = socials.length > 0 ? socials.join(' • ') : '<span class="text-slate-600">None</span>';
+        if (l.instagram && l.instagram !== 'None') socials.push(`<a href="${l.instagram}" target="_blank" class="text-pink-600 font-bold" title="Instagram">IG</a>`);
+        if (l.facebook && l.facebook !== 'None') socials.push(`<a href="${l.facebook}" target="_blank" class="text-blue-600 font-bold" title="Facebook">FB</a>`);
+        if (l.linkedin && l.linkedin !== 'None') socials.push(`<a href="${l.linkedin}" target="_blank" class="text-cyan-600 font-bold" title="LinkedIn">IN</a>`);
+        const socialHtml = socials.length > 0 ? socials.join(' • ') : '<span class="text-slate-400">None</span>';
 
         return `
-          <tr class="hover:bg-slate-800/40 transition">
-            <td class="py-2.5 px-3 font-semibold text-white">
+          <tr class="hover:bg-indigo-50/40 transition">
+            <td class="py-2.5 px-3 font-bold text-slate-900">
               <div>${escapeHtml(l.name || 'Business')}</div>
-              <div class="text-[10px] text-slate-500 truncate max-w-xs">${escapeHtml(l.category || l.address || '')}</div>
+              <div class="text-[10px] text-slate-500 font-normal truncate max-w-xs">${escapeHtml(l.category || l.address || '')}</div>
             </td>
-            <td class="py-2.5 px-3 text-amber-300 font-mono">⭐ ${l.rating || 'N/A'} <span class="text-slate-500">(${l.reviews_count || 0})</span></td>
+            <td class="py-2.5 px-3 text-amber-600 font-mono font-bold">⭐ ${l.rating || 'N/A'} <span class="text-slate-400 font-normal">(${l.reviews_count || 0})</span></td>
             <td class="py-2.5 px-3 font-mono">${phone}</td>
             <td class="py-2.5 px-3">${email}</td>
             <td class="py-2.5 px-3">${web}</td>
@@ -1430,7 +1452,7 @@
       const title = document.getElementById('genericTableTitle');
 
       if (res.type === 'tag_discovery') {
-        title.innerText = `Instagram Accounts Discovered (#${res.tag})`;
+        title.innerText = `Verified Viral Creators & Business Handles (${res.tag || 'Location'})`;
         thead.innerHTML = `
           <tr>
             <th class="py-2.5 px-3">Handle</th>
@@ -1444,20 +1466,20 @@
         `;
         const accounts = res.accounts || [];
         tbody.innerHTML = accounts.map(a => `
-          <tr class="hover:bg-slate-800/40 transition">
-            <td class="py-2.5 px-3 font-semibold text-indigo-400">@${escapeHtml(a["Account Handle"] || '')}</td>
-            <td class="py-2.5 px-3 text-white">${escapeHtml(a["Display Name"] || '')}</td>
-            <td class="py-2.5 px-3 font-mono text-amber-300 font-bold">${Number(a["Follower Count"] || 0).toLocaleString()}</td>
-            <td class="py-2.5 px-3 font-mono">${a["Hermes Score"] || '80/100'}</td>
-            <td class="py-2.5 px-3 font-mono text-emerald-400">${a["Contact Email"] || 'Not Listed'}</td>
+          <tr class="hover:bg-indigo-50/40 transition">
+            <td class="py-2.5 px-3 font-bold text-indigo-600">@${escapeHtml(a["Account Handle"] || '')}</td>
+            <td class="py-2.5 px-3 text-slate-800 font-medium">${escapeHtml(a["Display Name"] || '')}</td>
+            <td class="py-2.5 px-3 font-mono text-amber-600 font-bold">${Number(a["Follower Count"] || 0).toLocaleString()}</td>
+            <td class="py-2.5 px-3 font-mono font-bold text-purple-600">${a["Hermes Score"] || '80/100'}</td>
+            <td class="py-2.5 px-3 font-mono text-emerald-700 font-semibold">${a["Contact Email"] || 'Not Listed'}</td>
             <td class="py-2.5 px-3 font-mono">${a["Contact Phone / WhatsApp"] || 'Not Listed'}</td>
             <td class="py-2.5 px-3 text-right">
-              <a href="${a["Profile Link"] || '#'}" target="_blank" class="text-indigo-400 hover:underline">View ↗</a>
+              <a href="${a["Profile Link"] || '#'}" target="_blank" class="text-indigo-600 font-bold hover:underline">View ↗</a>
             </td>
           </tr>
         `).join('');
       } else if (res.type === 'account_audit') {
-        title.innerText = `Recent Posts & Media for @${res.handle}`;
+        title.innerText = `Posts & Media for @${res.handle}`;
         thead.innerHTML = `
           <tr>
             <th class="py-2.5 px-3">Post Link</th>
@@ -1470,15 +1492,15 @@
         `;
         const posts = res.posts || [];
         tbody.innerHTML = posts.map(p => `
-          <tr class="hover:bg-slate-800/40 transition">
-            <td class="py-2.5 px-3 text-indigo-400 font-mono">
+          <tr class="hover:bg-indigo-50/40 transition">
+            <td class="py-2.5 px-3 text-indigo-600 font-bold font-mono">
               <a href="${p["Post URL"] || p["Post / Reel Link"] || '#'}" target="_blank" class="hover:underline">${(p["Post URL"] || '').split('/p/')[1] || 'Post'} ↗</a>
             </td>
-            <td class="py-2.5 px-3 text-slate-400">${p["Type"] || 'Reel'}</td>
-            <td class="py-2.5 px-3 font-mono text-amber-300">${p["Plays"] || 'N/A'}</td>
-            <td class="py-2.5 px-3 font-mono">${Number(p["Likes"] || 0).toLocaleString()}</td>
-            <td class="py-2.5 px-3 font-mono">${Number(p["Comments"] || 0).toLocaleString()}</td>
-            <td class="py-2.5 px-3 text-slate-400 truncate max-w-xs">${escapeHtml(p["Caption"] || '')}</td>
+            <td class="py-2.5 px-3 text-slate-500">${p["Type"] || 'Reel'}</td>
+            <td class="py-2.5 px-3 font-mono text-amber-600 font-bold">${p["Plays"] || 'N/A'}</td>
+            <td class="py-2.5 px-3 font-mono font-semibold">${Number(p["Likes"] || 0).toLocaleString()}</td>
+            <td class="py-2.5 px-3 font-mono font-semibold">${Number(p["Comments"] || 0).toLocaleString()}</td>
+            <td class="py-2.5 px-3 text-slate-500 truncate max-w-xs">${escapeHtml(p["Caption"] || '')}</td>
           </tr>
         `).join('');
       } else if (res.type === 'post_inspection') {
@@ -1492,10 +1514,10 @@
         `;
         const comments = res.comments || [];
         tbody.innerHTML = comments.map(c => `
-          <tr class="hover:bg-slate-800/40 transition">
-            <td class="py-2.5 px-3 font-semibold text-indigo-400 font-mono">@${escapeHtml(c.username || 'user')}</td>
-            <td class="py-2.5 px-3 text-white">${escapeHtml(c.text || '')}</td>
-            <td class="py-2.5 px-3 font-mono text-slate-400">❤️ ${c.like_count || 0}</td>
+          <tr class="hover:bg-indigo-50/40 transition">
+            <td class="py-2.5 px-3 font-bold text-indigo-600 font-mono">@${escapeHtml(c.username || 'user')}</td>
+            <td class="py-2.5 px-3 text-slate-800 font-medium">${escapeHtml(c.text || '')}</td>
+            <td class="py-2.5 px-3 font-mono text-slate-500">❤️ ${c.like_count || 0}</td>
           </tr>
         `).join('');
       }
@@ -1513,21 +1535,21 @@
 
         const list = document.getElementById('historyListContainer');
         if (files.length === 0) {
-          list.innerHTML = `<div class="text-center py-8 text-xs text-slate-500">No Excel reports generated yet.</div>`;
+          list.innerHTML = `<div class="text-center py-8 text-xs text-slate-400">No Excel reports generated yet.</div>`;
           return;
         }
 
         list.innerHTML = files.map(f => `
-          <div class="p-3 rounded-xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 flex items-center justify-between gap-3 transition">
+          <div class="p-3.5 rounded-2xl bg-white/80 border border-slate-200 hover:border-indigo-300 flex items-center justify-between gap-3 transition shadow-xs">
             <div class="overflow-hidden">
               <div class="flex items-center space-x-2">
-                <span class="text-[10px] px-2 py-0.5 rounded bg-${f.color}-500/20 text-${f.color}-300 font-semibold">${f.badge}</span>
-                <span class="text-[10px] text-slate-500 font-mono">${f.modified}</span>
-                <span class="text-[10px] text-slate-500 font-mono">${f.size_kb} KB</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 font-bold border border-indigo-100">${f.badge}</span>
+                <span class="text-[10px] text-slate-400 font-mono">${f.modified}</span>
+                <span class="text-[10px] text-slate-400 font-mono">${f.size_kb} KB</span>
               </div>
-              <p class="text-xs font-semibold text-white truncate mt-1">${f.filename}</p>
+              <p class="text-xs font-bold text-slate-900 truncate mt-1">${f.filename}</p>
             </div>
-            <a href="${getApiBase()}${f.download_url}" download class="shrink-0 p-2 rounded-lg bg-slate-800 hover:bg-emerald-600/40 text-emerald-400 border border-slate-700 hover:border-emerald-500/50 text-xs transition" title="Download Excel">
+            <a href="${getApiBase()}${f.download_url}" download class="shrink-0 p-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 text-emerald-600 border border-slate-200 hover:border-emerald-300 text-xs transition" title="Download Excel">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
               </svg>

@@ -1,23 +1,23 @@
 # 🚀 Phantom Reach Scout — Web Dashboard
 
-Modern, mobile-first intelligence dashboard and reach calculation engine for Instagram & Google Maps.
+Modern, light and vibrant glassmorphism intelligence dashboard and reach calculation engine.
 
 Designed for instant deployment on **Vercel** with seamless connection to your local Python scraping engine via HTTPS tunnels.
 
 ---
 
-## ✨ Features
+## ✨ Tools & Features
 
-- **📍 1. Location Tools**:
-  - **1a) Instagram Tag & Creator Discovery**: Explore local hashtags, creators, collaborators, and custom niches with follower reach filters.
-  - **1b) Google Maps Search Export**: Harvest local business directories and place details into single-sheet workbooks.
-  - **1c) Google Maps to Contact Data**: Crawl business websites for verified **Emails, Phone numbers, WhatsApp, Instagram, Facebook, LinkedIn, and Twitter** channels.
+- **📍 Location Leads Tools**:
+  - **Who Can Make Me Viral Here?**: Verified local creators, collaborator and business handles directly into excel sheet with complete score and roi.
+  - **Google Leads From Location**: Extract all leads data from your target location directly into excel sheet.
+  - **Maps to Contact Data**: Extract complete conacts,emails,links,linkedin data from the location into automated excelsheet.
 
-- **👤 2. Account Tools**:
-  - **2a) Account Deep Audit & Comments**: Extract complete profile metrics, all posts/reels, engagement data, and 30-day comment audits.
-  - **2b) Post / Reel URL Deep Inspection**: Detailed breakdown of any specific Instagram post/reel URL with all comments.
+- **👤 Account Tools**:
+  - **Account Deep Audit & Comments**: Extract complete profile metrics, all posts/reels, engagement data, and 30-day comment audits.
+  - **Post / Reel Deep Inspection**: Detailed breakdown of any specific Instagram post/reel link with all comments.
 
-- **⚡ 3. Score Me (Hermes Reach & Influence Engine)**:
+- **⚡ Score Me Engine**:
   - **Reach Score**: Cumulative views of last 10 reels/posts $\le$ 30 days old.
   - **Engagement Score**: Total likes, comments, shares, and saves.
   - **Overall Engagement Rate %**: Active engagement efficiency vs follower base.
