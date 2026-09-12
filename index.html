@@ -234,28 +234,13 @@
       <!-- Quick Info & Navigation Actions -->
       <div class="flex items-center space-x-2 sm:space-x-3">
         
-        <!-- Engine Status Badge (hidden automatically if the backend isn't reachable) -->
-        <div id="portStatusBadge" class="hidden md:flex items-center space-x-1.5 px-2.5 py-1 rounded-xl bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-xs font-mono font-medium shadow-xs">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>Engine Online</span>
-        </div>
-
-        <!-- Mobile LAN Link Button -->
-        <button onclick="copyMobileUrl()" id="lanBadgeBtn" class="hidden md:flex items-center space-x-1.5 px-2.5 py-1 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-mono transition shadow-xs" title="Click to copy Mobile URL">
-          <svg class="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-          </svg>
-          <span id="lanIpText">Mobile Access</span>
-        </button>
-
         <!-- Backend API Config Button (Vercel / Remote Tunnel) -->
-        <button onclick="toggleApiModal(true)" id="apiConfigBtn" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700 transition shadow-xs" title="Configure Backend API (Vercel / Tunnel)">
-          <span id="apiStatusDot" class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          <span class="hidden sm:inline">Backend API</span>
+        <button onclick="toggleApiModal(true)" id="apiConfigBtn" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 transition shadow-xs" title="Configure Backend API (Vercel / Tunnel)">
           <svg class="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
           </svg>
+          <span class="hidden sm:inline">Backend API</span>
         </button>
 
         <!-- Reports Archive Button -->
@@ -325,8 +310,8 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
               </div>
-              <span id="cardBadge-location" class="text-[11px] font-mono font-bold px-2.5 py-1 rounded-xl bg-emerald-100 text-emerald-800 border border-emerald-200 flex items-center">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span>Active
+              <span id="cardBadge-location" class="text-[11px] font-semibold px-2.5 py-1 rounded-xl bg-indigo-50 text-indigo-700 border border-indigo-200 flex items-center">
+                Selected
               </span>
             </div>
 
@@ -523,7 +508,6 @@
           <div class="flex items-center justify-between">
             <div>
               <h3 id="gmapsFormTitle" class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 mr-2"></span>
                 Google Leads From Location
               </h3>
               <p id="gmapsFormSubtitle" class="text-xs text-slate-600 mt-0.5">Pull every business lead from your target location straight into an Excel sheet.</p>
@@ -1312,7 +1296,7 @@
             <span class="mr-1.5">✅</span> Connected Successfully (${latency}ms)
           </div>
           <div class="text-[10px] text-slate-600 mt-0.5 font-mono">
-            Status: ${data.status} | Reports ready: ${data.total_reports}
+            Status: Ready | Reports archive: ${data.total_reports || 0}
           </div>
         `;
       } catch (err) {
@@ -1368,28 +1352,22 @@
         }
         const data = await res.json();
         setBackendReachable(true);
-        if (data.local_ip) {
-          document.getElementById('lanIpText').innerText = `Mobile Access`;
-          window.mobileUrl = `http://${data.local_ip}:8000`;
+        if (data.total_reports !== undefined) {
+          const badge = document.getElementById('reportsCountBadge');
+          if (badge) badge.innerText = data.total_reports;
         }
       } catch(e) {
-        // No backend reachable at this address — expected when previewing
-        // the frontend on its own, without the Python server running.
         setBackendReachable(false);
       }
     }
 
     function setBackendReachable(isReachable) {
-      const dot = document.getElementById('apiStatusDot');
-      const portBadge = document.getElementById('portStatusBadge');
-      if (!dot) return;
+      const btn = document.getElementById('apiConfigBtn');
+      if (!btn) return;
       if (isReachable) {
-        if (!getApiBase()) dot.className = "w-2 h-2 rounded-full bg-emerald-500";
-        if (portBadge) portBadge.classList.remove('hidden');
+        btn.title = "Backend API connected";
       } else {
-        dot.className = "w-2 h-2 rounded-full bg-amber-500";
-        document.getElementById('apiConfigBtn').title = "Backend not reachable — configure your API address";
-        if (portBadge) portBadge.classList.add('hidden');
+        btn.title = "Backend not reachable — configure your API address";
       }
     }
 
@@ -1442,8 +1420,8 @@
             card.className = "relative flex flex-col justify-between p-6 sm:p-7 rounded-3xl border-2 border-indigo-600 bg-white shadow-xl ring-4 ring-indigo-500/10 transition-all duration-300 snap-start shrink-0 w-[84vw] sm:w-80 md:flex-1 cursor-pointer group";
           }
           if (badge) {
-            badge.className = "text-[11px] font-mono font-bold px-2.5 py-1 rounded-xl bg-emerald-100 text-emerald-800 border border-emerald-200 flex items-center";
-            badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span>Active';
+            badge.className = "text-[11px] font-semibold px-2.5 py-1 rounded-xl bg-indigo-50 text-indigo-700 border border-indigo-200 flex items-center";
+            badge.innerText = "Selected";
           }
           if (content) content.classList.remove('hidden');
         } else {
@@ -1451,8 +1429,8 @@
             card.className = "relative flex flex-col justify-between p-6 sm:p-7 rounded-3xl border border-slate-200/90 bg-white/80 hover:bg-white hover:border-slate-300 shadow-md transition-all duration-300 snap-start shrink-0 w-[84vw] sm:w-80 md:flex-1 cursor-pointer group";
           }
           if (badge) {
-            badge.className = "text-[11px] font-mono font-bold px-2.5 py-1 rounded-xl bg-slate-100 text-slate-700 border border-slate-200";
-            badge.innerText = (t === 'scoreme') ? "AI Engine" : "3 tools";
+            badge.className = "text-[11px] font-semibold px-2.5 py-1 rounded-xl bg-slate-100 text-slate-700 border border-slate-200";
+            badge.innerText = (t === 'scoreme') ? "Audit Engine" : "3 tools";
           }
           if (content) content.classList.add('hidden');
         }
@@ -1484,13 +1462,13 @@
       } else if (subtool === '1b') {
         form1a.classList.add('hidden');
         formGmaps.classList.remove('hidden');
-        title.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-emerald-600 mr-2"></span> Google Leads From Location';
+        title.innerText = 'Google Leads From Location';
         subtitle.innerText = "Pull every business lead from your target location straight into an Excel sheet.";
         btnText.innerText = "Extract Google Leads";
       } else if (subtool === '1c') {
         form1a.classList.add('hidden');
         formGmaps.classList.remove('hidden');
-        title.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-cyan-600 mr-2"></span> Maps to Contact Data';
+        title.innerText = 'Maps to Contact Data';
         subtitle.innerText = "Extract complete contacts, emails, links, and LinkedIn profiles into an automated Excel sheet.";
         btnText.innerText = "Extract Complete Contacts";
       }
@@ -1675,6 +1653,33 @@
       }
     }
 
+    function sanitizeLogLine(raw) {
+      if (!raw) return '';
+      let s = String(raw);
+      // Remove local Windows & Unix absolute directory paths, keeping only filename
+      s = s.replace(/[a-zA-Z]:\\[^\s\t\r\n]+\\([^\s\\/]+)/g, '$1');
+      s = s.replace(/\/(?:Users|home|root)\/[^\s\t\r\n]+\/([^\s\\/]+)/g, '$1');
+      // Drop any lines that expose full device path
+      if (/full path/i.test(s)) return '';
+      // Remove IP addresses and ports
+      s = s.replace(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}(?::\d+)?\b/g, '');
+      s = s.replace(/:8000\b/g, '');
+      s = s.replace(/\bPort 8000\b/gi, '');
+      // Strip [HERMES_...] tags down to generic clean tags
+      s = s.replace(/\[HERMES_STATUS\]/gi, '[STATUS]');
+      s = s.replace(/\[HERMES_AUDIT\]/gi, '[AUDIT]');
+      s = s.replace(/\[HERMES_FILTER\]/gi, '[FILTER]');
+      s = s.replace(/\[HERMES_WARNING\]/gi, '[WARNING]');
+      s = s.replace(/\[HERMES_ERROR\]/gi, '[ERROR]');
+      s = s.replace(/\[HERMES_INFO\]/gi, '[INFO]');
+      s = s.replace(/\[HERMES_SUPERVISOR\]/gi, '[SUPERVISOR]');
+      s = s.replace(/\[HERMES_([A-Z0-9_]+)\]/gi, '[$1]');
+      // Clean up any other Hermes mentions
+      s = s.replace(/\bHermes Brain\b/gi, 'Intelligence Engine');
+      s = s.replace(/\bHermes\b/gi, 'Engine');
+      return s.trim();
+    }
+
     async function pollTask(taskId) {
       try {
         const res = await fetch(`${getApiBase()}/api/tasks/${taskId}`);
@@ -1688,12 +1693,14 @@
         if (task.logs && task.logs.length > 0) {
           const logBox = document.getElementById('terminalLogBox');
           logBox.innerHTML = task.logs.map(l => {
+            const clean = sanitizeLogLine(l);
+            if (!clean) return '';
             let color = 'text-slate-300';
-            if (l.includes('failed') || l.includes('Error')) color = 'text-rose-400 font-semibold';
-            else if (l.includes('Complete')) color = 'text-emerald-300 font-semibold';
-            else if (l.includes('[DASHBOARD]')) color = 'text-indigo-300 font-semibold';
-            return `<div class="${color}">${escapeHtml(l)}</div>`;
-          }).join('');
+            if (clean.includes('failed') || clean.includes('Error') || clean.includes('[ERROR]')) color = 'text-rose-400 font-semibold';
+            else if (clean.includes('Complete') || clean.includes('Success')) color = 'text-emerald-300 font-semibold';
+            else if (clean.includes('[STATUS]') || clean.includes('[AUDIT]') || clean.includes('[DASHBOARD]')) color = 'text-indigo-300 font-semibold';
+            return `<div class="${color}">${escapeHtml(clean)}</div>`;
+          }).filter(Boolean).join('');
           logBox.scrollTop = logBox.scrollHeight;
           document.getElementById('logLinesCount').innerText = `${task.logs.length} logs`;
         }
@@ -1903,7 +1910,7 @@
             <td class="py-2.5 px-3 font-bold text-indigo-600">@${escapeHtml(a["Account Handle"] || '')}</td>
             <td class="py-2.5 px-3 text-slate-800 font-medium">${escapeHtml(a["Display Name"] || '')}</td>
             <td class="py-2.5 px-3 font-mono text-amber-600 font-bold">${Number(a["Follower Count"] || 0).toLocaleString()}</td>
-            <td class="py-2.5 px-3 font-mono font-bold text-purple-600">${a["Influence Score"] || a["Hermes Score"] || '80/100'}</td>
+            <td class="py-2.5 px-3 font-mono font-bold text-purple-600">${a["Influence Score"] || a["Score"] || '80/100'}</td>
             <td class="py-2.5 px-3 font-mono text-emerald-700 font-semibold">${a["Contact Email"] || 'Not Listed'}</td>
             <td class="py-2.5 px-3 font-mono">${a["Contact Phone / WhatsApp"] || 'Not Listed'}</td>
             <td class="py-2.5 px-3 text-right">
