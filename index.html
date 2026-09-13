@@ -351,7 +351,7 @@
                 </svg>
               </div>
               <span id="cardBadge-account" class="text-[11px] font-mono font-bold px-2.5 py-1 rounded-xl bg-slate-100 text-slate-700 border border-slate-200">
-                3 tools
+                5 tools
               </span>
             </div>
 
@@ -367,7 +367,7 @@
 
             <!-- Exact Description -->
             <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
-              Deep profile metrics, post and reel deep inspection, and comments extraction of all posts and reels published in the last 30 days into single-sheet Excel.
+              Deep profile metrics, post & reel inspection, 30-day comments, native YouTube channel audit, and Twitter/X viral tweets into single-sheet Excel.
             </p>
           </div>
 
@@ -419,6 +419,47 @@
             </button>
           </div>
         </div>
+
+        <!-- Card 4: Multi-Platform Intelligence -->
+        <div id="mainToolCard-multiplatform" onclick="selectMainTool('multiplatform')" class="relative flex flex-col justify-between p-6 sm:p-7 rounded-3xl border border-slate-200/90 bg-white/80 hover:bg-white hover:border-slate-300 shadow-md transition-all duration-300 snap-start shrink-0 w-[84vw] sm:w-80 md:flex-1 cursor-pointer group">
+          <div>
+            <!-- Top Row: Icon + Badge -->
+            <div class="flex items-center justify-between">
+              <div class="w-11 h-11 rounded-2xl bg-cyan-50 border border-cyan-100 flex items-center justify-center shadow-xs">
+                <svg class="w-6 h-6 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                </svg>
+              </div>
+              <span id="cardBadge-multiplatform" class="text-[11px] font-mono font-bold px-2.5 py-1 rounded-xl bg-slate-100 text-slate-700 border border-slate-200">
+                2 tools
+              </span>
+            </div>
+
+            <!-- Tag Pill -->
+            <span class="inline-block text-[10px] font-bold uppercase tracking-wider text-cyan-700 px-2.5 py-0.5 rounded-md bg-cyan-50 border border-cyan-100 mt-4 mb-2">
+              Cross-Platform AI
+            </span>
+
+            <!-- Title -->
+            <h3 class="text-lg sm:text-xl font-display font-bold text-slate-900 tracking-tight">
+              Multi-Platform Intelligence
+            </h3>
+
+            <!-- Exact Description -->
+            <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+              Extract live community sentiment &amp; trending discussions from Reddit, and harvest deep article research via Jina Reader into clean Excel workbooks.
+            </p>
+          </div>
+
+          <!-- Bottom Action: Run Now Button -->
+          <div class="pt-6 mt-4 border-t border-slate-100">
+            <button type="button" onclick="event.stopPropagation(); selectMainTool('multiplatform', true)" class="w-full py-3.5 px-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition flex items-center justify-center space-x-2 active:scale-[0.98]">
+              <span>Run now</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+          </div>
+        </div>
+
 
       </div>
     </div>
@@ -568,12 +609,12 @@
     <div id="tabContent-account" class="hidden space-y-6">
       
       <!-- Sub-Tool Selector -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         
         <label class="relative flex items-start p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md shadow-indigo-500/5 cursor-pointer transition" id="subtoolCard-2a">
           <input type="radio" name="acc_subtool" value="2a" checked onchange="updateAccountSubtool('2a')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
           <div class="ml-3">
-            <span class="text-xs sm:text-sm font-bold text-slate-900 block">Account Deep Audit & Comments</span>
+            <span class="text-xs sm:text-sm font-bold text-slate-900 block">Account Deep Audit (IG)</span>
             <span class="text-[11px] text-slate-600 block mt-0.5">Complete profile metrics, all posts, reels, engagement data and comments audit</span>
           </div>
         </label>
@@ -589,8 +630,30 @@
         <label class="relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs" id="subtoolCard-2c">
           <input type="radio" name="acc_subtool" value="2c" onchange="updateAccountSubtool('2c')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
           <div class="ml-3">
-            <span class="text-xs sm:text-sm font-bold text-slate-900 block">Comments Extraction of All Posts / Reels of Last 30 Days</span>
-            <span class="text-[11px] text-slate-600 block mt-0.5">Harvest every comment, username, timestamp and like count across all posts & reels published in the last 30 days into a single Excel sheet</span>
+            <span class="text-xs sm:text-sm font-bold text-slate-900 block">30-Day Comments Harvest</span>
+            <span class="text-[11px] text-slate-600 block mt-0.5">Extract all comments & commenters across posts published in last 30 days</span>
+          </div>
+        </label>
+
+        <label class="relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs" id="subtoolCard-2d">
+          <input type="radio" name="acc_subtool" value="2d" onchange="updateAccountSubtool('2d')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+          <div class="ml-3">
+            <div class="flex items-center space-x-1.5">
+              <span class="text-xs sm:text-sm font-bold text-slate-900">YouTube Channel Audit</span>
+              <span class="text-[9px] px-1.5 py-0.2 rounded bg-red-100 text-red-700 font-bold">YT-DLP</span>
+            </div>
+            <span class="text-[11px] text-slate-600 block mt-0.5">Audit any YouTube channel, latest videos, views, duration & watch links</span>
+          </div>
+        </label>
+
+        <label class="relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs" id="subtoolCard-2e">
+          <input type="radio" name="acc_subtool" value="2e" onchange="updateAccountSubtool('2e')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+          <div class="ml-3">
+            <div class="flex items-center space-x-1.5">
+              <span class="text-xs sm:text-sm font-bold text-slate-900">Twitter / X Viral Tweets</span>
+              <span class="text-[9px] px-1.5 py-0.2 rounded bg-sky-100 text-sky-700 font-bold">X</span>
+            </div>
+            <span class="text-[11px] text-slate-600 block mt-0.5">Harvest creator tweets, likes, reposts & verified status URLs without API key</span>
           </div>
         </label>
 
@@ -680,6 +743,86 @@
           </div>
         </div>
 
+        <!-- Form for YouTube Channel Audit -->
+        <div id="form-2d" class="hidden space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-600 mr-2"></span>
+                YouTube Channel Audit
+              </h3>
+              <p class="text-xs text-slate-600 mt-0.5">Harvest channel statistics, latest videos, views, engagement, and direct video watch links</p>
+            </div>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 font-semibold border border-rose-200 hidden sm:inline">Native yt-dlp</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Channel Name, Handle, or URL</label>
+              <input type="text" id="acc_2d_channel" placeholder="e.g. @TechWithTim, @MKBHD, @Veritasium" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Max Videos to Harvest</label>
+              <select id="acc_2d_max" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-rose-500 text-sm text-slate-900 outline-none shadow-xs font-medium">
+                <option value="10">10 Videos (Fast)</option>
+                <option value="20" selected>20 Videos (Recommended)</option>
+                <option value="50">50 Videos (Deep)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Quick Chips -->
+          <div class="flex flex-wrap items-center gap-1.5 pt-1">
+            <span class="text-[11px] text-slate-500 font-medium mr-1">Quick fill:</span>
+            <button type="button" onclick="setYtChannel('@TechWithTim')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">📺 @TechWithTim</button>
+            <button type="button" onclick="setYtChannel('@MKBHD')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">📺 @MKBHD</button>
+            <button type="button" onclick="setYtChannel('@Veritasium')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">📺 @Veritasium</button>
+          </div>
+        </div>
+
+        <!-- Form for Twitter / X Profile & Viral Tweets -->
+        <div id="form-2e" class="hidden space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-500 mr-2"></span>
+                Twitter / X Profile &amp; Viral Tweets Audit
+              </h3>
+              <p class="text-xs text-slate-600 mt-0.5">Scrapes latest tweets, likes, retweets, replies, and verified status URLs</p>
+            </div>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-sky-50 text-sky-700 font-semibold border border-sky-200 hidden sm:inline">Twitter / X</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Twitter / X Handle</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500 text-sm font-mono">@</span>
+                <input type="text" id="acc_2e_handle" placeholder="e.g. sama, mkbhd, elonmusk" class="w-full pl-8 pr-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Max Tweets to Harvest</label>
+              <select id="acc_2e_max" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-sky-500 text-sm text-slate-900 outline-none shadow-xs font-medium">
+                <option value="10">10 Tweets</option>
+                <option value="15" selected>15 Tweets (Recommended)</option>
+                <option value="30">30 Tweets</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Quick Chips -->
+          <div class="flex flex-wrap items-center gap-1.5 pt-1">
+            <span class="text-[11px] text-slate-500 font-medium mr-1">Quick fill:</span>
+            <button type="button" onclick="setTwitterHandle('sama')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">🐦 @sama</button>
+            <button type="button" onclick="setTwitterHandle('mkbhd')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">🐦 @mkbhd</button>
+            <button type="button" onclick="setTwitterHandle('karpathy')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">🐦 @karpathy</button>
+          </div>
+        </div>
+
+
         <!-- Launch Button for Account Tools -->
         <div class="pt-2">
           <button onclick="launchAccountTask()" id="launchAccBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 to-slate-900 hover:from-indigo-500 hover:to-slate-800 font-semibold text-sm sm:text-base text-white shadow-xl shadow-slate-900/20 transition active:scale-[0.99] flex items-center justify-center space-x-2">
@@ -741,31 +884,108 @@
 
       </div>
 
+      <!-- Score Me Engine Mode Selector -->
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button type="button" onclick="setScoreMode('single')" id="scoreModeBtn-single" class="flex-1 p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md text-left transition cursor-pointer">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+            <span class="text-xs sm:text-sm font-bold text-slate-900">Single Instagram Account Score</span>
+          </div>
+          <p class="text-[11px] text-slate-600 mt-1 leading-snug">Last 10 posts/reels views, authentic engagement, bot penalty & 10-day growth.</p>
+        </button>
+
+        <button type="button" onclick="setScoreMode('omni')" id="scoreModeBtn-omni" class="flex-1 p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white text-left transition cursor-pointer shadow-xs">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span>
+            <span class="text-xs sm:text-sm font-bold text-slate-900">Omni-Channel Composite Scorecard</span>
+            <span class="text-[10px] px-2 py-0.2 rounded-full bg-purple-100 text-purple-800 font-bold">IG + YT + X</span>
+          </div>
+          <p class="text-[11px] text-slate-600 mt-1 leading-snug">Cross-platform composite score synthesised across Instagram, YouTube channel velocity & Twitter/X engagement.</p>
+        </button>
+      </div>
+
       <!-- Input Form for Score Me -->
       <div class="glass-panel p-6 sm:p-8 rounded-3xl space-y-4">
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Account Handle to Score</label>
-            <div class="relative">
-              <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500 text-sm font-mono">@</span>
-              <input type="text" id="score_handle" placeholder="zomato, techburner, anushkasen0408" class="w-full pl-8 pr-3.5 py-3.5 rounded-xl bg-white border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-semibold shadow-xs">
+        <!-- Form Mode: Single Instagram Account -->
+        <div id="scoreForm-single" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Instagram Handle to Score</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500 text-sm font-mono">@</span>
+                <input type="text" id="score_handle" placeholder="zomato, techburner, anushkasen0408" class="w-full pl-8 pr-3.5 py-3.5 rounded-xl bg-white border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-semibold shadow-xs">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Target Niche (Optional / Auto-detect)</label>
+              <input type="text" id="score_niche" placeholder="e.g. food, tech, lifestyle, travel, real estate" class="w-full px-4 py-3.5 rounded-xl bg-white border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-medium shadow-xs">
             </div>
           </div>
 
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Target Niche (Optional / Auto-detect)</label>
-            <input type="text" id="score_niche" placeholder="e.g. food, tech, lifestyle, travel, real estate" class="w-full px-4 py-3.5 rounded-xl bg-white border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-medium shadow-xs">
+          <!-- Quick Sample Chips -->
+          <div class="flex flex-wrap items-center gap-1.5 pt-1">
+            <span class="text-[11px] text-slate-500 font-medium mr-1">Quick fill:</span>
+            <button type="button" onclick="setScoreAccount('zomato', 'food')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-indigo-50 border border-slate-200 text-slate-700 hover:text-indigo-700 transition shadow-xs">@zomato (Food)</button>
+            <button type="button" onclick="setScoreAccount('techburner', 'tech')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-indigo-50 border border-slate-200 text-slate-700 hover:text-indigo-700 transition shadow-xs">@techburner (Tech)</button>
+            <button type="button" onclick="setScoreAccount('anushkasen0408', 'lifestyle')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-indigo-50 border border-slate-200 text-slate-700 hover:text-indigo-700 transition shadow-xs">@anushkasen0408 (Lifestyle)</button>
           </div>
         </div>
 
-        <!-- Quick Sample Chips -->
-        <div class="flex flex-wrap items-center gap-1.5 pt-1">
-          <span class="text-[11px] text-slate-500 font-medium mr-1">Quick fill:</span>
-          <button type="button" onclick="setScoreAccount('zomato', 'food')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-indigo-50 border border-slate-200 text-slate-700 hover:text-indigo-700 transition shadow-xs">@zomato (Food)</button>
-          <button type="button" onclick="setScoreAccount('techburner', 'tech')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-indigo-50 border border-slate-200 text-slate-700 hover:text-indigo-700 transition shadow-xs">@techburner (Tech)</button>
-          <button type="button" onclick="setScoreAccount('anushkasen0408', 'lifestyle')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-indigo-50 border border-slate-200 text-slate-700 hover:text-indigo-700 transition shadow-xs">@anushkasen0408 (Lifestyle)</button>
+        <!-- Form Mode: Omni-Channel Composite Scorecard -->
+        <div id="scoreForm-omni" class="hidden space-y-4">
+          <div class="p-3.5 rounded-2xl bg-purple-50/70 border border-purple-200 text-xs text-purple-900">
+            <span class="font-bold">Cross-Platform Intelligence:</span> Enter creator handles across any of the platforms below. Our algorithm calculates cross-network reach, view consistency, engagement health, and outputs a 100-point composite scorecard into single-sheet Excel.
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Creator or Brand Display Name</label>
+              <input type="text" id="omni_creator_name" placeholder="e.g. Marques Brownlee, Tim Ruscica" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-medium shadow-xs">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Target Niche</label>
+              <input type="text" id="omni_niche" placeholder="e.g. Tech, Consumer Gadgets, Coding" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-medium shadow-xs">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Instagram Handle (Optional)</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-pink-500 text-xs font-mono font-bold">IG</span>
+                <input type="text" id="omni_ig_handle" placeholder="mkbhd" class="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-pink-500 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">YouTube Channel (Optional)</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-red-600 text-xs font-mono font-bold">YT</span>
+                <input type="text" id="omni_yt_channel" placeholder="@mkbhd" class="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-red-500 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Twitter / X Handle (Optional)</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-sky-500 text-xs font-mono font-bold">X</span>
+                <input type="text" id="omni_x_handle" placeholder="mkbhd" class="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-sky-500 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Omni Presets -->
+          <div class="flex flex-wrap items-center gap-1.5 pt-1">
+            <span class="text-[11px] text-slate-500 font-medium mr-1">Quick fill:</span>
+            <button type="button" onclick="setOmniCreator('Marques Brownlee', 'mkbhd', '@mkbhd', 'mkbhd', 'Consumer Tech')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-purple-50 border border-slate-200 text-slate-700 hover:text-purple-700 transition shadow-xs">📱 Marques Brownlee (MKBHD)</button>
+            <button type="button" onclick="setOmniCreator('Tech With Tim', 'techwithtim', '@TechWithTim', 'TechWithTimm', 'Software & AI')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-purple-50 border border-slate-200 text-slate-700 hover:text-purple-700 transition shadow-xs">💻 Tech With Tim</button>
+          </div>
         </div>
+
+        <input type="hidden" id="current_score_mode" value="single">
 
         <!-- Launch Button for Score Me -->
         <div class="pt-3">
@@ -774,6 +994,112 @@
               <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
             </svg>
             <span id="launchScoreBtnText">Calculate account score</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- TAB 4 CONTENT: MULTI-PLATFORM INTELLIGENCE -->
+    <!-- ================================================================ -->
+    <div id="tabContent-multiplatform" class="hidden space-y-6">
+      
+      <!-- Sub-Tool Selector -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        
+        <label class="relative flex items-start p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md shadow-indigo-500/5 cursor-pointer transition" id="subtoolCard-4a">
+          <input type="radio" name="multi_subtool" value="4a" checked onchange="updateMultiplatformSubtool('4a')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+          <div class="ml-3">
+            <span class="text-xs sm:text-sm font-bold text-slate-900 block">Reddit Community Sentiment &amp; Trends</span>
+            <span class="text-[11px] text-slate-600 block mt-0.5">Search live Reddit discussions, user sentiment breakdown, top subreddits and direct thread hyperlinks.</span>
+          </div>
+        </label>
+
+        <label class="relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs" id="subtoolCard-4b">
+          <input type="radio" name="multi_subtool" value="4b" onchange="updateMultiplatformSubtool('4b')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+          <div class="ml-3">
+            <span class="text-xs sm:text-sm font-bold text-slate-900 block">Deep Web Reader &amp; Markdown Harvester</span>
+            <span class="text-[11px] text-slate-600 block mt-0.5">Extract clean markdown, reading metrics, executive takeaways and text from any article via Jina Reader.</span>
+          </div>
+        </label>
+
+      </div>
+
+      <!-- Form Container: Multiplatform Tools -->
+      <div class="glass-panel p-6 sm:p-8 rounded-3xl space-y-5">
+        
+        <!-- Form 4a: Reddit Sentiment -->
+        <div id="form-4a" class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-500 mr-2"></span>
+                Reddit Community Sentiment &amp; Trends
+              </h3>
+              <p class="text-xs text-slate-600 mt-0.5">Real-time community discussions and sentiment scoring via RSS stream</p>
+            </div>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 font-semibold border border-amber-200 hidden sm:inline">Reddit RSS</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Topic, Brand, or Keyword Query</label>
+              <input type="text" id="reddit_query" placeholder="e.g. Best cafes in Mumbai, AI productivity tools, cursor vs copilot" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Target Subreddit (Optional)</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500 text-sm font-mono">r/</span>
+                <input type="text" id="reddit_sub" placeholder="e.g. mumbai, startups, technology (or leave empty)" class="w-full pl-8 pr-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-1.5 pt-1">
+            <span class="text-[11px] text-slate-500 font-medium mr-1">Quick fill:</span>
+            <button type="button" onclick="setRedditQuery('best cafes in mumbai', 'mumbai')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">☕ Best cafes in Mumbai</button>
+            <button type="button" onclick="setRedditQuery('AI agent coding tools', 'programming')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">🤖 AI Coding Tools</button>
+            <button type="button" onclick="setRedditQuery('freelance web development rates', 'freelance')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">💼 Freelance Rates</button>
+          </div>
+        </div>
+
+        <!-- Form 4b: Web Reader -->
+        <div id="form-4b" class="hidden space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full bg-cyan-600 mr-2"></span>
+                Deep Web Reader &amp; Markdown Harvester
+              </h3>
+              <p class="text-xs text-slate-600 mt-0.5">Extract clean markdown, reading metrics, and executive takeaways from any web URL</p>
+            </div>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700 font-semibold border border-cyan-200 hidden sm:inline">Jina Reader</span>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Article, Blog, or Web URL</label>
+            <input type="url" id="reader_url" placeholder="https://en.wikipedia.org/wiki/Artificial_intelligence or https://techcrunch.com/..." class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-mono">
+            <p class="text-[10px] text-slate-500 mt-1">Converts article contents to clean markdown and exports an executive single-sheet summary into Excel.</p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-1.5 pt-1">
+            <span class="text-[11px] text-slate-500 font-medium mr-1">Quick fill:</span>
+            <button type="button" onclick="setReaderUrl('https://en.wikipedia.org/wiki/Artificial_intelligence')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">🌐 Wikipedia AI</button>
+            <button type="button" onclick="setReaderUrl('https://en.wikipedia.org/wiki/Large_language_model')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 transition shadow-xs">🌐 Wikipedia LLM</button>
+          </div>
+        </div>
+
+        <!-- Launch Button for Multiplatform Tools -->
+        <div class="pt-2">
+          <button onclick="launchMultiplatformTask()" id="launchMultiBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-cyan-600 to-slate-900 hover:from-cyan-500 hover:to-slate-800 font-semibold text-sm sm:text-base text-white shadow-xl shadow-slate-900/20 transition active:scale-[0.99] flex items-center justify-center space-x-2">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span id="launchMultiBtnText">Extract Reddit Sentiment</span>
           </button>
         </div>
 
@@ -1032,6 +1358,232 @@
 
       </div>
 
+
+      <!-- DYNAMIC CONTAINER: OMNI-CHANNEL SCORECARD VIEW -->
+      <div id="view-omni-result" class="hidden space-y-6">
+        <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-purple-200 shadow-xl glow-indigo">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-6">
+              <div class="relative w-32 h-32 flex items-center justify-center">
+                <svg class="w-32 h-32">
+                  <circle cx="64" cy="64" r="54" stroke="#E2E8F0" stroke-width="12" fill="none"/>
+                  <circle id="omniRadialCircle" class="circle-meter" cx="64" cy="64" r="54" stroke="url(#scoreGradient)" stroke-width="12" stroke-linecap="round" stroke-dasharray="339.29" stroke-dashoffset="339.29" fill="none"/>
+                </svg>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                  <span id="omniValHero" class="text-3xl font-extrabold text-slate-900 font-mono">--</span>
+                  <span class="text-[10px] text-slate-500 font-bold tracking-wider uppercase">Out of 100</span>
+                </div>
+              </div>
+              <div>
+                <div class="flex items-center space-x-2.5">
+                  <span id="omniGradeHero" class="text-2xl sm:text-3xl font-black px-3 py-0.5 rounded-xl bg-purple-100 text-purple-700 border border-purple-200">A</span>
+                  <span id="omniNameHero" class="text-lg sm:text-xl font-extrabold text-slate-900">Creator Name</span>
+                </div>
+                <p id="omniNicheHero" class="text-xs text-slate-600 mt-1 font-medium">Evaluated Niche: General</p>
+                <div id="omniVerdictTag" class="inline-block mt-2 text-[10px] px-2.5 py-0.5 rounded-md bg-purple-50 text-purple-700 font-bold border border-purple-200">
+                  High Cross-Platform Momentum
+                </div>
+              </div>
+            </div>
+            <div class="w-full md:w-80 p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm space-y-2">
+              <div class="flex items-center justify-between text-xs font-bold">
+                <span class="text-slate-700">Total Cross-Platform Audience</span>
+                <span id="omniAudienceText" class="text-purple-600 font-mono">500,000+</span>
+              </div>
+              <p id="omniStrategyText" class="text-[11px] text-slate-600 font-medium">Recommended: IG Reel + Dedicated YouTube Integration</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Platform Breakdown Cards -->
+        <div id="omniPlatformsContainer" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        </div>
+      </div>
+
+      <!-- DYNAMIC CONTAINER: YOUTUBE AUDIT VIEW -->
+      <div id="view-youtube-result" class="hidden space-y-6">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="glass-card p-4 rounded-2xl">
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Videos Analyzed</span>
+            <span id="ytTotalVideos" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">0</span>
+          </div>
+          <div class="glass-card p-4 rounded-2xl">
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Avg Views per Video</span>
+            <span id="ytAvgViews" class="text-2xl font-extrabold text-rose-600 font-mono mt-1 block">0</span>
+          </div>
+          <div class="glass-card p-4 rounded-2xl">
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Avg Likes</span>
+            <span id="ytAvgLikes" class="text-2xl font-extrabold text-indigo-600 font-mono mt-1 block">0</span>
+          </div>
+          <div class="glass-card p-4 rounded-2xl">
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Channel Subscribers</span>
+            <span id="ytSubscribers" class="text-2xl font-extrabold text-amber-600 font-mono mt-1 block">--</span>
+          </div>
+        </div>
+
+        <div class="glass-panel p-6 rounded-3xl space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 id="ytChannelTitle" class="text-sm font-bold text-slate-900">Harvested YouTube Videos</h4>
+            <span id="ytVideosCountBadge" class="text-xs text-slate-600 font-medium">0 videos</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-slate-700">
+              <thead class="text-[11px] uppercase bg-slate-100/80 text-slate-600 font-mono border-b border-slate-200">
+                <tr>
+                  <th class="py-2.5 px-3">Video Title</th>
+                  <th class="py-2.5 px-3">Format</th>
+                  <th class="py-2.5 px-3">Views</th>
+                  <th class="py-2.5 px-3">Likes</th>
+                  <th class="py-2.5 px-3">Duration</th>
+                  <th class="py-2.5 px-3">Published</th>
+                  <th class="py-2.5 px-3 text-right">Watch</th>
+                </tr>
+              </thead>
+              <tbody id="ytVideosTableBody" class="divide-y divide-slate-100 font-mono">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- DYNAMIC CONTAINER: TWITTER AUDIT VIEW -->
+      <div id="view-twitter-result" class="hidden space-y-6">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="glass-card p-4 rounded-2xl">
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Tweets Analyzed</span>
+            <span id="twTotalTweets" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">0</span>
+          </div>
+          <div class="glass-card p-4 rounded-2xl">
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Avg Likes</span>
+            <span id="twAvgLikes" class="text-2xl font-extrabold text-sky-600 font-mono mt-1 block">0</span>
+          </div>
+          <div class="glass-card p-4 rounded-2xl">
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Avg Reposts</span>
+            <span id="twAvgReposts" class="text-2xl font-extrabold text-indigo-600 font-mono mt-1 block">0</span>
+          </div>
+          <div class="glass-card p-4 rounded-2xl">
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Est. Profile Reach</span>
+            <span id="twEstReach" class="text-2xl font-extrabold text-emerald-600 font-mono mt-1 block">--</span>
+          </div>
+        </div>
+
+        <div class="glass-panel p-6 rounded-3xl space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 id="twProfileTitle" class="text-sm font-bold text-slate-900">Recent Tweets &amp; Metrics</h4>
+            <span id="twTweetsCountBadge" class="text-xs text-slate-600 font-medium">0 tweets</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-slate-700">
+              <thead class="text-[11px] uppercase bg-slate-100/80 text-slate-600 font-mono border-b border-slate-200">
+                <tr>
+                  <th class="py-2.5 px-3">Tweet Content</th>
+                  <th class="py-2.5 px-3">Likes</th>
+                  <th class="py-2.5 px-3">Reposts</th>
+                  <th class="py-2.5 px-3">Replies</th>
+                  <th class="py-2.5 px-3 text-right">Status URL</th>
+                </tr>
+              </thead>
+              <tbody id="twTweetsTableBody" class="divide-y divide-slate-100 font-mono">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- DYNAMIC CONTAINER: REDDIT SENTIMENT VIEW -->
+      <div id="view-reddit-result" class="hidden space-y-6">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="glass-card p-4 rounded-2xl">
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Overall Sentiment</span>
+            <span id="redditVerdictHero" class="text-lg sm:text-xl font-extrabold text-emerald-600 font-mono mt-1 block truncate">Positive</span>
+          </div>
+          <div class="glass-card p-4 rounded-2xl">
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Discussions Analyzed</span>
+            <span id="redditTotalDiscussions" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">0</span>
+          </div>
+          <div class="glass-card p-4 rounded-2xl">
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Total Community Upvotes</span>
+            <span id="redditTotalUpvotes" class="text-2xl font-extrabold text-amber-600 font-mono mt-1 block">0</span>
+          </div>
+          <div class="glass-card p-4 rounded-2xl">
+            <span class="text-[10px] font-bold text-slate-600 uppercase block">Top Subreddit</span>
+            <span id="redditTopSub" class="text-2xl font-extrabold text-indigo-600 font-mono mt-1 block">--</span>
+          </div>
+        </div>
+
+        <div class="glass-panel p-6 rounded-3xl space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="text-sm font-bold text-slate-900">Sentiment Distribution</h4>
+            <span id="redditSentimentRatio" class="text-xs font-mono font-bold text-slate-700">--</span>
+          </div>
+          <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden flex">
+            <div id="redditBarPos" class="bg-emerald-500 h-3" style="width: 50%" title="Positive"></div>
+            <div id="redditBarNeu" class="bg-slate-400 h-3" style="width: 30%" title="Neutral"></div>
+            <div id="redditBarNeg" class="bg-rose-500 h-3" style="width: 20%" title="Critical"></div>
+          </div>
+          <p id="redditTakeawayText" class="text-xs text-slate-600 font-medium italic pt-1"></p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-3xl space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="text-sm font-bold text-slate-900">Trending Reddit Threads</h4>
+            <span id="redditThreadsCount" class="text-xs text-slate-600 font-medium">0 threads</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-slate-700">
+              <thead class="text-[11px] uppercase bg-slate-100/80 text-slate-600 font-mono border-b border-slate-200">
+                <tr>
+                  <th class="py-2.5 px-3">Discussion Title</th>
+                  <th class="py-2.5 px-3">Subreddit</th>
+                  <th class="py-2.5 px-3">Upvotes</th>
+                  <th class="py-2.5 px-3">Comments</th>
+                  <th class="py-2.5 px-3">Sentiment</th>
+                  <th class="py-2.5 px-3 text-right">Thread</th>
+                </tr>
+              </thead>
+              <tbody id="redditDiscussionsTableBody" class="divide-y divide-slate-100">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- DYNAMIC CONTAINER: WEB READER VIEW -->
+      <div id="view-web-reader-result" class="hidden space-y-6">
+        <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xl space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-cyan-100 text-cyan-800 font-mono font-bold uppercase">Reader Extraction</span>
+              <h3 id="readerArticleTitle" class="text-base sm:text-lg font-bold text-slate-900 mt-1">Article Title</h3>
+              <p id="readerArticleDomain" class="text-xs text-slate-500 font-mono mt-0.5">domain.com</p>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="px-3 py-1.5 rounded-xl bg-slate-100 border border-slate-200 text-center">
+                <span class="text-[10px] text-slate-500 block uppercase font-bold">Word Count</span>
+                <span id="readerWordCount" class="text-xs font-mono font-bold text-slate-900">0</span>
+              </div>
+              <div class="px-3 py-1.5 rounded-xl bg-slate-100 border border-slate-200 text-center">
+                <span class="text-[10px] text-slate-500 block uppercase font-bold">Est. Reading</span>
+                <span id="readerReadingTime" class="text-xs font-mono font-bold text-indigo-600">0 min</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+            <span class="text-xs font-bold text-slate-800 uppercase tracking-wider block">Executive Summary</span>
+            <p id="readerArticleSummary" class="text-xs text-slate-700 leading-relaxed font-normal"></p>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-800">Clean Markdown Preview</span>
+              <button type="button" onclick="copyReaderMarkdown()" class="text-[11px] font-semibold text-indigo-600 hover:text-indigo-800">Copy Full Markdown</button>
+            </div>
+            <pre id="readerMarkdownPreview" class="p-4 rounded-2xl bg-[#0B1120] text-slate-300 font-mono text-[11px] leading-relaxed max-h-72 overflow-y-auto whitespace-pre-wrap select-text"></pre>
+          </div>
+        </div>
+      </div>
+
       <!-- DYNAMIC CONTAINER: ACCOUNT AUDIT / VIRAL RESULTS VIEW -->
       <div id="view-generic-result" class="hidden space-y-6">
         
@@ -1094,7 +1646,7 @@
             <span class="mr-1.5">💡</span> Free 10-Second HTTPS Tunnel on your PC:
           </div>
           <div class="font-mono text-[10px] bg-white p-2 rounded-lg text-indigo-600 border border-indigo-100 select-all font-semibold">
-            cloudflared tunnel --url http://localhost:8000
+            cloudflared tunnel --url http://localhost
           </div>
           <p class="text-[10px] text-slate-600">Copy the generated <code class="text-indigo-600 font-semibold">https://xxx.trycloudflare.com</code> URL and paste above.</p>
         </div>
@@ -1410,7 +1962,7 @@
     function switchTab(tabId) {
       activeTab = tabId;
 
-      ['location', 'account', 'scoreme'].forEach(t => {
+      ['location', 'account', 'scoreme', 'multiplatform'].forEach(t => {
         const card = document.getElementById(`mainToolCard-${t}`);
         const badge = document.getElementById(`cardBadge-${t}`);
         const content = document.getElementById(`tabContent-${t}`);
@@ -1430,7 +1982,10 @@
           }
           if (badge) {
             badge.className = "text-[11px] font-semibold px-2.5 py-1 rounded-xl bg-slate-100 text-slate-700 border border-slate-200";
-            badge.innerText = (t === 'scoreme') ? "Audit Engine" : "3 tools";
+            if (t === 'scoreme') badge.innerText = "Audit Engine";
+            else if (t === 'account') badge.innerText = "5 tools";
+            else if (t === 'multiplatform') badge.innerText = "2 tools";
+            else badge.innerText = "3 tools";
           }
           if (content) content.classList.add('hidden');
         }
@@ -1479,9 +2034,11 @@
       const form2a = document.getElementById('form-2a');
       const form2b = document.getElementById('form-2b');
       const form2c = document.getElementById('form-2c');
+      const form2d = document.getElementById('form-2d');
+      const form2e = document.getElementById('form-2e');
       const btnText = document.getElementById('launchAccBtnText');
 
-      ['2a', '2b', '2c'].forEach(st => {
+      ['2a', '2b', '2c', '2d', '2e'].forEach(st => {
         const card = document.getElementById(`subtoolCard-${st}`);
         if (!card) return;
         if (st === subtool) {
@@ -1491,21 +2048,74 @@
         }
       });
 
+      [form2a, form2b, form2c, form2d, form2e].forEach(f => { if (f) f.classList.add('hidden'); });
+
       if (subtool === '2a') {
-        form2a.classList.remove('hidden');
-        form2b.classList.add('hidden');
-        if (form2c) form2c.classList.add('hidden');
+        if (form2a) form2a.classList.remove('hidden');
         btnText.innerText = "Start Account Audit";
       } else if (subtool === '2b') {
-        form2a.classList.add('hidden');
-        form2b.classList.remove('hidden');
-        if (form2c) form2c.classList.add('hidden');
+        if (form2b) form2b.classList.remove('hidden');
         btnText.innerText = "Inspect Post / Reel";
       } else if (subtool === '2c') {
-        form2a.classList.add('hidden');
-        form2b.classList.add('hidden');
         if (form2c) form2c.classList.remove('hidden');
         btnText.innerText = "Extract 30-Day Comments";
+      } else if (subtool === '2d') {
+        if (form2d) form2d.classList.remove('hidden');
+        btnText.innerText = "Audit YouTube Channel";
+      } else if (subtool === '2e') {
+        if (form2e) form2e.classList.remove('hidden');
+        btnText.innerText = "Audit Twitter / X Profile";
+      }
+    }
+
+    let activeMultiSubtool = '4a';
+    function updateMultiplatformSubtool(subtool) {
+      activeMultiSubtool = subtool;
+      const form4a = document.getElementById('form-4a');
+      const form4b = document.getElementById('form-4b');
+      const btnText = document.getElementById('launchMultiBtnText');
+
+      ['4a', '4b'].forEach(st => {
+        const card = document.getElementById(`subtoolCard-${st}`);
+        if (!card) return;
+        if (st === subtool) {
+          card.className = "relative flex items-start p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md shadow-indigo-500/5 cursor-pointer transition";
+        } else {
+          card.className = "relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs";
+        }
+      });
+
+      if (subtool === '4a') {
+        if (form4a) form4a.classList.remove('hidden');
+        if (form4b) form4b.classList.add('hidden');
+        btnText.innerText = "Extract Reddit Sentiment";
+      } else {
+        if (form4a) form4a.classList.add('hidden');
+        if (form4b) form4b.classList.remove('hidden');
+        btnText.innerText = "Harvest Web Article via Reader";
+      }
+    }
+
+    function setScoreMode(mode) {
+      document.getElementById('current_score_mode').value = mode;
+      const btnSingle = document.getElementById('scoreModeBtn-single');
+      const btnOmni = document.getElementById('scoreModeBtn-omni');
+      const formSingle = document.getElementById('scoreForm-single');
+      const formOmni = document.getElementById('scoreForm-omni');
+      const btnText = document.getElementById('launchScoreBtnText');
+
+      if (mode === 'single') {
+        btnSingle.className = "flex-1 p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md text-left transition cursor-pointer";
+        btnOmni.className = "flex-1 p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white text-left transition cursor-pointer shadow-xs";
+        formSingle.classList.remove('hidden');
+        formOmni.classList.add('hidden');
+        btnText.innerText = "Calculate account score";
+      } else {
+        btnSingle.className = "flex-1 p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white text-left transition cursor-pointer shadow-xs";
+        btnOmni.className = "flex-1 p-4 rounded-2xl border-2 border-purple-500 bg-white shadow-md text-left transition cursor-pointer";
+        formSingle.classList.add('hidden');
+        formOmni.classList.remove('hidden');
+        btnText.innerText = "Compute Omni-Channel Composite Scorecard";
       }
     }
 
@@ -1540,6 +2150,31 @@
     function setScoreAccount(handle, niche) {
       document.getElementById('score_handle').value = handle;
       document.getElementById('score_niche').value = niche;
+    }
+
+    function setYtChannel(ch) {
+      document.getElementById('acc_2d_channel').value = ch;
+    }
+
+    function setTwitterHandle(h) {
+      document.getElementById('acc_2e_handle').value = h;
+    }
+
+    function setOmniCreator(name, ig, yt, x, niche) {
+      document.getElementById('omni_creator_name').value = name;
+      document.getElementById('omni_ig_handle').value = ig;
+      document.getElementById('omni_yt_channel').value = yt;
+      document.getElementById('omni_x_handle').value = x;
+      document.getElementById('omni_niche').value = niche;
+    }
+
+    function setRedditQuery(q, sub) {
+      document.getElementById('reddit_query').value = q;
+      document.getElementById('reddit_sub').value = sub || '';
+    }
+
+    function setReaderUrl(url) {
+      document.getElementById('reader_url').value = url;
     }
 
     // ──────────────────────────────────────────────────────────────
@@ -1595,21 +2230,82 @@
         payload.target_name = handle;
         payload.extract_comments = true;
         payload.comments_days = 30;
+      } else if (activeAccountSubtool === '2d') {
+        const ch = document.getElementById('acc_2d_channel').value.trim();
+        if (!ch) {
+          alert("Please enter a YouTube Channel name or handle.");
+          return;
+        }
+        payload.youtube_channel = ch;
+        payload.max_results = parseInt(document.getElementById('acc_2d_max').value) || 20;
+      } else if (activeAccountSubtool === '2e') {
+        const tw = document.getElementById('acc_2e_handle').value.trim().replace(/@/g, '');
+        if (!tw) {
+          alert("Please enter a Twitter / X handle.");
+          return;
+        }
+        payload.twitter_handle = tw;
+        payload.max_results = parseInt(document.getElementById('acc_2e_max').value) || 15;
       }
       startJob(payload);
     }
 
     function launchScoreMeTask() {
-      const handle = document.getElementById('score_handle').value.trim().replace(/@/g, '');
-      if (!handle) {
-        alert("Please enter an account handle to score.");
-        return;
+      const mode = document.getElementById('current_score_mode').value;
+      if (mode === 'single') {
+        const handle = document.getElementById('score_handle').value.trim().replace(/@/g, '');
+        if (!handle) {
+          alert("Please enter an account handle to score.");
+          return;
+        }
+        const payload = {
+          tool: '3',
+          target_name: handle,
+          niche: document.getElementById('score_niche').value.trim(),
+          omni_mode: false
+        };
+        startJob(payload);
+      } else {
+        const name = document.getElementById('omni_creator_name').value.trim();
+        const ig = document.getElementById('omni_ig_handle').value.trim().replace(/@/g, '');
+        const yt = document.getElementById('omni_yt_channel').value.trim();
+        const tw = document.getElementById('omni_x_handle').value.trim().replace(/@/g, '');
+        if (!ig && !yt && !tw) {
+          alert("Please enter at least one platform handle (Instagram, YouTube, or Twitter/X).");
+          return;
+        }
+        const payload = {
+          tool: 'omni',
+          creator_name: name || ig || yt || tw || "Creator",
+          instagram_handle: ig,
+          youtube_channel: yt,
+          twitter_handle: tw,
+          niche: document.getElementById('omni_niche').value.trim(),
+          omni_mode: true
+        };
+        startJob(payload);
       }
-      const payload = {
-        tool: '3',
-        target_name: handle,
-        niche: document.getElementById('score_niche').value.trim()
-      };
+    }
+
+    function launchMultiplatformTask() {
+      let payload = { tool: activeMultiSubtool };
+      if (activeMultiSubtool === '4a') {
+        const q = document.getElementById('reddit_query').value.trim();
+        if (!q) {
+          alert("Please enter a topic or keyword query for Reddit Sentiment.");
+          return;
+        }
+        payload.query = q;
+        payload.subreddit = document.getElementById('reddit_sub').value.trim().replace(/^r\//i, '');
+        payload.max_results = 25;
+      } else {
+        const url = document.getElementById('reader_url').value.trim();
+        if (!url) {
+          alert("Please enter a web URL for Deep Reader.");
+          return;
+        }
+        payload.web_url = url;
+      }
       startJob(payload);
     }
 
@@ -1630,7 +2326,12 @@
       else if (payload.tool === '2a') taskName = "Auditing Account Profile...";
       else if (payload.tool === '2b') taskName = "Inspecting Post / Reel...";
       else if (payload.tool === '2c') taskName = "Extracting 30-Day Comments...";
-      else if (payload.tool === '3') taskName = "Calculating Reach & Influence Score...";
+      else if (payload.tool === '2d') taskName = "Auditing YouTube Channel...";
+      else if (payload.tool === '2e') taskName = "Auditing Twitter / X Profile & Tweets...";
+      else if (payload.tool === 'omni') taskName = "Computing Omni-Channel Composite Scorecard...";
+      else if (payload.tool === '3') taskName = payload.omni_mode ? "Computing Omni-Channel Scorecard..." : "Calculating Reach & Influence Score...";
+      else if (payload.tool === '4a') taskName = "Analyzing Reddit Community Sentiment...";
+      else if (payload.tool === '4b') taskName = "Reading Web Article via Reader Engine...";
 
       document.getElementById('taskTitleText').innerText = taskName;
       document.getElementById('taskProgressBar').style.width = '10%';
@@ -1740,6 +2441,11 @@
       document.getElementById('excelDownloadBtn').href = `${getApiBase()}/api/download/${fn}`;
 
       document.getElementById('view-scoreme-result').classList.add('hidden');
+      document.getElementById('view-omni-result').classList.add('hidden');
+      document.getElementById('view-youtube-result').classList.add('hidden');
+      document.getElementById('view-twitter-result').classList.add('hidden');
+      document.getElementById('view-reddit-result').classList.add('hidden');
+      document.getElementById('view-web-reader-result').classList.add('hidden');
       document.getElementById('view-gmaps-result').classList.add('hidden');
       document.getElementById('view-generic-result').classList.add('hidden');
 
@@ -1804,6 +2510,167 @@
             </tr>
           `;
         }).join('');
+      }
+
+      // Case: Omni-Channel Composite Scorecard
+      else if (type === 'omni_score') {
+        const od = res.omni_data || {};
+        document.getElementById('view-omni-result').classList.remove('hidden');
+
+        const comp = od.composite_score || 0;
+        document.getElementById('omniValHero').innerText = comp;
+        document.getElementById('omniGradeHero').innerText = od.grade || 'A';
+        document.getElementById('omniNameHero').innerText = od.name || res.creator_name || 'Creator';
+        document.getElementById('omniNicheHero').innerText = `Evaluated Niche: ${od.niche || 'General'}`;
+        document.getElementById('omniVerdictTag').innerText = od.verdict || 'High Cross-Platform Momentum';
+
+        const offset = 339.29 - (339.29 * (comp / 100));
+        document.getElementById('omniRadialCircle').style.strokeDashoffset = offset;
+
+        document.getElementById('omniAudienceText').innerText = Number(od.total_reach || 0).toLocaleString() + "+";
+        document.getElementById('omniStrategyText').innerText = `Recommended: ${od.deal_format || 'IG Reel + YouTube Dedicated Integration'}`;
+
+        const platCont = document.getElementById('omniPlatformsContainer');
+        const plats = od.platforms || [];
+        platCont.innerHTML = plats.map(p => {
+          let badgeColor = 'bg-purple-100 text-purple-700';
+          if (p.name === 'YouTube') badgeColor = 'bg-rose-100 text-rose-700';
+          else if (p.name === 'Twitter / X') badgeColor = 'bg-sky-100 text-sky-700';
+          else if (p.name === 'Instagram') badgeColor = 'bg-pink-100 text-pink-700';
+
+          return `
+            <div class="glass-card p-5 rounded-3xl border border-slate-200 shadow-sm space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold px-2.5 py-0.5 rounded-lg ${badgeColor}">${escapeHtml(p.name)}</span>
+                <span class="text-xs font-mono font-bold text-slate-900">${p.score}/100</span>
+              </div>
+              <p class="text-xs font-bold text-slate-900 mt-1">${escapeHtml(p.handle || '-')}</p>
+              <div class="flex items-center justify-between text-[11px] text-slate-600 font-mono pt-1">
+                <span>Audience: ${Number(p.audience || 0).toLocaleString()}</span>
+                <span class="text-emerald-600 font-bold">${escapeHtml(p.momentum || 'Active')}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Case: YouTube Channel Audit
+      else if (type === 'youtube_audit') {
+        document.getElementById('view-youtube-result').classList.remove('hidden');
+        const ch = res.channel_data || {};
+        const vids = res.videos || [];
+
+        document.getElementById('ytTotalVideos').innerText = res.total_videos || vids.length;
+        document.getElementById('ytAvgViews').innerText = Number(ch.avg_views || 0).toLocaleString();
+        document.getElementById('ytAvgLikes').innerText = Number(ch.avg_likes || 0).toLocaleString();
+        document.getElementById('ytSubscribers').innerText = ch.subscribers_formatted || (ch.subscribers ? Number(ch.subscribers).toLocaleString() : 'N/A');
+        document.getElementById('ytChannelTitle').innerText = `Videos for ${ch.title || res.channel || 'Channel'}`;
+        document.getElementById('ytVideosCountBadge').innerText = `${vids.length} videos`;
+
+        const tbody = document.getElementById('ytVideosTableBody');
+        tbody.innerHTML = vids.map(v => {
+          const watchUrl = v.url || `https://www.youtube.com/watch?v=${v.id}`;
+          return `
+            <tr class="hover:bg-rose-50/40 transition">
+              <td class="py-2.5 px-3 font-bold text-slate-900 truncate max-w-xs">${escapeHtml(v.title || 'Video')}</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded-md ${v.format === 'Shorts' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-700'} text-[10px] font-bold">${escapeHtml(v.format || 'Video')}</span></td>
+              <td class="py-2.5 px-3 text-rose-600 font-bold">${Number(v.views || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3">${Number(v.likes || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-slate-600">${v.duration || '--'}</td>
+              <td class="py-2.5 px-3 text-slate-500">${v.publish_date || '--'}</td>
+              <td class="py-2.5 px-3 text-right">
+                <a href="${watchUrl}" target="_blank" rel="noopener noreferrer" class="text-rose-600 hover:text-rose-800 font-bold hover:underline">Watch ↗</a>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      // Case: Twitter / X Creator Audit
+      else if (type === 'twitter_audit') {
+        document.getElementById('view-twitter-result').classList.remove('hidden');
+        const prof = res.profile || {};
+        const tweets = res.tweets || [];
+
+        document.getElementById('twTotalTweets').innerText = res.total_tweets || tweets.length;
+        document.getElementById('twAvgLikes').innerText = Number(prof.avg_likes || 0).toLocaleString();
+        document.getElementById('twAvgReposts').innerText = Number(prof.avg_reposts || 0).toLocaleString();
+        document.getElementById('twEstReach').innerText = prof.followers ? Number(prof.followers).toLocaleString() : 'Active Audience';
+        document.getElementById('twProfileTitle').innerText = `Tweets & Activity for @${res.handle || prof.handle || ''}`;
+        document.getElementById('twTweetsCountBadge').innerText = `${tweets.length} tweets`;
+
+        const tbody = document.getElementById('twTweetsTableBody');
+        tbody.innerHTML = tweets.map(t => {
+          const tUrl = t.url || `https://x.com/${res.handle}/status/${t.id}`;
+          return `
+            <tr class="hover:bg-sky-50/40 transition">
+              <td class="py-2.5 px-3 text-slate-800 font-medium truncate max-w-sm">${escapeHtml(t.text || '')}</td>
+              <td class="py-2.5 px-3 text-rose-600 font-bold">❤️ ${Number(t.likes || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-sky-600 font-bold">🔄 ${Number(t.reposts || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-slate-500">💬 ${Number(t.replies || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-right">
+                <a href="${tUrl}" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:text-sky-800 font-bold hover:underline">Status ↗</a>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      // Case: Reddit Sentiment
+      else if (type === 'reddit_sentiment') {
+        document.getElementById('view-reddit-result').classList.remove('hidden');
+        const sum = res.sentiment_summary || {};
+        const disc = res.discussions || [];
+
+        document.getElementById('redditVerdictHero').innerText = sum.verdict || 'Balanced';
+        document.getElementById('redditTotalDiscussions').innerText = res.total_discussions || disc.length;
+        document.getElementById('redditTotalUpvotes').innerText = Number(sum.total_upvotes || 0).toLocaleString();
+        document.getElementById('redditTopSub').innerText = sum.top_subreddit || ('r/' + (res.subreddit || 'all'));
+
+        const posP = sum.positive_pct || 40;
+        const neuP = sum.neutral_pct || 30;
+        const negP = sum.critical_pct || 30;
+
+        document.getElementById('redditBarPos').style.width = `${posP}%`;
+        document.getElementById('redditBarNeu').style.width = `${neuP}%`;
+        document.getElementById('redditBarNeg').style.width = `${negP}%`;
+        document.getElementById('redditSentimentRatio').innerText = `${posP}% Pos • ${neuP}% Neu • ${negP}% Crit`;
+        document.getElementById('redditTakeawayText').innerText = sum.takeaway || sum.verdict_formatted || '';
+        document.getElementById('redditThreadsCount').innerText = `${disc.length} discussions`;
+
+        const tbody = document.getElementById('redditDiscussionsTableBody');
+        tbody.innerHTML = disc.map(d => {
+          let sBadge = 'bg-slate-100 text-slate-700';
+          if (d.sentiment === 'Positive') sBadge = 'bg-emerald-100 text-emerald-800';
+          else if (d.sentiment === 'Negative' || d.sentiment === 'Critical') sBadge = 'bg-rose-100 text-rose-800';
+
+          return `
+            <tr class="hover:bg-amber-50/40 transition">
+              <td class="py-2.5 px-3 font-bold text-slate-900 truncate max-w-sm">${escapeHtml(d.title || '')}</td>
+              <td class="py-2.5 px-3 font-mono text-indigo-600">${escapeHtml(d.subreddit || 'reddit')}</td>
+              <td class="py-2.5 px-3 font-mono font-bold text-amber-600">⬆️ ${Number(d.upvotes || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 font-mono text-slate-600">💬 ${Number(d.comments || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded-md ${sBadge} text-[10px] font-bold">${escapeHtml(d.sentiment || 'Neutral')}</span></td>
+              <td class="py-2.5 px-3 text-right">
+                <a href="${d.url || '#'}" target="_blank" rel="noopener noreferrer" class="text-amber-600 hover:text-amber-800 font-bold hover:underline">Thread ↗</a>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      // Case: Web Reader
+      else if (type === 'web_reader') {
+        document.getElementById('view-web-reader-result').classList.remove('hidden');
+        const art = res.article || {};
+
+        document.getElementById('readerArticleTitle').innerText = art.title || 'Extracted Article';
+        document.getElementById('readerArticleDomain').innerText = art.domain || art.url || '';
+        document.getElementById('readerWordCount').innerText = Number(art.word_count || 0).toLocaleString();
+        document.getElementById('readerReadingTime').innerText = art.reading_time || '3 min';
+        document.getElementById('readerArticleSummary').innerText = art.summary || 'Summary unavailable.';
+        document.getElementById('readerMarkdownPreview').innerText = art.markdown_full || art.summary || '';
+        window.lastReaderMarkdown = art.markdown_full || '';
       }
 
       // Case 2: Google Maps Leads View
@@ -2023,6 +2890,13 @@
         modal.classList.remove('hidden');
       } else {
         modal.classList.add('hidden');
+      }
+    }
+
+    function copyReaderMarkdown() {
+      if (window.lastReaderMarkdown) {
+        navigator.clipboard.writeText(window.lastReaderMarkdown);
+        showToast("📄 Full markdown copied to clipboard!");
       }
     }
 
