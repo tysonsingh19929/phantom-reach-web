@@ -264,6 +264,13 @@
         
         
 
+        <!-- Backend API Configuration Button -->
+        <button onclick="toggleApiModal(true)" id="apiConfigBtn" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-blue-50/50 text-xs font-semibold text-slate-700 hover:text-slate-900 shadow-2xs transition hover:border-slate-300" title="Configure Backend API / Tunnel">
+          <span id="apiStatusDot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="hidden sm:inline">Backend API</span>
+          <span class="sm:hidden text-[10px] font-bold">API</span>
+        </button>
+
         <!-- Reports Archive Button -->
         <button onclick="toggleHistoryModal(true)" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-blue-50/50 border border-slate-200 text-xs font-semibold text-slate-700 hover:text-slate-900 transition shadow-xs">
           <svg class="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1227,6 +1234,31 @@
         <div id="taskProgressBar" class="bg-gradient-to-r from-blue-600 to-slate-900 h-2.5 rounded-full transition-all duration-300" style="width: 15%"></div>
       </div>
 
+      <!-- LIVE WORKING LOGS UI STREAM -->
+      <div class="rounded-2xl bg-slate-900 border border-slate-800 shadow-lg overflow-hidden text-slate-300 font-mono text-xs">
+        <div class="px-4 py-2.5 bg-slate-950/90 border-b border-slate-800/80 flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <div class="flex space-x-1.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
+            </div>
+            <span class="text-[11px] font-bold text-slate-200 tracking-wide ml-1.5 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              Live Working Logs &mdash; Fetching Stream
+            </span>
+          </div>
+          <span id="logLinesCount" class="text-[10px] text-slate-400 font-semibold font-mono bg-slate-800 px-2 py-0.5 rounded-md">0 logs</span>
+        </div>
+        <div id="terminalLogBox" class="p-3.5 sm:p-4 h-44 overflow-y-auto space-y-1 text-[11px] leading-relaxed select-text scrollbar-thin scrollbar-thumb-slate-700 bg-slate-900/90">
+          <div class="text-slate-400 flex items-center gap-2">
+            <span class="animate-spin text-blue-400">🌀</span>
+            <span>Initializing worker and preparing scraper...</span>
+          </div>
+        </div>
+      </div>
+
+
       <!-- Queue Status Notice & High-Demand Multiplier Section -->
       <div id="queueStatusNotice" class="hidden space-y-3">
         <!-- Queue Alert Header -->
@@ -1780,6 +1812,46 @@
   </main>
 
   <!-- ================================================================ -->
+    <!-- ================================================================ -->
+  <!-- BACKEND API & TUNNEL CONFIGURATION MODAL -->
+  <!-- ================================================================ -->
+  <div id="apiConfigModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-2.5">
+          <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm">🌐</div>
+          <div>
+            <h3 class="text-sm font-bold text-slate-900">Backend API &amp; Tunnel</h3>
+            <p class="text-[11px] text-slate-500">Connect to your local server or Cloudflare tunnel</p>
+          </div>
+        </div>
+        <button onclick="toggleApiModal(false)" class="p-1.5 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition">✕</button>
+      </div>
+
+      <div class="space-y-3">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Backend API / Tunnel URL</label>
+          <input type="text" id="customApiInput" placeholder="https://xxx.trycloudflare.com" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-blue-500 focus:bg-white text-xs text-slate-900 font-mono outline-none transition">
+          <p class="text-[10px] text-slate-500 mt-1">Leave empty to use the auto-connected tunnel, or paste your custom address.</p>
+        </div>
+
+        <div id="apiTestStatus" class="hidden p-3 rounded-xl text-xs bg-slate-50 border border-slate-200"></div>
+
+        <div class="flex items-center gap-2 pt-1">
+          <button type="button" onclick="testApiConnection()" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">
+            ⚡ Test Ping
+          </button>
+          <button type="button" onclick="saveApiEndpoint()" class="flex-1 py-2.5 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition shadow-xs">
+            Save &amp; Connect
+          </button>
+          <button type="button" onclick="resetApiEndpoint()" class="py-2.5 px-3 rounded-xl bg-white hover:bg-slate-100 text-slate-600 text-xs font-medium border border-slate-200 transition" title="Reset">
+            Reset
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- EXCEL REPORTS HISTORY MODAL -->
   <!-- ================================================================ -->
   <div id="historyModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
@@ -2046,13 +2118,112 @@
     // ──────────────────────────────────────────────────────────────
     // BACKEND API ENDPOINT CONFIGURATION (Managed via Terminal)
     // ──────────────────────────────────────────────────────────────
-    window.BACKEND_API_BASE = "https://appear-equally-occurring-highly.trycloudflare.com";
+    window.BACKEND_API_BASE = "https://permission-dogs-dancing-gifts.trycloudflare.com";
 
+    // ──────────────────────────────────────────────────────────────
+    // BACKEND API & TUNNEL CONTROLS (Restored for easy UI setting)
+    // ──────────────────────────────────────────────────────────────
     function getApiBase() {
+      const custom = localStorage.getItem('phantom_custom_api');
+      if (custom && custom.trim()) return custom.trim().replace(/\/+$/, '');
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return '';
+      }
       if (window.BACKEND_API_BASE && window.BACKEND_API_BASE.startsWith('http')) {
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-          return '';
-        }
+        return window.BACKEND_API_BASE.trim().replace(/\/+$/, '');
+      }
+      return '';
+    }
+
+    function updateApiStatusIndicator() {
+      const base = getApiBase();
+      const dot = document.getElementById('apiStatusDot');
+      const btn = document.getElementById('apiConfigBtn');
+      if (!dot || !btn) return;
+      if (base) {
+        dot.className = "w-2 h-2 rounded-full bg-emerald-500 animate-pulse";
+        btn.title = `Connected to API: ${base}`;
+      } else {
+        dot.className = "w-2 h-2 rounded-full bg-blue-500";
+        btn.title = `Using Local Origin`;
+      }
+    }
+
+    function toggleApiModal(open) {
+      const modal = document.getElementById('apiConfigModal');
+      if (!modal) return;
+      if (open) {
+        const input = document.getElementById('customApiInput');
+        if (input) input.value = localStorage.getItem('phantom_custom_api') || window.BACKEND_API_BASE || '';
+        const statusBox = document.getElementById('apiTestStatus');
+        if (statusBox) statusBox.classList.add('hidden');
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+
+    async function testApiConnection() {
+      const inputUrl = (document.getElementById('customApiInput').value || '').trim().replace(/\/+$/, '');
+      const testUrl = inputUrl ? `${inputUrl}/api/system-info` : `/api/system-info`;
+      const statusBox = document.getElementById('apiTestStatus');
+      if (!statusBox) return;
+      statusBox.classList.remove('hidden');
+      statusBox.innerHTML = `<span class="text-blue-600 font-semibold animate-pulse">Pinging backend API (${testUrl})...</span>`;
+
+      const startTime = Date.now();
+      try {
+        const res = await fetch(testUrl);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const latency = Date.now() - startTime;
+        statusBox.innerHTML = `
+          <div class="text-emerald-800 font-bold flex items-center gap-1.5">
+            <span>✅</span> Connected Successfully (${latency}ms)
+          </div>
+          <div class="text-[10px] text-slate-600 mt-0.5 font-mono">
+            Server status: ${data.status} | Total reports: ${data.total_reports || 0}
+          </div>
+        `;
+      } catch (err) {
+        statusBox.innerHTML = `
+          <div class="text-rose-800 font-bold flex items-center gap-1.5">
+            <span>❌</span> Connection Failed: ${err.message}
+          </div>
+          <div class="text-[10px] text-slate-600 mt-0.5">
+            Check that your server or Cloudflare tunnel is running.
+          </div>
+        `;
+      }
+    }
+
+    function saveApiEndpoint() {
+      const inputUrl = (document.getElementById('customApiInput').value || '').trim().replace(/\/+$/, '');
+      if (inputUrl) {
+        localStorage.setItem('phantom_custom_api', inputUrl);
+        showToast(`Backend API set: ${inputUrl}`, "🌐");
+      } else {
+        localStorage.removeItem('phantom_custom_api');
+        showToast("Reset to default tunnel", "🌐");
+      }
+      updateApiStatusIndicator();
+      toggleApiModal(false);
+      fetchSystemInfo();
+      fetchHistory();
+    }
+
+    function resetApiEndpoint() {
+      localStorage.removeItem('phantom_custom_api');
+      const input = document.getElementById('customApiInput');
+      if (input) input.value = '';
+      updateApiStatusIndicator();
+      showToast("Reset to default tunnel origin", "🌐");
+      fetchSystemInfo();
+      fetchHistory();
+    }
+
+
+    
         return window.BACKEND_API_BASE.trim().replace(/\/+$/, '');
       }
       const cached = localStorage.getItem('phantom_custom_api');
@@ -2781,7 +2952,7 @@
       document.getElementById('taskProgressPercent').innerText = '10%';
       document.getElementById('taskStatusBadge').innerText = 'Processing';
       document.getElementById('taskStatusBadge').className = 'text-[10px] px-2.5 py-0.5 rounded-full bg-blue-100 text-slate-900 font-bold';
-      document.getElementById('terminalLogBox').innerHTML = `<div class="text-white font-semibold">[System] Dispatching background task: ${taskFriendlyName}...</div>`;
+      const tb = document.getElementById('terminalLogBox'); if(tb) tb.innerHTML = `<div class="text-white font-semibold">[System] Dispatching background task: ${taskFriendlyName}...</div>`;
 
       try {
         const res = await fetch(`${getApiBase()}/api/run`, {
