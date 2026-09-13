@@ -262,14 +262,7 @@
       <!-- Quick Info & Navigation Actions -->
       <div class="flex items-center space-x-2 sm:space-x-3">
         
-        <!-- Backend API Config Button (Vercel / Remote Tunnel) -->
-        <button onclick="toggleApiModal(true)" id="apiConfigBtn" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 transition shadow-xs" title="Configure Backend API (Vercel / Tunnel)">
-          <svg class="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-          </svg>
-          <span class="hidden sm:inline">Backend API</span>
-        </button>
+        
 
         <!-- Reports Archive Button -->
         <button onclick="toggleHistoryModal(true)" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-blue-50/50 border border-slate-200 text-xs font-semibold text-slate-700 hover:text-slate-900 transition shadow-xs">
@@ -1190,55 +1183,77 @@
         <div id="taskProgressBar" class="bg-gradient-to-r from-blue-600 to-slate-900 h-2.5 rounded-full transition-all duration-300" style="width: 15%"></div>
       </div>
 
-      <!-- Queue Status Notice (Displayed when user tries to run another tool while one is busy) -->
-      <div id="queueStatusNotice" class="hidden rounded-2xl bg-amber-50 border border-amber-200/90 p-3.5 text-xs text-amber-950 flex items-center justify-between gap-3 shadow-xs">
-        <div class="flex items-center gap-2.5 min-w-0">
-          <div class="w-7 h-7 rounded-xl bg-amber-200/80 text-amber-900 flex items-center justify-center shrink-0 font-bold text-sm">⏳</div>
-          <div class="min-w-0">
-            <span class="font-bold text-amber-900">Request Queued:</span> Another tool is currently executing. <span id="queueNoticeText" class="font-semibold">Your request is waiting in line</span> and will start automatically as soon as this job finishes.
+      <!-- Queue Status Notice & High-Demand Multiplier Section -->
+      <div id="queueStatusNotice" class="hidden space-y-3">
+        <!-- Queue Alert Header -->
+        <div class="rounded-2xl bg-amber-50 border border-amber-200/90 p-4 text-xs text-amber-950 flex items-center justify-between gap-3 shadow-xs">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-8 h-8 rounded-xl bg-amber-200/80 text-amber-900 flex items-center justify-center shrink-0 font-bold text-sm">⏳</div>
+            <div class="min-w-0">
+              <span class="font-bold text-amber-900">Request Queued:</span> Another tool is currently executing. <span id="queueNoticeText" class="font-semibold">Your request is waiting in line</span>. Skip the wait below and receive your report directly!
+            </div>
           </div>
-        </div>
-        <button type="button" onclick="clearJobQueue()" class="text-[11px] font-bold text-amber-800 hover:text-amber-950 underline shrink-0 px-2.5 py-1 rounded-lg hover:bg-amber-100 transition">Cancel Queue</button>
-      </div>
-
-      <!-- High-Contrast Developer Log Stream -->
-      <div class="relative">
-        <div class="flex items-center justify-between pb-1.5 text-[11px] text-slate-600 font-mono">
-          <span>Engine Execution Stream</span>
-          <span id="logLinesCount" class="text-slate-500">0 logs</span>
-        </div>
-        <div id="terminalLogBox" class="w-full h-44 sm:h-52 bg-[#0B1120] rounded-2xl p-3.5 font-mono text-[11px] leading-relaxed text-slate-300 overflow-y-auto border border-slate-800 space-y-1 select-text shadow-inner">
-          <div class="text-slate-300">[System] Initializing session...</div>
+          <button type="button" onclick="clearJobQueue()" class="text-[11px] font-bold text-amber-800 hover:text-amber-950 underline shrink-0 px-2.5 py-1 rounded-lg hover:bg-amber-100 transition">Cancel Queue</button>
         </div>
       </div>
 
-      <!-- High-Demand Fallback: Deliver Report via WhatsApp / Email -->
-      <div class="rounded-2xl bg-blue-50 border border-blue-100 p-4 sm:p-5 space-y-3">
-        <div class="flex items-start gap-2.5">
-          <svg class="w-4 h-4 text-blue-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
-          <p class="text-xs sm:text-sm text-slate-900 leading-relaxed">
-            <span class="font-bold">Sorry to make you wait</span> — we're getting a lot of requests right now. Skip the wait and get your Excel report sent straight to WhatsApp or email instead.
-          </p>
+      <!-- High-Demand Fallback: 1) DELIVER REPORT VIA WHATSAPP / EMAIL FIRST -->
+      <div class="rounded-2xl bg-gradient-to-r from-blue-50/90 via-white to-blue-50/90 border border-blue-200 p-4 sm:p-5 space-y-4 shadow-sm">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-blue-100/80 pb-3">
+          <div class="flex items-start gap-2.5">
+            <div class="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-xs text-xs font-bold">📲</div>
+            <div>
+              <h4 class="text-xs sm:text-sm font-extrabold text-slate-900">Get Excel Report Directly on WhatsApp or Email</h4>
+              <p class="text-[11px] text-slate-600">Skip the waiting queue &mdash; we'll dispatch your single-sheet Excel workbook as soon as it's ready.</p>
+            </div>
+          </div>
+          <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-900 font-bold font-mono self-start sm:self-auto shrink-0">Instant Dispatch</span>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div class="flex gap-2">
             <input id="altDeliveryWhatsapp" type="tel" placeholder="WhatsApp number, e.g. +91 98765 43210" class="flex-1 min-w-0 px-3 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition">
-            <button type="button" onclick="requestAltDelivery('whatsapp')" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold transition shrink-0 shadow-md shadow-blue-600/20">Send</button>
+            <button type="button" onclick="requestAltDelivery('whatsapp')" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold transition shrink-0 shadow-md shadow-emerald-600/20 flex items-center space-x-1.5">
+              <span>Send</span>
+            </button>
           </div>
           <div class="flex gap-2">
             <input id="altDeliveryEmail" type="email" placeholder="Email address" class="flex-1 min-w-0 px-3 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition">
-            <button type="button" onclick="requestAltDelivery('email')" class="px-4 py-2.5 rounded-xl bg-white hover:bg-blue-50 border border-blue-200 text-slate-900 text-xs sm:text-sm font-semibold transition shrink-0">Send</button>
+            <button type="button" onclick="requestAltDelivery('email')" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold transition shrink-0 shadow-md shadow-blue-600/20">Send</button>
           </div>
         </div>
+
         <div id="altDeliveryFeedback" class="hidden text-xs font-semibold text-emerald-900 bg-emerald-50 border border-emerald-200 rounded-xl p-2.5 flex items-center gap-2">
           <span>✅</span>
           <span id="altDeliveryFeedbackText">Delivery registered! Your Excel workbook will be dispatched immediately once generated.</span>
         </div>
-      </div>
 
-    </div>
+        <!-- 2) THEN: WE ARE GETTING TOO MANY REQUESTS RIGHT NOW — HELP US GROW BANNER -->
+        <div class="rounded-xl bg-blue-50/70 border border-blue-200/70 p-3.5 space-y-2">
+          <div class="flex items-start gap-2.5">
+            <span class="text-blue-600 font-bold text-base mt-0.5">🚀</span>
+            <div class="space-y-0.5">
+              <p class="text-xs font-bold text-slate-900">
+                We are getting too many requests right now!
+              </p>
+              <p class="text-[11px] text-slate-600 leading-relaxed">
+                Our servers are currently operating at peak capacity. <strong class="text-slate-900 font-semibold">Please help us grow so we can multiply our speed and infrastructure!</strong> Share Vanguard Social with your partners, creators, or team.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 pt-1">
+            <button type="button" onclick="shareVanguardToWhatsApp()" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-bold transition flex items-center space-x-1.5 shadow-xs">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              <span>Share &amp; Help Us Grow</span>
+            </button>
+            <button type="button" onclick="copyShareLink()" class="px-3 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-slate-800 border border-slate-200 text-[11px] font-semibold transition flex items-center space-x-1 shadow-2xs">
+              <span>🔗 Copy Platform Link</span>
+            </button>
+          </div>
+        </div>
+
+      </div></div>
 
     <!-- ================================================================ -->
     <!-- IN-DASHBOARD RESULTS SECTION (RENDERED DIRECTLY ON SAME PAGE) -->
@@ -1721,68 +1736,6 @@
   </main>
 
   <!-- ================================================================ -->
-  <!-- BACKEND API CONFIG MODAL (FOR VERCEL / REMOTE ACCESS) -->
-  <!-- ================================================================ -->
-  <div id="apiConfigModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="glass-panel max-w-md w-full rounded-3xl p-6 space-y-4 flex flex-col border border-white shadow-2xl">
-      
-      <div class="flex items-center justify-between pb-3 border-b border-slate-200">
-        <div class="flex items-center space-x-2.5">
-          <div class="w-8 h-8 rounded-xl bg-blue-100 text-slate-900 flex items-center justify-center">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-sm font-extrabold text-slate-900">Backend API Server</h3>
-            <p class="text-[11px] text-slate-600">Connect Vercel to your Local PC</p>
-          </div>
-        </div>
-
-        <button onclick="toggleApiModal(false)" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
-      </div>
-
-      <div class="space-y-3">
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1.5">API Base URL (Cloudflare Tunnel or Ngrok)</label>
-          <input type="url" id="customApiInput" placeholder="https://your-tunnel.trycloudflare.com" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 text-xs text-slate-900 placeholder-slate-400 outline-none font-mono shadow-xs">
-          <p class="text-[10px] text-slate-600 mt-1">Leave empty when opening locally on localhost. Paste your HTTPS tunnel URL when visiting from Vercel.</p>
-        </div>
-
-        <div id="apiTestStatus" class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 hidden">
-        </div>
-
-        <div class="p-3.5 rounded-2xl bg-blue-50/60 border border-blue-200 text-[11px] text-slate-700 space-y-1">
-          <div class="font-bold text-slate-900 flex items-center">
-            <span class="mr-1.5">💡</span> Free 10-Second HTTPS Tunnel on your PC:
-          </div>
-          <div class="font-mono text-[10px] bg-white p-2 rounded-lg text-slate-900 border border-blue-100 select-all font-semibold">
-            cloudflared tunnel --url http://localhost
-          </div>
-          <p class="text-[10px] text-slate-600">Copy the generated <code class="text-slate-900 font-semibold">https://xxx.trycloudflare.com</code> URL and paste above.</p>
-        </div>
-
-        <div class="flex items-center space-x-2 pt-1">
-          <button onclick="testApiConnection()" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold border border-slate-200 transition">
-            ⚡ Test Ping
-          </button>
-          <button onclick="saveApiEndpoint()" class="flex-1 py-2.5 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-extrabold transition shadow-md shadow-blue-600/25">
-            Save & Connect
-          </button>
-          <button onclick="resetApiEndpoint()" class="py-2.5 px-3 rounded-xl bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-800 text-xs transition border border-slate-200 font-medium" title="Reset to Localhost">
-            Reset
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ================================================================ -->
   <!-- EXCEL REPORTS HISTORY MODAL -->
   <!-- ================================================================ -->
   <div id="historyModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
@@ -1915,127 +1868,35 @@
     let currentTaskId = null;
     let rawGmapsLeads = [];
 
+    // ──────────────────────────────────────────────────────────────
+    // BACKEND API ENDPOINT CONFIGURATION (Managed via Terminal)
+    // ──────────────────────────────────────────────────────────────
+    window.BACKEND_API_BASE = "https://moderate-treatments-conferencing-specialists.trycloudflare.com";
+
     function getApiBase() {
-      const custom = localStorage.getItem('phantom_custom_api');
-      if (custom) return custom.trim().replace(/\/+$/, '');
+      if (window.BACKEND_API_BASE && window.BACKEND_API_BASE.startsWith('http')) {
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+          return '';
+        }
+        return window.BACKEND_API_BASE.trim().replace(/\/+$/, '');
+      }
+      const cached = localStorage.getItem('phantom_custom_api');
+      if (cached) return cached.trim().replace(/\/+$/, '');
       return '';
     }
 
-    function updateApiStatusIndicator() {
-      const base = getApiBase();
-      const dot = document.getElementById('apiStatusDot');
-      if (!dot) return;
-      if (base) {
-        dot.className = "w-2 h-2 rounded-full bg-blue-600 animate-pulse";
-        document.getElementById('apiConfigBtn').title = `Connected to Tunnel: ${base}`;
-      } else {
-        dot.className = "w-2 h-2 rounded-full bg-blue-500";
-        document.getElementById('apiConfigBtn').title = `Using Local Origin`;
-      }
+    function shareVanguardToWhatsApp() {
+      const siteUrl = window.location.origin;
+      const text = `🔥 Check out Vanguard Social — the ultimate multi-platform intelligence engine for verified business leads, viral creators & proof of ROI:\n${siteUrl}\nHelp us grow so we can multiply speed and features!`;
+      const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+      window.open(waUrl, '_blank');
+      showToast("Opening WhatsApp to share Vanguard Social...", "🚀");
     }
 
-    function toggleApiModal(open) {
-      const modal = document.getElementById('apiConfigModal');
-      if (open) {
-        document.getElementById('customApiInput').value = getApiBase();
-        document.getElementById('apiTestStatus').classList.add('hidden');
-        modal.classList.remove('hidden');
-      } else {
-        modal.classList.add('hidden');
-      }
-    }
-
-    async function testApiConnection() {
-      const inputUrl = document.getElementById('customApiInput').value.trim().replace(/\/+$/, '');
-      const testUrl = inputUrl ? `${inputUrl}/api/system-info` : `/api/system-info`;
-      const statusBox = document.getElementById('apiTestStatus');
-      statusBox.classList.remove('hidden');
-      statusBox.innerHTML = `<span class="text-slate-900 font-semibold">Pinging backend API...</span>`;
-
-      const startTime = Date.now();
-      try {
-        const res = await fetch(testUrl);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        const latency = Date.now() - startTime;
-        statusBox.innerHTML = `
-          <div class="text-slate-900 font-bold flex items-center">
-            <span class="mr-1.5">✅</span> Connected Successfully (${latency}ms)
-          </div>
-          <div class="text-[10px] text-slate-600 mt-0.5 font-mono">
-            Status: Ready | Reports archive: ${data.total_reports || 0}
-          </div>
-        `;
-      } catch (err) {
-        statusBox.innerHTML = `
-          <div class="text-slate-900 font-bold flex items-center">
-            <span class="mr-1.5">❌</span> Connection Failed: ${err.message}
-          </div>
-          <div class="text-[10px] text-slate-600 mt-0.5">
-            Make sure your local backend engine is running and your HTTPS tunnel is active.
-          </div>
-        `;
-      }
-    }
-
-    function saveApiEndpoint() {
-      const inputUrl = document.getElementById('customApiInput').value.trim().replace(/\/+$/, '');
-      if (inputUrl) {
-        localStorage.setItem('phantom_custom_api', inputUrl);
-        showToast(`API Base set: ${inputUrl}`);
-      } else {
-        localStorage.removeItem('phantom_custom_api');
-        showToast("Reset to default local origin");
-      }
-      updateApiStatusIndicator();
-      toggleApiModal(false);
-      fetchSystemInfo();
-      fetchHistory();
-    }
-
-    function resetApiEndpoint() {
-      localStorage.removeItem('phantom_custom_api');
-      document.getElementById('customApiInput').value = '';
-      updateApiStatusIndicator();
-      showToast("Reset to default localhost origin");
-      fetchSystemInfo();
-      fetchHistory();
-    }
-
-    // System info on load
-    window.addEventListener('DOMContentLoaded', () => {
-      updateApiStatusIndicator();
-      fetchSystemInfo();
-      fetchHistory();
-    });
-
-    async function fetchSystemInfo() {
-      try {
-        const res = await fetch(`${getApiBase()}/api/system-info`);
-        const contentType = res.headers.get('content-type') || '';
-        if (!res.ok || !contentType.includes('application/json')) {
-          setBackendReachable(false);
-          return;
-        }
-        const data = await res.json();
-        setBackendReachable(true);
-        if (data.total_reports !== undefined) {
-          const badge = document.getElementById('reportsCountBadge');
-          if (badge) badge.innerText = data.total_reports;
-        }
-      } catch(e) {
-        setBackendReachable(false);
-      }
-    }
-
-    function setBackendReachable(isReachable) {
-      const btn = document.getElementById('apiConfigBtn');
-      if (!btn) return;
-      if (isReachable) {
-        btn.title = "Backend API connected";
-      } else {
-        btn.title = "Backend not reachable — configure your API address";
-      }
+    function copyShareLink() {
+      const siteUrl = window.location.origin;
+      navigator.clipboard.writeText(siteUrl);
+      showToast("🔗 Link copied! Share with friends to help us grow.", "🚀");
     }
 
     function copyMobileUrl() {
