@@ -2224,12 +2224,7 @@
 
 
     
-        return window.BACKEND_API_BASE.trim().replace(/\/+$/, '');
-      }
-      const cached = localStorage.getItem('phantom_custom_api');
-      if (cached) return cached.trim().replace(/\/+$/, '');
-      return '';
-    }
+
 
     function shareVanguardToWhatsApp() {
       const siteUrl = window.location.origin;
