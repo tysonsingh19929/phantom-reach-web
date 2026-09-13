@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Vanguard Social is your multi-platform intelligence engine for finding local creators, verified business leads, and influence scores in minutes.">
-  <meta name="theme-color" content="#eef1ff">
+  <meta name="theme-color" content="#eff6ff">
   <title>Vanguard Social — Multi-Platform Intelligence Engine</title>
 
   <!-- Favicon (inline SVG, no external file needed) -->
@@ -18,11 +18,11 @@
         extend: {
           colors: {
             brand: {
-              50: '#f5f7ff',
-              100: '#ebf0fe',
-              500: '#6366f1',
-              600: '#4f46e5',
-              700: '#4338ca',
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
             }
           },
           fontFamily: {
@@ -101,11 +101,11 @@
     }
 
     .glow-purple {
-      box-shadow: 0 12px 35px -5px rgba(168, 85, 247, 0.22);
+      box-shadow: 0 12px 35px -5px rgba(37, 99, 235, 0.22);
     }
 
     .glow-emerald {
-      box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.18);
+      box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.18);
     }
 
     .circle-meter {
@@ -126,10 +126,10 @@
       transition: transform .15s linear;
     }
     .bg-orb--1 { top: -6%;  left: 4%;   width: 30rem; height: 30rem; background: radial-gradient(circle, rgba(99,102,241,0.20), transparent 70%); animation-duration: 18s; }
-    .bg-orb--2 { top: 22%;  right: -10%; width: 32rem; height: 32rem; background: radial-gradient(circle, rgba(168,85,247,0.18), transparent 70%); animation-duration: 21s; animation-delay: -6s; }
-    .bg-orb--3 { bottom: -4%; left: -4%;  width: 28rem; height: 28rem; background: radial-gradient(circle, rgba(16,185,129,0.15), transparent 70%); animation-duration: 24s; animation-delay: -11s; }
-    .bg-orb--4 { bottom: 12%; right: 10%; width: 24rem; height: 24rem; background: radial-gradient(circle, rgba(236,72,153,0.14), transparent 70%); animation-duration: 17s; animation-delay: -3s; }
-    .bg-orb--5 { top: 45%; left: 42%; width: 22rem; height: 22rem; background: radial-gradient(circle, rgba(245,158,11,0.12), transparent 70%); animation-duration: 26s; animation-delay: -8s; }
+    .bg-orb--2 { top: 22%;  right: -10%; width: 32rem; height: 32rem; background: radial-gradient(circle, rgba(37,99,235,0.18), transparent 70%); animation-duration: 21s; animation-delay: -6s; }
+    .bg-orb--3 { bottom: -4%; left: -4%;  width: 28rem; height: 28rem; background: radial-gradient(circle, rgba(14,165,233,0.18), transparent 70%); animation-duration: 24s; animation-delay: -11s; }
+    .bg-orb--4 { bottom: 12%; right: 10%; width: 24rem; height: 24rem; background: radial-gradient(circle, rgba(30,64,175,0.16), transparent 70%); animation-duration: 17s; animation-delay: -3s; }
+    .bg-orb--5 { top: 45%; left: 42%; width: 22rem; height: 22rem; background: radial-gradient(circle, rgba(96,165,250,0.16), transparent 70%); animation-duration: 26s; animation-delay: -8s; }
 
     /* A brighter glow that tracks the cursor directly, for an obvious
        hand-off between the ambient drift and your own movement */
@@ -139,7 +139,7 @@
       width: 34rem; height: 34rem;
       margin-left: -17rem; margin-top: -17rem;
       border-radius: 9999px;
-      background: radial-gradient(circle, rgba(129,140,248,0.22), rgba(217,70,239,0.12) 45%, transparent 72%);
+      background: radial-gradient(circle, rgba(59,130,246,0.24), rgba(30,64,175,0.12) 45%, transparent 72%);
       filter: blur(50px);
       pointer-events: none;
       z-index: -9;
@@ -192,7 +192,7 @@
       font-size: 0.8125rem; font-weight: 600; color: #334155;
       transition: background .12s ease;
     }
-    .dropdown-option:hover, .dropdown-option.active { background: rgba(99,102,241,0.08); color: #4338ca; }
+    .dropdown-option:hover, .dropdown-option.active { background: rgba(37,99,235,0.08); color: #1D4ED8; }
     .dropdown-trigger[aria-expanded="true"] .dropdown-chevron { transform: rotate(180deg); }
     .dropdown-chevron { transition: transform .18s ease; }
     /* ── Vertical Minimal Scroll Rail Animation ── */
@@ -217,15 +217,15 @@
       position: absolute;
       width: 100%;
       height: 90px;
-      background: linear-gradient(180deg, rgba(99, 102, 241, 0) 0%, rgba(99, 102, 241, 0.9) 45%, rgba(168, 85, 247, 0.9) 75%, rgba(236, 72, 153, 0) 100%);
+      background: linear-gradient(180deg, rgba(37, 99, 235, 0) 0%, rgba(37, 99, 235, 0.9) 45%, rgba(30, 64, 175, 0.9) 75%, rgba(37, 99, 235, 0) 100%);
       border-radius: 9999px;
       animation: minimalScrollPulse 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-      box-shadow: 0 0 14px rgba(99, 102, 241, 0.7);
+      box-shadow: 0 0 14px rgba(37, 99, 235, 0.7);
     }
 
   </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50/40 via-white to-purple-50/30 text-slate-800 flex flex-col antialiased selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
+<body class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/40 via-white to-blue-50/30 text-slate-800 flex flex-col antialiased selection:bg-blue-500 selection:text-white relative overflow-x-hidden">
 
   <!-- Ambient, faded, mouse-reactive background orbs -->
   <div id="bgOrbs" class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
@@ -272,12 +272,12 @@
         </button>
 
         <!-- Reports Archive Button -->
-        <button onclick="toggleHistoryModal(true)" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-indigo-50/50 border border-slate-200 text-xs font-semibold text-slate-700 hover:text-indigo-600 transition shadow-xs">
-          <svg class="w-4 h-4 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <button onclick="toggleHistoryModal(true)" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-blue-50/50 border border-slate-200 text-xs font-semibold text-slate-700 hover:text-slate-900 transition shadow-xs">
+          <svg class="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
           </svg>
           <span class="hidden sm:inline">Excel Reports</span>
-          <span id="reportsCountBadge" class="px-1.5 py-0.2 rounded-full bg-indigo-100 text-[10px] text-indigo-700 font-bold">0</span>
+          <span id="reportsCountBadge" class="px-1.5 py-0.2 rounded-full bg-blue-100 text-[10px] text-slate-900 font-bold">0</span>
         </button>
 
       </div>
@@ -310,7 +310,7 @@
           <span class="text-[11px] text-slate-500 hidden sm:inline">• Click any option to expand &amp; run</span>
         </div>
         <div class="flex items-center space-x-2 text-[11px] font-semibold text-slate-500">
-          <span class="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"></span>
+          <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
           <span>4 Engines Available</span>
         </div>
       </div>
@@ -324,12 +324,12 @@
           <!-- ========================================================== -->
           <!-- OPTION 1: LOCATION LEADS TOOLS -->
           <!-- ========================================================== -->
-          <div id="engineCard-location" class="engine-card relative rounded-3xl border border-slate-200/90 bg-white/80 hover:bg-white shadow-md hover:border-indigo-300 transition-all duration-300 overflow-hidden group">
+          <div id="engineCard-location" class="engine-card relative rounded-3xl border border-slate-200/90 bg-white/80 hover:bg-white shadow-md hover:border-blue-300 transition-all duration-300 overflow-hidden group">
             
             <!-- Clickable Card Header (Always Visible) -->
             <div onclick="toggleEngine('location')" class="p-5 sm:p-6 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 select-none">
               <div class="flex items-start sm:items-center space-x-4 min-w-0">
-                <div class="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
                   <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -337,7 +337,7 @@
                 </div>
                 <div class="min-w-0">
                   <div class="flex items-center space-x-2">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-700 px-2 py-0.5 rounded-md bg-indigo-50 border border-indigo-100">Lead Generation</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-900 px-2 py-0.5 rounded-md bg-blue-50 border border-blue-100">Lead Generation</span>
                     <span id="cardBadge-location" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">3 tools</span>
                   </div>
                   <h3 class="text-base sm:text-lg font-display font-bold text-slate-900 tracking-tight mt-1">
@@ -351,7 +351,7 @@
 
               <!-- Right Action: Expand/Collapse Trigger Button -->
               <div class="flex items-center justify-between sm:justify-end space-x-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 shrink-0">
-                <button type="button" class="engine-expand-btn px-4 py-2.5 rounded-xl text-xs font-bold transition shadow-xs flex items-center space-x-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200/80">
+                <button type="button" class="engine-expand-btn px-4 py-2.5 rounded-xl text-xs font-bold transition shadow-xs flex items-center space-x-2 bg-blue-50 hover:bg-blue-100 text-slate-900 border border-blue-200/80">
                   <span id="btnText-location">Run &amp; Expand</span>
                   <svg id="chevron-location" class="w-4 h-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
@@ -365,29 +365,38 @@
               <!-- Sub-Tool Selector -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
         
-        <!-- Tool: Who Can Make Me Viral Here? -->
-        <label class="relative flex items-start p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md shadow-indigo-500/5 cursor-pointer transition" id="subtoolCard-1a">
-          <input type="radio" name="loc_subtool" value="1a" checked onchange="updateLocationSubtool('1a')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+        <!-- Tool: Instagram Leads Tool -->
+        <label class="relative flex items-start p-4 rounded-2xl border-2 border-blue-500 bg-white shadow-md shadow-blue-500/5 cursor-pointer transition" id="subtoolCard-1a">
+          <input type="radio" name="loc_subtool" value="1a" checked onchange="updateLocationSubtool('1a')" class="mt-1 w-4 h-4 text-blue-600 focus:ring-blue-500">
           <div class="ml-3">
-            <span class="text-xs sm:text-sm font-bold text-slate-900 block">Who Can Make Me Viral Here?</span>
-            <span class="text-[11px] text-slate-600 block mt-0.5 leading-snug">Find verified local creators, collaborators, and business handles, complete with an influence score and ROI, in one Excel sheet.</span>
+            <span class="text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-blue-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="5" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+              Instagram Leads Tool
+            </span>
+            <span class="text-[11px] text-slate-600 block mt-0.5 leading-snug">Verified local businesses, creators, and collaborators — all in one Excel sheet.</span>
           </div>
         </label>
 
         <!-- Tool: Google Leads From Location -->
         <label class="relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs" id="subtoolCard-1b">
-          <input type="radio" name="loc_subtool" value="1b" onchange="updateLocationSubtool('1b')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+          <input type="radio" name="loc_subtool" value="1b" onchange="updateLocationSubtool('1b')" class="mt-1 w-4 h-4 text-blue-600 focus:ring-blue-500">
           <div class="ml-3">
-            <span class="text-xs sm:text-sm font-bold text-slate-900 block">Google Leads From Location</span>
+            <span class="text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-blue-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              Google Leads From Location
+            </span>
             <span class="text-[11px] text-slate-600 block mt-0.5 leading-snug">Pull every business lead from your target location straight into an Excel sheet.</span>
           </div>
         </label>
 
         <!-- Tool: Maps to Contact Data -->
         <label class="relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs" id="subtoolCard-1c">
-          <input type="radio" name="loc_subtool" value="1c" onchange="updateLocationSubtool('1c')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+          <input type="radio" name="loc_subtool" value="1c" onchange="updateLocationSubtool('1c')" class="mt-1 w-4 h-4 text-blue-600 focus:ring-blue-500">
           <div class="ml-3">
-            <span class="text-xs sm:text-sm font-bold text-slate-900 block">Maps to Contact Data</span>
+            <span class="text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-blue-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              Maps to Contact Data
+            </span>
             <span class="text-[11px] text-slate-600 block mt-0.5 leading-snug">Extract complete contacts, emails, links, and LinkedIn profiles for a location into an automated Excel sheet.</span>
           </div>
         </label>
@@ -397,29 +406,29 @@
       <!-- Form Container: Location Leads Tools -->
       <div class="glass-panel p-6 sm:p-8 rounded-3xl space-y-5">
         
-        <!-- Form for Who Can Make Me Viral Here? -->
+        <!-- Form for Instagram Leads Tool -->
         <div id="form-1a" class="space-y-4">
           <div class="flex items-center justify-between">
             <div>
               <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
-                <span class="w-2.5 h-2.5 rounded-full bg-indigo-600 mr-2"></span>
-                Who Can Make Me Viral Here?
+                <svg class="w-4 h-4 text-blue-500 mr-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="5" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+                Instagram Leads Tool
               </h3>
-              <p class="text-xs text-slate-600 mt-0.5">Verified local creators, collaborators, and business handles — complete with score and ROI — in one Excel sheet.</p>
+              <p class="text-xs text-slate-600 mt-0.5">Verified local businesses, creators, and collaborators — all in one Excel sheet.</p>
             </div>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200 hidden sm:inline">Single Sheet Excel</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-slate-900 font-semibold border border-blue-200 hidden sm:inline">Single Sheet Excel</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Target Location / City / Area</label>
-              <input type="text" id="loc_1a_tag" placeholder="e.g. bandra, dubai, london, new york" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+              <input type="text" id="loc_1a_tag" placeholder="e.g. bandra, dubai, london, new york" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
               <p class="text-[10px] text-slate-500 mt-1">Enter your target location, city or region.</p>
             </div>
 
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Follow-up Keyword / Specific Niche (Optional)</label>
-              <input type="text" id="loc_1a_filter" placeholder="e.g. street food, cafes, real estate, salons" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+              <input type="text" id="loc_1a_filter" placeholder="e.g. street food, cafes, real estate, salons" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
               <p class="text-[10px] text-slate-500 mt-1">Filters specifically for this category or topic.</p>
             </div>
           </div>
@@ -427,7 +436,7 @@
           <div>
             <label class="block text-xs font-semibold text-slate-700 mb-1.5">Follower Reach Threshold</label>
             <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
-              <button type="button" onclick="set1aReach(0)" id="reachBtn-0" class="py-2.5 px-3 rounded-xl text-xs font-bold bg-indigo-600 text-white transition shadow-sm">All Reach (0+)</button>
+              <button type="button" onclick="set1aReach(0)" id="reachBtn-0" class="py-2.5 px-3 rounded-xl text-xs font-bold bg-blue-600 text-white transition shadow-sm">All Reach (0+)</button>
               <button type="button" onclick="set1aReach(1000)" id="reachBtn-1000" class="py-2.5 px-3 rounded-xl text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 transition border border-slate-200">1,000+</button>
               <button type="button" onclick="set1aReach(5000)" id="reachBtn-5000" class="py-2.5 px-3 rounded-xl text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 transition border border-slate-200">5,000+</button>
               <button type="button" onclick="set1aReach(10000)" id="reachBtn-10000" class="py-2.5 px-3 rounded-xl text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 transition border border-slate-200">10,000+</button>
@@ -446,19 +455,19 @@
               </h3>
               <p id="gmapsFormSubtitle" class="text-xs text-slate-600 mt-0.5">Pull every business lead from your target location straight into an Excel sheet.</p>
             </div>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200 hidden sm:inline">Lead Directory</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-slate-900 font-semibold border border-blue-200 hidden sm:inline">Lead Directory</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="sm:col-span-2">
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Target Query & Location</label>
-              <input type="text" id="gmaps_query" placeholder="e.g. Cafes in Bandra, Dentists in Dubai, Digital Agencies in London" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+              <input type="text" id="gmaps_query" placeholder="e.g. Cafes in Bandra, Dentists in Dubai, Digital Agencies in London" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
             </div>
 
             <div class="dropdown-wrap" id="maxResultsDropdown">
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Max Leads to Harvest</label>
               <input type="hidden" id="gmaps_max_results" value="20">
-              <button type="button" class="dropdown-trigger w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 text-sm text-slate-900 outline-none shadow-xs font-medium flex items-center justify-between" aria-haspopup="listbox" aria-expanded="false" onclick="toggleDropdown('maxResultsDropdown')">
+              <button type="button" class="dropdown-trigger w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 text-sm text-slate-900 outline-none shadow-xs font-medium flex items-center justify-between" aria-haspopup="listbox" aria-expanded="false" onclick="toggleDropdown('maxResultsDropdown')">
                 <span id="maxResultsLabel">20 Businesses (Recommended)</span>
                 <svg class="dropdown-chevron w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
               </button>
@@ -483,12 +492,12 @@
 
         <!-- Launch Button for Location Leads Tools -->
         <div class="pt-2">
-          <button onclick="launchLocationTask()" id="launchLocBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 to-slate-900 hover:from-indigo-500 hover:to-slate-800 font-semibold text-sm sm:text-base text-white shadow-xl shadow-slate-900/20 transition active:scale-[0.99] flex items-center justify-center space-x-2">
+          <button onclick="launchLocationTask()" id="launchLocBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-slate-900 hover:from-blue-500 hover:to-slate-800 font-semibold text-sm sm:text-base text-white shadow-xl shadow-slate-900/20 transition active:scale-[0.99] flex items-center justify-center space-x-2">
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
-            <span id="launchLocBtnText">Find Viral Creators</span>
+            <span id="launchLocBtnText">Find Instagram Leads</span>
           </button>
         </div>
 
@@ -500,18 +509,18 @@
           <!-- ========================================================== -->
           <!-- OPTION 2: ACCOUNT TOOLS -->
           <!-- ========================================================== -->
-          <div id="engineCard-account" class="engine-card relative rounded-3xl border border-slate-200/90 bg-white/80 hover:bg-white shadow-md hover:border-purple-300 transition-all duration-300 overflow-hidden group">
+          <div id="engineCard-account" class="engine-card relative rounded-3xl border border-slate-200/90 bg-white/80 hover:bg-white shadow-md hover:border-blue-300 transition-all duration-300 overflow-hidden group">
             
             <div onclick="toggleEngine('account')" class="p-5 sm:p-6 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 select-none">
               <div class="flex items-start sm:items-center space-x-4 min-w-0">
-                <div class="w-12 h-12 rounded-2xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
                   <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                   </svg>
                 </div>
                 <div class="min-w-0">
                   <div class="flex items-center space-x-2">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-purple-700 px-2 py-0.5 rounded-md bg-purple-50 border border-purple-100">Account Intelligence</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-900 px-2 py-0.5 rounded-md bg-blue-50 border border-blue-100">Account Intelligence</span>
                     <span id="cardBadge-account" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">5 tools</span>
                   </div>
                   <h3 class="text-base sm:text-lg font-display font-bold text-slate-900 tracking-tight mt-1">
@@ -524,7 +533,7 @@
               </div>
 
               <div class="flex items-center justify-between sm:justify-end space-x-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 shrink-0">
-                <button type="button" class="engine-expand-btn px-4 py-2.5 rounded-xl text-xs font-bold transition shadow-xs flex items-center space-x-2 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200/80">
+                <button type="button" class="engine-expand-btn px-4 py-2.5 rounded-xl text-xs font-bold transition shadow-xs flex items-center space-x-2 bg-blue-50 hover:bg-blue-100 text-slate-900 border border-blue-200/80">
                   <span id="btnText-account">Run &amp; Expand</span>
                   <svg id="chevron-account" class="w-4 h-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
@@ -537,8 +546,8 @@
               <!-- Sub-Tool Selector -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         
-        <label class="relative flex items-start p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md shadow-indigo-500/5 cursor-pointer transition" id="subtoolCard-2a">
-          <input type="radio" name="acc_subtool" value="2a" checked onchange="updateAccountSubtool('2a')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+        <label class="relative flex items-start p-4 rounded-2xl border-2 border-blue-500 bg-white shadow-md shadow-blue-500/5 cursor-pointer transition" id="subtoolCard-2a">
+          <input type="radio" name="acc_subtool" value="2a" checked onchange="updateAccountSubtool('2a')" class="mt-1 w-4 h-4 text-blue-600 focus:ring-blue-500">
           <div class="ml-3">
             <span class="text-xs sm:text-sm font-bold text-slate-900 block">Account Deep Audit (IG)</span>
             <span class="text-[11px] text-slate-600 block mt-0.5">Complete profile metrics, all posts, reels, engagement data and comments audit</span>
@@ -546,7 +555,7 @@
         </label>
 
         <label class="relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs" id="subtoolCard-2b">
-          <input type="radio" name="acc_subtool" value="2b" onchange="updateAccountSubtool('2b')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+          <input type="radio" name="acc_subtool" value="2b" onchange="updateAccountSubtool('2b')" class="mt-1 w-4 h-4 text-blue-600 focus:ring-blue-500">
           <div class="ml-3">
             <span class="text-xs sm:text-sm font-bold text-slate-900 block">Post / Reel Deep Inspection</span>
             <span class="text-[11px] text-slate-600 block mt-0.5">Inspect any specific post or reel link for views, plays, likes & all comments</span>
@@ -554,7 +563,7 @@
         </label>
 
         <label class="relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs" id="subtoolCard-2c">
-          <input type="radio" name="acc_subtool" value="2c" onchange="updateAccountSubtool('2c')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+          <input type="radio" name="acc_subtool" value="2c" onchange="updateAccountSubtool('2c')" class="mt-1 w-4 h-4 text-blue-600 focus:ring-blue-500">
           <div class="ml-3">
             <span class="text-xs sm:text-sm font-bold text-slate-900 block">30-Day Comments Harvest</span>
             <span class="text-[11px] text-slate-600 block mt-0.5">Extract all comments & commenters across posts published in last 30 days</span>
@@ -562,22 +571,22 @@
         </label>
 
         <label class="relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs" id="subtoolCard-2d">
-          <input type="radio" name="acc_subtool" value="2d" onchange="updateAccountSubtool('2d')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+          <input type="radio" name="acc_subtool" value="2d" onchange="updateAccountSubtool('2d')" class="mt-1 w-4 h-4 text-blue-600 focus:ring-blue-500">
           <div class="ml-3">
             <div class="flex items-center space-x-1.5">
               <span class="text-xs sm:text-sm font-bold text-slate-900">YouTube Channel Audit</span>
-              <span class="text-[9px] px-1.5 py-0.2 rounded bg-red-100 text-red-700 font-bold">YT-DLP</span>
+              <span class="text-[9px] px-1.5 py-0.2 rounded bg-blue-100 text-slate-900 font-bold">YT-DLP</span>
             </div>
             <span class="text-[11px] text-slate-600 block mt-0.5">Audit any YouTube channel, latest videos, views, duration & watch links</span>
           </div>
         </label>
 
         <label class="relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs" id="subtoolCard-2e">
-          <input type="radio" name="acc_subtool" value="2e" onchange="updateAccountSubtool('2e')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+          <input type="radio" name="acc_subtool" value="2e" onchange="updateAccountSubtool('2e')" class="mt-1 w-4 h-4 text-blue-600 focus:ring-blue-500">
           <div class="ml-3">
             <div class="flex items-center space-x-1.5">
               <span class="text-xs sm:text-sm font-bold text-slate-900">Twitter / X Viral Tweets</span>
-              <span class="text-[9px] px-1.5 py-0.2 rounded bg-sky-100 text-sky-700 font-bold">X</span>
+              <span class="text-[9px] px-1.5 py-0.2 rounded bg-blue-100 text-slate-900 font-bold">X</span>
             </div>
             <span class="text-[11px] text-slate-600 block mt-0.5">Harvest creator tweets, likes, reposts & verified status URLs without API key</span>
           </div>
@@ -593,31 +602,31 @@
           <div class="flex items-center justify-between">
             <div>
               <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
-                <span class="w-2.5 h-2.5 rounded-full bg-indigo-600 mr-2"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-600 mr-2"></span>
                 Account Deep Audit & Comments
               </h3>
               <p class="text-xs text-slate-600 mt-0.5">Audits profile bio, contacts, all posts, reels and individual comments</p>
             </div>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200 hidden sm:inline">Deep Audit</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-slate-900 font-semibold border border-blue-200 hidden sm:inline">Deep Audit</span>
           </div>
 
           <div>
             <label class="block text-xs font-semibold text-slate-700 mb-1.5">Account Handle or Person / Business Name</label>
-            <input type="text" id="acc_2a_handle" placeholder="e.g. zomato, anushkasen0408, techburner" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+            <input type="text" id="acc_2a_handle" placeholder="e.g. zomato, anushkasen0408, techburner" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
           </div>
 
           <!-- Comments Extraction Options -->
           <div class="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 space-y-3">
             <div class="flex items-center justify-between">
               <label class="flex items-center cursor-pointer">
-                <input type="checkbox" id="acc_2a_comments" checked class="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 bg-white border-slate-300">
+                <input type="checkbox" id="acc_2a_comments" checked class="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 bg-white border-slate-300">
                 <span class="ml-2.5 text-xs font-bold text-slate-800">Extract Full Comments from Posts</span>
               </label>
-              <span class="text-[10px] px-2 py-0.5 rounded-md bg-indigo-100 text-indigo-700 font-semibold">Comments Harvest</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-blue-100 text-slate-900 font-semibold">Comments Harvest</span>
             </div>
 
             <div id="acc_2a_comments_scope_box" class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
-              <button type="button" onclick="setCommentsDays(30)" id="cScope-30" class="py-2 px-3 rounded-xl text-xs font-bold bg-indigo-600 text-white transition shadow-sm">Last 30 Days (Default)</button>
+              <button type="button" onclick="setCommentsDays(30)" id="cScope-30" class="py-2 px-3 rounded-xl text-xs font-bold bg-blue-600 text-white transition shadow-sm">Last 30 Days (Default)</button>
               <button type="button" onclick="setCommentsDays(60)" id="cScope-60" class="py-2 px-3 rounded-xl text-xs font-semibold bg-white text-slate-700 hover:bg-slate-100 transition border border-slate-200">Last 60 Days</button>
               <button type="button" onclick="setCommentsDays(90)" id="cScope-90" class="py-2 px-3 rounded-xl text-xs font-semibold bg-white text-slate-700 hover:bg-slate-100 transition border border-slate-200">Last 90 Days</button>
               <button type="button" onclick="setCommentsDays(0)" id="cScope-0" class="py-2 px-3 rounded-xl text-xs font-semibold bg-white text-slate-700 hover:bg-slate-100 transition border border-slate-200">All Harvested</button>
@@ -631,17 +640,17 @@
           <div class="flex items-center justify-between">
             <div>
               <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
-                <span class="w-2.5 h-2.5 rounded-full bg-purple-600 mr-2"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-600 mr-2"></span>
                 Post / Reel Deep Inspection
               </h3>
               <p class="text-xs text-slate-600 mt-0.5">Deep inspection of any specific post or reel link</p>
             </div>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-50 text-purple-700 font-semibold border border-purple-200 hidden sm:inline">URL Inspection</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-slate-900 font-semibold border border-blue-200 hidden sm:inline">URL Inspection</span>
           </div>
 
           <div>
             <label class="block text-xs font-semibold text-slate-700 mb-1.5">Post or Reel Link</label>
-            <input type="url" id="acc_2b_url" placeholder="https://www.instagram.com/p/DF2_AbqSxxx/ or https://www.instagram.com/reel/..." class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-mono">
+            <input type="url" id="acc_2b_url" placeholder="https://www.instagram.com/p/DF2_AbqSxxx/ or https://www.instagram.com/reel/..." class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-mono">
             <p class="text-[10px] text-slate-500 mt-1">Extracts exact views, plays, likes count, caption, and all comments & commenters.</p>
           </div>
         </div>
@@ -651,19 +660,19 @@
           <div class="flex items-center justify-between">
             <div>
               <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
-                <span class="w-2.5 h-2.5 rounded-full bg-pink-600 mr-2"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-600 mr-2"></span>
                 Comments Extraction of All Posts / Reels of Last 30 Days
               </h3>
               <p class="text-xs text-slate-600 mt-0.5">Extracts all comments, commenter profiles, and engagement data across all posts and reels published in the last 30 days into a single Excel sheet.</p>
             </div>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-pink-50 text-pink-700 font-semibold border border-pink-200 hidden sm:inline">30-Day Comments</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-slate-900 font-semibold border border-blue-200 hidden sm:inline">30-Day Comments</span>
           </div>
 
           <div>
             <label class="block text-xs font-semibold text-slate-700 mb-1.5">Account Handle or Person / Business Name</label>
             <div class="relative">
               <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500 text-sm font-mono">@</span>
-              <input type="text" id="acc_2c_handle" placeholder="e.g. zomato, anushkasen0408, techburner" class="w-full pl-8 pr-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+              <input type="text" id="acc_2c_handle" placeholder="e.g. zomato, anushkasen0408, techburner" class="w-full pl-8 pr-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
             </div>
             <p class="text-[10px] text-slate-500 mt-1">Extracts every single comment, reply, commenter profile, timestamp, and like count for all posts and reels published in the last 30 days into a clean Excel report.</p>
           </div>
@@ -674,23 +683,23 @@
           <div class="flex items-center justify-between">
             <div>
               <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
-                <span class="w-2.5 h-2.5 rounded-full bg-rose-600 mr-2"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-600 mr-2"></span>
                 YouTube Channel Audit
               </h3>
               <p class="text-xs text-slate-600 mt-0.5">Harvest channel statistics, latest videos, views, engagement, and direct video watch links</p>
             </div>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 font-semibold border border-rose-200 hidden sm:inline">Native yt-dlp</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-slate-900 font-semibold border border-blue-200 hidden sm:inline">Native yt-dlp</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="sm:col-span-2">
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Channel Name, Handle, or URL</label>
-              <input type="text" id="acc_2d_channel" placeholder="e.g. @TechWithTim, @MKBHD, @Veritasium" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+              <input type="text" id="acc_2d_channel" placeholder="e.g. @TechWithTim, @MKBHD, @Veritasium" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
             </div>
 
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Max Videos to Harvest</label>
-              <select id="acc_2d_max" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-rose-500 text-sm text-slate-900 outline-none shadow-xs font-medium">
+              <select id="acc_2d_max" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 text-sm text-slate-900 outline-none shadow-xs font-medium">
                 <option value="10">10 Videos (Fast)</option>
                 <option value="20" selected>20 Videos (Recommended)</option>
                 <option value="50">50 Videos (Deep)</option>
@@ -712,12 +721,12 @@
           <div class="flex items-center justify-between">
             <div>
               <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
-                <span class="w-2.5 h-2.5 rounded-full bg-sky-500 mr-2"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-500 mr-2"></span>
                 Twitter / X Profile &amp; Viral Tweets Audit
               </h3>
               <p class="text-xs text-slate-600 mt-0.5">Scrapes latest tweets, likes, retweets, replies, and verified status URLs</p>
             </div>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-sky-50 text-sky-700 font-semibold border border-sky-200 hidden sm:inline">Twitter / X</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-slate-900 font-semibold border border-blue-200 hidden sm:inline">Twitter / X</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -725,13 +734,13 @@
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Twitter / X Handle</label>
               <div class="relative">
                 <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500 text-sm font-mono">@</span>
-                <input type="text" id="acc_2e_handle" placeholder="e.g. sama, mkbhd, elonmusk" class="w-full pl-8 pr-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+                <input type="text" id="acc_2e_handle" placeholder="e.g. sama, mkbhd, elonmusk" class="w-full pl-8 pr-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
               </div>
             </div>
 
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Max Tweets to Harvest</label>
-              <select id="acc_2e_max" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-sky-500 text-sm text-slate-900 outline-none shadow-xs font-medium">
+              <select id="acc_2e_max" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 text-sm text-slate-900 outline-none shadow-xs font-medium">
                 <option value="10">10 Tweets</option>
                 <option value="15" selected>15 Tweets (Recommended)</option>
                 <option value="30">30 Tweets</option>
@@ -751,7 +760,7 @@
 
         <!-- Launch Button for Account Tools -->
         <div class="pt-2">
-          <button onclick="launchAccountTask()" id="launchAccBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 to-slate-900 hover:from-indigo-500 hover:to-slate-800 font-semibold text-sm sm:text-base text-white shadow-xl shadow-slate-900/20 transition active:scale-[0.99] flex items-center justify-center space-x-2">
+          <button onclick="launchAccountTask()" id="launchAccBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-slate-900 hover:from-blue-500 hover:to-slate-800 font-semibold text-sm sm:text-base text-white shadow-xl shadow-slate-900/20 transition active:scale-[0.99] flex items-center justify-center space-x-2">
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -768,19 +777,19 @@
           <!-- ========================================================== -->
           <!-- OPTION 3: SCORE ME ENGINE -->
           <!-- ========================================================== -->
-          <div id="engineCard-scoreme" class="engine-card relative rounded-3xl border border-slate-200/90 bg-white/80 hover:bg-white shadow-md hover:border-amber-300 transition-all duration-300 overflow-hidden group">
+          <div id="engineCard-scoreme" class="engine-card relative rounded-3xl border border-slate-200/90 bg-white/80 hover:bg-white shadow-md hover:border-blue-300 transition-all duration-300 overflow-hidden group">
             
             <div onclick="toggleEngine('scoreme')" class="p-5 sm:p-6 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 select-none">
               <div class="flex items-start sm:items-center space-x-4 min-w-0">
-                <div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-100 text-amber-500 flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
                   <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                   </svg>
                 </div>
                 <div class="min-w-0">
                   <div class="flex items-center space-x-2">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700 px-2 py-0.5 rounded-md bg-amber-50 border border-amber-100">Reach &amp; ROI Engine</span>
-                    <span id="cardBadge-scoreme" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-purple-100 text-purple-700">AI Engine</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-900 px-2 py-0.5 rounded-md bg-blue-50 border border-blue-100">Reach &amp; ROI Engine</span>
+                    <span id="cardBadge-scoreme" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-blue-100 text-slate-900">AI Engine</span>
                   </div>
                   <h3 class="text-base sm:text-lg font-display font-bold text-slate-900 tracking-tight mt-1">
                     Score Me Engine
@@ -792,7 +801,7 @@
               </div>
 
               <div class="flex items-center justify-between sm:justify-end space-x-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 shrink-0">
-                <button type="button" class="engine-expand-btn px-4 py-2.5 rounded-xl text-xs font-bold transition shadow-xs flex items-center space-x-2 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200/80">
+                <button type="button" class="engine-expand-btn px-4 py-2.5 rounded-xl text-xs font-bold transition shadow-xs flex items-center space-x-2 bg-blue-50 hover:bg-blue-100 text-slate-900 border border-blue-200/80">
                   <span id="btnText-scoreme">Run &amp; Expand</span>
                   <svg id="chevron-scoreme" class="w-4 h-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
@@ -803,8 +812,8 @@
 
             <div id="engineDrawer-scoreme" class="hidden border-t border-slate-100 bg-slate-50/50 p-5 sm:p-7 space-y-6">
               <!-- Hero Banner for Score Me -->
-      <div class="relative overflow-hidden p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-50 via-white to-indigo-50/60 border border-slate-200 shadow-xl shadow-slate-900/5">
-        <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-indigo-200/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="relative overflow-hidden p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-50 via-white to-blue-50/60 border border-slate-200 shadow-xl shadow-slate-900/5">
+        <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-blue-200/20 rounded-full blur-3xl pointer-events-none"></div>
         
         <div class="relative z-10 max-w-3xl space-y-3">
           <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900 text-white text-xs font-semibold tracking-wide">
@@ -845,9 +854,9 @@
 
       <!-- Score Me Engine Mode Selector -->
       <div class="flex flex-col sm:flex-row gap-3">
-        <button type="button" onclick="setScoreMode('single')" id="scoreModeBtn-single" class="flex-1 p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md text-left transition cursor-pointer">
+        <button type="button" onclick="setScoreMode('single')" id="scoreModeBtn-single" class="flex-1 p-4 rounded-2xl border-2 border-blue-500 bg-white shadow-md text-left transition cursor-pointer">
           <div class="flex items-center space-x-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
             <span class="text-xs sm:text-sm font-bold text-slate-900">Single Instagram Account Score</span>
           </div>
           <p class="text-[11px] text-slate-600 mt-1 leading-snug">Last 10 posts/reels views, authentic engagement, bot penalty & 10-day growth.</p>
@@ -855,9 +864,9 @@
 
         <button type="button" onclick="setScoreMode('omni')" id="scoreModeBtn-omni" class="flex-1 p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white text-left transition cursor-pointer shadow-xs">
           <div class="flex items-center space-x-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
             <span class="text-xs sm:text-sm font-bold text-slate-900">Omni-Channel Composite Scorecard</span>
-            <span class="text-[10px] px-2 py-0.2 rounded-full bg-purple-100 text-purple-800 font-bold">IG + YT + X</span>
+            <span class="text-[10px] px-2 py-0.2 rounded-full bg-blue-100 text-slate-900 font-bold">IG + YT + X</span>
           </div>
           <p class="text-[11px] text-slate-600 mt-1 leading-snug">Cross-platform composite score synthesised across Instagram, YouTube channel velocity & Twitter/X engagement.</p>
         </button>
@@ -873,40 +882,40 @@
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Instagram Handle to Score</label>
               <div class="relative">
                 <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500 text-sm font-mono">@</span>
-                <input type="text" id="score_handle" placeholder="zomato, techburner, anushkasen0408" class="w-full pl-8 pr-3.5 py-3.5 rounded-xl bg-white border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-semibold shadow-xs">
+                <input type="text" id="score_handle" placeholder="zomato, techburner, anushkasen0408" class="w-full pl-8 pr-3.5 py-3.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-semibold shadow-xs">
               </div>
             </div>
 
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Target Niche (Optional / Auto-detect)</label>
-              <input type="text" id="score_niche" placeholder="e.g. food, tech, lifestyle, travel, real estate" class="w-full px-4 py-3.5 rounded-xl bg-white border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-medium shadow-xs">
+              <input type="text" id="score_niche" placeholder="e.g. food, tech, lifestyle, travel, real estate" class="w-full px-4 py-3.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-medium shadow-xs">
             </div>
           </div>
 
           <!-- Quick Sample Chips -->
           <div class="flex flex-wrap items-center gap-1.5 pt-1">
             <span class="text-[11px] text-slate-500 font-medium mr-1">Quick fill:</span>
-            <button type="button" onclick="setScoreAccount('zomato', 'food')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-indigo-50 border border-slate-200 text-slate-700 hover:text-indigo-700 transition shadow-xs">@zomato (Food)</button>
-            <button type="button" onclick="setScoreAccount('techburner', 'tech')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-indigo-50 border border-slate-200 text-slate-700 hover:text-indigo-700 transition shadow-xs">@techburner (Tech)</button>
-            <button type="button" onclick="setScoreAccount('anushkasen0408', 'lifestyle')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-indigo-50 border border-slate-200 text-slate-700 hover:text-indigo-700 transition shadow-xs">@anushkasen0408 (Lifestyle)</button>
+            <button type="button" onclick="setScoreAccount('zomato', 'food')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-blue-50 border border-slate-200 text-slate-700 hover:text-slate-900 transition shadow-xs">@zomato (Food)</button>
+            <button type="button" onclick="setScoreAccount('techburner', 'tech')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-blue-50 border border-slate-200 text-slate-700 hover:text-slate-900 transition shadow-xs">@techburner (Tech)</button>
+            <button type="button" onclick="setScoreAccount('anushkasen0408', 'lifestyle')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-blue-50 border border-slate-200 text-slate-700 hover:text-slate-900 transition shadow-xs">@anushkasen0408 (Lifestyle)</button>
           </div>
         </div>
 
         <!-- Form Mode: Omni-Channel Composite Scorecard -->
         <div id="scoreForm-omni" class="hidden space-y-4">
-          <div class="p-3.5 rounded-2xl bg-purple-50/70 border border-purple-200 text-xs text-purple-900">
+          <div class="p-3.5 rounded-2xl bg-blue-50/70 border border-blue-200 text-xs text-slate-900">
             <span class="font-bold">Cross-Platform Intelligence:</span> Enter creator handles across any of the platforms below. Our algorithm calculates cross-network reach, view consistency, engagement health, and outputs a 100-point composite scorecard into single-sheet Excel.
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Creator or Brand Display Name</label>
-              <input type="text" id="omni_creator_name" placeholder="e.g. Marques Brownlee, Tim Ruscica" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-medium shadow-xs">
+              <input type="text" id="omni_creator_name" placeholder="e.g. Marques Brownlee, Tim Ruscica" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-medium shadow-xs">
             </div>
 
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Target Niche</label>
-              <input type="text" id="omni_niche" placeholder="e.g. Tech, Consumer Gadgets, Coding" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-medium shadow-xs">
+              <input type="text" id="omni_niche" placeholder="e.g. Tech, Consumer Gadgets, Coding" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition font-medium shadow-xs">
             </div>
           </div>
 
@@ -914,24 +923,24 @@
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Instagram Handle (Optional)</label>
               <div class="relative">
-                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-pink-500 text-xs font-mono font-bold">IG</span>
-                <input type="text" id="omni_ig_handle" placeholder="mkbhd" class="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-pink-500 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-900 text-xs font-mono font-bold">IG</span>
+                <input type="text" id="omni_ig_handle" placeholder="mkbhd" class="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
               </div>
             </div>
 
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">YouTube Channel (Optional)</label>
               <div class="relative">
-                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-red-600 text-xs font-mono font-bold">YT</span>
-                <input type="text" id="omni_yt_channel" placeholder="@mkbhd" class="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-red-500 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-900 text-xs font-mono font-bold">YT</span>
+                <input type="text" id="omni_yt_channel" placeholder="@mkbhd" class="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
               </div>
             </div>
 
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Twitter / X Handle (Optional)</label>
               <div class="relative">
-                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-sky-500 text-xs font-mono font-bold">X</span>
-                <input type="text" id="omni_x_handle" placeholder="mkbhd" class="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-sky-500 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-900 text-xs font-mono font-bold">X</span>
+                <input type="text" id="omni_x_handle" placeholder="mkbhd" class="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
               </div>
             </div>
           </div>
@@ -939,8 +948,8 @@
           <!-- Quick Omni Presets -->
           <div class="flex flex-wrap items-center gap-1.5 pt-1">
             <span class="text-[11px] text-slate-500 font-medium mr-1">Quick fill:</span>
-            <button type="button" onclick="setOmniCreator('Marques Brownlee', 'mkbhd', '@mkbhd', 'mkbhd', 'Consumer Tech')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-purple-50 border border-slate-200 text-slate-700 hover:text-purple-700 transition shadow-xs">📱 Marques Brownlee (MKBHD)</button>
-            <button type="button" onclick="setOmniCreator('Tech With Tim', 'techwithtim', '@TechWithTim', 'TechWithTimm', 'Software & AI')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-purple-50 border border-slate-200 text-slate-700 hover:text-purple-700 transition shadow-xs">💻 Tech With Tim</button>
+            <button type="button" onclick="setOmniCreator('Marques Brownlee', 'mkbhd', '@mkbhd', 'mkbhd', 'Consumer Tech')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-blue-50 border border-slate-200 text-slate-700 hover:text-slate-900 transition shadow-xs">📱 Marques Brownlee (MKBHD)</button>
+            <button type="button" onclick="setOmniCreator('Tech With Tim', 'techwithtim', '@TechWithTim', 'TechWithTimm', 'Software & AI')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-blue-50 border border-slate-200 text-slate-700 hover:text-slate-900 transition shadow-xs">💻 Tech With Tim</button>
           </div>
         </div>
 
@@ -948,7 +957,7 @@
 
         <!-- Launch Button for Score Me -->
         <div class="pt-3">
-          <button onclick="launchScoreMeTask()" id="launchScoreBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 to-slate-900 hover:from-indigo-500 hover:to-slate-800 font-semibold text-sm sm:text-base text-white shadow-xl shadow-slate-900/20 transition active:scale-[0.99] flex items-center justify-center space-x-2">
+          <button onclick="launchScoreMeTask()" id="launchScoreBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-slate-900 hover:from-blue-500 hover:to-slate-800 font-semibold text-sm sm:text-base text-white shadow-xl shadow-slate-900/20 transition active:scale-[0.99] flex items-center justify-center space-x-2">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
             </svg>
@@ -964,18 +973,18 @@
           <!-- ========================================================== -->
           <!-- OPTION 4: MULTI-PLATFORM INTELLIGENCE -->
           <!-- ========================================================== -->
-          <div id="engineCard-multiplatform" class="engine-card relative rounded-3xl border border-slate-200/90 bg-white/80 hover:bg-white shadow-md hover:border-cyan-300 transition-all duration-300 overflow-hidden group">
+          <div id="engineCard-multiplatform" class="engine-card relative rounded-3xl border border-slate-200/90 bg-white/80 hover:bg-white shadow-md hover:border-blue-300 transition-all duration-300 overflow-hidden group">
             
             <div onclick="toggleEngine('multiplatform')" class="p-5 sm:p-6 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 select-none">
               <div class="flex items-start sm:items-center space-x-4 min-w-0">
-                <div class="w-12 h-12 rounded-2xl bg-cyan-50 border border-cyan-100 text-cyan-600 flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
                   <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
                   </svg>
                 </div>
                 <div class="min-w-0">
                   <div class="flex items-center space-x-2">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-700 px-2 py-0.5 rounded-md bg-cyan-50 border border-cyan-100">Cross-Platform AI</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-900 px-2 py-0.5 rounded-md bg-blue-50 border border-blue-100">Cross-Platform AI</span>
                     <span id="cardBadge-multiplatform" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">2 tools</span>
                   </div>
                   <h3 class="text-base sm:text-lg font-display font-bold text-slate-900 tracking-tight mt-1">
@@ -988,7 +997,7 @@
               </div>
 
               <div class="flex items-center justify-between sm:justify-end space-x-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 shrink-0">
-                <button type="button" class="engine-expand-btn px-4 py-2.5 rounded-xl text-xs font-bold transition shadow-xs flex items-center space-x-2 bg-cyan-50 hover:bg-cyan-100 text-cyan-700 border border-cyan-200/80">
+                <button type="button" class="engine-expand-btn px-4 py-2.5 rounded-xl text-xs font-bold transition shadow-xs flex items-center space-x-2 bg-blue-50 hover:bg-blue-100 text-slate-900 border border-blue-200/80">
                   <span id="btnText-multiplatform">Run &amp; Expand</span>
                   <svg id="chevron-multiplatform" class="w-4 h-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
@@ -1001,8 +1010,8 @@
               <!-- Sub-Tool Selector -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         
-        <label class="relative flex items-start p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md shadow-indigo-500/5 cursor-pointer transition" id="subtoolCard-4a">
-          <input type="radio" name="multi_subtool" value="4a" checked onchange="updateMultiplatformSubtool('4a')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+        <label class="relative flex items-start p-4 rounded-2xl border-2 border-blue-500 bg-white shadow-md shadow-blue-500/5 cursor-pointer transition" id="subtoolCard-4a">
+          <input type="radio" name="multi_subtool" value="4a" checked onchange="updateMultiplatformSubtool('4a')" class="mt-1 w-4 h-4 text-blue-600 focus:ring-blue-500">
           <div class="ml-3">
             <span class="text-xs sm:text-sm font-bold text-slate-900 block">Reddit Community Sentiment &amp; Trends</span>
             <span class="text-[11px] text-slate-600 block mt-0.5">Search live Reddit discussions, user sentiment breakdown, top subreddits and direct thread hyperlinks.</span>
@@ -1010,7 +1019,7 @@
         </label>
 
         <label class="relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs" id="subtoolCard-4b">
-          <input type="radio" name="multi_subtool" value="4b" onchange="updateMultiplatformSubtool('4b')" class="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+          <input type="radio" name="multi_subtool" value="4b" onchange="updateMultiplatformSubtool('4b')" class="mt-1 w-4 h-4 text-blue-600 focus:ring-blue-500">
           <div class="ml-3">
             <span class="text-xs sm:text-sm font-bold text-slate-900 block">Deep Web Reader &amp; Markdown Harvester</span>
             <span class="text-[11px] text-slate-600 block mt-0.5">Extract clean markdown, reading metrics, executive takeaways and text from any article via Jina Reader.</span>
@@ -1027,25 +1036,25 @@
           <div class="flex items-center justify-between">
             <div>
               <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
-                <span class="w-2.5 h-2.5 rounded-full bg-amber-500 mr-2"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-500 mr-2"></span>
                 Reddit Community Sentiment &amp; Trends
               </h3>
               <p class="text-xs text-slate-600 mt-0.5">Real-time community discussions and sentiment scoring via RSS stream</p>
             </div>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 font-semibold border border-amber-200 hidden sm:inline">Reddit RSS</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-slate-900 font-semibold border border-blue-200 hidden sm:inline">Reddit RSS</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="sm:col-span-2">
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Topic, Brand, or Keyword Query</label>
-              <input type="text" id="reddit_query" placeholder="e.g. Best cafes in Mumbai, AI productivity tools, cursor vs copilot" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+              <input type="text" id="reddit_query" placeholder="e.g. Best cafes in Mumbai, AI productivity tools, cursor vs copilot" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
             </div>
 
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">Target Subreddit (Optional)</label>
               <div class="relative">
                 <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500 text-sm font-mono">r/</span>
-                <input type="text" id="reddit_sub" placeholder="e.g. mumbai, startups, technology (or leave empty)" class="w-full pl-8 pr-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
+                <input type="text" id="reddit_sub" placeholder="e.g. mumbai, startups, technology (or leave empty)" class="w-full pl-8 pr-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-medium">
               </div>
             </div>
           </div>
@@ -1063,17 +1072,17 @@
           <div class="flex items-center justify-between">
             <div>
               <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center">
-                <span class="w-2.5 h-2.5 rounded-full bg-cyan-600 mr-2"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-600 mr-2"></span>
                 Deep Web Reader &amp; Markdown Harvester
               </h3>
               <p class="text-xs text-slate-600 mt-0.5">Extract clean markdown, reading metrics, and executive takeaways from any web URL</p>
             </div>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700 font-semibold border border-cyan-200 hidden sm:inline">Jina Reader</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-slate-900 font-semibold border border-blue-200 hidden sm:inline">Jina Reader</span>
           </div>
 
           <div>
             <label class="block text-xs font-semibold text-slate-700 mb-1.5">Article, Blog, or Web URL</label>
-            <input type="url" id="reader_url" placeholder="https://en.wikipedia.org/wiki/Artificial_intelligence or https://techcrunch.com/..." class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-mono">
+            <input type="url" id="reader_url" placeholder="https://en.wikipedia.org/wiki/Artificial_intelligence or https://techcrunch.com/..." class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm text-slate-900 placeholder-slate-400 outline-none transition shadow-xs font-mono">
             <p class="text-[10px] text-slate-500 mt-1">Converts article contents to clean markdown and exports an executive single-sheet summary into Excel.</p>
           </div>
 
@@ -1086,7 +1095,7 @@
 
         <!-- Launch Button for Multiplatform Tools -->
         <div class="pt-2">
-          <button onclick="launchMultiplatformTask()" id="launchMultiBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-cyan-600 to-slate-900 hover:from-cyan-500 hover:to-slate-800 font-semibold text-sm sm:text-base text-white shadow-xl shadow-slate-900/20 transition active:scale-[0.99] flex items-center justify-center space-x-2">
+          <button onclick="launchMultiplatformTask()" id="launchMultiBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-slate-900 hover:from-blue-500 hover:to-slate-800 font-semibold text-sm sm:text-base text-white shadow-xl shadow-slate-900/20 transition active:scale-[0.99] flex items-center justify-center space-x-2">
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -1110,7 +1119,7 @@
           <!-- Top indicator cue -->
           <div class="flex flex-col items-center space-y-1 mb-2 opacity-60">
             <span class="text-[9px] font-mono font-bold tracking-wider text-slate-400 uppercase">NAV</span>
-            <svg class="w-3 h-3 text-indigo-500 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-3 h-3 text-blue-500 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
             </svg>
           </div>
@@ -1124,19 +1133,19 @@
           <!-- 4 Interactive Waypoint Pips (1, 2, 3, 4) -->
           <div class="absolute inset-y-14 left-1/2 -translate-x-1/2 flex flex-col justify-between items-center pointer-events-auto">
             
-            <button type="button" onclick="toggleEngine('location')" id="railPip-location" class="rail-pip w-7 h-7 rounded-xl bg-white/90 hover:bg-indigo-50 border border-slate-200 text-slate-600 hover:text-indigo-600 flex items-center justify-center text-[10px] font-mono font-bold transition shadow-xs" title="Option 1: Location Leads Tools">
+            <button type="button" onclick="toggleEngine('location')" id="railPip-location" class="rail-pip w-7 h-7 rounded-xl bg-white/90 hover:bg-blue-50 border border-slate-200 text-slate-600 hover:text-slate-900 flex items-center justify-center text-[10px] font-mono font-bold transition shadow-xs" title="Option 1: Location Leads Tools">
               1
             </button>
 
-            <button type="button" onclick="toggleEngine('account')" id="railPip-account" class="rail-pip w-7 h-7 rounded-xl bg-white/90 hover:bg-purple-50 border border-slate-200 text-slate-600 hover:text-purple-600 flex items-center justify-center text-[10px] font-mono font-bold transition shadow-xs" title="Option 2: Account Tools">
+            <button type="button" onclick="toggleEngine('account')" id="railPip-account" class="rail-pip w-7 h-7 rounded-xl bg-white/90 hover:bg-blue-50 border border-slate-200 text-slate-600 hover:text-slate-900 flex items-center justify-center text-[10px] font-mono font-bold transition shadow-xs" title="Option 2: Account Tools">
               2
             </button>
 
-            <button type="button" onclick="toggleEngine('scoreme')" id="railPip-scoreme" class="rail-pip w-7 h-7 rounded-xl bg-white/90 hover:bg-amber-50 border border-slate-200 text-slate-600 hover:text-amber-600 flex items-center justify-center text-[10px] font-mono font-bold transition shadow-xs" title="Option 3: Score Me Engine">
+            <button type="button" onclick="toggleEngine('scoreme')" id="railPip-scoreme" class="rail-pip w-7 h-7 rounded-xl bg-white/90 hover:bg-blue-50 border border-slate-200 text-slate-600 hover:text-slate-900 flex items-center justify-center text-[10px] font-mono font-bold transition shadow-xs" title="Option 3: Score Me Engine">
               3
             </button>
 
-            <button type="button" onclick="toggleEngine('multiplatform')" id="railPip-multiplatform" class="rail-pip w-7 h-7 rounded-xl bg-white/90 hover:bg-cyan-50 border border-slate-200 text-slate-600 hover:text-cyan-600 flex items-center justify-center text-[10px] font-mono font-bold transition shadow-xs" title="Option 4: Multi-Platform Intelligence">
+            <button type="button" onclick="toggleEngine('multiplatform')" id="railPip-multiplatform" class="rail-pip w-7 h-7 rounded-xl bg-white/90 hover:bg-blue-50 border border-slate-200 text-slate-600 hover:text-slate-900 flex items-center justify-center text-[10px] font-mono font-bold transition shadow-xs" title="Option 4: Multi-Platform Intelligence">
               4
             </button>
 
@@ -1144,7 +1153,7 @@
 
           <!-- Bottom indicator cue -->
           <div class="flex flex-col items-center space-y-1 mt-2 opacity-60">
-            <svg class="w-3 h-3 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-3 h-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7-7-7"/>
             </svg>
             <span class="text-[8px] font-mono font-bold tracking-wider text-slate-400">END</span>
@@ -1159,22 +1168,37 @@
     <!-- ================================================================ -->
     <!-- REAL-TIME PROGRESS & LIVE LOGS DRAWER -->
     <!-- ================================================================ -->
-    <div id="liveProgressContainer" class="hidden glass-panel p-6 rounded-3xl space-y-4 border border-indigo-200 shadow-xl glow-indigo">
+    <div id="liveProgressContainer" class="hidden glass-panel p-6 rounded-3xl space-y-4 border border-blue-200 shadow-xl glow-indigo">
       
       <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2.5">
-          <div class="w-3 h-3 rounded-full bg-indigo-600 animate-ping"></div>
+          <div class="w-3 h-3 rounded-full bg-blue-600 animate-ping"></div>
           <h3 id="taskTitleText" class="text-sm font-bold text-slate-900">Running Task...</h3>
         </div>
         <div class="flex items-center space-x-2">
-          <span id="taskProgressPercent" class="text-xs font-mono font-bold text-indigo-600">15%</span>
-          <span id="taskStatusBadge" class="text-[10px] px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-700 font-bold">In Progress</span>
+          <span id="taskQueueBadge" class="hidden text-[10px] px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-200 font-bold flex items-center gap-1.5 shadow-xs">
+            <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+            <span id="taskQueueCountText">1 Request Queued</span>
+          </span>
+          <span id="taskProgressPercent" class="text-xs font-mono font-bold text-slate-900">15%</span>
+          <span id="taskStatusBadge" class="text-[10px] px-2.5 py-0.5 rounded-full bg-blue-100 text-slate-900 font-bold">In Progress</span>
         </div>
       </div>
 
       <!-- Animated Progress Bar -->
       <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden border border-slate-200/80">
-        <div id="taskProgressBar" class="bg-gradient-to-r from-indigo-600 to-slate-900 h-2.5 rounded-full transition-all duration-300" style="width: 15%"></div>
+        <div id="taskProgressBar" class="bg-gradient-to-r from-blue-600 to-slate-900 h-2.5 rounded-full transition-all duration-300" style="width: 15%"></div>
+      </div>
+
+      <!-- Queue Status Notice (Displayed when user tries to run another tool while one is busy) -->
+      <div id="queueStatusNotice" class="hidden rounded-2xl bg-amber-50 border border-amber-200/90 p-3.5 text-xs text-amber-950 flex items-center justify-between gap-3 shadow-xs">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <div class="w-7 h-7 rounded-xl bg-amber-200/80 text-amber-900 flex items-center justify-center shrink-0 font-bold text-sm">⏳</div>
+          <div class="min-w-0">
+            <span class="font-bold text-amber-900">Request Queued:</span> Another tool is currently executing. <span id="queueNoticeText" class="font-semibold">Your request is waiting in line</span> and will start automatically as soon as this job finishes.
+          </div>
+        </div>
+        <button type="button" onclick="clearJobQueue()" class="text-[11px] font-bold text-amber-800 hover:text-amber-950 underline shrink-0 px-2.5 py-1 rounded-lg hover:bg-amber-100 transition">Cancel Queue</button>
       </div>
 
       <!-- High-Contrast Developer Log Stream -->
@@ -1184,7 +1208,33 @@
           <span id="logLinesCount" class="text-slate-500">0 logs</span>
         </div>
         <div id="terminalLogBox" class="w-full h-44 sm:h-52 bg-[#0B1120] rounded-2xl p-3.5 font-mono text-[11px] leading-relaxed text-slate-300 overflow-y-auto border border-slate-800 space-y-1 select-text shadow-inner">
-          <div class="text-slate-600">[System] Initializing session...</div>
+          <div class="text-slate-300">[System] Initializing session...</div>
+        </div>
+      </div>
+
+      <!-- High-Demand Fallback: Deliver Report via WhatsApp / Email -->
+      <div class="rounded-2xl bg-blue-50 border border-blue-100 p-4 sm:p-5 space-y-3">
+        <div class="flex items-start gap-2.5">
+          <svg class="w-4 h-4 text-blue-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <p class="text-xs sm:text-sm text-slate-900 leading-relaxed">
+            <span class="font-bold">Sorry to make you wait</span> — we're getting a lot of requests right now. Skip the wait and get your Excel report sent straight to WhatsApp or email instead.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <div class="flex gap-2">
+            <input id="altDeliveryWhatsapp" type="tel" placeholder="WhatsApp number, e.g. +91 98765 43210" class="flex-1 min-w-0 px-3 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition">
+            <button type="button" onclick="requestAltDelivery('whatsapp')" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold transition shrink-0 shadow-md shadow-blue-600/20">Send</button>
+          </div>
+          <div class="flex gap-2">
+            <input id="altDeliveryEmail" type="email" placeholder="Email address" class="flex-1 min-w-0 px-3 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition">
+            <button type="button" onclick="requestAltDelivery('email')" class="px-4 py-2.5 rounded-xl bg-white hover:bg-blue-50 border border-blue-200 text-slate-900 text-xs sm:text-sm font-semibold transition shrink-0">Send</button>
+          </div>
+        </div>
+        <div id="altDeliveryFeedback" class="hidden text-xs font-semibold text-emerald-900 bg-emerald-50 border border-emerald-200 rounded-xl p-2.5 flex items-center gap-2">
+          <span>✅</span>
+          <span id="altDeliveryFeedbackText">Delivery registered! Your Excel workbook will be dispatched immediately once generated.</span>
         </div>
       </div>
 
@@ -1196,30 +1246,46 @@
     <div id="dashboardResultsWrapper" class="hidden space-y-6 pt-2">
       
       <!-- Prominent Excel Download Bar -->
-      <div class="p-5 rounded-3xl bg-gradient-to-r from-emerald-50 via-white to-emerald-50/60 border border-emerald-200 shadow-xl shadow-emerald-500/10 glow-emerald flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="p-5 rounded-3xl bg-gradient-to-r from-blue-50 via-white to-blue-50/60 border border-blue-200 shadow-xl shadow-blue-500/10 glow-emerald flex flex-col sm:flex-row items-center justify-between gap-4">
         
         <div class="flex items-center space-x-3.5 w-full sm:w-auto">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-emerald-500/30">
+          <div class="w-12 h-12 rounded-2xl bg-blue-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/30">
             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
             </svg>
           </div>
           <div class="overflow-hidden">
             <div class="flex items-center space-x-2">
-              <span class="text-xs font-extrabold text-emerald-700 uppercase tracking-wider">Report Ready</span>
-              <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-mono font-bold">Single Sheet Excel</span>
+              <span class="text-xs font-extrabold text-slate-900 uppercase tracking-wider">Report Ready</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-100 text-slate-900 font-mono font-bold">Single Sheet Excel</span>
             </div>
             <p id="resultFileNameText" class="text-sm font-bold text-slate-900 truncate max-w-xs sm:max-w-md mt-0.5">report.xlsx</p>
           </div>
         </div>
 
-        <div class="flex items-center space-x-2 w-full sm:w-auto">
-          <a id="excelDownloadBtn" href="#" download class="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-xs sm:text-sm text-white shadow-lg shadow-emerald-600/25 transition flex items-center justify-center space-x-2 active:scale-[0.99]">
+        <div class="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+          <a id="excelDownloadBtn" href="#" download class="flex-1 sm:flex-initial py-3 px-5 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold text-xs sm:text-sm text-white shadow-lg shadow-blue-600/25 transition flex items-center justify-center space-x-2 active:scale-[0.99]">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
             </svg>
-            <span>Download Excel (.xlsx)</span>
+            <span>Download (.xlsx)</span>
           </a>
+
+          <!-- Send Directly to WhatsApp -->
+          <button type="button" onclick="sendResultToWhatsApp()" class="flex-1 sm:flex-initial py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-xs sm:text-sm text-white shadow-md shadow-emerald-600/20 transition flex items-center justify-center space-x-1.5 active:scale-[0.99]" title="Send Excel report to WhatsApp">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span>WhatsApp</span>
+          </button>
+
+          <!-- Send Directly to Email -->
+          <button type="button" onclick="sendResultToEmail()" class="flex-1 sm:flex-initial py-3 px-4 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 font-bold text-xs sm:text-sm text-slate-800 transition flex items-center justify-center space-x-1.5 shadow-xs active:scale-[0.99]" title="Email Excel report link">
+            <svg class="w-4 h-4 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <span>Email</span>
+          </button>
         </div>
 
       </div>
@@ -1239,9 +1305,9 @@
                   <circle id="scoreRadialCircle" class="circle-meter" cx="64" cy="64" r="54" stroke="url(#scoreGradient)" stroke-width="12" stroke-linecap="round" stroke-dasharray="339.29" stroke-dashoffset="339.29" fill="none"/>
                   <defs>
                     <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#8B5CF6"/>
-                      <stop offset="50%" stop-color="#EC4899"/>
-                      <stop offset="100%" stop-color="#F59E0B"/>
+                      <stop offset="0%" stop-color="#60A5FA"/>
+                      <stop offset="50%" stop-color="#2563EB"/>
+                      <stop offset="100%" stop-color="#1E3A8A"/>
                     </linearGradient>
                   </defs>
                 </svg>
@@ -1253,11 +1319,11 @@
 
               <div>
                 <div class="flex items-center space-x-2.5">
-                  <span id="scoreGradeHero" class="text-2xl sm:text-3xl font-black px-3 py-0.5 rounded-xl bg-purple-100 text-purple-700 border border-purple-200">A</span>
+                  <span id="scoreGradeHero" class="text-2xl sm:text-3xl font-black px-3 py-0.5 rounded-xl bg-blue-100 text-slate-900 border border-blue-200">A</span>
                   <span id="scoreHandleHero" class="text-lg sm:text-xl font-extrabold text-slate-900">@username</span>
                 </div>
                 <p id="scoreNicheHero" class="text-xs text-slate-600 mt-1 font-medium">Evaluated Niche: General</p>
-                <div id="scoreBenchmarkTag" class="inline-block mt-2 text-[10px] px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">
+                <div id="scoreBenchmarkTag" class="inline-block mt-2 text-[10px] px-2.5 py-0.5 rounded-md bg-blue-50 text-slate-900 font-bold border border-blue-200">
                   High Viral Reach Account
                 </div>
               </div>
@@ -1267,15 +1333,15 @@
             <div class="w-full md:w-80 p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm space-y-2">
               <div class="flex items-center justify-between text-xs font-bold">
                 <span class="text-slate-700">Comment Authenticity</span>
-                <span id="authPercentText" class="text-emerald-600 font-mono">88% Authentic</span>
+                <span id="authPercentText" class="text-slate-900 font-mono">88% Authentic</span>
               </div>
               <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden flex">
-                <div id="authBarReal" class="bg-emerald-500 h-3" style="width: 88%"></div>
-                <div id="authBarBot" class="bg-rose-500 h-3" style="width: 12%"></div>
+                <div id="authBarReal" class="bg-blue-500 h-3" style="width: 88%"></div>
+                <div id="authBarBot" class="bg-blue-500 h-3" style="width: 12%"></div>
               </div>
               <div class="flex items-center justify-between text-[10px] text-slate-600 font-medium">
                 <span id="realCommentsCount">120 Authentic</span>
-                <span id="botCommentsCount" class="text-rose-600 font-semibold">16 Bot/Generic</span>
+                <span id="botCommentsCount" class="text-slate-900 font-semibold">16 Bot/Generic</span>
               </div>
             </div>
 
@@ -1293,31 +1359,31 @@
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
             <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">💬 Engagements</span>
-            <span id="kpiEngagementScore" class="text-lg sm:text-xl font-extrabold text-indigo-600 font-mono block">0</span>
+            <span id="kpiEngagementScore" class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono block">0</span>
             <span class="text-[10px] text-slate-600 block">Likes+Comments+Saves</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
             <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">📊 Engagement %</span>
-            <span id="kpiEngagementRate" class="text-lg sm:text-xl font-extrabold text-purple-600 font-mono block">0%</span>
+            <span id="kpiEngagementRate" class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono block">0%</span>
             <span class="text-[10px] text-slate-600 block">vs Follower Base</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
             <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">🛡️ Bot Penalty</span>
-            <span id="kpiBotPenalty" class="text-lg sm:text-xl font-extrabold text-rose-600 font-mono block">-0%</span>
+            <span id="kpiBotPenalty" class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono block">-0%</span>
             <span class="text-[10px] text-slate-600 block">Spam Deductions</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
             <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">🎯 Niche Match</span>
-            <span id="kpiNicheScore" class="text-lg sm:text-xl font-extrabold text-amber-600 font-mono block">100%</span>
+            <span id="kpiNicheScore" class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono block">100%</span>
             <span class="text-[10px] text-slate-600 block">Topic Alignment</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
             <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">📈 10-Day Growth</span>
-            <span id="kpiGrowthScore" class="text-lg sm:text-xl font-extrabold text-emerald-600 font-mono block">+0%</span>
+            <span id="kpiGrowthScore" class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono block">+0%</span>
             <span class="text-[10px] text-slate-600 block">Recent Velocity</span>
           </div>
 
@@ -1363,15 +1429,15 @@
           </div>
           <div class="glass-card p-4 rounded-2xl">
             <span class="text-[10px] font-bold text-slate-600 uppercase block">Verified Emails</span>
-            <span id="gmapsTotalEmails" class="text-2xl font-extrabold text-emerald-600 font-mono mt-1 block">0</span>
+            <span id="gmapsTotalEmails" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">0</span>
           </div>
           <div class="glass-card p-4 rounded-2xl">
             <span class="text-[10px] font-bold text-slate-600 uppercase block">Phones Listed</span>
-            <span id="gmapsTotalPhones" class="text-2xl font-extrabold text-indigo-600 font-mono mt-1 block">0</span>
+            <span id="gmapsTotalPhones" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">0</span>
           </div>
           <div class="glass-card p-4 rounded-2xl">
             <span class="text-[10px] font-bold text-slate-600 uppercase block">Social Channels</span>
-            <span id="gmapsTotalSocials" class="text-2xl font-extrabold text-purple-600 font-mono mt-1 block">0</span>
+            <span id="gmapsTotalSocials" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">0</span>
           </div>
         </div>
 
@@ -1410,7 +1476,7 @@
 
       <!-- DYNAMIC CONTAINER: OMNI-CHANNEL SCORECARD VIEW -->
       <div id="view-omni-result" class="hidden space-y-6">
-        <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-purple-200 shadow-xl glow-indigo">
+        <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-blue-200 shadow-xl glow-indigo">
           <div class="flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center space-x-6">
               <div class="relative w-32 h-32 flex items-center justify-center">
@@ -1425,11 +1491,11 @@
               </div>
               <div>
                 <div class="flex items-center space-x-2.5">
-                  <span id="omniGradeHero" class="text-2xl sm:text-3xl font-black px-3 py-0.5 rounded-xl bg-purple-100 text-purple-700 border border-purple-200">A</span>
+                  <span id="omniGradeHero" class="text-2xl sm:text-3xl font-black px-3 py-0.5 rounded-xl bg-blue-100 text-slate-900 border border-blue-200">A</span>
                   <span id="omniNameHero" class="text-lg sm:text-xl font-extrabold text-slate-900">Creator Name</span>
                 </div>
                 <p id="omniNicheHero" class="text-xs text-slate-600 mt-1 font-medium">Evaluated Niche: General</p>
-                <div id="omniVerdictTag" class="inline-block mt-2 text-[10px] px-2.5 py-0.5 rounded-md bg-purple-50 text-purple-700 font-bold border border-purple-200">
+                <div id="omniVerdictTag" class="inline-block mt-2 text-[10px] px-2.5 py-0.5 rounded-md bg-blue-50 text-slate-900 font-bold border border-blue-200">
                   High Cross-Platform Momentum
                 </div>
               </div>
@@ -1437,7 +1503,7 @@
             <div class="w-full md:w-80 p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm space-y-2">
               <div class="flex items-center justify-between text-xs font-bold">
                 <span class="text-slate-700">Total Cross-Platform Audience</span>
-                <span id="omniAudienceText" class="text-purple-600 font-mono">500,000+</span>
+                <span id="omniAudienceText" class="text-slate-900 font-mono">500,000+</span>
               </div>
               <p id="omniStrategyText" class="text-[11px] text-slate-600 font-medium">Recommended: IG Reel + Dedicated YouTube Integration</p>
             </div>
@@ -1458,15 +1524,15 @@
           </div>
           <div class="glass-card p-4 rounded-2xl">
             <span class="text-[10px] font-bold text-slate-600 uppercase block">Avg Views per Video</span>
-            <span id="ytAvgViews" class="text-2xl font-extrabold text-rose-600 font-mono mt-1 block">0</span>
+            <span id="ytAvgViews" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">0</span>
           </div>
           <div class="glass-card p-4 rounded-2xl">
             <span class="text-[10px] font-bold text-slate-600 uppercase block">Avg Likes</span>
-            <span id="ytAvgLikes" class="text-2xl font-extrabold text-indigo-600 font-mono mt-1 block">0</span>
+            <span id="ytAvgLikes" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">0</span>
           </div>
           <div class="glass-card p-4 rounded-2xl">
             <span class="text-[10px] font-bold text-slate-600 uppercase block">Channel Subscribers</span>
-            <span id="ytSubscribers" class="text-2xl font-extrabold text-amber-600 font-mono mt-1 block">--</span>
+            <span id="ytSubscribers" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">--</span>
           </div>
         </div>
 
@@ -1504,15 +1570,15 @@
           </div>
           <div class="glass-card p-4 rounded-2xl">
             <span class="text-[10px] font-bold text-slate-600 uppercase block">Avg Likes</span>
-            <span id="twAvgLikes" class="text-2xl font-extrabold text-sky-600 font-mono mt-1 block">0</span>
+            <span id="twAvgLikes" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">0</span>
           </div>
           <div class="glass-card p-4 rounded-2xl">
             <span class="text-[10px] font-bold text-slate-600 uppercase block">Avg Reposts</span>
-            <span id="twAvgReposts" class="text-2xl font-extrabold text-indigo-600 font-mono mt-1 block">0</span>
+            <span id="twAvgReposts" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">0</span>
           </div>
           <div class="glass-card p-4 rounded-2xl">
             <span class="text-[10px] font-bold text-slate-600 uppercase block">Est. Profile Reach</span>
-            <span id="twEstReach" class="text-2xl font-extrabold text-emerald-600 font-mono mt-1 block">--</span>
+            <span id="twEstReach" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">--</span>
           </div>
         </div>
 
@@ -1544,7 +1610,7 @@
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <div class="glass-card p-4 rounded-2xl">
             <span class="text-[10px] font-bold text-slate-600 uppercase block">Overall Sentiment</span>
-            <span id="redditVerdictHero" class="text-lg sm:text-xl font-extrabold text-emerald-600 font-mono mt-1 block truncate">Positive</span>
+            <span id="redditVerdictHero" class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono mt-1 block truncate">Positive</span>
           </div>
           <div class="glass-card p-4 rounded-2xl">
             <span class="text-[10px] font-bold text-slate-600 uppercase block">Discussions Analyzed</span>
@@ -1552,11 +1618,11 @@
           </div>
           <div class="glass-card p-4 rounded-2xl">
             <span class="text-[10px] font-bold text-slate-600 uppercase block">Total Community Upvotes</span>
-            <span id="redditTotalUpvotes" class="text-2xl font-extrabold text-amber-600 font-mono mt-1 block">0</span>
+            <span id="redditTotalUpvotes" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">0</span>
           </div>
           <div class="glass-card p-4 rounded-2xl">
             <span class="text-[10px] font-bold text-slate-600 uppercase block">Top Subreddit</span>
-            <span id="redditTopSub" class="text-2xl font-extrabold text-indigo-600 font-mono mt-1 block">--</span>
+            <span id="redditTopSub" class="text-2xl font-extrabold text-slate-900 font-mono mt-1 block">--</span>
           </div>
         </div>
 
@@ -1566,9 +1632,9 @@
             <span id="redditSentimentRatio" class="text-xs font-mono font-bold text-slate-700">--</span>
           </div>
           <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden flex">
-            <div id="redditBarPos" class="bg-emerald-500 h-3" style="width: 50%" title="Positive"></div>
+            <div id="redditBarPos" class="bg-blue-500 h-3" style="width: 50%" title="Positive"></div>
             <div id="redditBarNeu" class="bg-slate-400 h-3" style="width: 30%" title="Neutral"></div>
-            <div id="redditBarNeg" class="bg-rose-500 h-3" style="width: 20%" title="Critical"></div>
+            <div id="redditBarNeg" class="bg-blue-500 h-3" style="width: 20%" title="Critical"></div>
           </div>
           <p id="redditTakeawayText" class="text-xs text-slate-600 font-medium italic pt-1"></p>
         </div>
@@ -1602,7 +1668,7 @@
         <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xl space-y-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <span class="text-[10px] px-2 py-0.5 rounded-md bg-cyan-100 text-cyan-800 font-mono font-bold uppercase">Reader Extraction</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-blue-100 text-slate-900 font-mono font-bold uppercase">Reader Extraction</span>
               <h3 id="readerArticleTitle" class="text-base sm:text-lg font-bold text-slate-900 mt-1">Article Title</h3>
               <p id="readerArticleDomain" class="text-xs text-slate-500 font-mono mt-0.5">domain.com</p>
             </div>
@@ -1613,7 +1679,7 @@
               </div>
               <div class="px-3 py-1.5 rounded-xl bg-slate-100 border border-slate-200 text-center">
                 <span class="text-[10px] text-slate-500 block uppercase font-bold">Est. Reading</span>
-                <span id="readerReadingTime" class="text-xs font-mono font-bold text-indigo-600">0 min</span>
+                <span id="readerReadingTime" class="text-xs font-mono font-bold text-slate-900">0 min</span>
               </div>
             </div>
           </div>
@@ -1626,7 +1692,7 @@
           <div class="space-y-2">
             <div class="flex items-center justify-between">
               <span class="text-xs font-bold text-slate-800">Clean Markdown Preview</span>
-              <button type="button" onclick="copyReaderMarkdown()" class="text-[11px] font-semibold text-indigo-600 hover:text-indigo-800">Copy Full Markdown</button>
+              <button type="button" onclick="copyReaderMarkdown()" class="text-[11px] font-semibold text-slate-900 hover:text-slate-900">Copy Full Markdown</button>
             </div>
             <pre id="readerMarkdownPreview" class="p-4 rounded-2xl bg-[#0B1120] text-slate-300 font-mono text-[11px] leading-relaxed max-h-72 overflow-y-auto whitespace-pre-wrap select-text"></pre>
           </div>
@@ -1662,7 +1728,7 @@
       
       <div class="flex items-center justify-between pb-3 border-b border-slate-200">
         <div class="flex items-center space-x-2.5">
-          <div class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
+          <div class="w-8 h-8 rounded-xl bg-blue-100 text-slate-900 flex items-center justify-center">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
             </svg>
@@ -1683,28 +1749,28 @@
       <div class="space-y-3">
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1.5">API Base URL (Cloudflare Tunnel or Ngrok)</label>
-          <input type="url" id="customApiInput" placeholder="https://your-tunnel.trycloudflare.com" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-indigo-500 text-xs text-slate-900 placeholder-slate-400 outline-none font-mono shadow-xs">
+          <input type="url" id="customApiInput" placeholder="https://your-tunnel.trycloudflare.com" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 text-xs text-slate-900 placeholder-slate-400 outline-none font-mono shadow-xs">
           <p class="text-[10px] text-slate-600 mt-1">Leave empty when opening locally on localhost. Paste your HTTPS tunnel URL when visiting from Vercel.</p>
         </div>
 
         <div id="apiTestStatus" class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 hidden">
         </div>
 
-        <div class="p-3.5 rounded-2xl bg-indigo-50/60 border border-indigo-200 text-[11px] text-slate-700 space-y-1">
-          <div class="font-bold text-indigo-700 flex items-center">
+        <div class="p-3.5 rounded-2xl bg-blue-50/60 border border-blue-200 text-[11px] text-slate-700 space-y-1">
+          <div class="font-bold text-slate-900 flex items-center">
             <span class="mr-1.5">💡</span> Free 10-Second HTTPS Tunnel on your PC:
           </div>
-          <div class="font-mono text-[10px] bg-white p-2 rounded-lg text-indigo-600 border border-indigo-100 select-all font-semibold">
+          <div class="font-mono text-[10px] bg-white p-2 rounded-lg text-slate-900 border border-blue-100 select-all font-semibold">
             cloudflared tunnel --url http://localhost
           </div>
-          <p class="text-[10px] text-slate-600">Copy the generated <code class="text-indigo-600 font-semibold">https://xxx.trycloudflare.com</code> URL and paste above.</p>
+          <p class="text-[10px] text-slate-600">Copy the generated <code class="text-slate-900 font-semibold">https://xxx.trycloudflare.com</code> URL and paste above.</p>
         </div>
 
         <div class="flex items-center space-x-2 pt-1">
           <button onclick="testApiConnection()" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold border border-slate-200 transition">
             ⚡ Test Ping
           </button>
-          <button onclick="saveApiEndpoint()" class="flex-1 py-2.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-extrabold transition shadow-md shadow-indigo-600/25">
+          <button onclick="saveApiEndpoint()" class="flex-1 py-2.5 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-extrabold transition shadow-md shadow-blue-600/25">
             Save & Connect
           </button>
           <button onclick="resetApiEndpoint()" class="py-2.5 px-3 rounded-xl bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-800 text-xs transition border border-slate-200 font-medium" title="Reset to Localhost">
@@ -1724,7 +1790,7 @@
       
       <div class="flex items-center justify-between pb-3 border-b border-slate-200">
         <div class="flex items-center space-x-2.5">
-          <div class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center">
+          <div class="w-8 h-8 rounded-xl bg-blue-100 text-slate-900 flex items-center justify-center">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
             </svg>
@@ -1860,10 +1926,10 @@
       const dot = document.getElementById('apiStatusDot');
       if (!dot) return;
       if (base) {
-        dot.className = "w-2 h-2 rounded-full bg-indigo-600 animate-pulse";
+        dot.className = "w-2 h-2 rounded-full bg-blue-600 animate-pulse";
         document.getElementById('apiConfigBtn').title = `Connected to Tunnel: ${base}`;
       } else {
-        dot.className = "w-2 h-2 rounded-full bg-emerald-500";
+        dot.className = "w-2 h-2 rounded-full bg-blue-500";
         document.getElementById('apiConfigBtn').title = `Using Local Origin`;
       }
     }
@@ -1884,7 +1950,7 @@
       const testUrl = inputUrl ? `${inputUrl}/api/system-info` : `/api/system-info`;
       const statusBox = document.getElementById('apiTestStatus');
       statusBox.classList.remove('hidden');
-      statusBox.innerHTML = `<span class="text-indigo-600 font-semibold">Pinging backend API...</span>`;
+      statusBox.innerHTML = `<span class="text-slate-900 font-semibold">Pinging backend API...</span>`;
 
       const startTime = Date.now();
       try {
@@ -1893,7 +1959,7 @@
         const data = await res.json();
         const latency = Date.now() - startTime;
         statusBox.innerHTML = `
-          <div class="text-emerald-600 font-bold flex items-center">
+          <div class="text-slate-900 font-bold flex items-center">
             <span class="mr-1.5">✅</span> Connected Successfully (${latency}ms)
           </div>
           <div class="text-[10px] text-slate-600 mt-0.5 font-mono">
@@ -1902,7 +1968,7 @@
         `;
       } catch (err) {
         statusBox.innerHTML = `
-          <div class="text-rose-600 font-bold flex items-center">
+          <div class="text-slate-900 font-bold flex items-center">
             <span class="mr-1.5">❌</span> Connection Failed: ${err.message}
           </div>
           <div class="text-[10px] text-slate-600 mt-0.5">
@@ -1978,14 +2044,235 @@
       showToast("📱 Mobile URL copied: " + url);
     }
 
+    // ──────────────────────────────────────────────────────────────
+    // QUEUE & CONCURRENCY CONTROLLER
+    // (If a tool is already running, subsequent clicks prompt 'Request Queued')
+    // ──────────────────────────────────────────────────────────────
+    let isJobRunning = false;
+    let pendingJobQueue = [];
+    let currentTaskExcelFile = null;
+
+    function getPayloadTaskName(payload) {
+      if (!payload) return "Intelligence Task";
+      const t = payload.tool;
+      if (t === '1a') return "Find Instagram Leads";
+      if (t === '1b') return "Google Leads From Location";
+      if (t === '1c') return "Maps to Contact Data";
+      if (t === '2a') return "Account Deep Audit";
+      if (t === '2b') return "Inspect Post / Reel";
+      if (t === '2c') return "Extract 30-Day Comments";
+      if (t === '2d') return "YouTube Channel Audit";
+      if (t === '2e') return "Twitter / X Profile Audit";
+      if (t === 'omni') return "Omni-Channel Composite Scorecard";
+      if (t === '3') return payload.omni_mode ? "Omni-Channel Scorecard" : "Account Reach & Influence Score";
+      if (t === '4a') return "Reddit Community Sentiment";
+      if (t === '4b') return "Deep Web Reader";
+      return "Intelligence Task";
+    }
+
+    function updateQueueUI() {
+      const badge = document.getElementById('taskQueueBadge');
+      const countText = document.getElementById('taskQueueCountText');
+      const notice = document.getElementById('queueStatusNotice');
+      const noticeText = document.getElementById('queueNoticeText');
+
+      const qLen = pendingJobQueue.length;
+      if (qLen > 0) {
+        if (badge) {
+          badge.classList.remove('hidden');
+          if (countText) countText.innerText = `${qLen} Request${qLen > 1 ? 's' : ''} Queued`;
+        }
+        if (notice) {
+          notice.classList.remove('hidden');
+          if (noticeText) {
+            const nextName = pendingJobQueue[0].taskName;
+            noticeText.innerText = qLen === 1 ? `"${nextName}" is next in line` : `${qLen} requests waiting (next: "${nextName}")`;
+          }
+        }
+      } else {
+        if (badge) badge.classList.add('hidden');
+        if (notice) notice.classList.add('hidden');
+      }
+    }
+
+    function clearJobQueue() {
+      const count = pendingJobQueue.length;
+      pendingJobQueue = [];
+      updateQueueUI();
+      showToast(`Cleared ${count} queued request(s).`, "🗑️");
+      const logBox = document.getElementById('terminalLogBox');
+      if (logBox) {
+        const div = document.createElement('div');
+        div.className = "text-amber-300 font-semibold";
+        div.innerText = "[QUEUE] Pending queue cleared by user.";
+        logBox.appendChild(div);
+        logBox.scrollTop = logBox.scrollHeight;
+      }
+    }
+
+    function handleTaskFinished(wasSuccess) {
+      isJobRunning = false;
+      if (pollingInterval) {
+        clearInterval(pollingInterval);
+        pollingInterval = null;
+      }
+
+      if (pendingJobQueue.length > 0) {
+        const nextJob = pendingJobQueue.shift();
+        updateQueueUI();
+        showToast(`Active task finished. Starting queued request: "${nextJob.taskName}"...`, "⏳");
+        
+        const logBox = document.getElementById('terminalLogBox');
+        if (logBox) {
+          const div = document.createElement('div');
+          div.className = "text-blue-300 font-bold";
+          div.innerText = `[QUEUE] Popping next request from queue: "${nextJob.taskName}" (Remaining in queue: ${pendingJobQueue.length})`;
+          logBox.appendChild(div);
+          logBox.scrollTop = logBox.scrollHeight;
+        }
+
+        setTimeout(() => {
+          startJob(nextJob.payload, true);
+        }, 1200);
+      } else {
+        updateQueueUI();
+      }
+    }
+
+    // ──────────────────────────────────────────────────────────────
+    // WHATSAPP & EMAIL DIRECT DELIVERY DISPATCHER
+    // ──────────────────────────────────────────────────────────────
+    // Auto-restore saved contact preferences from localStorage on load
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const savedPhone = localStorage.getItem('savedWhatsapp');
+        const savedMail = localStorage.getItem('savedEmail');
+        const wInp = document.getElementById('altDeliveryWhatsapp');
+        const mInp = document.getElementById('altDeliveryEmail');
+        if (savedPhone && wInp && !wInp.value) wInp.value = savedPhone;
+        if (savedMail && mInp && !mInp.value) mInp.value = savedMail;
+      } catch (_) {}
+    });
+
+    async function requestAltDelivery(channel) {
+      const whatsappInput = document.getElementById('altDeliveryWhatsapp');
+      const emailInput = document.getElementById('altDeliveryEmail');
+      const value = channel === 'whatsapp' ? whatsappInput.value.trim() : emailInput.value.trim();
+
+      if (!value) {
+        showToast(channel === 'whatsapp' ? "Enter a WhatsApp number first" : "Enter an email address first", "⚠️");
+        return;
+      }
+
+      try {
+        if (channel === 'whatsapp') localStorage.setItem('savedWhatsapp', value);
+        else localStorage.setItem('savedEmail', value);
+      } catch (_) {}
+
+      const taskId = currentTaskId;
+      try {
+        await fetch(`${getApiBase()}/api/deliver`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            task_id: taskId,
+            channel: channel,
+            destination: value,
+            filename: currentTaskExcelFile || ""
+          })
+        });
+      } catch (e) {
+        // Best-effort — queued regardless of backend network status
+      }
+
+      showToast(
+        channel === 'whatsapp'
+          ? `We'll send your Excel report to ${value} on WhatsApp as soon as it's ready`
+          : `We'll email your Excel report to ${value} as soon as it's ready`,
+        "📨"
+      );
+
+      const feedback = document.getElementById('altDeliveryFeedback');
+      const feedbackText = document.getElementById('altDeliveryFeedbackText');
+      if (feedback && feedbackText) {
+        feedbackText.innerText = channel === 'whatsapp'
+          ? `Report delivery queued for WhatsApp (${value}). Excel file will be sent as soon as ready.`
+          : `Report delivery queued for Email (${value}). Excel file will be sent as soon as ready.`;
+        feedback.classList.remove('hidden');
+      }
+
+      // Add log confirmation to terminal stream
+      const logBox = document.getElementById('terminalLogBox');
+      if (logBox) {
+        const div = document.createElement('div');
+        div.className = "text-emerald-300 font-semibold";
+        div.innerText = `[DELIVERY] ${channel.toUpperCase()} delivery registered for ${value}`;
+        logBox.appendChild(div);
+        logBox.scrollTop = logBox.scrollHeight;
+      }
+    }
+
+    function sendResultToWhatsApp() {
+      const fn = currentTaskExcelFile || document.getElementById('resultFileNameText').innerText || 'report.xlsx';
+      const downloadUrl = `${getApiBase()}/api/download/${encodeURIComponent(fn)}`;
+      const savedPhone = (document.getElementById('altDeliveryWhatsapp') ? document.getElementById('altDeliveryWhatsapp').value.trim() : '') || localStorage.getItem('savedWhatsapp') || '';
+
+      const text = `📊 *Vanguard Social — Intelligence Excel Report Ready*\n\n📁 *File:* ${fn}\n📥 *Direct Download Link:* ${downloadUrl}\n\nGenerated via Vanguard Social Intelligence Hub.`;
+
+      if (savedPhone && currentTaskId) {
+        try {
+          fetch(`${getApiBase()}/api/deliver`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ task_id: currentTaskId, channel: 'whatsapp', destination: savedPhone, filename: fn })
+          });
+        } catch (_) {}
+      }
+
+      const cleanPhone = savedPhone.replace(/[^0-9]/g, '');
+      const waUrl = cleanPhone
+        ? `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(text)}`
+        : `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+
+      window.open(waUrl, '_blank');
+      showToast("Opening WhatsApp to share Excel report...", "💬");
+    }
+
+    function sendResultToEmail() {
+      const fn = currentTaskExcelFile || document.getElementById('resultFileNameText').innerText || 'report.xlsx';
+      const downloadUrl = `${getApiBase()}/api/download/${encodeURIComponent(fn)}`;
+      const savedMail = (document.getElementById('altDeliveryEmail') ? document.getElementById('altDeliveryEmail').value.trim() : '') || localStorage.getItem('savedEmail') || '';
+
+      const subject = `Vanguard Social Excel Report: ${fn}`;
+      const body = `Hi,\n\nYour Vanguard Social intelligence Excel report is ready for download:\n\nReport File: ${fn}\nDirect Download Link: ${downloadUrl}\n\nBest regards,\nVanguard Social Intelligence Engine`;
+
+      if (savedMail && currentTaskId) {
+        try {
+          fetch(`${getApiBase()}/api/deliver`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ task_id: currentTaskId, channel: 'email', destination: savedMail, filename: fn })
+          });
+        } catch (_) {}
+      }
+
+      const mailtoUrl = savedMail
+        ? `mailto:${encodeURIComponent(savedMail)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+        : `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      window.location.href = mailtoUrl;
+      showToast("Opening email composer...", "✉️");
+    }
+
     function showToast(msg, icon = "✅") {
       const toast = document.getElementById('toastNotification');
+      if (!toast) return;
       document.getElementById('toastMessage').innerText = msg;
       document.getElementById('toastIcon').innerText = icon;
       toast.classList.remove('translate-y-20', 'opacity-0');
       setTimeout(() => {
         toast.classList.add('translate-y-20', 'opacity-0');
-      }, 3000);
+      }, 3500);
     }
 
     // ──────────────────────────────────────────────────────────────
@@ -2014,10 +2301,10 @@
           if (chevron) chevron.classList.add('rotate-180');
           if (btnText) btnText.innerText = 'Collapse ▴';
           if (card) {
-            card.className = "engine-card relative rounded-3xl border-2 border-indigo-600 bg-white shadow-xl ring-4 ring-indigo-500/10 transition-all duration-300 overflow-hidden";
+            card.className = "engine-card relative rounded-3xl border-2 border-blue-600 bg-white shadow-xl ring-4 ring-blue-500/10 transition-all duration-300 overflow-hidden";
           }
           if (pip) {
-            pip.className = "rail-pip w-7 h-7 rounded-xl bg-indigo-600 text-white font-mono font-bold shadow-md ring-4 ring-indigo-500/20 scale-110 transition-all";
+            pip.className = "rail-pip w-7 h-7 rounded-xl bg-blue-600 text-white font-mono font-bold shadow-md ring-4 ring-blue-500/20 scale-110 transition-all";
           }
 
           // Smooth scroll into focus
@@ -2069,7 +2356,7 @@
         const card = document.getElementById(`subtoolCard-${st}`);
         if (!card) return;
         if (st === subtool) {
-          card.className = "relative flex items-start p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md shadow-indigo-500/5 cursor-pointer transition";
+          card.className = "relative flex items-start p-4 rounded-2xl border-2 border-blue-500 bg-white shadow-md shadow-blue-500/5 cursor-pointer transition";
         } else {
           card.className = "relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs";
         }
@@ -2078,7 +2365,7 @@
       if (subtool === '1a') {
         form1a.classList.remove('hidden');
         formGmaps.classList.add('hidden');
-        btnText.innerText = "Find Viral Creators";
+        btnText.innerText = "Find Instagram Leads";
       } else if (subtool === '1b') {
         form1a.classList.add('hidden');
         formGmaps.classList.remove('hidden');
@@ -2107,7 +2394,7 @@
         const card = document.getElementById(`subtoolCard-${st}`);
         if (!card) return;
         if (st === subtool) {
-          card.className = "relative flex items-start p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md shadow-indigo-500/5 cursor-pointer transition";
+          card.className = "relative flex items-start p-4 rounded-2xl border-2 border-blue-500 bg-white shadow-md shadow-blue-500/5 cursor-pointer transition";
         } else {
           card.className = "relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs";
         }
@@ -2144,7 +2431,7 @@
         const card = document.getElementById(`subtoolCard-${st}`);
         if (!card) return;
         if (st === subtool) {
-          card.className = "relative flex items-start p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md shadow-indigo-500/5 cursor-pointer transition";
+          card.className = "relative flex items-start p-4 rounded-2xl border-2 border-blue-500 bg-white shadow-md shadow-blue-500/5 cursor-pointer transition";
         } else {
           card.className = "relative flex items-start p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white cursor-pointer transition shadow-xs";
         }
@@ -2170,14 +2457,14 @@
       const btnText = document.getElementById('launchScoreBtnText');
 
       if (mode === 'single') {
-        btnSingle.className = "flex-1 p-4 rounded-2xl border-2 border-indigo-500 bg-white shadow-md text-left transition cursor-pointer";
+        btnSingle.className = "flex-1 p-4 rounded-2xl border-2 border-blue-500 bg-white shadow-md text-left transition cursor-pointer";
         btnOmni.className = "flex-1 p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white text-left transition cursor-pointer shadow-xs";
         formSingle.classList.remove('hidden');
         formOmni.classList.add('hidden');
         btnText.innerText = "Calculate account score";
       } else {
         btnSingle.className = "flex-1 p-4 rounded-2xl border border-slate-200 bg-white/70 hover:bg-white text-left transition cursor-pointer shadow-xs";
-        btnOmni.className = "flex-1 p-4 rounded-2xl border-2 border-purple-500 bg-white shadow-md text-left transition cursor-pointer";
+        btnOmni.className = "flex-1 p-4 rounded-2xl border-2 border-blue-500 bg-white shadow-md text-left transition cursor-pointer";
         formSingle.classList.add('hidden');
         formOmni.classList.remove('hidden');
         btnText.innerText = "Compute Omni-Channel Composite Scorecard";
@@ -2189,7 +2476,7 @@
       [0, 1000, 5000, 10000, 25000].forEach(r => {
         const btn = document.getElementById(`reachBtn-${r}`);
         if (r === val) {
-          btn.className = "py-2.5 px-3 rounded-xl text-xs font-bold bg-indigo-600 text-white transition shadow-sm";
+          btn.className = "py-2.5 px-3 rounded-xl text-xs font-bold bg-blue-600 text-white transition shadow-sm";
         } else {
           btn.className = "py-2.5 px-3 rounded-xl text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 transition border border-slate-200";
         }
@@ -2201,7 +2488,7 @@
       [30, 60, 90, 0].forEach(d => {
         const btn = document.getElementById(`cScope-${d}`);
         if (d === days) {
-          btn.className = "py-2 px-3 rounded-xl text-xs font-bold bg-indigo-600 text-white transition shadow-sm";
+          btn.className = "py-2 px-3 rounded-xl text-xs font-bold bg-blue-600 text-white transition shadow-sm";
         } else {
           btn.className = "py-2 px-3 rounded-xl text-xs font-semibold bg-white text-slate-700 hover:bg-slate-100 transition border border-slate-200";
         }
@@ -2377,15 +2664,58 @@
     // ──────────────────────────────────────────────────────────────
     // TASK EXECUTION & POLLING
     // ──────────────────────────────────────────────────────────────
-    async function startJob(payload) {
+    async function startJob(payload, isFromQueue = false) {
+      const taskFriendlyName = getPayloadTaskName(payload);
+
+      // ── QUEUE CHECK: If a tool is ALREADY RUNNING and not called from queue ──
+      if (isJobRunning && !isFromQueue) {
+        const queuePosition = pendingJobQueue.length + 1;
+        pendingJobQueue.push({
+          payload: payload,
+          taskName: taskFriendlyName,
+          enqueuedAt: new Date()
+        });
+        updateQueueUI();
+
+        // Prompt the user that request is queued
+        showToast(`⏳ Request Queued (#${queuePosition}): Another tool is already running. "${taskFriendlyName}" will start automatically once current job completes.`, "⏳");
+
+        // Log into terminal box
+        const logBox = document.getElementById('terminalLogBox');
+        if (logBox) {
+          const qDiv = document.createElement('div');
+          qDiv.className = "text-amber-300 font-semibold";
+          qDiv.innerText = `[QUEUE] Request queued (#${queuePosition}): "${taskFriendlyName}" placed in line. Awaiting completion of current task...`;
+          logBox.appendChild(qDiv);
+          logBox.scrollTop = logBox.scrollHeight;
+        }
+
+        // Make sure progress drawer is visible so the user sees both progress and queue status
+        const progBox = document.getElementById('liveProgressContainer');
+        if (progBox) {
+          progBox.classList.remove('hidden');
+          progBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        return;
+      }
+
+      // Mark engine state as actively running
+      isJobRunning = true;
+      currentTaskExcelFile = null;
+      updateQueueUI();
+
+      // Reset results and open live progress container
       document.getElementById('dashboardResultsWrapper').classList.add('hidden');
+      const feedback = document.getElementById('altDeliveryFeedback');
+      if (feedback) feedback.classList.add('hidden');
+
       const progBox = document.getElementById('liveProgressContainer');
       progBox.classList.remove('hidden');
       progBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       // Clean task title without numerical references
-      let taskName = "Intelligence Task";
-      if (payload.tool === '1a') taskName = "Finding Viral Creators...";
+      let taskName = `${taskFriendlyName}...`;
+      if (payload.tool === '1a') taskName = "Finding Instagram Leads...";
       else if (payload.tool === '1b') taskName = "Extracting Google Leads...";
       else if (payload.tool === '1c') taskName = "Extracting Complete Contacts...";
       else if (payload.tool === '2a') taskName = "Auditing Account Profile...";
@@ -2401,7 +2731,9 @@
       document.getElementById('taskTitleText').innerText = taskName;
       document.getElementById('taskProgressBar').style.width = '10%';
       document.getElementById('taskProgressPercent').innerText = '10%';
-      document.getElementById('terminalLogBox').innerHTML = `<div class="text-indigo-400 font-semibold">[System] Dispatching background task...</div>`;
+      document.getElementById('taskStatusBadge').innerText = 'Processing';
+      document.getElementById('taskStatusBadge').className = 'text-[10px] px-2.5 py-0.5 rounded-full bg-blue-100 text-slate-900 font-bold';
+      document.getElementById('terminalLogBox').innerHTML = `<div class="text-white font-semibold">[System] Dispatching background task: ${taskFriendlyName}...</div>`;
 
       try {
         const res = await fetch(`${getApiBase()}/api/run`, {
@@ -2412,10 +2744,17 @@
         const data = await res.json();
         currentTaskId = data.task_id;
 
+        if (data.status === 'queued') {
+          document.getElementById('taskStatusBadge').innerText = 'Queued on Server';
+          document.getElementById('taskStatusBadge').className = 'text-[10px] px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 font-bold';
+        }
+
         if (pollingInterval) clearInterval(pollingInterval);
         pollingInterval = setInterval(() => pollTask(currentTaskId), 1000);
       } catch (err) {
+        isJobRunning = false;
         alert("Failed to start task: " + err);
+        handleTaskFinished(false);
       }
     }
 
@@ -2462,9 +2801,9 @@
             const clean = sanitizeLogLine(l);
             if (!clean) return '';
             let color = 'text-slate-300';
-            if (clean.includes('failed') || clean.includes('Error') || clean.includes('[ERROR]')) color = 'text-rose-400 font-semibold';
-            else if (clean.includes('Complete') || clean.includes('Success')) color = 'text-emerald-300 font-semibold';
-            else if (clean.includes('[STATUS]') || clean.includes('[AUDIT]') || clean.includes('[DASHBOARD]')) color = 'text-indigo-300 font-semibold';
+            if (clean.includes('failed') || clean.includes('Error') || clean.includes('[ERROR]')) color = 'text-white font-semibold';
+            else if (clean.includes('Complete') || clean.includes('Success')) color = 'text-white font-semibold';
+            else if (clean.includes('[STATUS]') || clean.includes('[AUDIT]') || clean.includes('[DASHBOARD]')) color = 'text-blue-300 font-semibold';
             return `<div class="${color}">${escapeHtml(clean)}</div>`;
           }).filter(Boolean).join('');
           logBox.scrollTop = logBox.scrollHeight;
@@ -2472,21 +2811,20 @@
         }
 
         if (task.status === 'completed') {
-          clearInterval(pollingInterval);
-          pollingInterval = null;
           document.getElementById('taskProgressBar').style.width = '100%';
           document.getElementById('taskProgressPercent').innerText = '100%';
           document.getElementById('taskStatusBadge').innerText = 'Completed';
-          document.getElementById('taskStatusBadge').className = 'text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold';
+          document.getElementById('taskStatusBadge').className = 'text-[10px] px-2.5 py-0.5 rounded-full bg-blue-100 text-slate-900 font-bold';
+          currentTaskExcelFile = task.excel_file;
 
           fetchHistory();
           renderDashboardResults(task);
+          handleTaskFinished(true);
         } else if (task.status === 'failed') {
-          clearInterval(pollingInterval);
-          pollingInterval = null;
           document.getElementById('taskStatusBadge').innerText = 'Failed';
-          document.getElementById('taskStatusBadge').className = 'text-[10px] px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 font-bold';
+          document.getElementById('taskStatusBadge').className = 'text-[10px] px-2.5 py-0.5 rounded-full bg-red-100 text-red-900 font-bold';
           alert("Task encountered an error: " + (task.error || "Unknown error"));
+          handleTaskFinished(false);
         }
       } catch (err) {
         console.error("Poll error:", err);
@@ -2558,19 +2896,19 @@
           const likes = Number(p.likes || 0).toLocaleString();
           const comm = Number(p.comments || 0).toLocaleString();
           const eng = p.engagement_rate || '0.0%';
-          const nMatch = p.niche_match ? '<span class="text-emerald-600 font-bold">Matched</span>' : '<span class="text-slate-500">Other</span>';
+          const nMatch = p.niche_match ? '<span class="text-slate-900 font-bold">Matched</span>' : '<span class="text-slate-500">Other</span>';
           const url = p.post_url || `https://www.instagram.com/p/${scode}/`;
           return `
-            <tr class="hover:bg-indigo-50/40 transition">
+            <tr class="hover:bg-blue-50/40 transition">
               <td class="py-2.5 px-3 font-bold text-slate-900">${scode}</td>
               <td class="py-2.5 px-3 text-slate-600 font-medium">${p.type || 'Reel'}</td>
-              <td class="py-2.5 px-3 text-amber-600 font-extrabold">${plays}</td>
+              <td class="py-2.5 px-3 text-slate-900 font-extrabold">${plays}</td>
               <td class="py-2.5 px-3">${likes}</td>
               <td class="py-2.5 px-3">${comm}</td>
-              <td class="py-2.5 px-3 text-purple-600 font-bold">${eng}</td>
+              <td class="py-2.5 px-3 text-slate-900 font-bold">${eng}</td>
               <td class="py-2.5 px-3">${nMatch}</td>
               <td class="py-2.5 px-3 text-right">
-                <a href="${url}" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-bold hover:underline">View ↗</a>
+                <a href="${url}" target="_blank" class="text-slate-900 hover:text-slate-900 font-bold hover:underline">View ↗</a>
               </td>
             </tr>
           `;
@@ -2598,10 +2936,10 @@
         const platCont = document.getElementById('omniPlatformsContainer');
         const plats = od.platforms || [];
         platCont.innerHTML = plats.map(p => {
-          let badgeColor = 'bg-purple-100 text-purple-700';
-          if (p.name === 'YouTube') badgeColor = 'bg-rose-100 text-rose-700';
-          else if (p.name === 'Twitter / X') badgeColor = 'bg-sky-100 text-sky-700';
-          else if (p.name === 'Instagram') badgeColor = 'bg-pink-100 text-pink-700';
+          let badgeColor = 'bg-blue-100 text-slate-900';
+          if (p.name === 'YouTube') badgeColor = 'bg-blue-100 text-slate-900';
+          else if (p.name === 'Twitter / X') badgeColor = 'bg-blue-100 text-slate-900';
+          else if (p.name === 'Instagram') badgeColor = 'bg-blue-100 text-slate-900';
 
           return `
             <div class="glass-card p-5 rounded-3xl border border-slate-200 shadow-sm space-y-2">
@@ -2612,7 +2950,7 @@
               <p class="text-xs font-bold text-slate-900 mt-1">${escapeHtml(p.handle || '-')}</p>
               <div class="flex items-center justify-between text-[11px] text-slate-600 font-mono pt-1">
                 <span>Audience: ${Number(p.audience || 0).toLocaleString()}</span>
-                <span class="text-emerald-600 font-bold">${escapeHtml(p.momentum || 'Active')}</span>
+                <span class="text-slate-900 font-bold">${escapeHtml(p.momentum || 'Active')}</span>
               </div>
             </div>
           `;
@@ -2636,15 +2974,15 @@
         tbody.innerHTML = vids.map(v => {
           const watchUrl = v.url || `https://www.youtube.com/watch?v=${v.id}`;
           return `
-            <tr class="hover:bg-rose-50/40 transition">
+            <tr class="hover:bg-blue-50/40 transition">
               <td class="py-2.5 px-3 font-bold text-slate-900 truncate max-w-xs">${escapeHtml(v.title || 'Video')}</td>
-              <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded-md ${v.format === 'Shorts' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-700'} text-[10px] font-bold">${escapeHtml(v.format || 'Video')}</span></td>
-              <td class="py-2.5 px-3 text-rose-600 font-bold">${Number(v.views || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded-md ${v.format === 'Shorts' ? 'bg-blue-100 text-slate-900' : 'bg-slate-100 text-slate-700'} text-[10px] font-bold">${escapeHtml(v.format || 'Video')}</span></td>
+              <td class="py-2.5 px-3 text-slate-900 font-bold">${Number(v.views || 0).toLocaleString()}</td>
               <td class="py-2.5 px-3">${Number(v.likes || 0).toLocaleString()}</td>
               <td class="py-2.5 px-3 text-slate-600">${v.duration || '--'}</td>
               <td class="py-2.5 px-3 text-slate-500">${v.publish_date || '--'}</td>
               <td class="py-2.5 px-3 text-right">
-                <a href="${watchUrl}" target="_blank" rel="noopener noreferrer" class="text-rose-600 hover:text-rose-800 font-bold hover:underline">Watch ↗</a>
+                <a href="${watchUrl}" target="_blank" rel="noopener noreferrer" class="text-slate-900 hover:text-slate-900 font-bold hover:underline">Watch ↗</a>
               </td>
             </tr>
           `;
@@ -2668,13 +3006,13 @@
         tbody.innerHTML = tweets.map(t => {
           const tUrl = t.url || `https://x.com/${res.handle}/status/${t.id}`;
           return `
-            <tr class="hover:bg-sky-50/40 transition">
+            <tr class="hover:bg-blue-50/40 transition">
               <td class="py-2.5 px-3 text-slate-800 font-medium truncate max-w-sm">${escapeHtml(t.text || '')}</td>
-              <td class="py-2.5 px-3 text-rose-600 font-bold">❤️ ${Number(t.likes || 0).toLocaleString()}</td>
-              <td class="py-2.5 px-3 text-sky-600 font-bold">🔄 ${Number(t.reposts || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-slate-900 font-bold">❤️ ${Number(t.likes || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-slate-900 font-bold">🔄 ${Number(t.reposts || 0).toLocaleString()}</td>
               <td class="py-2.5 px-3 text-slate-500">💬 ${Number(t.replies || 0).toLocaleString()}</td>
               <td class="py-2.5 px-3 text-right">
-                <a href="${tUrl}" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:text-sky-800 font-bold hover:underline">Status ↗</a>
+                <a href="${tUrl}" target="_blank" rel="noopener noreferrer" class="text-slate-900 hover:text-slate-900 font-bold hover:underline">Status ↗</a>
               </td>
             </tr>
           `;
@@ -2706,18 +3044,18 @@
         const tbody = document.getElementById('redditDiscussionsTableBody');
         tbody.innerHTML = disc.map(d => {
           let sBadge = 'bg-slate-100 text-slate-700';
-          if (d.sentiment === 'Positive') sBadge = 'bg-emerald-100 text-emerald-800';
-          else if (d.sentiment === 'Negative' || d.sentiment === 'Critical') sBadge = 'bg-rose-100 text-rose-800';
+          if (d.sentiment === 'Positive') sBadge = 'bg-blue-100 text-slate-900';
+          else if (d.sentiment === 'Negative' || d.sentiment === 'Critical') sBadge = 'bg-blue-100 text-slate-900';
 
           return `
-            <tr class="hover:bg-amber-50/40 transition">
+            <tr class="hover:bg-blue-50/40 transition">
               <td class="py-2.5 px-3 font-bold text-slate-900 truncate max-w-sm">${escapeHtml(d.title || '')}</td>
-              <td class="py-2.5 px-3 font-mono text-indigo-600">${escapeHtml(d.subreddit || 'reddit')}</td>
-              <td class="py-2.5 px-3 font-mono font-bold text-amber-600">⬆️ ${Number(d.upvotes || 0).toLocaleString()}</td>
+              <td class="py-2.5 px-3 font-mono text-slate-900">${escapeHtml(d.subreddit || 'reddit')}</td>
+              <td class="py-2.5 px-3 font-mono font-bold text-slate-900">⬆️ ${Number(d.upvotes || 0).toLocaleString()}</td>
               <td class="py-2.5 px-3 font-mono text-slate-600">💬 ${Number(d.comments || 0).toLocaleString()}</td>
               <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded-md ${sBadge} text-[10px] font-bold">${escapeHtml(d.sentiment || 'Neutral')}</span></td>
               <td class="py-2.5 px-3 text-right">
-                <a href="${d.url || '#'}" target="_blank" rel="noopener noreferrer" class="text-amber-600 hover:text-amber-800 font-bold hover:underline">Thread ↗</a>
+                <a href="${d.url || '#'}" target="_blank" rel="noopener noreferrer" class="text-slate-900 hover:text-slate-900 font-bold hover:underline">Thread ↗</a>
               </td>
             </tr>
           `;
@@ -2773,26 +3111,26 @@
 
       tbody.innerHTML = leads.map(l => {
         const email = l.primary_email && l.primary_email !== 'Not Listed'
-          ? `<span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-mono font-bold border border-emerald-200">${l.primary_email}</span>`
+          ? `<span class="px-2 py-0.5 rounded-md bg-blue-50 text-slate-900 font-mono font-bold border border-blue-200">${l.primary_email}</span>`
           : '<span class="text-slate-500">Not Listed</span>';
 
         const phone = l.phone && l.phone !== 'Not Listed' ? l.phone : '<span class="text-slate-500">N/A</span>';
-        const web = l.website && l.website !== 'None' ? `<a href="${l.website}" target="_blank" class="text-indigo-600 font-semibold hover:underline">Website ↗</a>` : '<span class="text-slate-500">None</span>';
-        const mapsLink = l.maps_url ? `<a href="${l.maps_url}" target="_blank" class="text-indigo-600 font-semibold hover:underline">Map ↗</a>` : '';
+        const web = l.website && l.website !== 'None' ? `<a href="${l.website}" target="_blank" class="text-slate-900 font-semibold hover:underline">Website ↗</a>` : '<span class="text-slate-500">None</span>';
+        const mapsLink = l.maps_url ? `<a href="${l.maps_url}" target="_blank" class="text-slate-900 font-semibold hover:underline">Map ↗</a>` : '';
 
         let socials = [];
-        if (l.instagram && l.instagram !== 'None') socials.push(`<a href="${l.instagram}" target="_blank" class="text-pink-600 font-bold" title="Instagram">IG</a>`);
+        if (l.instagram && l.instagram !== 'None') socials.push(`<a href="${l.instagram}" target="_blank" class="text-slate-900 font-bold" title="Instagram">IG</a>`);
         if (l.facebook && l.facebook !== 'None') socials.push(`<a href="${l.facebook}" target="_blank" class="text-blue-600 font-bold" title="Facebook">FB</a>`);
-        if (l.linkedin && l.linkedin !== 'None') socials.push(`<a href="${l.linkedin}" target="_blank" class="text-cyan-600 font-bold" title="LinkedIn">IN</a>`);
+        if (l.linkedin && l.linkedin !== 'None') socials.push(`<a href="${l.linkedin}" target="_blank" class="text-slate-900 font-bold" title="LinkedIn">IN</a>`);
         const socialHtml = socials.length > 0 ? socials.join(' • ') : '<span class="text-slate-500">None</span>';
 
         return `
-          <tr class="hover:bg-indigo-50/40 transition">
+          <tr class="hover:bg-blue-50/40 transition">
             <td class="py-2.5 px-3 font-bold text-slate-900">
               <div>${escapeHtml(l.name || 'Business')}</div>
               <div class="text-[10px] text-slate-600 font-normal truncate max-w-xs">${escapeHtml(l.category || l.address || '')}</div>
             </td>
-            <td class="py-2.5 px-3 text-amber-600 font-mono font-bold">⭐ ${l.rating || 'N/A'} <span class="text-slate-500 font-normal">(${l.reviews_count || 0})</span></td>
+            <td class="py-2.5 px-3 text-slate-900 font-mono font-bold">⭐ ${l.rating || 'N/A'} <span class="text-slate-500 font-normal">(${l.reviews_count || 0})</span></td>
             <td class="py-2.5 px-3 font-mono">${phone}</td>
             <td class="py-2.5 px-3">${email}</td>
             <td class="py-2.5 px-3">${web}</td>
@@ -2824,7 +3162,7 @@
       const title = document.getElementById('genericTableTitle');
 
       if (res.type === 'tag_discovery') {
-        title.innerText = `Verified Viral Creators & Business Handles (${res.tag || 'Location'})`;
+        title.innerText = `Verified Instagram Leads & Business Handles (${res.tag || 'Location'})`;
         thead.innerHTML = `
           <tr>
             <th class="py-2.5 px-3">Handle</th>
@@ -2838,15 +3176,15 @@
         `;
         const accounts = res.accounts || [];
         tbody.innerHTML = accounts.map(a => `
-          <tr class="hover:bg-indigo-50/40 transition">
-            <td class="py-2.5 px-3 font-bold text-indigo-600">@${escapeHtml(a["Account Handle"] || '')}</td>
+          <tr class="hover:bg-blue-50/40 transition">
+            <td class="py-2.5 px-3 font-bold text-slate-900">@${escapeHtml(a["Account Handle"] || '')}</td>
             <td class="py-2.5 px-3 text-slate-800 font-medium">${escapeHtml(a["Display Name"] || '')}</td>
-            <td class="py-2.5 px-3 font-mono text-amber-600 font-bold">${Number(a["Follower Count"] || 0).toLocaleString()}</td>
-            <td class="py-2.5 px-3 font-mono font-bold text-purple-600">${a["Influence Score"] || a["Score"] || '80/100'}</td>
-            <td class="py-2.5 px-3 font-mono text-emerald-700 font-semibold">${a["Contact Email"] || 'Not Listed'}</td>
+            <td class="py-2.5 px-3 font-mono text-slate-900 font-bold">${Number(a["Follower Count"] || 0).toLocaleString()}</td>
+            <td class="py-2.5 px-3 font-mono font-bold text-slate-900">${a["Influence Score"] || a["Score"] || '80/100'}</td>
+            <td class="py-2.5 px-3 font-mono text-slate-900 font-semibold">${a["Contact Email"] || 'Not Listed'}</td>
             <td class="py-2.5 px-3 font-mono">${a["Contact Phone / WhatsApp"] || 'Not Listed'}</td>
             <td class="py-2.5 px-3 text-right">
-              <a href="${a["Profile Link"] || '#'}" target="_blank" class="text-indigo-600 font-bold hover:underline">View ↗</a>
+              <a href="${a["Profile Link"] || '#'}" target="_blank" class="text-slate-900 font-bold hover:underline">View ↗</a>
             </td>
           </tr>
         `).join('');
@@ -2864,12 +3202,12 @@
         `;
         const posts = res.posts || [];
         tbody.innerHTML = posts.map(p => `
-          <tr class="hover:bg-indigo-50/40 transition">
-            <td class="py-2.5 px-3 text-indigo-600 font-bold font-mono">
+          <tr class="hover:bg-blue-50/40 transition">
+            <td class="py-2.5 px-3 text-slate-900 font-bold font-mono">
               <a href="${p["Post URL"] || p["Post / Reel Link"] || '#'}" target="_blank" class="hover:underline">${(p["Post URL"] || '').split('/p/')[1] || 'Post'} ↗</a>
             </td>
             <td class="py-2.5 px-3 text-slate-600">${p["Type"] || 'Reel'}</td>
-            <td class="py-2.5 px-3 font-mono text-amber-600 font-bold">${p["Plays"] || 'N/A'}</td>
+            <td class="py-2.5 px-3 font-mono text-slate-900 font-bold">${p["Plays"] || 'N/A'}</td>
             <td class="py-2.5 px-3 font-mono font-semibold">${Number(p["Likes"] || 0).toLocaleString()}</td>
             <td class="py-2.5 px-3 font-mono font-semibold">${Number(p["Comments"] || 0).toLocaleString()}</td>
             <td class="py-2.5 px-3 text-slate-600 truncate max-w-xs">${escapeHtml(p["Caption"] || '')}</td>
@@ -2889,11 +3227,11 @@
         `;
         const comments = res.comments || [];
         tbody.innerHTML = comments.map(c => `
-          <tr class="hover:bg-indigo-50/40 transition">
-            <td class="py-2.5 px-3 font-bold text-indigo-600 font-mono">@${escapeHtml(c.username || c.User || 'user')}</td>
+          <tr class="hover:bg-blue-50/40 transition">
+            <td class="py-2.5 px-3 font-bold text-slate-900 font-mono">@${escapeHtml(c.username || c.User || 'user')}</td>
             <td class="py-2.5 px-3 text-slate-800 font-medium">${escapeHtml(c.text || c["Comment Text"] || '')}</td>
             <td class="py-2.5 px-3 font-mono text-slate-600">❤️ ${c.like_count || c.Likes || 0}</td>
-            <td class="py-2.5 px-3 font-mono text-xs text-indigo-600">
+            <td class="py-2.5 px-3 font-mono text-xs text-slate-900">
               ${c.post_url || c["Post Link"] || c["Post / Reel URL"] ? `<a href="${c.post_url || c["Post Link"] || c["Post / Reel URL"]}" target="_blank" class="hover:underline font-bold">View ↗</a>` : '-'}
             </td>
           </tr>
@@ -2924,16 +3262,16 @@
         }
 
         list.innerHTML = files.map(f => `
-          <div class="p-3.5 rounded-2xl bg-white/80 border border-slate-200 hover:border-indigo-300 flex items-center justify-between gap-3 transition shadow-xs">
+          <div class="p-3.5 rounded-2xl bg-white/80 border border-slate-200 hover:border-blue-300 flex items-center justify-between gap-3 transition shadow-xs">
             <div class="overflow-hidden">
               <div class="flex items-center space-x-2">
-                <span class="text-[10px] px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 font-bold border border-indigo-100">${f.badge}</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-md bg-blue-50 text-slate-900 font-bold border border-blue-100">${f.badge}</span>
                 <span class="text-[10px] text-slate-500 font-mono">${f.modified}</span>
                 <span class="text-[10px] text-slate-500 font-mono">${f.size_kb} KB</span>
               </div>
               <p class="text-xs font-bold text-slate-900 truncate mt-1">${f.filename}</p>
             </div>
-            <a href="${getApiBase()}${f.download_url}" download class="shrink-0 p-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 text-emerald-600 border border-slate-200 hover:border-emerald-300 text-xs transition" title="Download Excel">
+            <a href="${getApiBase()}${f.download_url}" download class="shrink-0 p-2.5 rounded-xl bg-slate-50 hover:bg-blue-50 text-slate-900 border border-slate-200 hover:border-blue-300 text-xs transition" title="Download Excel">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
               </svg>
