@@ -1289,15 +1289,26 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div class="flex gap-2">
-            <input id="altDeliveryWhatsapp" type="tel" placeholder="WhatsApp number, e.g. +91 98765 43210" class="flex-1 min-w-0 px-3 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition">
+            <input id="altDeliveryWhatsapp" type="tel" value="+9167670497" placeholder="WhatsApp number (+9167670497)" class="flex-1 min-w-0 px-3 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-xs sm:text-sm text-slate-900 font-mono font-medium placeholder-slate-400 outline-none transition">
             <button type="button" onclick="requestAltDelivery('whatsapp')" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold transition shrink-0 shadow-md shadow-emerald-600/20 flex items-center space-x-1.5">
-              <span>Send</span>
+              <span>Send WhatsApp</span>
             </button>
           </div>
           <div class="flex gap-2">
-            <input id="altDeliveryEmail" type="email" placeholder="Email address" class="flex-1 min-w-0 px-3 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition">
-            <button type="button" onclick="requestAltDelivery('email')" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold transition shrink-0 shadow-md shadow-blue-600/20">Send</button>
+            <input id="altDeliveryEmail" type="email" value="notmyviews1@gmail.com" placeholder="Email address (notmyviews1@gmail.com)" class="flex-1 min-w-0 px-3 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-xs sm:text-sm text-slate-900 font-mono font-medium placeholder-slate-400 outline-none transition">
+            <button type="button" onclick="requestAltDelivery('email')" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold transition shrink-0 shadow-md shadow-blue-600/20">Send Email</button>
           </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between text-[11px] text-slate-600 pt-0.5 px-0.5 gap-2">
+          <span class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Automated WhatsApp: <a href="https://api.whatsapp.com/send?phone=9167670497" target="_blank" class="text-emerald-700 font-mono font-bold hover:underline">+9167670497</a>
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+            Automated Email: <a href="mailto:notmyviews1@gmail.com" class="text-blue-700 font-mono font-bold hover:underline">notmyviews1@gmail.com</a>
+          </span>
         </div>
 
         <div id="altDeliveryFeedback" class="hidden text-xs font-semibold text-emerald-900 bg-emerald-50 border border-emerald-200 rounded-xl p-2.5 flex items-center gap-2">
@@ -1856,16 +1867,16 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-semibold text-slate-700 mb-1">Your Email or WhatsApp (Optional)</label>
-            <input type="text" id="suggestionContact" placeholder="e.g. +91 98765 43210 or name@email.com" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-xs text-slate-900 placeholder-slate-400 outline-none transition shadow-xs">
-            <p class="text-[10px] text-slate-500 mt-1">We'll notify you when your requested feature is live!</p>
+            <input type="text" id="suggestionContact" placeholder="e.g. +9167670497 or notmyviews1@gmail.com" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-xs text-slate-900 placeholder-slate-400 outline-none transition shadow-xs">
+            <p class="text-[10px] text-slate-500 mt-1">Automated Channel: WhatsApp <b class="text-slate-700 font-mono">+9167670497</b> | Email <b class="text-slate-700 font-mono">notmyviews1@gmail.com</b></p>
           </div>
 
           <div class="flex items-end gap-2 pt-2 sm:pt-0">
             <button type="button" onclick="submitSuggestion()" class="flex-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-slate-900 hover:from-blue-500 hover:to-slate-800 text-white text-xs font-bold transition shadow-md shadow-slate-900/15 flex items-center justify-center space-x-1.5 active:scale-[0.99]">
               <span>📨 Send Suggestion</span>
             </button>
-            <button type="button" onclick="sendSuggestionViaWhatsApp()" class="py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition flex items-center space-x-1 shadow-xs" title="Send suggestion directly to our WhatsApp">
-              <span>WhatsApp ↗</span>
+            <button type="button" onclick="sendSuggestionViaWhatsApp()" class="py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition flex items-center space-x-1 shadow-xs" title="Send suggestion directly to our WhatsApp (+9167670497)">
+              <span>WhatsApp (+9167670497) ↗</span>
             </button>
           </div>
         </div>
@@ -2135,7 +2146,7 @@
 ${txt || "I have a feature suggestion for Vanguard Social:"}
 
 Site: ${window.location.origin}`;
-      const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(body)}`;
+      const waUrl = `https://api.whatsapp.com/send?phone=9167670497&text=${encodeURIComponent(body)}`;
       window.open(waUrl, '_blank');
       showToast("Opening WhatsApp to send your suggestion...", "💬");
     }
@@ -2501,23 +2512,24 @@ Site: ${window.location.origin}`;
     // Auto-restore saved contact preferences from localStorage on load
     document.addEventListener('DOMContentLoaded', () => {
       try {
-        const savedPhone = localStorage.getItem('savedWhatsapp');
-        const savedMail = localStorage.getItem('savedEmail');
+        const savedPhone = localStorage.getItem('savedWhatsapp') || '+9167670497';
+        const savedMail = localStorage.getItem('savedEmail') || 'notmyviews1@gmail.com';
         const wInp = document.getElementById('altDeliveryWhatsapp');
         const mInp = document.getElementById('altDeliveryEmail');
-        if (savedPhone && wInp && !wInp.value) wInp.value = savedPhone;
-        if (savedMail && mInp && !mInp.value) mInp.value = savedMail;
+        if (wInp && !wInp.value) wInp.value = savedPhone;
+        if (mInp && !mInp.value) mInp.value = savedMail;
       } catch (_) {}
     });
 
     async function requestAltDelivery(channel) {
       const whatsappInput = document.getElementById('altDeliveryWhatsapp');
       const emailInput = document.getElementById('altDeliveryEmail');
-      const value = channel === 'whatsapp' ? whatsappInput.value.trim() : emailInput.value.trim();
+      let value = channel === 'whatsapp' ? (whatsappInput ? whatsappInput.value.trim() : '') : (emailInput ? emailInput.value.trim() : '');
 
       if (!value) {
-        showToast(channel === 'whatsapp' ? "Enter a WhatsApp number first" : "Enter an email address first", "⚠️");
-        return;
+        value = channel === 'whatsapp' ? '+9167670497' : 'notmyviews1@gmail.com';
+        if (channel === 'whatsapp' && whatsappInput) whatsappInput.value = value;
+        if (channel === 'email' && emailInput) emailInput.value = value;
       }
 
       try {
@@ -2571,7 +2583,7 @@ Site: ${window.location.origin}`;
     function sendResultToWhatsApp() {
       const fn = currentTaskExcelFile || document.getElementById('resultFileNameText').innerText || 'report.xlsx';
       const downloadUrl = `${getApiBase()}/api/download/${encodeURIComponent(fn)}`;
-      const savedPhone = (document.getElementById('altDeliveryWhatsapp') ? document.getElementById('altDeliveryWhatsapp').value.trim() : '') || localStorage.getItem('savedWhatsapp') || '';
+      const savedPhone = (document.getElementById('altDeliveryWhatsapp') ? document.getElementById('altDeliveryWhatsapp').value.trim() : '') || localStorage.getItem('savedWhatsapp') || '+9167670497';
 
       const text = `📊 *Vanguard Social — Intelligence Excel Report Ready*\n\n📁 *File:* ${fn}\n📥 *Direct Download Link:* ${downloadUrl}\n\nGenerated via Vanguard Social Intelligence Hub.`;
 
@@ -2585,10 +2597,8 @@ Site: ${window.location.origin}`;
         } catch (_) {}
       }
 
-      const cleanPhone = savedPhone.replace(/[^0-9]/g, '');
-      const waUrl = cleanPhone
-        ? `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(text)}`
-        : `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+      const cleanPhone = savedPhone.replace(/[^0-9]/g, '') || '9167670497';
+      const waUrl = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(text)}`;
 
       window.open(waUrl, '_blank');
       showToast("Opening WhatsApp to share Excel report...", "💬");
@@ -2597,7 +2607,7 @@ Site: ${window.location.origin}`;
     function sendResultToEmail() {
       const fn = currentTaskExcelFile || document.getElementById('resultFileNameText').innerText || 'report.xlsx';
       const downloadUrl = `${getApiBase()}/api/download/${encodeURIComponent(fn)}`;
-      const savedMail = (document.getElementById('altDeliveryEmail') ? document.getElementById('altDeliveryEmail').value.trim() : '') || localStorage.getItem('savedEmail') || '';
+      const savedMail = (document.getElementById('altDeliveryEmail') ? document.getElementById('altDeliveryEmail').value.trim() : '') || localStorage.getItem('savedEmail') || 'notmyviews1@gmail.com';
 
       const subject = `Vanguard Social Excel Report: ${fn}`;
       const body = `Hi,\n\nYour Vanguard Social intelligence Excel report is ready for download:\n\nReport File: ${fn}\nDirect Download Link: ${downloadUrl}\n\nBest regards,\nVanguard Social Intelligence Engine`;
@@ -2612,9 +2622,8 @@ Site: ${window.location.origin}`;
         } catch (_) {}
       }
 
-      const mailtoUrl = savedMail
-        ? `mailto:${encodeURIComponent(savedMail)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-        : `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const targetMail = savedMail || 'notmyviews1@gmail.com';
+      const mailtoUrl = `mailto:${encodeURIComponent(targetMail)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
       window.location.href = mailtoUrl;
       showToast("Opening email composer...", "✉️");
