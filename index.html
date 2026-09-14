@@ -2308,16 +2308,14 @@ Site: ${window.location.origin}`;
       }
     }
 
-    }
-
     function saveApiEndpoint() {
       const inputUrl = (document.getElementById('customApiInput').value || '').trim().replace(/\/+$/, '');
       if (inputUrl) {
         localStorage.setItem('phantom_custom_api', inputUrl);
-        showToast(`Backend API set: ${inputUrl}`, "<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>");
+        showToast(`Backend API set: ${inputUrl}`, "✓");
       } else {
         localStorage.removeItem('phantom_custom_api');
-        showToast("Reset to default tunnel", "<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>");
+        showToast("Reset to default tunnel", "✓");
       }
       updateApiStatusIndicator();
       toggleApiModal(false);
@@ -2330,7 +2328,7 @@ Site: ${window.location.origin}`;
       const input = document.getElementById('customApiInput');
       if (input) input.value = '';
       updateApiStatusIndicator();
-      showToast("Reset to default tunnel origin", "<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>");
+      showToast("Reset to default tunnel origin", "✓");
       fetchSystemInfo();
       fetchHistory();
     }
