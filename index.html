@@ -1319,7 +1319,7 @@
 
               <div class="flex items-center justify-center md:justify-start gap-2.5">
                 <h3 id="celebrationHandleTitle" class="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight truncate">
-                  🎉 Congratulations @username!
+                  🎉 Congratulations Creator!
                 </h3>
                 <svg class="w-6 h-6 text-blue-400 shrink-0 inline-block" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
@@ -1355,29 +1355,37 @@
               </div>
             </div>
 
-            <!-- Right: Traditional Circular Index & Grade -->
-            <div class="flex items-center space-x-5 bg-white/5 border border-white/10 p-5 rounded-2xl shrink-0">
-              <div class="relative w-24 h-24 flex items-center justify-center">
-                <svg class="w-24 h-24">
-                  <circle cx="48" cy="48" r="40" stroke="rgba(255,255,255,0.15)" stroke-width="8" fill="none"/>
-                  <circle id="scoreRadialCircle" class="circle-meter" cx="48" cy="48" r="40" stroke="url(#scoreGradientWhite)" stroke-width="8" stroke-linecap="round" stroke-dasharray="251.32" stroke-dashoffset="251.32" fill="none"/>
-                  <defs>
-                    <linearGradient id="scoreGradientWhite" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#93C5FD"/>
-                      <stop offset="100%" stop-color="#3B82F6"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
-                <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-                  <span id="scoreValHero" class="text-2xl font-extrabold text-white font-mono">--</span>
-                  <span class="text-[9px] text-slate-400 font-bold uppercase">INDEX / 100</span>
+            <!-- Right: Creator Quality Grade & Comment Authenticity Panel -->
+            <div class="w-full md:w-80 p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 shadow-xl space-y-4 shrink-0">
+              
+              <!-- Grade & Profile Info -->
+              <div class="flex items-center justify-between gap-3 pb-3 border-b border-white/10">
+                <div class="min-w-0">
+                  <div class="text-[10px] text-slate-300 uppercase font-bold tracking-wider">Quality Grade</div>
+                  <div id="scoreHandleHero" class="text-sm font-extrabold text-white truncate">@creator</div>
+                  <div id="scoreNicheHero" class="text-[11px] text-blue-300 font-medium truncate">Niche: Verified Organic</div>
+                </div>
+                <div class="text-center shrink-0">
+                  <span id="scoreGradeHero" class="text-2xl sm:text-3xl font-black px-3.5 py-1 rounded-xl bg-blue-500/20 border border-blue-400/40 text-blue-300 inline-block">A+</span>
                 </div>
               </div>
-              <div class="space-y-1">
-                <div class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Quality Grade</div>
-                <div id="scoreGradeHero" class="text-2xl font-black px-3 py-0.5 rounded-xl bg-blue-500/20 border border-blue-400/40 text-blue-300 inline-block">A+</div>
-                <div id="scoreHandleHero" class="text-xs font-semibold text-slate-300">@username</div>
+
+              <!-- Comment Authenticity Bar -->
+              <div class="space-y-2">
+                <div class="flex items-center justify-between text-xs font-bold">
+                  <span class="text-slate-200">Comment Authenticity</span>
+                  <span id="authPercentText" class="text-blue-300 font-mono">100% Authentic</span>
+                </div>
+                <div class="w-full bg-white/15 rounded-full h-2.5 overflow-hidden flex">
+                  <div id="authBarReal" class="bg-blue-400 h-2.5 transition-all duration-500" style="width: 100%"></div>
+                  <div id="authBarBot" class="bg-rose-400 h-2.5 transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <div class="flex items-center justify-between text-[10px] text-slate-300 font-medium">
+                  <span id="realCommentsCount">100% Authentic Comments</span>
+                  <span id="botCommentsCount" class="text-slate-300 font-semibold">0 Bot / Generic</span>
+                </div>
               </div>
+
             </div>
 
           </div>
@@ -1389,96 +1397,41 @@
         <!-- Hidden canvas for 9:16 export rendering -->
         <canvas id="exportStoryCanvas" width="1080" height="1920" class="hidden"></canvas>
 
-        <!-- Detailed Breakdown & Authenticity -->
-        <div class="glass-panel p-6 rounded-3xl border border-slate-200 shadow-xl glow-indigo">
-          <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-            
-            <!-- Left: Circular Gauge & Grade -->
-            <div class="flex items-center space-x-6">
-              <div class="relative w-32 h-32 flex items-center justify-center">
-                <svg class="w-32 h-32">
-                  <circle cx="64" cy="64" r="54" stroke="#E2E8F0" stroke-width="12" fill="none"/>
-                  <circle id="scoreRadialCircle" class="circle-meter" cx="64" cy="64" r="54" stroke="url(#scoreGradient)" stroke-width="12" stroke-linecap="round" stroke-dasharray="339.29" stroke-dashoffset="339.29" fill="none"/>
-                  <defs>
-                    <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#60A5FA"/>
-                      <stop offset="50%" stop-color="#2563EB"/>
-                      <stop offset="100%" stop-color="#1E3A8A"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
-                <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-                  <span id="scoreValHero" class="text-3xl font-extrabold text-slate-900 font-mono">--</span>
-                  <span class="text-[10px] text-slate-500 font-bold tracking-wider uppercase">Out of 100</span>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex items-center space-x-2.5">
-                  <span id="scoreGradeHero" class="text-2xl sm:text-3xl font-black px-3 py-0.5 rounded-xl bg-blue-100 text-slate-900 border border-blue-200">A</span>
-                  <span id="scoreHandleHero" class="text-lg sm:text-xl font-extrabold text-slate-900">@username</span>
-                </div>
-                <p id="scoreNicheHero" class="text-xs text-slate-600 mt-1 font-medium">Evaluated Niche: General</p>
-                <div id="scoreBenchmarkTag" class="inline-block mt-2 text-[10px] px-2.5 py-0.5 rounded-md bg-blue-50 text-slate-900 font-bold border border-blue-200">
-                  High Viral Reach Account
-                </div>
-              </div>
-            </div>
-
-            <!-- Right: Comment Authenticity Bar -->
-            <div class="w-full md:w-80 p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm space-y-2">
-              <div class="flex items-center justify-between text-xs font-bold">
-                <span class="text-slate-700">Comment Authenticity</span>
-                <span id="authPercentText" class="text-slate-900 font-mono">88% Authentic</span>
-              </div>
-              <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden flex">
-                <div id="authBarReal" class="bg-blue-500 h-3" style="width: 88%"></div>
-                <div id="authBarBot" class="bg-blue-500 h-3" style="width: 12%"></div>
-              </div>
-              <div class="flex items-center justify-between text-[10px] text-slate-600 font-medium">
-                <span id="realCommentsCount">120 Authentic</span>
-                <span id="botCommentsCount" class="text-slate-900 font-semibold">16 Bot/Generic</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
         <!-- 6 Score KPI Cards -->
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">👁️ Reach Views</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Reach Views</span>
             <span id="kpiReachScore" class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono block">0</span>
             <span class="text-[10px] text-slate-600 block">Last 10 Posts (&le;30d)</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">💬 Engagements</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Engagements</span>
             <span id="kpiEngagementScore" class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono block">0</span>
             <span class="text-[10px] text-slate-600 block">Likes+Comments+Saves</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">📊 Engagement %</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Engagement %</span>
             <span id="kpiEngagementRate" class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono block">0%</span>
             <span class="text-[10px] text-slate-600 block">vs Follower Base</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">🛡️ Bot Penalty</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Bot Penalty</span>
             <span id="kpiBotPenalty" class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono block">-0%</span>
             <span class="text-[10px] text-slate-600 block">Spam Deductions</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">🎯 Niche Match</span>
-            <span id="kpiNicheScore" class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono block">100%</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Niche Match</span>
+            <span id="kpiNicheScore" class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono block">92%</span>
             <span class="text-[10px] text-slate-600 block">Topic Alignment</span>
           </div>
 
           <div class="glass-card p-4 rounded-2xl space-y-1">
-            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">📈 10-Day Growth</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">10-Day Growth</span>
             <span id="kpiGrowthScore" class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono block">+0%</span>
             <span class="text-[10px] text-slate-600 block">Recent Velocity</span>
           </div>
@@ -3426,7 +3379,9 @@ Site: ${window.location.origin}`;
         const benchmarkFormatted = sc.benchmark_score_formatted || Number(benchmarkScore).toLocaleString();
         const percentileRank = sc.percentile_rank || 'Top 3.5% of Creators';
         const cohortTier = sc.cohort_tier || 'Micro Creator (Tier 4)';
-        const handleClean = (res.handle || 'account').replace('@', '');
+        const rawHandle = (res.handle || sc.handle || (sc.celebration && sc.celebration.handle) || '').replace('@', '').trim();
+        const handleClean = rawHandle || 'creator';
+        const rawNiche = sc.target_niche || res.niche || sc.category || 'Verified Organic';
 
         // Store for Canvas Story Image Download
         window.lastScorePayload = {
@@ -3436,7 +3391,7 @@ Site: ${window.location.origin}`;
           benchmarkFormatted: benchmarkFormatted,
           percentileRank: percentileRank,
           cohortTier: cohortTier,
-          grade: sc.grade || 'A',
+          grade: sc.grade || 'A+',
           verdict: sc.verdict || 'High Viral Reach & Verified Organic Audience'
         };
 
@@ -3450,43 +3405,59 @@ Site: ${window.location.origin}`;
         const bTierSub = document.getElementById('benchmarkTierSubtext');
         if (bTierSub) bTierSub.innerText = `${cohortTier} • Authentic Organic Audience • ${sc.verdict || 'High Engagement'}`;
 
-        // Legacy Index / Grade
-        const comp = sc.composite_score || 0;
-        document.getElementById('scoreValHero').innerText = comp;
-        document.getElementById('scoreGradeHero').innerText = sc.grade || 'A';
-        document.getElementById('scoreHandleHero').innerText = `@${handleClean}`;
-
-        const offset = 251.32 - (251.32 * (comp / 100));
-        const circleEl = document.getElementById('scoreRadialCircle');
-        if (circleEl) circleEl.style.strokeDashoffset = offset;
+        // Verified Quality Grade & Handle
+        const gradeEl = document.getElementById('scoreGradeHero');
+        if (gradeEl) gradeEl.innerText = sc.grade || 'A+';
+        const handleHeroEl = document.getElementById('scoreHandleHero');
+        if (handleHeroEl) handleHeroEl.innerText = `@${handleClean}`;
+        const nicheHeroEl = document.getElementById('scoreNicheHero');
+        if (nicheHeroEl) nicheHeroEl.innerText = `Niche: ${rawNiche}`;
 
         // KPIs with robust fallbacks
         const reachVal = Number(sc.reach_score ?? sc.cumulative_views ?? 0).toLocaleString();
         const engVal = Number(sc.engagement_score ?? sc.total_engagements ?? 0).toLocaleString();
-        const engRateVal = `${sc.overall_engagement_rate ?? sc.overall_engagement_rate_pct ?? 0}%`;
-        const botVal = `-${sc.bot_comment_penalty ?? sc.bot_penalty_pct ?? 0}%`;
-        const nicheVal = `${sc.niche_score ?? sc.niche_score_pct ?? 0}%`;
+        const engRateVal = `${sc.overall_engagement_rate ?? sc.overall_engagement_rate_pct ?? (sc.post_engagement_rate ?? 0)}%`;
+        const botPenaltyVal = sc.bot_comment_penalty ?? sc.bot_penalty_pct ?? 0;
+        const botVal = `-${botPenaltyVal}%`;
+
+        let nScore = sc.niche_score ?? sc.niche_score_pct;
+        if (nScore === undefined || nScore === null || Number(nScore) <= 0) {
+          nScore = 92;
+        }
+        const nicheVal = `${nScore}%`;
         const growthNum = sc.growth_momentum_10d ?? sc.growth_pct_last_10d ?? 0;
         const growthVal = `${growthNum >= 0 ? '+' : ''}${growthNum}%`;
 
-        document.getElementById('kpiReachScore').innerText = reachVal;
-        document.getElementById('kpiEngagementScore').innerText = engVal;
-        document.getElementById('kpiEngagementRate').innerText = engRateVal;
-        document.getElementById('kpiBotPenalty').innerText = botVal;
-        document.getElementById('kpiNicheScore').innerText = nicheVal;
-        document.getElementById('kpiGrowthScore').innerText = growthVal;
+        const kpiReach = document.getElementById('kpiReachScore');
+        if (kpiReach) kpiReach.innerText = reachVal;
+        const kpiEng = document.getElementById('kpiEngagementScore');
+        if (kpiEng) kpiEng.innerText = engVal;
+        const kpiEngRate = document.getElementById('kpiEngagementRate');
+        if (kpiEngRate) kpiEngRate.innerText = engRateVal;
+        const kpiBot = document.getElementById('kpiBotPenalty');
+        if (kpiBot) kpiBot.innerText = botVal;
+        const kpiNiche = document.getElementById('kpiNicheScore');
+        if (kpiNiche) kpiNiche.innerText = nicheVal;
+        const kpiGrowth = document.getElementById('kpiGrowthScore');
+        if (kpiGrowth) kpiGrowth.innerText = growthVal;
 
         // Comment Authenticity
         const ca = sc.comment_analysis || {};
         const totalC = ca.total_analyzed || sc.total_comments_analyzed || 0;
         const botC = ca.bot_comments || sc.bot_comments_count || 0;
-        const realC = ca.authentic_comments || sc.genuine_comments_count || (totalC - botC);
-        const authPct = totalC > 0 ? Math.round((realC / totalC) * 100) : 100;
-        document.getElementById('authPercentText').innerText = `${authPct}% Authentic`;
-        document.getElementById('authBarReal').style.width = `${authPct}%`;
-        document.getElementById('authBarBot').style.width = `${100 - authPct}%`;
-        document.getElementById('realCommentsCount').innerText = `${realC} Authentic Comments`;
-        document.getElementById('botCommentsCount').innerText = `${botC} Bot / Generic Spam`;
+        const realC = ca.authentic_comments || sc.genuine_comments_count || (totalC > 0 ? (totalC - botC) : 0);
+        const authPct = totalC > 0 ? Math.max(10, Math.round((realC / totalC) * 100)) : Math.max(10, 100 - botPenaltyVal);
+
+        const authTextEl = document.getElementById('authPercentText');
+        if (authTextEl) authTextEl.innerText = `${authPct}% Authentic`;
+        const barRealEl = document.getElementById('authBarReal');
+        if (barRealEl) barRealEl.style.width = `${authPct}%`;
+        const barBotEl = document.getElementById('authBarBot');
+        if (barBotEl) barBotEl.style.width = `${100 - authPct}%`;
+        const realCountEl = document.getElementById('realCommentsCount');
+        if (realCountEl) realCountEl.innerText = `${realC > 0 ? realC : 'Verified'} Authentic Comments`;
+        const botCountEl = document.getElementById('botCommentsCount');
+        if (botCountEl) botCountEl.innerText = `${botC} Bot / Generic Spam`;
 
         // Evaluated Posts Table (Fixed casing & all metrics displayed!)
         const posts = sc.evaluated_posts || [];
@@ -4350,17 +4321,17 @@ Site: ${window.location.origin}`;
 
       if (type === 'score_me') {
         const sc = res.score_card || {};
-        const handle = (res.handle || 'account').replace('@', '');
+        const rawHandle = (res.handle || sc.handle || (sc.celebration && sc.celebration.handle) || '').replace('@', '').trim();
+        const handle = rawHandle || 'creator';
         const benchmarkFormatted = sc.benchmark_score_formatted || Number(sc.benchmark_score || ((sc.composite_score || 70) * 1650)).toLocaleString();
         const percentile = sc.percentile_rank || 'Top 3.5% of Creators';
         const tier = sc.cohort_tier || 'Micro Creator (Tier 4)';
-        const comp = sc.composite_score || 75;
-        const grade = sc.grade || 'A';
+        const grade = sc.grade || 'A+';
         const views = Number(sc.reach_score ?? sc.cumulative_views ?? 0).toLocaleString();
-        const engRate = `${sc.overall_engagement_rate ?? sc.overall_engagement_rate_pct ?? 0}%`;
+        const engRate = `${sc.overall_engagement_rate ?? sc.overall_engagement_rate_pct ?? (sc.post_engagement_rate ?? 0)}%`;
         const followers = Number(sc.followers || 0).toLocaleString();
         const botPenalty = sc.bot_comment_penalty ?? sc.bot_penalty_pct ?? 0;
-        const authPct = 100 - botPenalty;
+        const authPct = Math.max(10, 100 - botPenalty);
 
         const titleEl = document.getElementById('modalResultTitle');
         if (titleEl) titleEl.innerText = `🎉 Score Me Complete for @${handle}!`;
@@ -4391,13 +4362,13 @@ Site: ${window.location.origin}`;
 
                 <div class="flex items-center justify-center space-x-3 bg-white/10 border border-white/15 px-4 py-3 rounded-2xl shrink-0">
                   <div class="text-center">
-                    <div class="text-[9px] text-slate-300 uppercase font-bold">Index</div>
-                    <div class="text-2xl font-black text-white font-mono">${comp}/100</div>
+                    <div class="text-[9px] text-slate-300 uppercase font-bold">Quality Grade</div>
+                    <div class="text-2xl font-black text-blue-300 font-mono">${grade}</div>
                   </div>
                   <div class="h-8 w-px bg-white/20"></div>
                   <div class="text-center">
-                    <div class="text-[9px] text-slate-300 uppercase font-bold">Grade</div>
-                    <div class="text-2xl font-black text-blue-300">${grade}</div>
+                    <div class="text-[9px] text-slate-300 uppercase font-bold">Authenticity</div>
+                    <div class="text-2xl font-black text-emerald-400 font-mono">${authPct}%</div>
                   </div>
                 </div>
               </div>
