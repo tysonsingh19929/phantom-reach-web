@@ -1854,6 +1854,24 @@
             Reset
           </button>
         </div>
+
+        <!-- Share to Other Devices & Countries Section -->
+        <div class="pt-3 border-t border-slate-100 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-bold text-slate-700">Share to Other Devices / Countries</span>
+            <span class="text-[10px] text-emerald-600 font-semibold flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              Auto-Connects
+            </span>
+          </div>
+          <p class="text-[10px] text-slate-500 leading-relaxed">
+            Send this link to friends, team members, or clients. It automatically pre-connects this backend on their device so they never see connection errors.
+          </p>
+          <button type="button" onclick="copyShareableAppUrl()" class="w-full py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition flex items-center justify-center space-x-1.5 shadow-xs">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            <span>Copy Auto-Connected Link for Others</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -2207,22 +2225,37 @@ Site: ${window.location.origin}`;
     let rawGmapsLeads = [];
 
     // ──────────────────────────────────────────────────────────────
-    // BACKEND API ENDPOINT CONFIGURATION (Managed via Terminal)
+    // BACKEND API ENDPOINT CONFIGURATION (Managed via Terminal / Tunnel)
     // ──────────────────────────────────────────────────────────────
-    window.BACKEND_API_BASE = "";
+    window.BACKEND_API_BASE = "https://expansion-encryption-congratulations-donation.trycloudflare.com";
 
     // ──────────────────────────────────────────────────────────────
-    // BACKEND API & TUNNEL CONTROLS (Restored for easy UI setting)
+    // BACKEND API & TUNNEL CONTROLS
     // ──────────────────────────────────────────────────────────────
     function getApiBase() {
+      // 1. Check URL query parameters (?api=... or ?backend=...)
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const param = urlParams.get('api') || urlParams.get('backend');
+        if (param && param.trim().startsWith('http')) {
+          return param.trim().replace(/\/+$/, '');
+        }
+      } catch (_) {}
+
+      // 2. Custom override in localStorage
       const custom = localStorage.getItem('phantom_custom_api');
       if (custom && custom.trim()) return custom.trim().replace(/\/+$/, '');
+
+      // 3. Localhost runs against local origin
       if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
         return '';
       }
+
+      // 4. Global backend fallback (e.g. active cloudflare tunnel or deployed backend)
       if (window.BACKEND_API_BASE && window.BACKEND_API_BASE.startsWith('http')) {
         return window.BACKEND_API_BASE.trim().replace(/\/+$/, '');
       }
+
       return '';
     }
 
@@ -2234,6 +2267,9 @@ Site: ${window.location.origin}`;
       if (base) {
         dot.className = "w-2 h-2 rounded-full bg-emerald-500 animate-pulse";
         btn.title = `Connected to API: ${base}`;
+      } else if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        dot.className = "w-2 h-2 rounded-full bg-amber-500 animate-pulse";
+        btn.title = "No Backend Connected - Click to configure";
       } else {
         dot.className = "w-2 h-2 rounded-full bg-blue-500";
         btn.title = `Using Local Origin`;
@@ -2345,22 +2381,37 @@ Site: ${window.location.origin}`;
     
 
 
+    function getShareableAppUrl() {
+      const base = getApiBase();
+      const origin = window.location.origin;
+      if (base && base.startsWith('http') && !base.includes('localhost') && !base.includes('127.0.0.1')) {
+        return `${origin}/?api=${encodeURIComponent(base)}`;
+      }
+      return origin;
+    }
+
+    function copyShareableAppUrl() {
+      const shareUrl = getShareableAppUrl();
+      navigator.clipboard.writeText(shareUrl);
+      showToast("🔗 Auto-connected link copied! Friends anywhere can open it and connect instantly.", "🚀");
+    }
+
     function shareVanguardToWhatsApp() {
-      const siteUrl = window.location.origin;
-      const text = `🔥 Check out Vanguard Social — the ultimate multi-platform intelligence engine for verified business leads, viral creators & proof of ROI:\n${siteUrl}\nHelp us grow so we can multiply speed and features!`;
+      const shareUrl = getShareableAppUrl();
+      const text = `🔥 Check out Vanguard Social — the ultimate multi-platform intelligence engine for verified business leads, viral creators & proof of ROI:\n${shareUrl}\nHelp us grow so we can multiply speed and features!`;
       const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
       window.open(waUrl, '_blank');
       showToast("Opening WhatsApp to share Vanguard Social...", "🚀");
     }
 
     function copyShareLink() {
-      const siteUrl = window.location.origin;
-      navigator.clipboard.writeText(siteUrl);
-      showToast(" Link copied! Share with friends to help us grow.", "🚀");
+      const shareUrl = getShareableAppUrl();
+      navigator.clipboard.writeText(shareUrl);
+      showToast("🔗 Link copied! Anyone opening this link connects automatically.", "🚀");
     }
 
     function copyMobileUrl() {
-      const url = window.mobileUrl || window.location.origin;
+      const url = window.mobileUrl || getShareableAppUrl();
       navigator.clipboard.writeText(url);
       showToast("📱 Mobile URL copied: " + url);
     }
@@ -2463,8 +2514,26 @@ Site: ${window.location.origin}`;
     // ──────────────────────────────────────────────────────────────
     // WHATSAPP & EMAIL DIRECT DELIVERY DISPATCHER
     // ──────────────────────────────────────────────────────────────
-    // Auto-restore saved contact preferences from localStorage on load
+    // Auto-restore saved preferences and auto-connect from ?api= or ?backend= query params on load
     document.addEventListener('DOMContentLoaded', () => {
+      // 1. Auto-connect if visited with ?api= or ?backend=
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const sharedApi = urlParams.get('api') || urlParams.get('backend');
+        if (sharedApi && sharedApi.trim().startsWith('http')) {
+          const cleanApi = sharedApi.trim().replace(/\/+$/, '');
+          localStorage.setItem('phantom_custom_api', cleanApi);
+          try {
+            const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
+          } catch (_) {}
+          setTimeout(() => {
+            showToast("🔗 Connected to Backend API via shared link!", "✓");
+          }, 600);
+        }
+      } catch (_) {}
+
+      // 2. Restore saved contact preferences
       try {
         const savedPhone = localStorage.getItem('savedWhatsapp') || '';
         const savedMail = localStorage.getItem('savedEmail') || '';
@@ -2473,6 +2542,10 @@ Site: ${window.location.origin}`;
         if (wInp && !wInp.value) wInp.value = savedPhone;
         if (mInp && !mInp.value) mInp.value = savedMail;
       } catch (_) {}
+
+      // 3. Initialize API indicator and fetch initial data if connected
+      updateApiStatusIndicator();
+      if (typeof fetchHistory === 'function') fetchHistory();
     });
 
     async function requestAltDelivery(channel) {
@@ -3005,7 +3078,7 @@ Site: ${window.location.origin}`;
       const tb = document.getElementById('terminalLogBox'); if(tb) tb.innerHTML = `<div class="text-white font-semibold">[System] Dispatching background task: ${taskFriendlyName}...</div>`;
 
       try {
-        const res = await fetch(`${getApiBase()}/api/run`, {
+        const res = await fetch(`${apiBase}/api/run`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
@@ -3022,7 +3095,8 @@ Site: ${window.location.origin}`;
         pollingInterval = setInterval(() => pollTask(currentTaskId), 1000);
       } catch (err) {
         isJobRunning = false;
-        alert("⚠️ Could not connect to backend server (Failed to fetch).\n\nPlease ensure:\n1. Your local backend is running (python main.py --dashboard --port 8000)\n2. Your Cloudflare tunnel is active\n3. Or click 'Backend API' on the top navbar to verify your live tunnel address.");
+        toggleApiModal(true);
+        alert(`⚠️ Could not reach backend server at:\n${apiBase || 'Local Origin'}\n\nPlease ensure your server or Cloudflare tunnel is running, or update your Backend API address in settings.`);
         handleTaskFinished(false);
       }
     }
