@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanguard Social — Master Admin Portal</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230F172A'/%3E%3Cpath d='M6 6h3.4L12 14.6 14.6 6H18l-5 12h-2L6 6Z' fill='white'/%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --card-bg: #111827;
+      --card-border: #1f293d;
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --accent: #06b6d4;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #0f172a;
+      border-bottom: 1px solid var(--card-border);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .brand-badge {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+    .btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
+    .btn-danger { background: #dc2626; }
+    .btn-danger:hover { background: #b91c1c; }
+    .btn-secondary { background: #1e293b; border: 1px solid var(--card-border); color: #cbd5e1; }
+    .btn-secondary:hover { background: #334155; color: #fff; }
+    .btn-success { background: #059669; }
+    .btn-success:hover { background: #047857; }
+    .btn-sm { padding: 5px 12px; font-size: 0.78rem; border-radius: 6px; }
+
+    .main-container {
+      max-width: 1380px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px;
+      flex: 1;
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .kpi-title { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; }
+    .kpi-value { font-size: 1.8rem; font-weight: 800; color: var(--text-main); font-family: 'JetBrains Mono', monospace; }
+    .kpi-sub { font-size: 0.75rem; color: var(--text-muted); }
+
+    .tab-bar {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 24px;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+    }
+
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .section-title { font-size: 1.15rem; font-weight: 700; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    td {
+      padding: 14px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .badge-idle { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid #10b981; }
+    .badge-busy { background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid #3b82f6; }
+    .badge-cooldown { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid #f59e0b; }
+    .badge-invalid { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid #ef4444; }
+    .badge-active { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+    .badge-suspended { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #1e293b;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      width: 100%;
+      max-width: 520px;
+      padding: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      outline: none;
+      font-family: inherit;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--primary);
+    }
+
+    /* Auth Gate Screen */
+    #authGateScreen {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-dark);
+      z-index: 200;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .auth-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 440px;
+      padding: 32px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
+      text-align: center;
+    }
+
+    /* Connection Pill */
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+    .status-dot-green { background: #10b981; box-shadow: 0 0 8px #10b981; }
+    .status-dot-amber { background: #f59e0b; box-shadow: 0 0 8px #f59e0b; }
+    .status-dot-red { background: #ef4444; box-shadow: 0 0 8px #ef4444; }
+  </style>
+</head>
+<body>
+
+  <!-- AUTHENTICATION SCREEN -->
+  <div id="authGateScreen">
+    <div class="auth-card">
+      <div style="margin-bottom: 16px;">
+        <span class="brand-badge">Administrative Access Only</span>
+      </div>
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 8px;">Vanguard Admin Portal</h2>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px;">Authenticate with the Admin Master Key to enter the system control plane.</p>
+      
+      <div class="form-group" style="text-align: left;">
+        <label>Admin Master Key or Password</label>
+        <input type="password" id="adminKeyInput" placeholder="Enter master key..." onkeydown="if(event.key==='Enter') loginAdmin()">
+      </div>
+
+      <!-- Backend Server Configuration Box -->
+      <div style="margin-bottom: 20px; padding: 12px; background: #0c1220; border: 1px dashed var(--card-border); border-radius: 10px; text-align: left;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <label style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0;">
+            Backend API Endpoint
+          </label>
+          <span id="authApiStatusBadge" style="font-size: 0.7rem; font-family: monospace; color: #94a3b8;">Local / Direct</span>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <input type="text" id="authApiInput" placeholder="https://your-tunnel.trycloudflare.com" style="font-size: 0.8rem; padding: 7px 10px;" oninput="onAuthApiInputChanged()">
+          <button class="btn btn-secondary btn-sm" type="button" onclick="testAuthApiConnection()">Ping</button>
+        </div>
+        <p style="font-size: 0.7rem; color: #64748b; margin-top: 5px; line-height: 1.3;">
+          When hosted on Vercel, enter your backend server URL (e.g. Cloudflare tunnel or deployed API).
+        </p>
+      </div>
+
+      <div id="loginError" style="color: var(--danger); font-size: 0.8rem; margin-bottom: 14px; display: none;"></div>
+      <button class="btn" style="width: 100%; justify-content: center; padding: 12px;" onclick="loginAdmin()">Authenticate &amp; Enter Control Plane</button>
+    </div>
+  </div>
+
+  <!-- ADMIN PORTAL HEADER -->
+  <header>
+    <div class="brand">
+      <span>🛡️ Vanguard Social</span>
+      <span class="brand-badge">Control Plane</span>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-secondary btn-sm" onclick="openModal('apiConfigModal')" id="headerApiBtn" title="Click to view or edit backend API URL">
+        <span class="status-dot status-dot-green" id="headerApiDot"></span>
+        <span id="headerApiLabel" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">API: Ready</span>
+      </button>
+      <button class="btn btn-secondary btn-sm" onclick="refreshData()">🔄 Refresh</button>
+      <a href="/" target="_blank" class="btn btn-secondary btn-sm">🌐 Open User App</a>
+      <button class="btn btn-danger btn-sm" onclick="logoutAdmin()">🚪 Logout</button>
+    </div>
+  </header>
+
+  <div class="main-container">
+
+    <!-- OVERVIEW KPIS -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <span class="kpi-title">Scraper Fleet Pool</span>
+        <span class="kpi-value" id="kpiTotalPool">--</span>
+        <span class="kpi-sub" id="kpiPoolSub">0 Idle • 0 Cooldown</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-title">Platform Users</span>
+        <span class="kpi-value" id="kpiTotalUsers">--</span>
+        <span class="kpi-sub" id="kpiUsersSub">0 Active • 0 Suspended</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-title">Intelligence Reports</span>
+        <span class="kpi-value" id="kpiTotalReports">--</span>
+        <span class="kpi-sub">Generated &amp; persisted</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-title">Fleet Security</span>
+        <span class="kpi-value" style="color: var(--success);" id="kpiFleetHealth">HEALTHY</span>
+        <span class="kpi-sub">Multi-Worker Concurrency Active</span>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('fleetTab', this)">🤖 Scraper Fleet (100+ Accounts)</button>
+      <button class="tab-btn" onclick="switchTab('usersTab', this)">👥 Platform Users &amp; Access</button>
+      <button class="tab-btn" onclick="switchTab('logsTab', this)">📜 System &amp; Audit Logs</button>
+    </div>
+
+    <!-- TAB 1: SCRAPER FLEET -->
+    <div id="fleetTab" class="tab-content">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <h3 class="section-title">Internal Scraping Accounts Pool</h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Accounts leased by the backend to fetch Instagram data, Score Me metrics, and audit comments without rate-limit downtime.</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-secondary btn-sm" onclick="openModal('bulkImportModal')">📥 Bulk Import (100+)</button>
+            <button class="btn btn-sm" onclick="openModal('addScraperModal')">➕ Add Single Account</button>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Account ID</th>
+                <th>Display Name</th>
+                <th>Instagram UID</th>
+                <th>Status</th>
+                <th>Tasks Run</th>
+                <th>Rate Limits</th>
+                <th>Proxy Attached</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="fleetTableBody">
+              <tr><td colspan="8" style="text-align: center; color: var(--text-muted);">Loading fleet accounts...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: PLATFORM USERS -->
+    <div id="usersTab" class="tab-content" style="display: none;">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <h3 class="section-title">Registered Platform Users</h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Manage client accounts, change access passwords, set quotas, or suspend usage.</p>
+          </div>
+          <button class="btn btn-sm" onclick="openModal('addUserModal')">➕ Create New User</button>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Subscription Plan</th>
+                <th>Daily Limit</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody">
+              <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Loading user records...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: AUDIT LOGS -->
+    <div id="logsTab" class="tab-content" style="display: none;">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <h3 class="section-title">Administrative Audit Trail</h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Logged security events, password modifications, and account actions.</p>
+          </div>
+          <button class="btn btn-danger btn-sm" onclick="triggerEmergencyStop()">🛑 Emergency Stop Running Tasks</button>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Actor</th>
+                <th>Action</th>
+                <th>Target</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody id="auditTableBody">
+              <tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Loading audit events...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MODAL: ADD SCRAPER ACCOUNT -->
+  <div id="addScraperModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Add Scraping Account</h3>
+        <button class="btn btn-secondary btn-sm" onclick="closeModal('addScraperModal')">✕</button>
+      </div>
+      <div class="form-group">
+        <label>Account ID (e.g. acc_02, scout_mumbai)</label>
+        <input type="text" id="newScraperId" placeholder="acc_02">
+      </div>
+      <div class="form-group">
+        <label>Friendly Name</label>
+        <input type="text" id="newScraperName" placeholder="Mumbai Scout Worker">
+      </div>
+      <div class="form-group">
+        <label>Instagram Username (Optional for auto-login)</label>
+        <input type="text" id="newScraperUser" placeholder="my_instagram_handle">
+      </div>
+      <div class="form-group">
+        <label>Instagram Password (Optional for auto-login)</label>
+        <input type="password" id="newScraperPass" placeholder="••••••••">
+      </div>
+      <div class="form-group">
+        <label>Proxy URL (Optional, e.g. http://user:pass@host:port)</label>
+        <input type="text" id="newScraperProxy" placeholder="http://residential-proxy.com:8080">
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px;">
+        <button class="btn btn-secondary" onclick="closeModal('addScraperModal')">Cancel</button>
+        <button class="btn" onclick="submitAddScraper()">Save Account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: BULK IMPORT SCRAPERS -->
+  <div id="bulkImportModal" class="modal-overlay">
+    <div class="modal-box" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3>Bulk Import 100+ Accounts</h3>
+        <button class="btn btn-secondary btn-sm" onclick="closeModal('bulkImportModal')">✕</button>
+      </div>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Paste a JSON array of accounts containing `id`, `name`, `sessionid`, `ds_user_id`, or `proxy`.</p>
+      <div class="form-group">
+        <textarea id="bulkImportJson" rows="9" placeholder='[&#10;  {"id": "acc_01", "name": "Scout 1", "sessionid": "...", "ds_user_id": "123"}&#10;]'></textarea>
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 8px;">
+        <button class="btn btn-secondary" onclick="closeModal('bulkImportModal')">Cancel</button>
+        <button class="btn" onclick="submitBulkImport()">Import Accounts</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CREATE USER -->
+  <div id="addUserModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Create Platform User</h3>
+        <button class="btn btn-secondary btn-sm" onclick="closeModal('addUserModal')">✕</button>
+      </div>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" id="newUsername" placeholder="john_doe">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="newUserEmail" placeholder="user@company.com">
+      </div>
+      <div class="form-group">
+        <label>Temporary / Initial Password</label>
+        <input type="text" id="newUserPassword" placeholder="SecretPassword123">
+      </div>
+      <div class="form-group">
+        <label>Role</label>
+        <select id="newUserRole">
+          <option value="user">User (Standard App Access)</option>
+          <option value="admin">Administrator</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Subscription Plan</label>
+        <select id="newUserPlan">
+          <option value="standard">Standard (50 audits/day)</option>
+          <option value="pro">Pro (200 audits/day)</option>
+          <option value="vip">VIP / Agency (Unlimited)</option>
+        </select>
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px;">
+        <button class="btn btn-secondary" onclick="closeModal('addUserModal')">Cancel</button>
+        <button class="btn" onclick="submitCreateUser()">Create User</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CHANGE PASSWORD -->
+  <div id="changePassModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Reset User Password</h3>
+        <button class="btn btn-secondary btn-sm" onclick="closeModal('changePassModal')">✕</button>
+      </div>
+      <input type="hidden" id="changePassUserId">
+      <div class="form-group">
+        <label>New Password</label>
+        <input type="text" id="newPassValue" placeholder="Enter new strong password...">
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 8px;">
+        <button class="btn btn-secondary" onclick="closeModal('changePassModal')">Cancel</button>
+        <button class="btn" onclick="submitChangePassword()">Update Password</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: BACKEND API CONFIGURATION -->
+  <div id="apiConfigModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Backend API Configuration</h3>
+        <button class="btn btn-secondary btn-sm" onclick="closeModal('apiConfigModal')">✕</button>
+      </div>
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px;">
+        Set the target backend server running the scraping workers, database, and admin API.
+      </p>
+      <div class="form-group">
+        <label>Backend API Base URL</label>
+        <input type="text" id="modalApiInput" placeholder="https://your-tunnel.trycloudflare.com">
+      </div>
+      <div id="modalApiPingStatus" style="font-size: 0.8rem; margin-bottom: 16px; padding: 10px; border-radius: 8px; display: none;"></div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+        <button class="btn btn-secondary" onclick="testModalApiConnection()">Test Connection</button>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn btn-secondary" onclick="closeModal('apiConfigModal')">Cancel</button>
+          <button class="btn" onclick="saveModalApiUrl()">Save &amp; Connect</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let adminToken = localStorage.getItem('vanguard_admin_token') || '';
+
+    // ──────────────────────────────────────────────────────────────
+    // API BASE RESOLUTION & PERSISTENCE
+    // ──────────────────────────────────────────────────────────────
+    function getApiBase() {
+      // 1. Query parameter (?api=... or ?backend=...)
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const param = urlParams.get('api') || urlParams.get('backend');
+        if (param && param.trim().startsWith('http')) {
+          return param.trim().replace(/\/+$/, '');
+        }
+      } catch (_) {}
+
+      // 2. Custom override in localStorage
+      const custom = localStorage.getItem('phantom_custom_api') || localStorage.getItem('vanguard_api_base');
+      if (custom && custom.trim()) {
+        return custom.trim().replace(/\/+$/, '');
+      }
+
+      // 3. Localhost runs against local origin
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return '';
+      }
+
+      // 4. Global backend fallback
+      if (window.BACKEND_API_BASE && window.BACKEND_API_BASE.startsWith('http')) {
+        return window.BACKEND_API_BASE.trim().replace(/\/+$/, '');
+      }
+
+      return '';
+    }
+
+    function setApiBase(url) {
+      const clean = (url || '').trim().replace(/\/+$/, '');
+      if (clean) {
+        localStorage.setItem('phantom_custom_api', clean);
+        localStorage.setItem('vanguard_api_base', clean);
+      } else {
+        localStorage.removeItem('phantom_custom_api');
+        localStorage.removeItem('vanguard_api_base');
+      }
+      syncApiUi();
+    }
+
+    function syncApiUi() {
+      const base = getApiBase();
+      const authInput = document.getElementById('authApiInput');
+      const authBadge = document.getElementById('authApiStatusBadge');
+      const headerLabel = document.getElementById('headerApiLabel');
+      const headerDot = document.getElementById('headerApiDot');
+
+      if (authInput && document.activeElement !== authInput) {
+        authInput.value = base;
+      }
+
+      if (base) {
+        try {
+          const host = new URL(base).hostname;
+          if (authBadge) authBadge.innerText = host;
+          if (headerLabel) headerLabel.innerText = `API: ${host}`;
+        } catch (_) {
+          if (authBadge) authBadge.innerText = 'Configured';
+          if (headerLabel) headerLabel.innerText = 'API: Configured';
+        }
+        if (headerDot) {
+          headerDot.className = 'status-dot status-dot-green';
+        }
+      } else {
+        const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+        if (authBadge) authBadge.innerText = isLocal ? 'Local Origin' : 'Not Configured';
+        if (headerLabel) headerLabel.innerText = isLocal ? 'API: Localhost' : 'API: Not Connected';
+        if (headerDot) {
+          headerDot.className = isLocal ? 'status-dot status-dot-green' : 'status-dot status-dot-amber';
+        }
+      }
+    }
+
+    function onAuthApiInputChanged() {
+      const input = document.getElementById('authApiInput');
+      if (!input) return;
+      setApiBase(input.value);
+    }
+
+    async function testAuthApiConnection() {
+      const input = document.getElementById('authApiInput');
+      const badge = document.getElementById('authApiStatusBadge');
+      const url = (input ? input.value : '').trim().replace(/\/+$/, '');
+      if (badge) {
+        badge.innerText = 'Pinging...';
+        badge.style.color = '#38bdf8';
+      }
+
+      const pingEndpoint = url ? `${url}/api/system-info` : `/api/system-info`;
+      try {
+        const start = Date.now();
+        const res = await fetch(pingEndpoint);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const latency = Date.now() - start;
+        setApiBase(url);
+        if (badge) {
+          badge.innerText = `✓ Connected (${latency}ms)`;
+          badge.style.color = '#10b981';
+        }
+      } catch (err) {
+        if (badge) {
+          badge.innerText = `✕ Error: ${err.message}`;
+          badge.style.color = '#ef4444';
+        }
+      }
+    }
+
+    async function testModalApiConnection() {
+      const input = document.getElementById('modalApiInput');
+      const box = document.getElementById('modalApiPingStatus');
+      const url = (input ? input.value : '').trim().replace(/\/+$/, '');
+      box.style.display = 'block';
+      box.style.background = 'rgba(59, 130, 246, 0.1)';
+      box.style.border = '1px solid #3b82f6';
+      box.style.color = '#93c5fd';
+      box.innerText = `Pinging ${url || 'local origin'}...`;
+
+      const endpoint = url ? `${url}/api/system-info` : `/api/system-info`;
+      try {
+        const start = Date.now();
+        const res = await fetch(endpoint);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const latency = Date.now() - start;
+        box.style.background = 'rgba(16, 185, 129, 0.1)';
+        box.style.border = '1px solid #10b981';
+        box.style.color = '#6ee7b7';
+        box.innerHTML = `<strong>✓ Connection Successful (${latency}ms)</strong><br>Server reports: ${data.status} • Total reports: ${data.total_reports || 0}`;
+      } catch (err) {
+        box.style.background = 'rgba(239, 68, 68, 0.1)';
+        box.style.border = '1px solid #ef4444';
+        box.style.color = '#fca5a5';
+        box.innerHTML = `<strong>✕ Connection Failed</strong><br>${err.message}`;
+      }
+    }
+
+    function saveModalApiUrl() {
+      const input = document.getElementById('modalApiInput');
+      setApiBase(input ? input.value : '');
+      closeModal('apiConfigModal');
+      refreshData();
+    }
+
+    // ──────────────────────────────────────────────────────────────
+    // AUTHENTICATION & HEADERS
+    // ──────────────────────────────────────────────────────────────
+    function checkAuth() {
+      syncApiUi();
+      if (adminToken) {
+        document.getElementById('authGateScreen').style.display = 'none';
+        refreshData();
+      } else {
+        document.getElementById('authGateScreen').style.display = 'flex';
+      }
+    }
+
+    async function loginAdmin() {
+      const key = document.getElementById('adminKeyInput').value.trim();
+      const errBox = document.getElementById('loginError');
+      errBox.style.display = 'none';
+
+      if (!key) {
+        errBox.innerText = 'Please enter admin key.';
+        errBox.style.display = 'block';
+        return;
+      }
+
+      const apiBase = getApiBase();
+      const isRemote = (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1');
+
+      try {
+        const loginUrl = `${apiBase}/api/admin/login`;
+        const res = await fetch(loginUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key })
+        });
+        const data = await res.json();
+        if (data.success && data.token) {
+          adminToken = data.token;
+          localStorage.setItem('vanguard_admin_token', adminToken);
+          document.getElementById('authGateScreen').style.display = 'none';
+          refreshData();
+        } else {
+          errBox.innerText = data.error || 'Invalid Admin Key.';
+          errBox.style.display = 'block';
+        }
+      } catch (e) {
+        if (isRemote && !apiBase) {
+          errBox.innerHTML = `Backend server not configured.<br>Please enter your Backend API URL above.`;
+        } else {
+          errBox.innerHTML = `Cannot reach backend (${apiBase || 'local origin'}):<br>${e.message}`;
+        }
+        errBox.style.display = 'block';
+      }
+    }
+
+    function logoutAdmin() {
+      adminToken = '';
+      localStorage.removeItem('vanguard_admin_token');
+      document.getElementById('authGateScreen').style.display = 'flex';
+    }
+
+    function authHeaders() {
+      return {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + adminToken
+      };
+    }
+
+    // ──────────────────────────────────────────────────────────────
+    // NAVIGATION & MODALS
+    // ──────────────────────────────────────────────────────────────
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).style.display = 'block';
+      btn.classList.add('active');
+    }
+
+    function openModal(id) { 
+      const el = document.getElementById(id);
+      if (el) el.classList.add('active');
+      if (id === 'apiConfigModal') {
+        const input = document.getElementById('modalApiInput');
+        if (input) input.value = getApiBase();
+        const box = document.getElementById('modalApiPingStatus');
+        if (box) box.style.display = 'none';
+      }
+    }
+    function closeModal(id) { 
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('active'); 
+    }
+
+    // ──────────────────────────────────────────────────────────────
+    // DATA FETCHING & RENDERING
+    // ──────────────────────────────────────────────────────────────
+    async function refreshData() {
+      const apiBase = getApiBase();
+      try {
+        // System Info & Fleet
+        const sysRes = await fetch(`${apiBase}/api/system-info`);
+        if (sysRes.ok) {
+          const sysData = await sysRes.json();
+          document.getElementById('kpiTotalReports').innerText = sysData.total_reports || 0;
+        }
+
+        // Account Pool
+        const poolRes = await fetch(`${apiBase}/api/pool/status`);
+        if (poolRes.ok) {
+          const poolData = await poolRes.json();
+          const accounts = poolData.accounts || [];
+
+          document.getElementById('kpiTotalPool').innerText = accounts.length;
+          const idleCnt = accounts.filter(a => a.status === 'idle').length;
+          const cdCnt = accounts.filter(a => a.status === 'cooldown').length;
+          document.getElementById('kpiPoolSub').innerText = `${idleCnt} Idle • ${cdCnt} In Cooldown`;
+
+          renderFleetTable(accounts);
+        }
+
+        // Users
+        const userRes = await fetch(`${apiBase}/api/admin/users`, { headers: authHeaders() });
+        if (userRes.status === 401) return logoutAdmin();
+        if (userRes.ok) {
+          const userData = await userRes.json();
+          const users = userData.users || [];
+
+          document.getElementById('kpiTotalUsers').innerText = users.length;
+          const activeUsers = users.filter(u => u.status === 'active').length;
+          document.getElementById('kpiUsersSub').innerText = `${activeUsers} Active • ${users.length - activeUsers} Suspended`;
+
+          renderUsersTable(users);
+        }
+
+        // Audit Logs
+        const logsRes = await fetch(`${apiBase}/api/admin/audit-logs`, { headers: authHeaders() });
+        if (logsRes.ok) {
+          const logsData = await logsRes.json();
+          renderAuditTable(logsData.logs || []);
+        }
+
+      } catch (e) {
+        console.error('Error fetching admin data:', e);
+      }
+    }
+
+    function renderFleetTable(accounts) {
+      const tbody = document.getElementById('fleetTableBody');
+      if (!accounts.length) {
+        tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: var(--text-muted);">No scraper accounts configured yet.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = accounts.map(a => `
+        <tr>
+          <td><strong>${a.id}</strong></td>
+          <td>${a.name}</td>
+          <td>${a.username || '<span style="color:#64748b;">Not logged in</span>'}</td>
+          <td>
+            <span class="badge badge-${a.status}">${a.status} ${a.cooldown_remaining_seconds ? '('+a.cooldown_remaining_seconds+'s)' : ''}</span>
+          </td>
+          <td>${a.total_tasks_run || 0}</td>
+          <td>${a.rate_limit_hits || 0}</td>
+          <td>${a.has_proxy ? '<span style="color:#10b981;">Yes</span>' : '<span style="color:#64748b;">Direct IP</span>'}</td>
+          <td>
+            <button class="btn btn-secondary btn-sm" onclick="removeScraperAccount('${a.id}')">Remove</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function renderUsersTable(users) {
+      const tbody = document.getElementById('usersTableBody');
+      if (!users.length) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">No user accounts found.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = users.map(u => `
+        <tr>
+          <td><strong>${u.username}</strong></td>
+          <td>${u.email || '—'}</td>
+          <td><span class="badge" style="background:#312e81; color:#a5b4fc;">${u.role}</span></td>
+          <td>${u.plan.toUpperCase()}</td>
+          <td>${u.daily_limit} / day</td>
+          <td><span class="badge badge-${u.status}">${u.status}</span></td>
+          <td>
+            <div style="display: flex; gap: 6px;">
+              ${u.status === 'active' 
+                ? `<button class="btn btn-secondary btn-sm" onclick="toggleUserStatus('${u.id}', 'suspended')">Suspend</button>`
+                : `<button class="btn btn-success btn-sm" onclick="toggleUserStatus('${u.id}', 'active')">Activate</button>`
+              }
+              <button class="btn btn-secondary btn-sm" onclick="promptChangePassword('${u.id}')">Password</button>
+              ${u.role !== 'superadmin' ? `<button class="btn btn-danger btn-sm" onclick="deleteUser('${u.id}')">Delete</button>` : ''}
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function renderAuditTable(logs) {
+      const tbody = document.getElementById('auditTableBody');
+      if (!logs.length) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">No audit logs recorded yet.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = logs.map(l => `
+        <tr>
+          <td>${new Date(l.timestamp * 1000).toLocaleTimeString()}</td>
+          <td><strong>${l.actor}</strong></td>
+          <td><span class="badge" style="background:#1e293b;">${l.action}</span></td>
+          <td>${l.target}</td>
+          <td>${l.details || '—'}</td>
+        </tr>
+      `).join('');
+    }
+
+    // ──────────────────────────────────────────────────────────────
+    // ADMIN ACTIONS
+    // ──────────────────────────────────────────────────────────────
+    async function toggleUserStatus(userId, newStatus) {
+      if (!confirm(`Change status to ${newStatus}?`)) return;
+      const apiBase = getApiBase();
+      await fetch(`${apiBase}/api/admin/users/${userId}/status`, {
+        method: 'POST',
+        headers: authHeaders(),
+        body: JSON.stringify({ status: newStatus })
+      });
+      refreshData();
+    }
+
+    function promptChangePassword(userId) {
+      document.getElementById('changePassUserId').value = userId;
+      document.getElementById('newPassValue').value = '';
+      openModal('changePassModal');
+    }
+
+    async function submitChangePassword() {
+      const userId = document.getElementById('changePassUserId').value;
+      const newPass = document.getElementById('newPassValue').value.trim();
+      if (!newPass) return alert('Password cannot be empty');
+      const apiBase = getApiBase();
+      await fetch(`${apiBase}/api/admin/users/${userId}/password`, {
+        method: 'POST',
+        headers: authHeaders(),
+        body: JSON.stringify({ password: newPass })
+      });
+      closeModal('changePassModal');
+      alert('Password updated successfully!');
+      refreshData();
+    }
+
+    async function deleteUser(userId) {
+      if (!confirm('Are you sure you want to permanently delete this user?')) return;
+      const apiBase = getApiBase();
+      await fetch(`${apiBase}/api/admin/users/${userId}`, {
+        method: 'DELETE',
+        headers: authHeaders()
+      });
+      refreshData();
+    }
+
+    async function submitCreateUser() {
+      const u = document.getElementById('newUsername').value.trim();
+      const em = document.getElementById('newUserEmail').value.trim();
+      const pw = document.getElementById('newUserPassword').value.trim();
+      const role = document.getElementById('newUserRole').value;
+      const plan = document.getElementById('newUserPlan').value;
+
+      if (!u || !pw) return alert('Username and password are required.');
+
+      const apiBase = getApiBase();
+      await fetch(`${apiBase}/api/admin/users`, {
+        method: 'POST',
+        headers: authHeaders(),
+        body: JSON.stringify({ username: u, email: em, password: pw, role, plan })
+      });
+      closeModal('addUserModal');
+      refreshData();
+    }
+
+    async function submitAddScraper() {
+      const id = document.getElementById('newScraperId').value.trim();
+      const name = document.getElementById('newScraperName').value.trim();
+      const proxy = document.getElementById('newScraperProxy').value.trim();
+      if (!id) return alert('Account ID is required.');
+
+      const apiBase = getApiBase();
+      await fetch(`${apiBase}/api/pool/accounts`, {
+        method: 'POST',
+        headers: authHeaders(),
+        body: JSON.stringify({
+          id,
+          name: name || id,
+          proxy: proxy ? { server: proxy } : null
+        })
+      });
+      closeModal('addScraperModal');
+      refreshData();
+    }
+
+    async function submitBulkImport() {
+      const raw = document.getElementById('bulkImportJson').value.trim();
+      try {
+        const parsed = JSON.parse(raw);
+        if (!Array.isArray(parsed)) throw new Error('Must be a JSON array of accounts.');
+        const apiBase = getApiBase();
+        const res = await fetch(`${apiBase}/api/pool/bulk-import`, {
+          method: 'POST',
+          headers: authHeaders(),
+          body: JSON.stringify({ accounts: parsed })
+        });
+        const d = await res.json();
+        alert(`Bulk Import Complete: ${d.summary.successfully_imported} accounts imported!`);
+        closeModal('bulkImportModal');
+        refreshData();
+      } catch (e) {
+        alert('Invalid JSON: ' + e.message);
+      }
+    }
+
+    async function removeScraperAccount(accId) {
+      if (!confirm(`Remove scraper account '${accId}' from rotation pool?`)) return;
+      const apiBase = getApiBase();
+      await fetch(`${apiBase}/api/admin/pool/${accId}`, {
+        method: 'DELETE',
+        headers: authHeaders()
+      });
+      refreshData();
+    }
+
+    async function triggerEmergencyStop() {
+      if (!confirm('Emergency Stop: Terminate all running scrapers and tasks immediately?')) return;
+      const apiBase = getApiBase();
+      await fetch(`${apiBase}/api/stop`, { method: 'POST' });
+      alert('All running scraper instances terminated and resources released.');
+      refreshData();
+    }
+
+    // Initialize check
+    checkAuth();
+  </script>
+</body>
+</html>
