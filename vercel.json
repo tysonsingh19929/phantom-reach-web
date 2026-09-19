@@ -1,18 +1,37 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/admin", "destination": "/admin.html" },
-    { "source": "/business-login", "destination": "/auth.html?role=business" },
-    { "source": "/creator-login", "destination": "/auth.html?role=creator" },
-    { "source": "/signup", "destination": "/signup.html" },
-    { "source": "/signup-business", "destination": "/signup-role.html?role=business" },
-    { "source": "/signup-creator", "destination": "/signup-role.html?role=creator" },
-    { "source": "/tools/google-leads", "destination": "/tool.html?tool=google-leads" },
-    { "source": "/tools/influencer-score", "destination": "/tool.html?tool=influencer-score" },
-    { "source": "/tools/instagram-leads", "destination": "/tool.html?tool=instagram-leads" },
-    { "source": "/tools/youtube", "destination": "/tool.html?tool=youtube" },
-    { "source": "/tools/linkedin", "destination": "/tool.html?tool=linkedin" },
-    { "source": "/tools/x-twitter", "destination": "/tool.html?tool=x-twitter" },
-    { "source": "/tools/automate-ai", "destination": "/tool.html?tool=automate-ai" }
+    {
+      "source": "/tools/:tool*",
+      "destination": "/tool.html"
+    },
+    {
+      "source": "/tools",
+      "destination": "/tool.html"
+    },
+    {
+      "source": "/business-login",
+      "destination": "/auth.html"
+    },
+    {
+      "source": "/creator-login",
+      "destination": "/auth.html"
+    },
+    {
+      "source": "/signup",
+      "destination": "/signup.html"
+    },
+    {
+      "source": "/signup-business",
+      "destination": "/signup-role.html"
+    },
+    {
+      "source": "/signup-creator",
+      "destination": "/signup-role.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin.html"
+    }
   ]
 }

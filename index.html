@@ -1,32 +1,357 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="description" content="Vanguard Social — AI-powered lead generation and creator intelligence.">
   <title>Vanguard Social — AI Growth Intelligence</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230F172A'/%3E%3Cpath d='M6 6h3.4L12 14.6 14.6 6H18l-5 12h-2L6 6Z' fill='white'/%3E%3C/svg%3E">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],display:['Lexend','Inter','system-ui','sans-serif']}}}};</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#0f172a;font-family:Inter,sans-serif;background:linear-gradient(135deg,#f8fbff,#eef6ff 42%,#fff)}.container{max-width:1180px;margin:auto;padding:0 1rem}.font-display{font-family:Lexend,Inter,sans-serif}.glass{background:rgba(255,255,255,.97);border:1px solid rgba(203,213,225,.8);box-shadow:0 18px 45px -20px rgba(15,23,42,.22)}.menu{position:absolute;top:calc(100% + .7rem);z-index:50;width:min(24rem,calc(100vw - 2rem));left:0}.account{right:0;left:auto;width:min(22rem,calc(100vw - 2rem))}.menu[hidden]{display:none}.menu a{display:flex;align-items:center;gap:.9rem;padding:.85rem .9rem;border-radius:.8rem;color:#334155;font-size:.95rem;font-weight:600;line-height:1.35}.menu a:hover{background:#eff6ff;color:#1d4ed8}.menu svg{width:1.3rem;height:1.3rem;color:#2563eb;flex:none}.primary{background:linear-gradient(135deg,#2563eb,#0f172a);color:#fff}.primary:hover{background:linear-gradient(135deg,#3b82f6,#111827)}:focus-visible{outline:3px solid rgba(37,99,235,.35);outline-offset:2px}.tool{scroll-margin-top:6rem;transition:.2s}.tool:hover{transform:translateY(-3px)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#0f172a;font-family:Inter,sans-serif;background:linear-gradient(135deg,#f8fbff,#eef6ff 42%,#fff)}.container{max-width:1180px;margin:auto;padding:0 1rem}.font-display{font-family:Lexend,Inter,sans-serif}.glass{background:rgba(255,255,255,.97);border:1px solid rgba(203,213,225,.8);box-shadow:0 18px 45px -20px rgba(15,23,42,.22)}.menu{position:absolute;top:calc(100% + .7rem);z-index:50;width:min(24rem,calc(100vw - 2rem));left:0}.account{right:0;left:auto;width:min(22rem,calc(100vw - 2rem))}.menu[hidden]{display:none}.menu a, .menu button.menu-item{display:flex;align-items:center;gap:.9rem;padding:.85rem .9rem;border-radius:.8rem;color:#334155;font-size:.95rem;font-weight:600;line-height:1.35;text-decoration:none;transition:.15s;width:100%}.menu a:hover, .menu button.menu-item:hover{background:#eff6ff;color:#1d4ed8}.menu svg{width:1.3rem;height:1.3rem;color:#2563eb;flex:none}.primary{background:linear-gradient(135deg,#2563eb,#0f172a);color:#fff}.primary:hover{background:linear-gradient(135deg,#3b82f6,#111827)}:focus-visible{outline:3px solid rgba(37,99,235,.35);outline-offset:2px}.tool{scroll-margin-top:6rem;transition:.2s}.tool:hover{transform:translateY(-3px)}
   </style>
 </head>
 <body>
-  <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl" style="padding-top:env(safe-area-inset-top)"><div class="container relative flex h-16 items-center justify-between gap-3">
-    <div class="relative"><button id="toolsButton" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm" aria-label="Open tools menu" aria-expanded="false"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 6h14M5 12h14M5 18h14" stroke-linecap="round"/></svg></button><nav id="toolsMenu" class="menu glass rounded-2xl p-3" hidden><div class="px-3 pb-3 pt-1"><p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-500">Explore Vanguard</p><p class="mt-1 text-sm text-slate-500">Jump to an intelligence workflow</p></div><a href="/#tools"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h16" stroke-linecap="round"/></svg><span>View all tools</span></a><a href="/tools/google-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg><span>Google Leads Tools</span></a><a href="/tools/influencer-score"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg><span>Influencer Score</span></a><a href="/tools/instagram-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg><span>Instagram Leads Tools</span></a><a href="/tools/youtube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7.5a2.5 2.5 0 0 0-1.8-1.8C17.6 5.3 12 5.3 12 5.3s-5.6 0-7.2.4A2.5 2.5 0 0 0 3 7.5 26 26 0 0 0 2.6 12 26 26 0 0 0 3 16.5a2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.2.4 7.2.4s5.6 0 7.2-.4a2.5 2.5 0 0 0 1.8-1.8 26 26 0 0 0 .4-4.5 26 26 0 0 0-.4-4.5Z"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg><span>YouTube Tools</span></a><a href="/tools/linkedin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg><span>LinkedIn Tools</span></a><a href="/tools/x-twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4 19 20M19 4 5 20" stroke-linecap="round"/></svg><span>X / Twitter Tools</span></a><a class="mt-2 border-t border-slate-100 pt-4" href="/tools/automate-ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke-linecap="round"/><circle cx="12" cy="12" r="4"/></svg><span>Automate your business with AI</span></a></nav></div>
-    <a href="/" class="flex min-w-0 items-center gap-3 no-underline"><span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-lg font-bold text-white">V</span><span class="min-w-0"><span class="flex items-center gap-2 truncate font-display text-base font-semibold sm:text-lg">Vanguard Social <b class="rounded-md border border-slate-300 px-1.5 py-0.5 text-[10px] tracking-[.12em] text-slate-600">PRO</b></span><span class="hidden text-[11px] text-slate-600 sm:block">Multi-platform intelligence for creators, leads, and reach</span></span></a>
-    <div class="relative"><button id="accountButton" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm" aria-label="Open account access menu" aria-expanded="false"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg></button><nav id="accountMenu" class="menu account glass rounded-2xl p-3" hidden><div class="px-3 pb-3 pt-1"><p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-500">Account access</p><p class="mt-1 text-sm text-slate-500">Choose your Vanguard workspace</p></div><a href="/business-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16M2 21h20M9 7h6M9 11h6M9 15h3" stroke-linecap="round"/></svg><span>Business workspace</span></a><a href="/creator-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg><span>Creator / Influencer workspace</span></a></nav></div>
-  </div></header>
-  <main class="container py-10 sm:py-14"><section class="pb-10 text-center"><span class="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.18em] text-blue-700">AI growth intelligence platform</span><h1 class="mx-auto mt-5 max-w-4xl font-display text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">AI tools for lead generation, creator discovery, and social growth.</h1><p class="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-slate-600">Find verified local leads, benchmark creators and collaborators, and turn social media intelligence into actionable outreach and growth decisions—without manual research.</p><div class="mt-7 flex flex-wrap justify-center gap-3"><a class="primary rounded-2xl px-5 py-3 text-sm font-semibold shadow-lg" href="#tools">Explore all tools</a><a class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700" href="/signup">Create your account</a></div></section>
-    <section class="mb-8 rounded-[28px] border border-blue-100 bg-gradient-to-br from-blue-600 to-slate-950 p-7 text-center text-white shadow-xl sm:p-10"><p class="text-[11px] font-bold uppercase tracking-[.18em] text-blue-200">Priority engine</p><h2 class="mt-2 font-display text-2xl font-bold sm:text-3xl">Score the creators who can actually move your ROI.</h2><p class="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-blue-100 sm:text-base">Replace guesswork with an AI-powered creator score that measures authentic reach, engagement quality, niche fit, momentum, and partnership potential.</p><a href="/tools/influencer-score" class="mt-5 inline-flex rounded-2xl bg-white px-5 py-3 text-sm font-bold text-blue-700 shadow-lg">Run the Score Me engine</a></section>
-    <section id="tools" class="py-8"><div class="mb-6 text-center"><p class="text-[11px] font-bold uppercase tracking-[.18em] text-slate-500">Intelligence engines</p><h2 class="mt-1 font-display text-2xl font-semibold sm:text-3xl">Choose the engine you need</h2></div><div class="grid gap-4 md:grid-cols-2">
-      <article id="google-leads" class="tool glass rounded-3xl p-6"><div class="mb-4 text-blue-600"><svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg></div><h3 class="font-display text-xl font-bold">Google Leads Tools</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Pull every business lead from your target location into a clean lead sheet.</p><a href="/tools/google-leads" class="primary mt-5 inline-flex rounded-xl px-4 py-3 text-sm font-semibold">Open Google tools</a></article>
-      <article id="influencer-score" class="tool glass rounded-3xl border-blue-200 p-6"><div class="mb-4 text-blue-600"><svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg></div><h3 class="font-display text-xl font-bold">Score Me — Influencer ROI Engine</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Score influencers and creators for authentic reach, engagement quality, niche fit, momentum, and ROI.</p><a href="/tools/influencer-score" class="primary mt-5 inline-flex rounded-xl px-4 py-3 text-sm font-semibold">Calculate creator score</a></article>
-      <article id="instagram-leads" class="tool glass rounded-3xl p-6"><div class="mb-4 text-pink-500"><svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></div><h3 class="font-display text-xl font-bold">Instagram Leads Tools</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Find verified local businesses, creators, and collaborators in one export.</p><a href="/tools/instagram-leads" class="primary mt-5 inline-flex rounded-xl px-4 py-3 text-sm font-semibold">Open Instagram tools</a></article>
-      <article id="youtube-tools" class="tool glass rounded-3xl p-6"><div class="mb-4 text-red-600"><svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.8 2.8 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2 12a29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 22 12a29 29 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg></div><h3 class="font-display text-xl font-bold">YouTube Tools</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Review channel performance, audience signals, and creator fit.</p><a href="/tools/youtube" class="primary mt-5 inline-flex rounded-xl px-4 py-3 text-sm font-semibold">Open YouTube tools</a></article>
-      <article id="linkedin-tools" class="tool glass rounded-3xl p-6"><div class="mb-4 text-blue-700"><svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg></div><h3 class="font-display text-xl font-bold">LinkedIn Tools</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Discover professional prospects and organize high-intent outreach.</p><a href="/tools/linkedin" class="primary mt-5 inline-flex rounded-xl px-4 py-3 text-sm font-semibold">Open LinkedIn tools</a></article>
-      <article id="x-twitter-tools" class="tool glass rounded-3xl p-6"><div class="mb-4 text-slate-900"><svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4 19 20M19 4 5 20" stroke-linecap="round"/></svg></div><h3 class="font-display text-xl font-bold">X / Twitter Tools</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Identify conversations, influential accounts, and relevant communities.</p><a href="/tools/x-twitter" class="primary mt-5 inline-flex rounded-xl px-4 py-3 text-sm font-semibold">Open X / Twitter tools</a></article>
-    </div></section><section class="glass my-10 rounded-[28px] bg-gradient-to-br from-white to-blue-50 p-7 text-center sm:p-10"><p class="text-[11px] font-bold uppercase tracking-[.18em] text-blue-700">Professional automation category</p><h2 class="mt-2 font-display text-2xl font-semibold sm:text-3xl">Replace repetitive work with one AI-powered operating system.</h2><p class="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">Turn repetitive research, qualification, reporting, and outreach workflows into a streamlined AI-powered operating system.</p><a href="/tools/automate-ai" class="primary mt-5 inline-flex rounded-2xl px-5 py-3 text-sm font-semibold">Explore AI automation</a></section>
-  </main><footer class="border-t border-slate-200 bg-white/70"><div class="container py-8 text-center text-sm text-slate-600"><b class="font-display text-lg text-slate-900">Vanguard Social</b><span class="ml-2">AI lead generation and creator intelligence.</span></div></footer>
-  <script>const pairs=[['toolsButton','toolsMenu'],['accountButton','accountMenu']];function closeMenus(){pairs.forEach(([b,m])=>{document.getElementById(m).hidden=true;document.getElementById(b).setAttribute('aria-expanded','false')})}pairs.forEach(([b,m])=>{const btn=document.getElementById(b),menu=document.getElementById(m);btn.onclick=e=>{e.stopPropagation();const open=menu.hidden;closeMenus();menu.hidden=!open;btn.setAttribute('aria-expanded',open)};menu.onclick=e=>{if(e.target.closest('a'))closeMenus()}});document.addEventListener('click',closeMenus);document.addEventListener('keydown',e=>e.key==='Escape'&&closeMenus());</script>
-</body></html>
+  <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl" style="padding-top:env(safe-area-inset-top)">
+    <div class="container relative flex h-16 items-center justify-between gap-3">
+      
+      <!-- Tools Menu Button -->
+      <div class="relative">
+        <button id="toolsButton" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm cursor-pointer hover:bg-slate-50 transition" aria-label="Open tools menu" aria-expanded="false">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 6h14M5 12h14M5 18h14" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toolsMenu" class="menu glass rounded-2xl p-3" hidden>
+          <div class="px-3 pb-3 pt-1">
+            <p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-500">Explore Vanguard</p>
+            <p class="mt-1 text-sm text-slate-500">Jump to an intelligence workflow</p>
+          </div>
+          <a href="/#tools"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h16" stroke-linecap="round"/></svg><span>View all tools</span></a>
+          <a href="/tools/google-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg><span>Google Leads Tools</span></a>
+          <a href="/tools/influencer-score"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg><span>Score Me — Influencer ROI</span></a>
+          <a href="/tools/instagram-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg><span>Instagram Leads &amp; Audit Tools</span></a>
+          <a href="/tools/youtube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7.5a2.5 2.5 0 0 0-1.8-1.8C17.6 5.3 12 5.3 12 5.3s-5.6 0-7.2.4A2.5 2.5 0 0 0 3 7.5 26 26 0 0 0 2.6 12 26 26 0 0 0 3 16.5a2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.2.4 7.2.4s5.6 0 7.2-.4a2.5 2.5 0 0 0 1.8-1.8 26 26 0 0 0 .4-4.5 26 26 0 0 0-.4-4.5Z"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg><span>YouTube Tools</span></a>
+          <a href="/tools/linkedin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg><span>LinkedIn Tools</span></a>
+          <a href="/tools/x-twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4 19 20M19 4 5 20" stroke-linecap="round"/></svg><span>X / Twitter Tools</span></a>
+          <a href="/tools/automate-ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke-linecap="round"/><circle cx="12" cy="12" r="4"/></svg><span>Automate your business with AI</span></a>
+          <div class="mt-2 border-t border-slate-100 pt-2">
+            <a href="/admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Admin Control Plane</span></a>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Brand -->
+      <a href="/" class="flex min-w-0 items-center gap-3 no-underline">
+        <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-lg font-bold text-white">V</span>
+        <span class="min-w-0">
+          <span class="flex items-center gap-2 truncate font-display text-base font-semibold sm:text-lg">
+            Vanguard Social <b class="rounded-md border border-slate-300 px-1.5 py-0.5 text-[10px] tracking-[.12em] text-slate-600">PRO</b>
+          </span>
+          <span class="hidden text-[11px] text-slate-600 sm:block">Multi-platform intelligence for creators, leads, and reach</span>
+        </span>
+      </a>
+
+      <!-- Right Header Actions (API Config Button + Account Menu) -->
+      <div class="flex items-center gap-2">
+        
+        <!-- Backend API Status Button (Matches design height and styling) -->
+        <button id="apiConfigButton" onclick="openApiModal()" class="inline-flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-slate-700 shadow-sm hover:bg-slate-50 transition cursor-pointer" title="Configure Backend Server API">
+          <span id="apiStatusDot" class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="hidden sm:inline font-mono text-[11px] font-semibold text-slate-700" id="apiStatusLabel">API</span>
+        </button>
+
+        <!-- Account Button -->
+        <div class="relative">
+          <button id="accountButton" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm cursor-pointer hover:bg-slate-50 transition" aria-label="Open account access menu" aria-expanded="false">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg>
+          </button>
+          <nav id="accountMenu" class="menu account glass rounded-2xl p-3" hidden>
+            <div class="px-3 pb-3 pt-1">
+              <p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-500">Account access</p>
+              <p class="mt-1 text-sm text-slate-500">Choose your Vanguard workspace</p>
+            </div>
+            <a href="/business-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16M2 21h20M9 7h6M9 11h6M9 15h3" stroke-linecap="round"/></svg><span>Business workspace</span></a>
+            <a href="/creator-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg><span>Creator / Influencer workspace</span></a>
+            <div class="mt-2 border-t border-slate-100 pt-2">
+              <a href="/admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Admin Master Login</span></a>
+              <button type="button" onclick="openApiModal();closeMenus();" class="menu-item text-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Backend API Settings</span></button>
+            </div>
+          </nav>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container py-10 sm:py-14">
+    <section class="pb-10 text-center">
+      <span class="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.18em] text-blue-700">AI growth intelligence platform</span>
+      <h1 class="mx-auto mt-5 max-w-4xl font-display text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">AI tools for lead generation, creator discovery, and social growth.</h1>
+      <p class="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-slate-600">Find verified local leads, benchmark creators and collaborators, and turn social media intelligence into actionable outreach and growth decisions—without manual research.</p>
+      <div class="mt-7 flex flex-wrap justify-center gap-3">
+        <a class="primary rounded-2xl px-5 py-3 text-sm font-semibold shadow-lg" href="#tools">Explore all tools</a>
+        <a class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition" href="/signup">Create your account</a>
+      </div>
+    </section>
+
+    <!-- Priority Engine Banner: Score Me -->
+    <section class="mb-8 rounded-[28px] border border-blue-100 bg-gradient-to-br from-blue-600 to-slate-950 p-7 text-center text-white shadow-xl sm:p-10">
+      <p class="text-[11px] font-bold uppercase tracking-[.18em] text-blue-200">Priority engine</p>
+      <h2 class="mt-2 font-display text-2xl font-bold sm:text-3xl">Score the creators who can actually move your ROI.</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-blue-100 sm:text-base">Replace guesswork with an AI-powered creator score that measures authentic reach, engagement quality, niche fit, momentum, and partnership potential.</p>
+      <a href="/tools/influencer-score" class="mt-5 inline-flex rounded-2xl bg-white px-5 py-3 text-sm font-bold text-blue-700 shadow-lg hover:bg-blue-50 transition">Run the Score Me engine</a>
+    </section>
+
+    <!-- Tools Grid -->
+    <section id="tools" class="py-8">
+      <div class="mb-6 text-center">
+        <p class="text-[11px] font-bold uppercase tracking-[.18em] text-slate-500">Intelligence engines</p>
+        <h2 class="mt-1 font-display text-2xl font-semibold sm:text-3xl">Choose the engine you need</h2>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2">
+
+        <!-- Google Leads -->
+        <article id="google-leads" class="tool glass rounded-3xl p-6">
+          <div class="mb-4 text-blue-600">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold">Google Leads Tools</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Pull every business lead from your target location into a clean, verified lead sheet with emails and phone numbers.</p>
+          <a href="/tools/google-leads" class="primary mt-5 inline-flex rounded-xl px-4 py-3 text-sm font-semibold">Open Google tools</a>
+        </article>
+
+        <!-- Score Me -->
+        <article id="influencer-score" class="tool glass rounded-3xl border-blue-200 p-6">
+          <div class="mb-4 text-blue-600">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold">Score Me — Influencer ROI Engine</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Score influencers and creators for authentic reach, engagement quality, niche fit, momentum, and ROI benchmarks.</p>
+          <a href="/tools/influencer-score" class="primary mt-5 inline-flex rounded-xl px-4 py-3 text-sm font-semibold">Calculate creator score</a>
+        </article>
+
+        <!-- Instagram Leads Suite -->
+        <article id="instagram-leads" class="tool glass rounded-3xl p-6">
+          <div class="mb-4 text-pink-500">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold">Instagram Leads Tools</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Complete Instagram suite: Location discovery, account audits, 30-day comment extractions, and reel URL inspection.</p>
+          <a href="/tools/instagram-leads" class="primary mt-5 inline-flex rounded-xl px-4 py-3 text-sm font-semibold">Open Instagram suite</a>
+        </article>
+
+        <!-- YouTube -->
+        <article id="youtube-tools" class="tool glass rounded-3xl p-6">
+          <div class="mb-4 text-red-600">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.8 2.8 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2 12a29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 22 12a29 29 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold">YouTube Tools</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Review channel performance, audience signals, video reach, and creator fit for smarter brand collaborations.</p>
+          <a href="/tools/youtube" class="primary mt-5 inline-flex rounded-xl px-4 py-3 text-sm font-semibold">Open YouTube tools</a>
+        </article>
+
+        <!-- LinkedIn -->
+        <article id="linkedin-tools" class="tool glass rounded-3xl p-6">
+          <div class="mb-4 text-blue-700">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold">LinkedIn Tools</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Discover professional prospects, target companies, and organize high-intent B2B outreach with verified leads.</p>
+          <a href="/tools/linkedin" class="primary mt-5 inline-flex rounded-xl px-4 py-3 text-sm font-semibold">Open LinkedIn tools</a>
+        </article>
+
+        <!-- X / Twitter -->
+        <article id="x-twitter-tools" class="tool glass rounded-3xl p-6">
+          <div class="mb-4 text-slate-900">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4 19 20M19 4 5 20" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold">X / Twitter Tools</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Inspect creator tweet velocity, identify influential accounts, and monitor niche community discussions.</p>
+          <a href="/tools/x-twitter" class="primary mt-5 inline-flex rounded-xl px-4 py-3 text-sm font-semibold">Open X / Twitter tools</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- AI Automation Category -->
+    <section class="glass my-10 rounded-[28px] bg-gradient-to-br from-white to-blue-50 p-7 text-center sm:p-10">
+      <p class="text-[11px] font-bold uppercase tracking-[.18em] text-blue-700">Professional automation category</p>
+      <h2 class="mt-2 font-display text-2xl font-semibold sm:text-3xl">Replace repetitive work with one AI-powered operating system.</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">Turn repetitive research, qualification, reporting, and outreach workflows into a streamlined AI-powered operating system.</p>
+      <a href="/tools/automate-ai" class="primary mt-5 inline-flex rounded-2xl px-5 py-3 text-sm font-semibold">Explore AI automation</a>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white/70">
+    <div class="container py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600">
+      <div>
+        <b class="font-display text-lg text-slate-900">Vanguard Social</b>
+        <span class="ml-2">AI lead generation and creator intelligence.</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-semibold">
+        <a href="/admin" class="hover:text-blue-600 transition">Admin Portal</a>
+        <button type="button" onclick="openApiModal()" class="hover:text-blue-600 transition cursor-pointer">API Settings</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACKEND API CONFIG MODAL -->
+  <div id="apiConfigModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+    <div class="glass w-full max-w-lg rounded-3xl p-6 sm:p-8 bg-white shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-2.5">
+          <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600 font-bold">⚡</span>
+          <div>
+            <h3 class="font-display text-lg font-bold text-slate-900">Backend Server API</h3>
+            <p class="text-xs text-slate-500">Target scrapers and database endpoint</p>
+          </div>
+        </div>
+        <button type="button" onclick="closeApiModal()" class="h-8 w-8 inline-flex items-center justify-center rounded-xl hover:bg-slate-100 text-slate-500 font-bold cursor-pointer">✕</button>
+      </div>
+      <div class="py-5 space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Backend API URL</label>
+          <input id="customApiInput" type="text" placeholder="https://your-tunnel.trycloudflare.com" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <p class="mt-1 text-[11px] text-slate-500">Leave blank when running locally. When hosted on Vercel, enter your Cloudflare tunnel or backend URL.</p>
+        </div>
+        <div id="apiPingStatus" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+      </div>
+      <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+        <button type="button" onclick="testApiConnection()" class="px-4 py-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 transition cursor-pointer">Ping Server</button>
+        <div class="flex gap-2">
+          <button type="button" onclick="closeApiModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50 transition cursor-pointer">Cancel</button>
+          <button type="button" onclick="saveCustomApiUrl()" class="primary px-5 py-2.5 rounded-xl text-xs font-semibold transition cursor-pointer">Save &amp; Connect</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Menu Dropdown Logic
+    const pairs=[['toolsButton','toolsMenu'],['accountButton','accountMenu']];
+    function closeMenus(){
+      pairs.forEach(([b,m])=>{
+        const el=document.getElementById(m);
+        const btn=document.getElementById(b);
+        if(el) el.hidden=true;
+        if(btn) btn.setAttribute('aria-expanded','false');
+      });
+    }
+    pairs.forEach(([b,m])=>{
+      const btn=document.getElementById(b),menu=document.getElementById(m);
+      if(!btn || !menu) return;
+      btn.onclick=e=>{
+        e.stopPropagation();
+        const open=menu.hidden;
+        closeMenus();
+        menu.hidden=!open;
+        btn.setAttribute('aria-expanded',open);
+      };
+      menu.onclick=e=>{if(e.target.closest('a'))closeMenus();};
+    });
+    document.addEventListener('click',closeMenus);
+    document.addEventListener('keydown',e=>e.key==='Escape'&&closeMenus());
+
+    // API Base URL Controls
+    function getApiBase() {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const param = urlParams.get('api') || urlParams.get('backend');
+        if (param && param.trim().startsWith('http')) return param.trim().replace(/\/+$/, '');
+      } catch (_) {}
+
+      const custom = localStorage.getItem('phantom_custom_api') || localStorage.getItem('vanguard_api_base');
+      if (custom && custom.trim()) return custom.trim().replace(/\/+$/, '');
+
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') return '';
+      return '';
+    }
+
+    function setApiBase(url) {
+      const clean = (url || '').trim().replace(/\/+$/, '');
+      if (clean) {
+        localStorage.setItem('phantom_custom_api', clean);
+        localStorage.setItem('vanguard_api_base', clean);
+      } else {
+        localStorage.removeItem('phantom_custom_api');
+        localStorage.removeItem('vanguard_api_base');
+      }
+      updateApiStatusUI();
+    }
+
+    function updateApiStatusUI() {
+      const base = getApiBase();
+      const dot = document.getElementById('apiStatusDot');
+      const label = document.getElementById('apiStatusLabel');
+      const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+      if (base) {
+        try {
+          const host = new URL(base).hostname;
+          if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500 animate-pulse';
+          if (label) label.innerText = `API: ${host}`;
+        } catch (_) {
+          if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500 animate-pulse';
+          if (label) label.innerText = 'API: Live';
+        }
+      } else if (isLocal) {
+        if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500';
+        if (label) label.innerText = 'API: Localhost';
+      } else {
+        if (dot) dot.className = 'h-2 w-2 rounded-full bg-amber-500 animate-pulse';
+        if (label) label.innerText = 'API: Config';
+      }
+    }
+
+    function openApiModal() {
+      const modal = document.getElementById('apiConfigModal');
+      const input = document.getElementById('customApiInput');
+      const statusBox = document.getElementById('apiPingStatus');
+      if (input) input.value = getApiBase();
+      if (statusBox) statusBox.className = 'hidden';
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeApiModal() {
+      const modal = document.getElementById('apiConfigModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    async function testApiConnection() {
+      const input = document.getElementById('customApiInput');
+      const statusBox = document.getElementById('apiPingStatus');
+      const url = (input ? input.value : '').trim().replace(/\/+$/, '');
+      if (!statusBox) return;
+
+      statusBox.className = 'p-3 rounded-xl text-xs font-medium bg-blue-50 text-blue-700 block';
+      statusBox.innerText = `Pinging ${url || 'local origin'}...`;
+
+      const endpoint = url ? `${url}/api/system-info` : `/api/system-info`;
+      try {
+        const start = Date.now();
+        const res = await fetch(endpoint);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const latency = Date.now() - start;
+        statusBox.className = 'p-3 rounded-xl text-xs font-medium bg-emerald-50 text-emerald-800 block';
+        statusBox.innerHTML = `<strong>✓ Connected (${latency}ms)</strong><br>Status: ${data.status} • Total Reports: ${data.total_reports || 0}`;
+      } catch (err) {
+        statusBox.className = 'p-3 rounded-xl text-xs font-medium bg-rose-50 text-rose-800 block';
+        statusBox.innerHTML = `<strong>✕ Connection Failed</strong><br>${err.message}`;
+      }
+    }
+
+    function saveCustomApiUrl() {
+      const input = document.getElementById('customApiInput');
+      setApiBase(input ? input.value : '');
+      closeApiModal();
+      updateApiStatusUI();
+    }
+
+    // Initialize API status
+    updateApiStatusUI();
+  </script>
+</body>
+</html>
