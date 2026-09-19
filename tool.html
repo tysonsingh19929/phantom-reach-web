@@ -403,125 +403,278 @@
       updateApiStatusUI();
     }
 
+    // ──────────────────────────────────────────────────────────────
+    // LUXURY CUSTOM SELECT COMPONENT (Zero Native Mobile Popups)
+    // ──────────────────────────────────────────────────────────────
+    function mountCustomSelect(container, { id, label, options, defaultValue, onChange }) {
+      const currentVal = defaultValue || options[0].value;
+      const currentOpt = options.find(o => o.value === currentVal) || options[0];
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'relative select-wrapper';
+
+      wrapper.innerHTML = `
+        <input type="hidden" id="${id}" value="${currentVal}">
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">${label}</label>
+        
+        <button type="button" class="select-trigger w-full rounded-2xl border border-slate-200/90 bg-white/95 p-3 sm:p-3.5 flex items-center justify-between text-left shadow-xs hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="select-icon flex-none text-base">${currentOpt.icon || '✦'}</span>
+            <div class="min-w-0">
+              <div class="select-title text-xs sm:text-sm font-semibold text-slate-900 truncate">${currentOpt.label}</div>
+              ${currentOpt.desc ? `<div class="select-desc text-[11px] text-slate-500 truncate">${currentOpt.desc}</div>` : ''}
+            </div>
+          </div>
+          <svg class="select-chevron h-4 w-4 text-slate-400 flex-none transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+
+        <div class="select-dropdown hidden absolute left-0 right-0 top-full mt-1.5 z-50 glass rounded-2xl border border-slate-200/90 bg-white/98 backdrop-blur-2xl shadow-2xl p-1.5 space-y-1 max-h-72 overflow-y-auto">
+          ${options.map(opt => `
+            <div data-val="${opt.value}" class="select-opt flex items-center justify-between p-2.5 rounded-xl hover:bg-blue-50/90 cursor-pointer transition ${opt.value === currentVal ? 'bg-blue-50/80 border border-blue-200' : ''}">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <span class="flex-none text-base">${opt.icon || '✦'}</span>
+                <div class="min-w-0">
+                  <div class="text-xs sm:text-sm font-semibold text-slate-900 truncate">${opt.label}</div>
+                  ${opt.desc ? `<div class="text-[11px] text-slate-500 truncate">${opt.desc}</div>` : ''}
+                </div>
+              </div>
+              <span class="select-check ${opt.value === currentVal ? 'text-blue-600' : 'hidden'} text-xs font-bold">✓</span>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+      container.appendChild(wrapper);
+
+      const trigger = wrapper.querySelector('.select-trigger');
+      const dropdown = wrapper.querySelector('.select-dropdown');
+      const chevron = wrapper.querySelector('.select-chevron');
+      const hiddenInput = wrapper.querySelector(`#${id}`);
+      const titleEl = wrapper.querySelector('.select-title');
+      const descEl = wrapper.querySelector('.select-desc');
+      const iconEl = wrapper.querySelector('.select-icon');
+
+      function closeSelect() {
+        dropdown.classList.add('hidden');
+        chevron.style.transform = 'rotate(0deg)';
+      }
+
+      function toggleSelect(e) {
+        e.stopPropagation();
+        document.querySelectorAll('.select-dropdown').forEach(d => {
+          if (d !== dropdown) d.classList.add('hidden');
+        });
+        document.querySelectorAll('.select-chevron').forEach(c => {
+          if (c !== chevron) c.style.transform = 'rotate(0deg)';
+        });
+
+        const isClosed = dropdown.classList.contains('hidden');
+        if (isClosed) {
+          dropdown.classList.remove('hidden');
+          chevron.style.transform = 'rotate(180deg)';
+        } else {
+          closeSelect();
+        }
+      }
+
+      trigger.addEventListener('click', toggleSelect);
+
+      wrapper.querySelectorAll('.select-opt').forEach(optNode => {
+        optNode.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const chosenVal = optNode.getAttribute('data-val');
+          const chosenOpt = options.find(o => o.value === chosenVal);
+          if (!chosenOpt) return;
+
+          hiddenInput.value = chosenVal;
+          titleEl.textContent = chosenOpt.label;
+          if (descEl) descEl.textContent = chosenOpt.desc || '';
+          if (iconEl) iconEl.textContent = chosenOpt.icon || '✦';
+
+          wrapper.querySelectorAll('.select-opt').forEach(item => {
+            const isSelected = (item.getAttribute('data-val') === chosenVal);
+            item.className = `select-opt flex items-center justify-between p-2.5 rounded-xl hover:bg-blue-50/90 cursor-pointer transition ${isSelected ? 'bg-blue-50/80 border border-blue-200' : ''}`;
+            const chk = item.querySelector('.select-check');
+            if (chk) chk.className = `select-check ${isSelected ? 'text-blue-600' : 'hidden'} text-xs font-bold`;
+          });
+
+          closeSelect();
+          if (typeof onChange === 'function') onChange(chosenVal);
+        });
+      });
+
+      document.addEventListener('click', closeSelect);
+    }
+
     function renderToolFields(key) {
       const container = document.getElementById('dynamicFormFields');
       const btnLabel = document.getElementById('runBtnLabel');
+      container.innerHTML = '';
 
       if (key === 'instagram-leads') {
         btnLabel.innerText = 'Extract Instagram Leads';
-        container.innerHTML = `
+
+        // Field 1: Target Location or Handle
+        const targetDiv = document.createElement('div');
+        targetDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Location, Hashtag, or Account</label>
+          <input id="field_ig_target" type="text" placeholder="e.g. Bandra, Mumbai or #mumbaifoodie or @creator_handle" required class="input">
+        `;
+        container.appendChild(targetDiv);
+
+        // Field 2: Luxury Custom Category Select
+        mountCustomSelect(container, {
+          id: 'field_ig_category',
+          label: 'Category Focus',
+          defaultValue: '4',
+          options: [
+            { value: '4', label: 'Local Businesses, Cafes & Services', desc: 'High-intent storefronts, cafes, clinics & services', icon: '🏪' },
+            { value: '5', label: 'Lifestyle & Niche Influencers', desc: 'Content creators, fashion, foodies & vloggers', icon: '✨' },
+            { value: '1', label: 'Community & Hyper-local Pages', desc: 'City updates, guides, culture & local diaries', icon: '📍' },
+            { value: '2', label: 'Digital News & Media Outlets', desc: 'Local media, live news, bulletins & journalism', icon: '📰' },
+            { value: '3', label: 'Meme & Local Culture Hubs', desc: 'Humor, local slang, relatable & viral reaction pages', icon: '🔥' }
+          ]
+        });
+
+        // Field 3: Followers & Keywords
+        const filterDiv = document.createElement('div');
+        filterDiv.className = 'grid grid-cols-2 gap-3';
+        filterDiv.innerHTML = `
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Location, Hashtag, or Account</label>
-            <input id="field_ig_target" type="text" placeholder="e.g. Bandra, Mumbai or #mumbaifoodie or @creator_handle" required class="input">
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Min Followers</label>
+            <input id="field_ig_min_followers" type="number" value="1000" min="0" step="500" class="input">
           </div>
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Category Focus</label>
-            <select id="field_ig_category" class="input">
-              <option value="4" selected>Local Businesses, Cafes &amp; Services</option>
-              <option value="5">Lifestyle &amp; Niche Influencers</option>
-              <option value="1">Community &amp; Hyper-local Pages</option>
-              <option value="2">Digital News &amp; Media Outlets</option>
-              <option value="3">Meme &amp; Local Culture Hubs</option>
-            </select>
-          </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Min Followers</label>
-              <input id="field_ig_min_followers" type="number" value="1000" min="0" step="500" class="input">
-            </div>
-            <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Content Keyword</label>
-              <input id="field_ig_filter" type="text" placeholder="Optional filter" class="input">
-            </div>
-          </div>
-          <div class="flex items-center gap-2.5 p-3 bg-slate-50 border border-slate-200 rounded-xl">
-            <input type="checkbox" id="field_ig_deep" checked class="h-4 w-4 rounded text-blue-600 focus:ring-blue-500">
-            <label for="field_ig_deep" class="text-xs font-semibold text-slate-700 cursor-pointer">Extract 30-day audience comments &amp; verified contact info</label>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Content Keyword</label>
+            <input id="field_ig_filter" type="text" placeholder="Optional filter" class="input">
           </div>
         `;
+        container.appendChild(filterDiv);
+
+        // Field 4: Checkbox
+        const checkDiv = document.createElement('div');
+        checkDiv.className = 'flex items-center gap-2.5 p-3 bg-slate-50 border border-slate-200 rounded-xl';
+        checkDiv.innerHTML = `
+          <input type="checkbox" id="field_ig_deep" checked class="h-4 w-4 rounded text-blue-600 focus:ring-blue-500">
+          <label for="field_ig_deep" class="text-xs font-semibold text-slate-700 cursor-pointer">Extract 30-day audience comments & verified contact info</label>
+        `;
+        container.appendChild(checkDiv);
+
       } else if (key === 'influencer-score') {
         btnLabel.innerText = 'Calculate Influencer Score';
-        container.innerHTML = `
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Creator Instagram Handle</label>
-            <div class="relative">
-              <span class="absolute left-3.5 top-3 text-slate-400 font-semibold text-sm">@</span>
-              <input id="field_handle" type="text" placeholder="creator_username" required class="input pl-8">
-            </div>
-          </div>
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Niche / Industry Focus</label>
-            <select id="field_niche" class="input">
-              <option value="Fashion &amp; Lifestyle" selected>Fashion &amp; Lifestyle</option>
-              <option value="Fitness &amp; Health">Fitness &amp; Health</option>
-              <option value="Tech &amp; Gadgets">Tech &amp; Gadgets</option>
-              <option value="Food &amp; Dining">Food &amp; Dining</option>
-              <option value="Travel &amp; Hospitality">Travel &amp; Hospitality</option>
-              <option value="Entertainment &amp; Comedy">Entertainment &amp; Comedy</option>
-              <option value="Digital Creator / General">Digital Creator / General</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Sample Reel Volume</label>
-            <select id="field_sample_size" class="input">
-              <option value="10" selected>Last 10 Posts / Reels (Fast &amp; Accurate)</option>
-              <option value="20">Last 20 Posts / Reels (Deep Analysis)</option>
-              <option value="30">Last 30 Posts / Reels (Comprehensive Audit)</option>
-            </select>
+
+        // Creator Handle
+        const handleDiv = document.createElement('div');
+        handleDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Creator Instagram Handle</label>
+          <div class="relative">
+            <span class="absolute left-3.5 top-3 text-slate-400 font-semibold text-sm">@</span>
+            <input id="field_handle" type="text" placeholder="creator_username" required class="input pl-8">
           </div>
         `;
+        container.appendChild(handleDiv);
+
+        // Luxury Niche Select
+        mountCustomSelect(container, {
+          id: 'field_niche',
+          label: 'Niche / Industry Focus',
+          defaultValue: 'Fashion & Lifestyle',
+          options: [
+            { value: 'Fashion & Lifestyle', label: 'Fashion & Lifestyle', desc: 'Apparel, aesthetics, styling & modeling', icon: '👗' },
+            { value: 'Fitness & Health', label: 'Fitness & Health', desc: 'Workouts, nutrition, wellness & athlete coaching', icon: '💪' },
+            { value: 'Tech & Gadgets', label: 'Tech & Gadgets', desc: 'Smartphones, electronics, apps & developer tech', icon: '💻' },
+            { value: 'Food & Dining', label: 'Food & Dining', desc: 'Food blogging, restaurants, recipes & cafe tasting', icon: '🍔' },
+            { value: 'Travel & Hospitality', label: 'Travel & Hospitality', desc: 'Destination guides, luxury hotels & travel vlogs', icon: '✈️' },
+            { value: 'Entertainment & Comedy', label: 'Entertainment & Comedy', desc: 'Comedy reels, relatable skits & viral memes', icon: '🎭' },
+            { value: 'Digital Creator / General', label: 'Digital Creator / General', desc: 'Multi-category digital storytelling & reach', icon: '✦' }
+          ]
+        });
+
+        // Luxury Sample Size Select
+        mountCustomSelect(container, {
+          id: 'field_sample_size',
+          label: 'Sample Reel Volume',
+          defaultValue: '10',
+          options: [
+            { value: '10', label: 'Last 10 Posts / Reels', desc: 'Fast cohort analysis & instant audit card', icon: '⚡' },
+            { value: '20', label: 'Last 20 Posts / Reels', desc: 'Extended 30-day velocity & engagement audit', icon: '🔍' },
+            { value: '30', label: 'Last 30 Posts / Reels', desc: 'Comprehensive deep audit & full reach breakdown', icon: '📊' }
+          ]
+        });
+
       } else if (key === 'google-leads') {
         btnLabel.innerText = 'Extract Google Leads';
-        container.innerHTML = `
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Location</label>
-            <input id="field_location" type="text" placeholder="e.g. Bandra West, Mumbai or Austin, TX" required class="input">
-          </div>
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Business Category / Query</label>
-            <input id="field_query" type="text" placeholder="e.g. Cafes &amp; Bakeries or Dental Clinics" required class="input">
-          </div>
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Extraction Mode</label>
-            <select id="field_gmaps_mode" class="input">
-              <option value="contacts" selected>Full Contact Data (With verified emails &amp; phones)</option>
-              <option value="standard">Standard Maps Export (Fast harvest)</option>
-            </select>
-          </div>
+
+        const locDiv = document.createElement('div');
+        locDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Location</label>
+          <input id="field_location" type="text" placeholder="e.g. Bandra West, Mumbai or Austin, TX" required class="input">
         `;
+        container.appendChild(locDiv);
+
+        const qDiv = document.createElement('div');
+        qDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Business Category / Query</label>
+          <input id="field_query" type="text" placeholder="e.g. Cafes & Bakeries or Dental Clinics" required class="input">
+        `;
+        container.appendChild(qDiv);
+
+        // Luxury Extraction Mode Select
+        mountCustomSelect(container, {
+          id: 'field_gmaps_mode',
+          label: 'Extraction Mode',
+          defaultValue: 'contacts',
+          options: [
+            { value: 'contacts', label: 'Full Contact Data', desc: 'Extract verified emails, phone numbers & direct websites', icon: '✉️' },
+            { value: 'standard', label: 'Standard Maps Export', desc: 'Fast directory harvest with phone and address', icon: '🗺️' }
+          ]
+        });
+
       } else if (key === 'youtube') {
         btnLabel.innerText = 'Audit YouTube Channel';
-        container.innerHTML = `
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">YouTube Channel or Handle</label>
-            <input id="field_channel" type="text" placeholder="e.g. @MKBHD or @TechWithTim" required class="input">
-          </div>
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Video Audit Depth</label>
-            <select id="field_max_results" class="input">
-              <option value="20" selected>Latest 20 Videos</option>
-              <option value="50">Latest 50 Videos</option>
-            </select>
-          </div>
+
+        const chanDiv = document.createElement('div');
+        chanDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">YouTube Channel or Handle</label>
+          <input id="field_channel" type="text" placeholder="e.g. @MKBHD or @TechWithTim" required class="input">
         `;
+        container.appendChild(chanDiv);
+
+        mountCustomSelect(container, {
+          id: 'field_max_results',
+          label: 'Video Audit Depth',
+          defaultValue: '20',
+          options: [
+            { value: '20', label: 'Latest 20 Videos', desc: 'Recent reach velocity & engagement distribution', icon: '⚡' },
+            { value: '50', label: 'Latest 50 Videos', desc: 'Comprehensive channel history & viral video audit', icon: '🎬' }
+          ]
+        });
+
       } else if (key === 'x-twitter') {
         btnLabel.innerText = 'Audit Twitter / X Creator';
-        container.innerHTML = `
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Twitter / X Username</label>
-            <div class="relative">
-              <span class="absolute left-3.5 top-3 text-slate-400 font-semibold text-sm">@</span>
-              <input id="field_twitter" type="text" placeholder="sama or mkbhd" required class="input pl-8">
-            </div>
-          </div>
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Tweet Depth</label>
-            <select id="field_max_results" class="input">
-              <option value="15" selected>Latest 15 Tweets</option>
-              <option value="30">Latest 30 Tweets</option>
-            </select>
+
+        const twDiv = document.createElement('div');
+        twDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Twitter / X Username</label>
+          <div class="relative">
+            <span class="absolute left-3.5 top-3 text-slate-400 font-semibold text-sm">@</span>
+            <input id="field_twitter" type="text" placeholder="sama or mkbhd" required class="input pl-8">
           </div>
         `;
+        container.appendChild(twDiv);
+
+        mountCustomSelect(container, {
+          id: 'field_max_results',
+          label: 'Tweet Depth',
+          defaultValue: '15',
+          options: [
+            { value: '15', label: 'Latest 15 Tweets', desc: 'Recent velocity & active audience responses', icon: '⚡' },
+            { value: '30', label: 'Latest 30 Tweets', desc: 'Deep sentiment & thread engagement extraction', icon: '🐦' }
+          ]
+        });
+
       } else if (key === 'linkedin') {
         btnLabel.innerText = 'Start LinkedIn Prospecting';
         container.innerHTML = `
@@ -530,7 +683,7 @@
             <input id="field_role" type="text" placeholder="e.g. VP of Marketing or Founder" required class="input">
           </div>
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Industry &amp; Location</label>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Industry & Location</label>
             <input id="field_industry" type="text" placeholder="e.g. SaaS in Mumbai or Real Estate in Dubai" required class="input">
           </div>
         `;
