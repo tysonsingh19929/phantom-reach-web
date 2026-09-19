@@ -7,6 +7,12 @@
     { "source": "/signup", "destination": "/signup.html" },
     { "source": "/signup-business", "destination": "/signup-role.html?role=business" },
     { "source": "/signup-creator", "destination": "/signup-role.html?role=creator" },
-    { "source": "/tools/:tool", "destination": "/tool.html?tool=:tool" }
+    { "source": "/tools/google-leads", "destination": "/tool.html?tool=google-leads" },
+    { "source": "/tools/influencer-score", "destination": "/tool.html?tool=influencer-score" },
+    { "source": "/tools/instagram-leads", "destination": "/tool.html?tool=instagram-leads" },
+    { "source": "/tools/youtube", "destination": "/tool.html?tool=youtube" },
+    { "source": "/tools/linkedin", "destination": "/tool.html?tool=linkedin" },
+    { "source": "/tools/x-twitter", "destination": "/tool.html?tool=x-twitter" },
+    { "source": "/tools/automate-ai", "destination": "/tool.html?tool=automate-ai" }
   ]
 }
