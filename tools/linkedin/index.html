@@ -63,7 +63,7 @@
   </header>
 
   <!-- MAIN VIEW CONTAINER -->
-  <main class="mx-auto max-w-6xl px-5 py-8 sm:py-14">
+  <main class="mx-auto max-w-6xl px-4 sm:px-6 py-6 sm:py-12">
     
     <div class="pb-6">
       <a href="/" class="text-sm font-semibold text-blue-700 hover:text-blue-800 transition inline-flex items-center gap-1.5">
@@ -102,7 +102,7 @@
       </div>
 
       <!-- RIGHT COLUMN: UNIFIED INTERACTIVE FORM & EXECUTION ENGINE -->
-      <section class="card rounded-3xl p-6 sm:p-8 sticky top-24">
+      <section class="card rounded-3xl p-5 sm:p-8 relative lg:sticky lg:top-24">
         
         <div class="flex items-center justify-between mb-3">
           <div class="icon" id="formIcon">
@@ -143,7 +143,7 @@
           <div class="pt-1 flex items-center justify-between">
             <span id="currentTaskIdLabel" class="text-[10px] text-slate-600 font-mono"></span>
             <button type="button" onclick="stopActiveTask()" class="text-xs font-bold text-rose-600 hover:text-rose-700 cursor-pointer flex items-center gap-1">
-              <span>🛑 Stop Task</span>
+              <svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><rect width="6" height="6" x="9" y="9"/></svg>Stop Task
             </button>
           </div>
         </div>
@@ -162,7 +162,7 @@
     <div class="glass w-full max-w-lg rounded-3xl p-6 sm:p-8 bg-white shadow-2xl border border-slate-200">
       <div class="flex items-center justify-between pb-4 border-b border-slate-100">
         <div class="flex items-center gap-2.5">
-          <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600 font-bold">⚡</span>
+          <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
           <div>
             <h3 class="font-display text-lg font-bold text-slate-900">Backend Server API</h3>
             <p class="text-xs text-slate-500">Target scrapers and database endpoint</p>
@@ -405,6 +405,32 @@
 
     // ──────────────────────────────────────────────────────────────
     // LUXURY CUSTOM SELECT COMPONENT (Zero Native Mobile Popups)
+    // MONO-COLOR LUXURY SVG ICONS (Zero Emojis!)
+    const SVG_MAP = {
+      store: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4M5 21V10.85M19 21V10.85M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      sparkle: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      pin: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg>',
+      news: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      flame: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      mail: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+      map: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>',
+      fashion: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
+      fitness: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m6.5 6.5 11 11M21 21l-1-1M3 3l1 1M18 22l4-4M2 6l4-4M3 10l7-7M14 21l7-7"/></svg>',
+      tech: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="12" x="3" y="4" rx="2"/><line x1="2" x2="22" y1="20" y2="20"/></svg>',
+      food: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 2v20M18 8h-4a4 4 0 0 1-4-4V2M6 2v20M4 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2"/></svg>',
+      travel: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>',
+      comedy: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8Zm-3.5-9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm7 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm-7.5 4a4.5 4.5 0 0 0 8 0"/></svg>',
+      lightning: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+      search: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/></svg>',
+      chart: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>',
+      video: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg>',
+      twitter: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" stroke-linecap="round"/></svg>'
+    };
+
+    function getOptionIcon(iconName) {
+      return SVG_MAP[iconName] || SVG_MAP.sparkle;
+    }
+
     // ──────────────────────────────────────────────────────────────
     function mountCustomSelect(container, { id, label, options, defaultValue, onChange }) {
       const currentVal = defaultValue || options[0].value;
@@ -419,7 +445,7 @@
         
         <button type="button" class="select-trigger w-full rounded-2xl border border-slate-200/90 bg-white/95 p-3 sm:p-3.5 flex items-center justify-between text-left shadow-xs hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer">
           <div class="flex items-center gap-2.5 min-w-0">
-            <span class="select-icon flex-none text-base">${currentOpt.icon || '✦'}</span>
+            <span class="select-icon flex-none text-base">${getOptionIcon(currentOpt.icon)}</span>
             <div class="min-w-0">
               <div class="select-title text-xs sm:text-sm font-semibold text-slate-900 truncate">${currentOpt.label}</div>
               ${currentOpt.desc ? `<div class="select-desc text-[11px] text-slate-500 truncate">${currentOpt.desc}</div>` : ''}
@@ -434,7 +460,7 @@
           ${options.map(opt => `
             <div data-val="${opt.value}" class="select-opt flex items-center justify-between p-2.5 rounded-xl hover:bg-blue-50/90 cursor-pointer transition ${opt.value === currentVal ? 'bg-blue-50/80 border border-blue-200' : ''}">
               <div class="flex items-center gap-2.5 min-w-0">
-                <span class="flex-none text-base">${opt.icon || '✦'}</span>
+                <span class="flex-none text-base">${getOptionIcon(opt.icon)}</span>
                 <div class="min-w-0">
                   <div class="text-xs sm:text-sm font-semibold text-slate-900 truncate">${opt.label}</div>
                   ${opt.desc ? `<div class="text-[11px] text-slate-500 truncate">${opt.desc}</div>` : ''}
@@ -491,7 +517,7 @@
           hiddenInput.value = chosenVal;
           titleEl.textContent = chosenOpt.label;
           if (descEl) descEl.textContent = chosenOpt.desc || '';
-          if (iconEl) iconEl.textContent = chosenOpt.icon || '✦';
+          if (iconEl) iconEl.innerHTML = getOptionIcon(chosenOpt.icon);
 
           wrapper.querySelectorAll('.select-opt').forEach(item => {
             const isSelected = (item.getAttribute('data-val') === chosenVal);
@@ -520,7 +546,7 @@
         const targetDiv = document.createElement('div');
         targetDiv.innerHTML = `
           <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Location, Hashtag, or Account</label>
-          <input id="field_ig_target" type="text" placeholder="e.g. Bandra, Mumbai or #mumbaifoodie or @creator_handle" required class="input">
+          <input id="field_ig_target" type="text" placeholder="e.g. Bandra, Mumbai or #mumbaifoodie or @creator_handle" required class="input text-base sm:text-sm">
         `;
         container.appendChild(targetDiv);
 
@@ -530,11 +556,11 @@
           label: 'Category Focus',
           defaultValue: '4',
           options: [
-            { value: '4', label: 'Local Businesses, Cafes & Services', desc: 'High-intent storefronts, cafes, clinics & services', icon: '🏪' },
-            { value: '5', label: 'Lifestyle & Niche Influencers', desc: 'Content creators, fashion, foodies & vloggers', icon: '✨' },
-            { value: '1', label: 'Community & Hyper-local Pages', desc: 'City updates, guides, culture & local diaries', icon: '📍' },
-            { value: '2', label: 'Digital News & Media Outlets', desc: 'Local media, live news, bulletins & journalism', icon: '📰' },
-            { value: '3', label: 'Meme & Local Culture Hubs', desc: 'Humor, local slang, relatable & viral reaction pages', icon: '🔥' }
+            { value: '4', label: 'Local Businesses, Cafes & Services', desc: 'High-intent storefronts, cafes, clinics & services', icon: 'store' },
+            { value: '5', label: 'Lifestyle & Niche Influencers', desc: 'Content creators, fashion, foodies & vloggers', icon: 'sparkle' },
+            { value: '1', label: 'Community & Hyper-local Pages', desc: 'City updates, guides, culture & local diaries', icon: 'pin' },
+            { value: '2', label: 'Digital News & Media Outlets', desc: 'Local media, live news, bulletins & journalism', icon: 'news' },
+            { value: '3', label: 'Meme & Local Culture Hubs', desc: 'Humor, local slang, relatable & viral reaction pages', icon: 'flame' }
           ]
         });
 
@@ -544,11 +570,11 @@
         filterDiv.innerHTML = `
           <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Min Followers</label>
-            <input id="field_ig_min_followers" type="number" value="1000" min="0" step="500" class="input">
+            <input id="field_ig_min_followers" type="number" value="1000" min="0" step="500" class="input text-base sm:text-sm">
           </div>
           <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Content Keyword</label>
-            <input id="field_ig_filter" type="text" placeholder="Optional filter" class="input">
+            <input id="field_ig_filter" type="text" placeholder="Optional filter" class="input text-base sm:text-sm">
           </div>
         `;
         container.appendChild(filterDiv);
@@ -582,13 +608,13 @@
           label: 'Niche / Industry Focus',
           defaultValue: 'Fashion & Lifestyle',
           options: [
-            { value: 'Fashion & Lifestyle', label: 'Fashion & Lifestyle', desc: 'Apparel, aesthetics, styling & modeling', icon: '👗' },
-            { value: 'Fitness & Health', label: 'Fitness & Health', desc: 'Workouts, nutrition, wellness & athlete coaching', icon: '💪' },
-            { value: 'Tech & Gadgets', label: 'Tech & Gadgets', desc: 'Smartphones, electronics, apps & developer tech', icon: '💻' },
-            { value: 'Food & Dining', label: 'Food & Dining', desc: 'Food blogging, restaurants, recipes & cafe tasting', icon: '🍔' },
-            { value: 'Travel & Hospitality', label: 'Travel & Hospitality', desc: 'Destination guides, luxury hotels & travel vlogs', icon: '✈️' },
-            { value: 'Entertainment & Comedy', label: 'Entertainment & Comedy', desc: 'Comedy reels, relatable skits & viral memes', icon: '🎭' },
-            { value: 'Digital Creator / General', label: 'Digital Creator / General', desc: 'Multi-category digital storytelling & reach', icon: '✦' }
+            { value: 'Fashion & Lifestyle', label: 'Fashion & Lifestyle', desc: 'Apparel, aesthetics, styling & modeling', icon: 'fashion' },
+            { value: 'Fitness & Health', label: 'Fitness & Health', desc: 'Workouts, nutrition, wellness & athlete coaching', icon: 'fitness' },
+            { value: 'Tech & Gadgets', label: 'Tech & Gadgets', desc: 'Smartphones, electronics, apps & developer tech', icon: 'tech' },
+            { value: 'Food & Dining', label: 'Food & Dining', desc: 'Food blogging, restaurants, recipes & cafe tasting', icon: 'food' },
+            { value: 'Travel & Hospitality', label: 'Travel & Hospitality', desc: 'Destination guides, luxury hotels & travel vlogs', icon: 'travel' },
+            { value: 'Entertainment & Comedy', label: 'Entertainment & Comedy', desc: 'Comedy reels, relatable skits & viral memes', icon: 'comedy' },
+            { value: 'Digital Creator / General', label: 'Digital Creator / General', desc: 'Multi-category digital storytelling & reach', icon: 'sparkle' }
           ]
         });
 
@@ -598,9 +624,9 @@
           label: 'Sample Reel Volume',
           defaultValue: '10',
           options: [
-            { value: '10', label: 'Last 10 Posts / Reels', desc: 'Fast cohort analysis & instant audit card', icon: '⚡' },
-            { value: '20', label: 'Last 20 Posts / Reels', desc: 'Extended 30-day velocity & engagement audit', icon: '🔍' },
-            { value: '30', label: 'Last 30 Posts / Reels', desc: 'Comprehensive deep audit & full reach breakdown', icon: '📊' }
+            { value: '10', label: 'Last 10 Posts / Reels', desc: 'Fast cohort analysis & instant audit card', icon: 'lightning' },
+            { value: '20', label: 'Last 20 Posts / Reels', desc: 'Extended 30-day velocity & engagement audit', icon: 'search' },
+            { value: '30', label: 'Last 30 Posts / Reels', desc: 'Comprehensive deep audit & full reach breakdown', icon: 'chart' }
           ]
         });
 
@@ -610,14 +636,14 @@
         const locDiv = document.createElement('div');
         locDiv.innerHTML = `
           <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Location</label>
-          <input id="field_location" type="text" placeholder="e.g. Bandra West, Mumbai or Austin, TX" required class="input">
+          <input id="field_location" type="text" placeholder="e.g. Bandra West, Mumbai or Austin, TX" required class="input text-base sm:text-sm">
         `;
         container.appendChild(locDiv);
 
         const qDiv = document.createElement('div');
         qDiv.innerHTML = `
           <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Business Category / Query</label>
-          <input id="field_query" type="text" placeholder="e.g. Cafes & Bakeries or Dental Clinics" required class="input">
+          <input id="field_query" type="text" placeholder="e.g. Cafes & Bakeries or Dental Clinics" required class="input text-base sm:text-sm">
         `;
         container.appendChild(qDiv);
 
@@ -627,8 +653,8 @@
           label: 'Extraction Mode',
           defaultValue: 'contacts',
           options: [
-            { value: 'contacts', label: 'Full Contact Data', desc: 'Extract verified emails, phone numbers & direct websites', icon: '✉️' },
-            { value: 'standard', label: 'Standard Maps Export', desc: 'Fast directory harvest with phone and address', icon: '🗺️' }
+            { value: 'contacts', label: 'Full Contact Data', desc: 'Extract verified emails, phone numbers & direct websites', icon: 'mail' },
+            { value: 'standard', label: 'Standard Maps Export', desc: 'Fast directory harvest with phone and address', icon: 'map' }
           ]
         });
 
@@ -638,7 +664,7 @@
         const chanDiv = document.createElement('div');
         chanDiv.innerHTML = `
           <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">YouTube Channel or Handle</label>
-          <input id="field_channel" type="text" placeholder="e.g. @MKBHD or @TechWithTim" required class="input">
+          <input id="field_channel" type="text" placeholder="e.g. @MKBHD or @TechWithTim" required class="input text-base sm:text-sm">
         `;
         container.appendChild(chanDiv);
 
@@ -647,8 +673,8 @@
           label: 'Video Audit Depth',
           defaultValue: '20',
           options: [
-            { value: '20', label: 'Latest 20 Videos', desc: 'Recent reach velocity & engagement distribution', icon: '⚡' },
-            { value: '50', label: 'Latest 50 Videos', desc: 'Comprehensive channel history & viral video audit', icon: '🎬' }
+            { value: '20', label: 'Latest 20 Videos', desc: 'Recent reach velocity & engagement distribution', icon: 'lightning' },
+            { value: '50', label: 'Latest 50 Videos', desc: 'Comprehensive channel history & viral video audit', icon: 'video' }
           ]
         });
 
@@ -670,8 +696,8 @@
           label: 'Tweet Depth',
           defaultValue: '15',
           options: [
-            { value: '15', label: 'Latest 15 Tweets', desc: 'Recent velocity & active audience responses', icon: '⚡' },
-            { value: '30', label: 'Latest 30 Tweets', desc: 'Deep sentiment & thread engagement extraction', icon: '🐦' }
+            { value: '15', label: 'Latest 15 Tweets', desc: 'Recent velocity & active audience responses', icon: 'lightning' },
+            { value: '30', label: 'Latest 30 Tweets', desc: 'Deep sentiment & thread engagement extraction', icon: 'twitter' }
           ]
         });
 
@@ -680,11 +706,11 @@
         container.innerHTML = `
           <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Role or Decision Maker</label>
-            <input id="field_role" type="text" placeholder="e.g. VP of Marketing or Founder" required class="input">
+            <input id="field_role" type="text" placeholder="e.g. VP of Marketing or Founder" required class="input text-base sm:text-sm">
           </div>
           <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Industry & Location</label>
-            <input id="field_industry" type="text" placeholder="e.g. SaaS in Mumbai or Real Estate in Dubai" required class="input">
+            <input id="field_industry" type="text" placeholder="e.g. SaaS in Mumbai or Real Estate in Dubai" required class="input text-base sm:text-sm">
           </div>
         `;
       } else if (key === 'automate-ai') {
@@ -692,7 +718,7 @@
         container.innerHTML = `
           <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Workflow Description</label>
-            <textarea id="field_workflow" rows="4" placeholder="Describe the repetitive manual process you want automated (e.g. daily lead qualification and email report dispatch)..." required class="input"></textarea>
+            <textarea id="field_workflow" rows="4" placeholder="Describe the repetitive manual process you want automated (e.g. daily lead qualification and email report dispatch)..." required class="input text-base sm:text-sm"></textarea>
           </div>
         `;
       }
@@ -971,12 +997,12 @@
 
             <div class="pt-6 border-t border-white/10 flex flex-wrap gap-2.5">
               <button type="button" onclick="downloadStoryImage('@${handle}', '${pts}', '${grade}', '${engRate}', '${authPct}%')" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
-                <span>📸 Download Story Image</span>
+                <svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>Download Story Image
               </button>
               <a href="https://wa.me/?text=${encodeURIComponent('Check out creator audit for @' + handle + ': ' + pts + ' (Grade ' + grade + ') on Vanguard Social')}" target="_blank" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
-                <span>💬 Share on WhatsApp</span>
+                <svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Share on WhatsApp
               </a>
-              ${fn ? `<a href="${apiBase}/api/download/${fn}" download class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer"><span>📥 Download Excel Audit</span></a>` : ''}
+              ${fn ? `<a href="${apiBase}/api/download/${fn}" download class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer"><svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download Excel Audit</a>` : ''}
             </div>
           </div>
         `;
@@ -994,7 +1020,7 @@
               </div>
               ${fn ? `
                 <a href="${apiBase}/api/download/${fn}" download class="primary px-5 py-2.5 rounded-xl text-xs font-bold inline-flex items-center gap-1.5 shadow-sm">
-                  <span>📥 Download Clean Excel Sheet</span>
+                  <svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download Clean Excel Sheet
                 </a>
               ` : ''}
             </div>

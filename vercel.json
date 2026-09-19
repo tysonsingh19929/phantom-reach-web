@@ -2,6 +2,14 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/api/run",
+      "destination": "/api/run"
+    },
+    {
+      "source": "/api/tasks/:id",
+      "destination": "/api/task?id=:id"
+    },
+    {
       "source": "/tools/:tool*",
       "destination": "/tool.html"
     },
