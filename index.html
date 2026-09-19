@@ -30,14 +30,11 @@
           <a href="/#tools"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h16" stroke-linecap="round"/></svg><span>View all tools</span></a>
           <a href="/tools/google-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg><span>Google Leads Tools</span></a>
           <a href="/tools/influencer-score"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg><span>Score Me — Influencer ROI</span></a>
-          <a href="/tools/instagram-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg><span>Instagram Leads &amp; Audit Tools</span></a>
+          <a href="/tools/instagram-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg><span>Instagram Leads Tools</span></a>
           <a href="/tools/youtube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7.5a2.5 2.5 0 0 0-1.8-1.8C17.6 5.3 12 5.3 12 5.3s-5.6 0-7.2.4A2.5 2.5 0 0 0 3 7.5 26 26 0 0 0 2.6 12 26 26 0 0 0 3 16.5a2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.2.4 7.2.4s5.6 0 7.2-.4a2.5 2.5 0 0 0 1.8-1.8 26 26 0 0 0 .4-4.5 26 26 0 0 0-.4-4.5Z"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg><span>YouTube Tools</span></a>
           <a href="/tools/linkedin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg><span>LinkedIn Tools</span></a>
           <a href="/tools/x-twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4 19 20M19 4 5 20" stroke-linecap="round"/></svg><span>X / Twitter Tools</span></a>
           <a href="/tools/automate-ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke-linecap="round"/><circle cx="12" cy="12" r="4"/></svg><span>Automate your business with AI</span></a>
-          <div class="mt-2 border-t border-slate-100 pt-2">
-            <a href="/admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Admin Control Plane</span></a>
-          </div>
         </nav>
       </div>
 
@@ -55,7 +52,7 @@
       <!-- Right Header Actions (API Config Button + Account Menu) -->
       <div class="flex items-center gap-2">
         
-        <!-- Backend API Status Button (Matches design height and styling) -->
+        <!-- Backend API Status Button -->
         <button id="apiConfigButton" onclick="openApiModal()" class="inline-flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-slate-700 shadow-sm hover:bg-slate-50 transition cursor-pointer" title="Configure Backend Server API">
           <span id="apiStatusDot" class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
           <span class="hidden sm:inline font-mono text-[11px] font-semibold text-slate-700" id="apiStatusLabel">API</span>
@@ -73,10 +70,6 @@
             </div>
             <a href="/business-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16M2 21h20M9 7h6M9 11h6M9 15h3" stroke-linecap="round"/></svg><span>Business workspace</span></a>
             <a href="/creator-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg><span>Creator / Influencer workspace</span></a>
-            <div class="mt-2 border-t border-slate-100 pt-2">
-              <a href="/admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Admin Master Login</span></a>
-              <button type="button" onclick="openApiModal();closeMenus();" class="menu-item text-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Backend API Settings</span></button>
-            </div>
           </nav>
         </div>
 
@@ -138,8 +131,8 @@
             <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
           </div>
           <h3 class="font-display text-xl font-bold">Instagram Leads Tools</h3>
-          <p class="mt-2 text-sm leading-relaxed text-slate-600">Complete Instagram suite: Location discovery, account audits, 30-day comment extractions, and reel URL inspection.</p>
-          <a href="/tools/instagram-leads" class="primary mt-5 inline-flex rounded-xl px-4 py-3 text-sm font-semibold">Open Instagram suite</a>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Find verified local businesses, creators, and collaborators with location discovery, account audits, and export-ready lead data.</p>
+          <a href="/tools/instagram-leads" class="primary mt-5 inline-flex rounded-xl px-4 py-3 text-sm font-semibold">Open Instagram tools</a>
         </article>
 
         <!-- YouTube -->
@@ -185,15 +178,9 @@
   </main>
 
   <footer class="border-t border-slate-200 bg-white/70">
-    <div class="container py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600">
-      <div>
-        <b class="font-display text-lg text-slate-900">Vanguard Social</b>
-        <span class="ml-2">AI lead generation and creator intelligence.</span>
-      </div>
-      <div class="flex items-center gap-4 text-xs font-semibold">
-        <a href="/admin" class="hover:text-blue-600 transition">Admin Portal</a>
-        <button type="button" onclick="openApiModal()" class="hover:text-blue-600 transition cursor-pointer">API Settings</button>
-      </div>
+    <div class="container py-8 text-center text-sm text-slate-600">
+      <b class="font-display text-lg text-slate-900">Vanguard Social</b>
+      <span class="ml-2">AI lead generation and creator intelligence.</span>
     </div>
   </footer>
 
@@ -229,7 +216,6 @@
   </div>
 
   <script>
-    // Menu Dropdown Logic
     const pairs=[['toolsButton','toolsMenu'],['accountButton','accountMenu']];
     function closeMenus(){
       pairs.forEach(([b,m])=>{
@@ -254,7 +240,6 @@
     document.addEventListener('click',closeMenus);
     document.addEventListener('keydown',e=>e.key==='Escape'&&closeMenus());
 
-    // API Base URL Controls
     function getApiBase() {
       try {
         const urlParams = new URLSearchParams(window.location.search);
@@ -350,7 +335,6 @@
       updateApiStatusUI();
     }
 
-    // Initialize API status
     updateApiStatusUI();
   </script>
 </body>

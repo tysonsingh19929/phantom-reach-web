@@ -32,15 +32,12 @@
               <p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-500">Switch Intelligence Engine</p>
             </div>
             <a href="/tools/influencer-score"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg><span>Score Me — Influencer ROI</span></a>
-            <a href="/tools/instagram-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg><span>Instagram Leads &amp; Audit Suite</span></a>
+            <a href="/tools/instagram-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg><span>Instagram Leads Tools</span></a>
             <a href="/tools/google-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg><span>Google Leads Tools</span></a>
             <a href="/tools/youtube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7.5a2.5 2.5 0 0 0-1.8-1.8C17.6 5.3 12 5.3 12 5.3s-5.6 0-7.2.4A2.5 2.5 0 0 0 3 7.5 26 26 0 0 0 2.6 12 26 26 0 0 0 3 16.5a2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.2.4 7.2.4s5.6 0 7.2-.4a2.5 2.5 0 0 0 1.8-1.8 26 26 0 0 0 .4-4.5 26 26 0 0 0-.4-4.5Z"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg><span>YouTube Tools</span></a>
             <a href="/tools/linkedin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg><span>LinkedIn Tools</span></a>
             <a href="/tools/x-twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4 19 20M19 4 5 20" stroke-linecap="round"/></svg><span>X / Twitter Tools</span></a>
             <a href="/tools/automate-ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke-linecap="round"/><circle cx="12" cy="12" r="4"/></svg><span>Automate with AI</span></a>
-            <div class="mt-2 border-t border-slate-100 pt-2">
-              <a href="/admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Admin Control Plane</span></a>
-            </div>
           </nav>
         </div>
 
@@ -51,7 +48,7 @@
         </a>
       </div>
 
-      <!-- Right Header Actions -->
+      <!-- Right Header Actions (API Config Button + Get Started) -->
       <div class="flex items-center gap-2.5">
         <!-- Backend API Status Button -->
         <button id="apiConfigButton" onclick="openApiModal()" class="inline-flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-slate-700 shadow-sm hover:bg-slate-50 transition cursor-pointer" title="Configure Backend Server API">
@@ -59,7 +56,6 @@
           <span class="hidden sm:inline font-mono text-[11px] font-semibold" id="apiStatusLabel">API</span>
         </button>
 
-        <a href="/admin" class="hidden sm:inline-flex rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-sm">Admin Portal</a>
         <a href="/signup" class="primary rounded-xl px-4 py-2 text-xs font-semibold shadow-sm">Get started</a>
       </div>
 
@@ -111,7 +107,7 @@
 
       </div>
 
-      <!-- RIGHT COLUMN: INTERACTIVE FORM & EXECUTION ENGINE -->
+      <!-- RIGHT COLUMN: UNIFIED INTERACTIVE FORM & EXECUTION ENGINE -->
       <section class="card rounded-3xl p-6 sm:p-8 sticky top-24">
         
         <div class="flex items-center justify-between mb-3">
@@ -124,18 +120,7 @@
         <h2 id="formTitle" class="mt-3 font-display text-xl font-bold text-slate-900">Run Intelligence Engine</h2>
         <p id="formCopy" class="mt-1.5 text-sm leading-relaxed text-slate-600">Define search parameters and trigger automated data extraction.</p>
 
-        <!-- INSTAGRAM SUB-TOOL TABS (Displayed ONLY on instagram-leads) -->
-        <div id="igSubToolNav" class="hidden mt-5">
-          <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2">Select Instagram Intelligence Tool</p>
-          <div class="grid grid-cols-2 gap-1.5 p-1.5 bg-slate-100/90 rounded-2xl text-xs font-semibold border border-slate-200">
-            <button type="button" onclick="setIgSubTool('tag')" id="btn-subtool-tag" class="py-2 px-2 rounded-xl transition cursor-pointer text-center bg-white text-blue-700 shadow-sm font-bold">1. Location Scout</button>
-            <button type="button" onclick="setIgSubTool('audit')" id="btn-subtool-audit" class="py-2 px-2 rounded-xl transition cursor-pointer text-center text-slate-600 hover:text-slate-900">2. Account Audit</button>
-            <button type="button" onclick="setIgSubTool('comments')" id="btn-subtool-comments" class="py-2 px-2 rounded-xl transition cursor-pointer text-center text-slate-600 hover:text-slate-900">3. 30-Day Comments</button>
-            <button type="button" onclick="setIgSubTool('post')" id="btn-subtool-post" class="py-2 px-2 rounded-xl transition cursor-pointer text-center text-slate-600 hover:text-slate-900">4. Post Inspection</button>
-          </div>
-        </div>
-
-        <!-- DYNAMIC FORM FIELDS -->
+        <!-- DYNAMIC FORM FIELDS (Single Unified Form) -->
         <form id="engineForm" onsubmit="event.preventDefault(); runEngine();" class="mt-5 space-y-4">
           <div id="dynamicFormFields"></div>
 
@@ -209,11 +194,7 @@
     </div>
   </div>
 
-  <!-- SCRIPT IMPLEMENTATION -->
   <script>
-    // ──────────────────────────────────────────────────────────────
-    // 1. TOOL DEFINITIONS & CONFIGURATIONS
-    // ──────────────────────────────────────────────────────────────
     const configs = {
       'influencer-score': {
         name: 'Score Me Engine',
@@ -225,13 +206,13 @@
         benefits: ['Cohort-scaled Benchmark Points (thousands & lakhs)','Authentic audience vs bot penalty audit','Verified engagement rate & cumulative views','Instant downloadable story celebration card & Excel report']
       },
       'instagram-leads': {
-        name: 'Instagram Intelligence Suite',
+        name: 'Instagram Leads Tools',
         title: 'Instagram Leads Tools',
-        description: 'Comprehensive Instagram suite featuring all lead generation workflows: location discovery, account audits, 30-day comment extractions, and single-reel deep inspections.',
-        formTitle: 'Instagram Research Suite',
-        formCopy: 'Select an Instagram tool below to harvest local leads, audit accounts, or extract comments.',
+        description: 'Find verified local businesses, creators, and collaborators with location discovery, account audits, and export-ready lead data.',
+        formTitle: 'Extract Instagram Leads',
+        formCopy: 'Define a location, hashtag, or creator niche to identify verified Instagram prospects.',
         icon: 'instagram',
-        benefits: ['Hyper-local city & hashtag discovery','Full account audits with bio & contacts','30-day comment extraction into Excel','Single post/reel engagement inspection']
+        benefits: ['Location & hashtag business discovery','Full account profiles with bio & contacts','30-day comment extraction and engagement signals','Export-ready Excel spreadsheet']
       },
       'google-leads': {
         name: 'Google Leads Tools',
@@ -290,9 +271,6 @@
       ai: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke-linecap="round"/><circle cx="12" cy="12" r="4"/></svg>'
     };
 
-    // ──────────────────────────────────────────────────────────────
-    // 2. ACTIVE ROUTE RESOLUTION
-    // ──────────────────────────────────────────────────────────────
     function resolveActiveToolKey() {
       const q = new URLSearchParams(location.search).get('tool');
       if (q && configs[q]) return q;
@@ -303,17 +281,13 @@
         const sub = pathParts[pathParts.indexOf('tools') + 1];
         if (sub && configs[sub]) return sub;
       }
-      return 'google-leads';
+      return 'instagram-leads';
     }
 
     const activeToolKey = resolveActiveToolKey();
-    let currentIgSubTool = 'tag'; // 'tag' | 'audit' | 'comments' | 'post'
     let activeTaskId = null;
     let pollInterval = null;
 
-    // ──────────────────────────────────────────────────────────────
-    // 3. API BASE & PERSISTENCE
-    // ──────────────────────────────────────────────────────────────
     function getApiBase() {
       try {
         const urlParams = new URLSearchParams(window.location.search);
@@ -410,10 +384,10 @@
     }
 
     // ──────────────────────────────────────────────────────────────
-    // 4. DYNAMIC PAGE INITIALIZATION & FORM INJECTION
+    // 4. UNIFIED FORM INJECTION
     // ──────────────────────────────────────────────────────────────
     function initPage() {
-      const c = configs[activeToolKey] || configs['google-leads'];
+      const c = configs[activeToolKey] || configs['instagram-leads'];
       document.title = `Vanguard Social — ${c.title}`;
       
       const headerPill = document.getElementById('headerToolPill');
@@ -434,111 +408,47 @@
         </div>
       `).join('');
 
-      // Show/Hide Instagram sub-tool nav
-      const igNav = document.getElementById('igSubToolNav');
-      if (activeToolKey === 'instagram-leads') {
-        igNav.classList.remove('hidden');
-        renderIgSubToolFields();
-      } else {
-        igNav.classList.add('hidden');
-        renderToolFields(activeToolKey);
-      }
-
+      renderToolFields(activeToolKey);
       updateApiStatusUI();
-    }
-
-    // Switch Instagram Sub-tool
-    function setIgSubTool(sub) {
-      currentIgSubTool = sub;
-      ['tag', 'audit', 'comments', 'post'].forEach(k => {
-        const btn = document.getElementById(`btn-subtool-${k}`);
-        if (btn) {
-          if (k === sub) {
-            btn.className = 'py-2 px-2 rounded-xl transition cursor-pointer text-center bg-white text-blue-700 shadow-sm font-bold';
-          } else {
-            btn.className = 'py-2 px-2 rounded-xl transition cursor-pointer text-center text-slate-600 hover:text-slate-900';
-          }
-        }
-      });
-      renderIgSubToolFields();
-    }
-
-    function renderIgSubToolFields() {
-      const container = document.getElementById('dynamicFormFields');
-      const btnLabel = document.getElementById('runBtnLabel');
-
-      if (currentIgSubTool === 'tag') {
-        btnLabel.innerText = 'Start Location & Tag Scout';
-        container.innerHTML = `
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Location or Hashtag</label>
-            <input id="field_tag" type="text" placeholder="e.g. Bandra, Mumbai or #mumbaifoodie" required class="input">
-          </div>
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Category Dork</label>
-            <select id="field_category" class="input">
-              <option value="1">Community &amp; Hyper-local Pages</option>
-              <option value="2">Digital News &amp; Media Outlets</option>
-              <option value="3">Meme &amp; Local Culture Hubs</option>
-              <option value="4" selected>Local Business / Cafes / Services</option>
-              <option value="5">Lifestyle / Niche Influencers</option>
-            </select>
-          </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Min Followers</label>
-              <input id="field_min_followers" type="number" value="1000" min="0" step="500" class="input">
-            </div>
-            <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Content Keyword</label>
-              <input id="field_filter" type="text" placeholder="Optional filter" class="input">
-            </div>
-          </div>
-        `;
-      } else if (currentIgSubTool === 'audit') {
-        btnLabel.innerText = 'Run Account Deep Audit';
-        container.innerHTML = `
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Instagram Account Handle</label>
-            <input id="field_handle" type="text" placeholder="@creator_or_brand" required class="input">
-          </div>
-          <div class="flex items-center gap-2 p-3 bg-slate-50 border border-slate-200 rounded-xl">
-            <input type="checkbox" id="field_include_comments" checked class="h-4 w-4 rounded text-blue-600 focus:ring-blue-500">
-            <label for="field_include_comments" class="text-xs font-semibold text-slate-700 cursor-pointer">Extract 30-day audience comments &amp; sentiment</label>
-          </div>
-        `;
-      } else if (currentIgSubTool === 'comments') {
-        btnLabel.innerText = 'Extract 30-Day Comments';
-        container.innerHTML = `
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Instagram Handle</label>
-            <input id="field_handle" type="text" placeholder="@brand_or_creator" required class="input">
-          </div>
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Inspection Window</label>
-            <select id="field_days" class="input">
-              <option value="30" selected>Last 30 Days</option>
-              <option value="60">Last 60 Days</option>
-              <option value="90">Last 90 Days</option>
-            </select>
-          </div>
-        `;
-      } else if (currentIgSubTool === 'post') {
-        btnLabel.innerText = 'Inspect Post / Reel URL';
-        container.innerHTML = `
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Instagram Post or Reel URL</label>
-            <input id="field_post_url" type="url" placeholder="https://www.instagram.com/reel/C7..." required class="input">
-          </div>
-        `;
-      }
     }
 
     function renderToolFields(key) {
       const container = document.getElementById('dynamicFormFields');
       const btnLabel = document.getElementById('runBtnLabel');
 
-      if (key === 'influencer-score') {
+      if (key === 'instagram-leads') {
+        btnLabel.innerText = 'Extract Instagram Leads';
+        container.innerHTML = `
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Location, Hashtag, or Account</label>
+            <input id="field_ig_target" type="text" placeholder="e.g. Bandra, Mumbai or #mumbaifoodie or @creator_handle" required class="input">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Category Focus</label>
+            <select id="field_ig_category" class="input">
+              <option value="4" selected>Local Businesses, Cafes &amp; Services</option>
+              <option value="5">Lifestyle &amp; Niche Influencers</option>
+              <option value="1">Community &amp; Hyper-local Pages</option>
+              <option value="2">Digital News &amp; Media Outlets</option>
+              <option value="3">Meme &amp; Local Culture Hubs</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Min Followers</label>
+              <input id="field_ig_min_followers" type="number" value="1000" min="0" step="500" class="input">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Content Keyword</label>
+              <input id="field_ig_filter" type="text" placeholder="Optional filter" class="input">
+            </div>
+          </div>
+          <div class="flex items-center gap-2.5 p-3 bg-slate-50 border border-slate-200 rounded-xl">
+            <input type="checkbox" id="field_ig_deep" checked class="h-4 w-4 rounded text-blue-600 focus:ring-blue-500">
+            <label for="field_ig_deep" class="text-xs font-semibold text-slate-700 cursor-pointer">Extract 30-day audience comments &amp; verified contact info</label>
+          </div>
+        `;
+      } else if (key === 'influencer-score') {
         btnLabel.innerText = 'Calculate Influencer Score';
         container.innerHTML = `
           <div>
@@ -645,7 +555,7 @@
     }
 
     // ──────────────────────────────────────────────────────────────
-    // 5. TASK TRIGGER & POLLING
+    // 5. UNIFIED TASK TRIGGER
     // ──────────────────────────────────────────────────────────────
     async function runEngine() {
       const errBox = document.getElementById('errorAlert');
@@ -654,7 +564,7 @@
       let payload = {
         tool: "",
         location: "",
-        category: "1",
+        category: "4",
         target_tag: "",
         target_name: "",
         niche: "",
@@ -663,41 +573,42 @@
         max_results: 20
       };
 
-      if (activeToolKey === 'influencer-score') {
+      if (activeToolKey === 'instagram-leads') {
+        const rawTarget = (document.getElementById('field_ig_target')?.value || '').trim();
+        if (!rawTarget) return alert('Please enter target location, hashtag, or handle.');
+
+        const category = document.getElementById('field_ig_category')?.value || '4';
+        const minFollowers = parseInt(document.getElementById('field_ig_min_followers')?.value || '1000');
+        const filterKeyword = (document.getElementById('field_ig_filter')?.value || '').trim();
+        const includeComments = document.getElementById('field_ig_deep')?.checked || false;
+
+        // Auto-detect target type:
+        if (rawTarget.startsWith('@')) {
+          // Account deep audit
+          payload.tool = '2a';
+          payload.target_name = rawTarget.replace('@', '');
+          payload.extract_comments = includeComments;
+        } else if (rawTarget.startsWith('http://') || rawTarget.startsWith('https://') || rawTarget.includes('/p/') || rawTarget.includes('/reel/')) {
+          // Single Post / Reel URL inspection
+          payload.tool = '2b';
+          payload.post_url = rawTarget;
+        } else {
+          // Location & Hashtag discovery
+          payload.tool = '1a';
+          payload.target_tag = rawTarget.replace('#', '');
+          payload.location = rawTarget.replace('#', '');
+          payload.category = category;
+          payload.min_followers = minFollowers;
+          payload.content_filter = filterKeyword;
+        }
+
+      } else if (activeToolKey === 'influencer-score') {
         const h = (document.getElementById('field_handle')?.value || '').replace('@', '').trim();
         if (!h) return alert('Please enter creator handle.');
         payload.tool = '3';
         payload.location = h;
         payload.target_name = h;
         payload.niche = document.getElementById('field_niche')?.value || 'General';
-      } else if (activeToolKey === 'instagram-leads') {
-        if (currentIgSubTool === 'tag') {
-          const loc = (document.getElementById('field_tag')?.value || '').trim();
-          if (!loc) return alert('Please enter target location or hashtag.');
-          payload.tool = '1a';
-          payload.target_tag = loc;
-          payload.location = loc;
-          payload.category = document.getElementById('field_category')?.value || '4';
-          payload.min_followers = parseInt(document.getElementById('field_min_followers')?.value || '1000');
-          payload.content_filter = (document.getElementById('field_filter')?.value || '').trim();
-        } else if (currentIgSubTool === 'audit') {
-          const h = (document.getElementById('field_handle')?.value || '').replace('@', '').trim();
-          if (!h) return alert('Please enter account handle.');
-          payload.tool = '2a';
-          payload.target_name = h;
-          payload.extract_comments = document.getElementById('field_include_comments')?.checked || false;
-        } else if (currentIgSubTool === 'comments') {
-          const h = (document.getElementById('field_handle')?.value || '').replace('@', '').trim();
-          if (!h) return alert('Please enter target handle.');
-          payload.tool = '2c';
-          payload.target_name = h;
-          payload.comments_days = parseInt(document.getElementById('field_days')?.value || '30');
-        } else if (currentIgSubTool === 'post') {
-          const p = (document.getElementById('field_post_url')?.value || '').trim();
-          if (!p) return alert('Please enter post/reel URL.');
-          payload.tool = '2b';
-          payload.post_url = p;
-        }
       } else if (activeToolKey === 'google-leads') {
         const loc = (document.getElementById('field_location')?.value || '').trim();
         const q = (document.getElementById('field_query')?.value || '').trim();
@@ -832,9 +743,6 @@
       renderOutput(task);
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // 6. OUTPUT & RESULTS RENDERING
-    // ──────────────────────────────────────────────────────────────
     function renderOutput(task) {
       const container = document.getElementById('resultsContainer');
       const content = document.getElementById('resultsContent');
@@ -847,7 +755,6 @@
       const fn = task.excel_file || res.excel_file || '';
       const apiBase = getApiBase();
 
-      // CASE A: SCORE ME RESULTS (CELEBRATION HERO CARD)
       if (activeToolKey === 'influencer-score' || res.score_card) {
         const sc = res.score_card || {};
         const prof = res.profile || {};
@@ -861,7 +768,6 @@
         const handle = res.handle || 'creator';
 
         content.innerHTML = `
-          <!-- Celebration Hero Card -->
           <div class="rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white shadow-2xl border border-blue-500/20">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
               <div class="flex items-center gap-3.5">
@@ -879,7 +785,6 @@
               </div>
             </div>
 
-            <!-- Score & Percentile -->
             <div class="py-6 sm:py-8 flex flex-col sm:flex-row items-baseline justify-between gap-4">
               <div>
                 <div class="text-xs font-bold uppercase tracking-[.18em] text-blue-200">Influencer Benchmark Score</div>
@@ -891,7 +796,6 @@
               </div>
             </div>
 
-            <!-- Authenticity Bar -->
             <div class="p-4 rounded-2xl bg-white/5 border border-white/10 mb-6">
               <div class="flex items-center justify-between text-xs font-bold mb-2">
                 <span class="text-slate-300">Organic Audience Authenticity</span>
@@ -902,7 +806,6 @@
               </div>
             </div>
 
-            <!-- 4 Metric Cards -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
               <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10">
                 <div class="text-[10px] uppercase font-bold text-blue-200">Cumulative Reach</div>
@@ -922,7 +825,6 @@
               </div>
             </div>
 
-            <!-- Actions Bar -->
             <div class="pt-6 border-t border-white/10 flex flex-wrap gap-2.5">
               <button type="button" onclick="downloadStoryImage('@${handle}', '${pts}', '${grade}', '${engRate}', '${authPct}%')" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
                 <span>📸 Download Story Image</span>
@@ -936,7 +838,6 @@
         `;
 
       } else {
-        // CASE B: LEADS SUITE OR GENERAL DATA TABLE
         const items = res.leads || res.accounts || res.videos || res.tweets || [];
         const count = items.length || res.total_leads || res.total_accounts || 0;
 
@@ -985,14 +886,12 @@
       container.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // Client-side Story Canvas Generator
     function downloadStoryImage(handle, points, grade, eng, auth) {
       const canvas = document.createElement('canvas');
       canvas.width = 1080;
       canvas.height = 1920;
       const ctx = canvas.getContext('2d');
 
-      // Dark background gradient
       const grad = ctx.createLinearGradient(0, 0, 1080, 1920);
       grad.addColorStop(0, '#090d16');
       grad.addColorStop(0.5, '#0f172a');
@@ -1000,7 +899,6 @@
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, 1080, 1920);
 
-      // Watermark / Brand
       ctx.fillStyle = '#ffffff';
       ctx.font = 'bold 42px Inter';
       ctx.fillText('VANGUARD SOCIAL', 80, 140);
@@ -1008,7 +906,6 @@
       ctx.font = 'bold 24px Inter';
       ctx.fillText('AI INFLUENCER BENCHMARK AUDIT', 80, 190);
 
-      // Creator Handle Card
       ctx.fillStyle = 'rgba(255,255,255,0.06)';
       ctx.beginPath();
       ctx.roundRect(80, 300, 920, 240, 32);
@@ -1022,7 +919,6 @@
       ctx.font = 'bold 64px Inter';
       ctx.fillText(handle, 140, 460);
 
-      // Main Points Card
       ctx.fillStyle = 'rgba(37,99,235,0.18)';
       ctx.beginPath();
       ctx.roundRect(80, 600, 920, 440, 36);
@@ -1040,7 +936,6 @@
       ctx.font = 'bold 44px Inter';
       ctx.fillText(`GRADE ${grade} • TOP 0.8% RANK`, 140, 940);
 
-      // Metrics grid
       ctx.fillStyle = 'rgba(255,255,255,0.06)';
       ctx.beginPath();
       ctx.roundRect(80, 1100, 440, 240, 28);
@@ -1063,7 +958,6 @@
       ctx.font = 'bold 64px Inter';
       ctx.fillText(auth, 610, 1260);
 
-      // Footer
       ctx.fillStyle = '#64748b';
       ctx.font = 'bold 28px Inter';
       ctx.fillText('Generated by Vanguard Social Intelligence • phantom-reach-web.vercel.app', 80, 1800);
@@ -1074,7 +968,6 @@
       link.click();
     }
 
-    // Dropdown close logic
     const toolsBtn = document.getElementById('toolsButton');
     const toolsMenu = document.getElementById('toolsMenu');
     if (toolsBtn && toolsMenu) {
@@ -1085,7 +978,6 @@
       document.addEventListener('click', () => toolsMenu.hidden = true);
     }
 
-    // Run Initialization on Load
     initPage();
   </script>
 </body>
