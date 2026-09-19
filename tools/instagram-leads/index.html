@@ -1125,6 +1125,17 @@
     async function autoDiscoverBackend() {
       if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') return;
       try {
+        // Step 1: Check static endpoint (Instant 0ms, works globally)
+        const staticRes = await fetch('/endpoint.json?t=' + Date.now());
+        if (staticRes.ok) {
+          const sData = await staticRes.json();
+          if (sData && sData.url && sData.url.startsWith('https://')) {
+            localStorage.setItem('vanguard_api_base', sData.url);
+            updateApiStatusUI();
+            return;
+          }
+        }
+        // Step 2: Fallback to MongoDB serverless resolver
         const res = await fetch('/api/backend-url');
         if (res.ok) {
           const data = await res.json();
