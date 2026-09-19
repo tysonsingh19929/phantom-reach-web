@@ -335,7 +335,22 @@
       updateApiStatusUI();
     }
 
+    async function autoDiscoverBackend() {
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') return;
+      try {
+        const res = await fetch('/api/backend-url');
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.url) {
+            localStorage.setItem('vanguard_api_base', data.url);
+            updateApiStatusUI();
+          }
+        }
+      } catch (_) {}
+    }
+
     updateApiStatusUI();
+    autoDiscoverBackend();
   </script>
 </body>
 </html>
