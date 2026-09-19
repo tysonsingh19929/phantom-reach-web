@@ -5,27 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta
       name="description"
-      content="Vanguard Social helps businesses find verified local leads, creators, and influence insights in minutes."
+      content="Vanguard Social helps businesses find leads, creators, influence insights, and growth opportunities in minutes."
     />
     <meta name="theme-color" content="#eff6ff" />
-    <title>Vanguard Social — AI Lead Generation & Creator Intelligence</title>
+    <title>Vanguard Social — AI Growth Intelligence</title>
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230F172A'/%3E%3Cpath d='M4 4h4.6L12 15.2 15.4 4H20l-6.2 16h-3.6L4 4Z' fill='white'/%3E%3C/svg%3E" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230F172A'/%3E%3Cpath d='M4 4h4.6L12 15.2 15.4 4H20l-6.2 16h-3.6L4 4Z' fill='white'/%3E%3C/svg%3E"
+    />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
-            colors: {
-              brand: {
-                50: '#eff6ff',
-                100: '#dbeafe',
-                500: '#3b82f6',
-                600: '#2563eb',
-                700: '#1d4ed8'
-              }
-            },
             fontFamily: {
               sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
               display: ['Lexend', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
@@ -45,750 +40,1171 @@
 
     <style>
       :root {
-        --bg-soft: #f8fbff;
-        --panel: rgba(255, 255, 255, 0.8);
-        --panel-strong: rgba(255, 255, 255, 0.92);
-        --border: rgba(148, 163, 184, 0.22);
         --text: #0f172a;
         --muted: #475569;
-        --brand-50: #eff6ff;
-        --brand-100: #dbeafe;
-        --brand-500: #3b82f6;
-        --brand-600: #2563eb;
-        --brand-700: #1d4ed8;
-        --shadow-soft: 0 10px 30px -12px rgba(37, 99, 235, 0.2);
-        --shadow-card: 0 16px 40px -18px rgba(15, 23, 42, 0.18);
+        --blue: #2563eb;
+        --blue-light: #eff6ff;
+        --border: rgba(148, 163, 184, 0.24);
+        --shadow: 0 20px 50px -24px rgba(15, 23, 42, 0.24);
       }
 
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
 
-      html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
 
       body {
         margin: 0;
         min-height: 100vh;
-        font-family: 'Inter', sans-serif;
         color: var(--text);
-        background: linear-gradient(135deg, #f8fbff 0%, #eef6ff 32%, #ffffff 100%);
+        font-family: 'Inter', sans-serif;
+        background:
+          radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.18), transparent 28rem),
+          radial-gradient(circle at 90% 20%, rgba(37, 99, 235, 0.16), transparent 30rem),
+          linear-gradient(135deg, #f8fbff 0%, #eef6ff 35%, #ffffff 100%);
         -webkit-tap-highlight-color: transparent;
       }
 
-      .font-display { font-family: 'Lexend', 'Inter', sans-serif; }
-
-      ::selection {
-        background: rgba(59, 130, 246, 0.25);
-        color: var(--text);
+      .font-display {
+        font-family: 'Lexend', 'Inter', sans-serif;
       }
-
-      ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-      }
-      ::-webkit-scrollbar-track { background: #f1f5f9; }
-      ::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 9999px;
-      }
-      ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
       .container {
-        max-width: 1180px;
-        margin: 0 auto;
-        padding: 0 1rem;
-      }
-
-      .glass-panel {
-        background: var(--panel);
-        backdrop-filter: blur(20px) saturate(180%);
-        -webkit-backdrop-filter: blur(20px) saturate(180%);
-        border: 1px solid rgba(255, 255, 255, 0.9);
-        box-shadow: 0 10px 30px -14px rgba(15, 23, 42, 0.08);
+        width: min(1180px, calc(100% - 2rem));
+        margin-inline: auto;
       }
 
       .glass-card {
-        background: rgba(255, 255, 255, 0.82);
-        border: 1px solid rgba(255, 255, 255, 0.75);
-        box-shadow: var(--shadow-card);
-        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        background: rgba(255, 255, 255, 0.84);
+        border: 1px solid rgba(255, 255, 255, 0.86);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
       }
 
-      .glass-card:hover {
-        transform: translateY(-2px);
-        border-color: rgba(59, 130, 246, 0.18);
-        box-shadow: 0 18px 40px -18px rgba(37, 99, 235, 0.24);
-      }
-
-      .legible-text {
-        text-shadow: 0 1px 3px rgba(255,255,255,0.8), 0 1px 24px rgba(255,255,255,0.7);
-      }
-
-      .bg-orb {
-        position: fixed;
-        inset: auto;
-        border-radius: 9999px;
-        filter: blur(72px);
-        pointer-events: none;
-        z-index: -10;
-        opacity: 0.9;
-        animation: drift 18s ease-in-out infinite;
-      }
-
-      .bg-orb--1 { top: -10%; left: 2%; width: 30rem; height: 30rem; background: radial-gradient(circle, rgba(99, 102, 241, 0.22), transparent 70%); }
-      .bg-orb--2 { top: 20%; right: -8%; width: 32rem; height: 32rem; background: radial-gradient(circle, rgba(37, 99, 235, 0.18), transparent 70%); animation-delay: -5s; }
-      .bg-orb--3 { bottom: -8%; left: -6%; width: 28rem; height: 28rem; background: radial-gradient(circle, rgba(14, 165, 233, 0.18), transparent 70%); animation-delay: -11s; }
-      .bg-orb--4 { bottom: 15%; right: 12%; width: 24rem; height: 24rem; background: radial-gradient(circle, rgba(30, 64, 175, 0.16), transparent 70%); animation-delay: -2s; }
-      .bg-orb--5 { top: 44%; left: 42%; width: 22rem; height: 22rem; background: radial-gradient(circle, rgba(96, 165, 250, 0.15), transparent 70%); animation-delay: -7s; }
-
-      #cursorGlow {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 34rem;
-        height: 34rem;
-        margin-left: -17rem;
-        margin-top: -17rem;
-        border-radius: 9999px;
-        background: radial-gradient(circle, rgba(59, 130, 246, 0.24), rgba(30, 64, 175, 0.12) 45%, transparent 72%);
-        filter: blur(50px);
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        z-index: -9;
-      }
-
-      #cursorGlow.active { opacity: 1; }
-
-      @keyframes drift {
-        0%, 100% { transform: translate(0, 0) scale(1); }
-        25% { transform: translate(52px, -28px) scale(1.12); }
-        50% { transform: translate(-32px, 34px) scale(0.94); }
-        75% { transform: translate(-50px, -18px) scale(1.06); }
-      }
-
-      .engine-toggle {
-        cursor: pointer;
-      }
-
-      .tool-toggle {
-        cursor: pointer;
-      }
-
-      .engine-panel[hidden] {
-        display: none;
-      }
-
-      .tool-panel[hidden] {
-        display: none;
-      }
-
-      .focus-ring:focus-visible,
-      button:focus-visible,
-      input:focus-visible,
-      select:focus-visible,
-      textarea:focus-visible,
-      a:focus-visible {
-        outline: 3px solid rgba(59, 130, 246, 0.35);
-        outline-offset: 2px;
+      .stat-card {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid var(--border);
+        box-shadow: 0 14px 30px -24px rgba(15, 23, 42, 0.3);
       }
 
       .btn-primary {
-        background: linear-gradient(135deg, #2563eb, #0f172a);
         color: white;
+        background: linear-gradient(135deg, #2563eb, #0f172a);
       }
 
       .btn-primary:hover {
         background: linear-gradient(135deg, #3b82f6, #111827);
       }
 
-      .chip {
+      .focus-ring:focus-visible,
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible,
+      select:focus-visible {
+        outline: 3px solid rgba(59, 130, 246, 0.35);
+        outline-offset: 3px;
+      }
+
+      .nav-dropdown {
+        position: relative;
+      }
+
+      .menu-trigger,
+      .account-trigger {
+        width: 42px;
+        height: 42px;
+        border: 1px solid rgba(148, 163, 184, 0.45);
+        border-radius: 999px;
         display: inline-flex;
         align-items: center;
-        gap: 0.375rem;
-        padding: 0.35rem 0.75rem;
-        border-radius: 9999px;
-        font-size: 0.68rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
+        justify-content: center;
+        color: #0f172a;
+        background: rgba(255, 255, 255, 0.92);
+        cursor: pointer;
+        box-shadow: 0 8px 20px -14px rgba(15, 23, 42, 0.35);
+        transition: 0.2s ease;
+      }
+
+      .menu-trigger:hover,
+      .account-trigger:hover {
+        border-color: rgba(37, 99, 235, 0.45);
+        background: #eff6ff;
+        transform: translateY(-1px);
+      }
+
+      .menu-dots {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+      }
+
+      .menu-dots span {
+        width: 5px;
+        height: 5px;
+        display: block;
+        border-radius: 50%;
+        background: #0f172a;
+      }
+
+      .account-badge {
+        width: 29px;
+        height: 29px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: white;
+        background: linear-gradient(135deg, #312e81, #1e293b);
+      }
+
+      .account-badge svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .menu-panel {
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 0;
+        z-index: 100;
+        display: none;
+        width: min(310px, calc(100vw - 2rem));
+        padding: 8px;
         border: 1px solid rgba(148, 163, 184, 0.28);
-        background: rgba(255,255,255,0.7);
-        color: #334155;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.97);
+        box-shadow: 0 25px 60px -25px rgba(15, 23, 42, 0.35);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
       }
 
-      .stat-card {
-        background: rgba(255, 255, 255, 0.9);
-        border: 1px solid rgba(148, 163, 184, 0.2);
-        box-shadow: 0 12px 24px -20px rgba(15, 23, 42, 0.2);
+      .menu-panel.open {
+        display: block;
+        animation: menuIn 0.18s ease-out;
       }
 
-      .section-title {
-        letter-spacing: -0.04em;
+      .right-dropdown .menu-panel {
+        right: 0;
+        left: auto;
+      }
+
+      @keyframes menuIn {
+        from {
+          opacity: 0;
+          transform: translateY(-6px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 11px 12px;
+        color: #0f172a;
+        font-size: 13px;
+        font-weight: 650;
+        line-height: 1.25;
+        text-decoration: none;
+        border-radius: 13px;
+        transition: 0.18s ease;
+      }
+
+      .menu-item:hover {
+        color: #1d4ed8;
+        background: linear-gradient(135deg, #eff6ff, #f8fafc);
+      }
+
+      .menu-icon {
+        width: 31px;
+        height: 31px;
+        flex: 0 0 31px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #2563eb;
+        border-radius: 10px;
+        background: #eff6ff;
+      }
+
+      .menu-icon svg {
+        width: 17px;
+        height: 17px;
+      }
+
+      .menu-divider {
+        height: 1px;
+        margin: 7px 5px;
+        background: rgba(148, 163, 184, 0.22);
+      }
+
+      .route-panel {
+        display: none;
+      }
+
+      .route-panel.active {
+        display: block;
+      }
+
+      .engine-panel[hidden],
+      .tool-panel[hidden] {
+        display: none;
+      }
+
+      .engine-toggle,
+      .tool-toggle {
+        cursor: pointer;
+      }
+
+      .chevron {
+        transition: transform 0.2s ease;
+      }
+
+      .hidden-route {
+        display: none;
+      }
+
+      @media (max-width: 640px) {
+        .menu-panel {
+          position: fixed;
+          top: 78px;
+          left: 12px;
+          right: 12px;
+          width: auto;
+        }
+
+        .right-dropdown .menu-panel {
+          left: 12px;
+          right: 12px;
+        }
+
+        header .brand-copy {
+          display: none;
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
-        html { scroll-behavior: auto; }
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
           animation: none !important;
           transition: none !important;
+          scroll-behavior: auto !important;
         }
-        #cursorGlow { display: none !important; }
       }
     </style>
   </head>
 
-  <body class="antialiased text-slate-800">
-    <div id="bgOrbs" aria-hidden="true">
-      <div class="bg-orb bg-orb--1"></div>
-      <div class="bg-orb bg-orb--2"></div>
-      <div class="bg-orb bg-orb--3"></div>
-      <div class="bg-orb bg-orb--4"></div>
-      <div class="bg-orb bg-orb--5"></div>
-    </div>
-    <div id="cursorGlow" aria-hidden="true"></div>
-
-    <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/75 backdrop-blur-xl shadow-sm" style="padding-top: env(safe-area-inset-top);">
-      <div class="container h-16 flex items-center justify-between gap-4">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="h-9 w-9 rounded-xl bg-slate-900 flex items-center justify-center shrink-0">
-            <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 4h4.6L12 15.2 15.4 4H20l-6.2 16h-3.6L4 4Z" fill="white"/>
+  <body class="antialiased">
+    <header
+      class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 shadow-sm backdrop-blur-xl"
+      style="padding-top: env(safe-area-inset-top);"
+    >
+      <div class="container flex h-16 items-center justify-between gap-3">
+        <div class="flex min-w-0 items-center gap-3">
+          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-900">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 4h4.6L12 15.2 15.4 4H20l-6.2 16h-3.6L4 4Z" fill="white" />
             </svg>
           </div>
-          <div class="min-w-0">
-            <h1 class="text-base sm:text-lg font-display font-semibold tracking-tight text-slate-900 flex items-center gap-2 truncate">
-              Vanguard Social
-              <span class="inline-flex items-center rounded-md border border-slate-300 bg-white px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-slate-600">PRO</span>
-            </h1>
-            <p class="hidden text-[11px] font-medium text-slate-600 sm:block">Multi-platform intelligence for creators, leads, and reach</p>
+
+          <div class="brand-copy min-w-0">
+            <div class="flex items-center gap-2">
+              <span class="truncate font-display text-lg font-semibold tracking-tight text-slate-900">
+                Vanguard Social
+              </span>
+              <span class="rounded-md border border-slate-300 bg-white px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-slate-600">
+                PRO
+              </span>
+            </div>
+            <p class="truncate text-[11px] font-medium text-slate-600">
+              Multi-platform intelligence for creators, leads, and reach
+            </p>
           </div>
         </div>
 
-        <div class="flex items-center gap-2 sm:gap-3">
-          <button type="button" class="focus-ring inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-700 transition hover:bg-blue-50/60 sm:text-xs" aria-label="Open backend API settings">
-            <span class="h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
-            <span class="hidden sm:inline">Backend API</span>
-            <span class="sm:hidden">API</span>
+        <div class="flex items-center gap-2">
+          <!-- Tools menu -->
+          <div class="nav-dropdown left-dropdown">
+            <button
+              id="menuToggle"
+              type="button"
+              class="menu-trigger focus-ring"
+              aria-label="Open tools menu"
+              aria-expanded="false"
+              aria-controls="menuDropdown"
+            >
+              <span class="menu-dots" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+
+            <nav id="menuDropdown" class="menu-panel" aria-label="Tools menu">
+              <a class="menu-item" href="#tools" data-route="tools">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" />
+                  </svg>
+                </span>
+                <span>View all tools</span>
+              </a>
+
+              <a class="menu-item" href="#google-leads" data-route="google-leads">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7" />
+                    <path d="m20 20-4-4M8 11h6" />
+                  </svg>
+                </span>
+                <span>Google Leads Tools</span>
+              </a>
+
+              <a class="menu-item" href="#influencer-score" data-route="influencer-score">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M13 2 4 14h7l-1 8 9-12h-7z" />
+                  </svg>
+                </span>
+                <span>Influencer Score</span>
+              </a>
+
+              <a class="menu-item" href="#instagram-leads" data-route="instagram-leads">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                  </svg>
+                </span>
+                <span>Instagram Leads Tools</span>
+              </a>
+
+              <a class="menu-item" href="#youtube-tools" data-route="youtube-tools">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="5" width="18" height="14" rx="4" />
+                    <path d="m10 9 5 3-5 3z" />
+                  </svg>
+                </span>
+                <span>YouTube Tools</span>
+              </a>
+
+              <a class="menu-item" href="#linkedin-tools" data-route="linkedin-tools">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="4" y="4" width="16" height="16" rx="2" />
+                    <path d="M8 10v6M8 7.5v.01M12 16v-4a2 2 0 0 1 4 0v4M12 10v6" />
+                  </svg>
+                </span>
+                <span>LinkedIn Tools</span>
+              </a>
+
+              <a class="menu-item" href="#x-tools" data-route="x-tools">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 4 19 20M19 4 5 20" />
+                  </svg>
+                </span>
+                <span>X / Twitter Tools</span>
+              </a>
+
+              <div class="menu-divider"></div>
+
+              <a class="menu-item" href="#ai-automation" data-route="ai-automation">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" />
+                    <circle cx="12" cy="12" r="4" />
+                  </svg>
+                </span>
+                <span>Automate Your Business with AI</span>
+              </a>
+            </nav>
+          </div>
+
+          <button
+            type="button"
+            class="focus-ring hidden items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:bg-blue-50 sm:inline-flex"
+            aria-label="Backend API status"
+          >
+            <span class="h-2 w-2 animate-pulse rounded-full bg-blue-500"></span>
+            Backend API
           </button>
 
-          <button type="button" class="focus-ring inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-700 transition hover:bg-blue-50/60 sm:text-xs" aria-label="Open Excel reports">
-            <svg class="h-4 w-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M9 12h6M9 16h6M7 21h10a2 2 0 0 0 2-2V7.5A2 2 0 0 0 17.5 5.5L14 2H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2Z"/>
+          <button
+            type="button"
+            class="focus-ring inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:bg-blue-50"
+            data-route="reports"
+            aria-label="Open Excel reports"
+          >
+            <svg class="h-4 w-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 3h7l5 5v13H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+              <path d="M14 3v5h5M9 13h6M9 17h6" />
             </svg>
-            <span class="hidden sm:inline">Excel Reports</span>
-            <span class="rounded-full bg-blue-100 px-1.5 py-0.5 text-[10px] font-bold text-slate-900">0</span>
+            <span class="hidden sm:inline">Reports</span>
+            <span class="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-bold text-slate-900">0</span>
           </button>
+
+          <!-- Account menu -->
+          <div class="nav-dropdown right-dropdown">
+            <button
+              id="accountToggle"
+              type="button"
+              class="account-trigger focus-ring"
+              aria-label="Open account menu"
+              aria-expanded="false"
+              aria-controls="accountDropdown"
+            >
+              <span class="account-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M4 21a8 8 0 0 1 16 0" />
+                </svg>
+              </span>
+            </button>
+
+            <nav id="accountDropdown" class="menu-panel" aria-label="Account menu">
+              <a class="menu-item" href="#business-login" data-route="business-login">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14H4z" />
+                    <path d="M8 7h8M8 11h8M8 15h5" />
+                  </svg>
+                </span>
+                <span>Business Sign In / Login</span>
+              </a>
+
+              <a class="menu-item" href="#creator-login" data-route="creator-login">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 21a8 8 0 0 1 16 0" />
+                  </svg>
+                </span>
+                <span>Creator / Influencer Login</span>
+              </a>
+
+              <div class="menu-divider"></div>
+
+              <a class="menu-item" href="#business-signup" data-route="business-signup">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14H4z" />
+                    <path d="M12 8v6M9 11h6" />
+                  </svg>
+                </span>
+                <span>Create Business Account</span>
+              </a>
+
+              <a class="menu-item" href="#creator-signup" data-route="creator-signup">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 21a8 8 0 0 1 16 0M19 8v5M16.5 10.5h5" />
+                  </svg>
+                </span>
+                <span>Create Creator Account</span>
+              </a>
+            </nav>
+          </div>
         </div>
       </div>
     </header>
 
     <main class="container py-8 sm:py-10">
-      <section class="space-y-6 pb-4 sm:pb-6">
-        <div class="space-y-4 text-center sm:text-left">
+      <section class="space-y-6 pb-6">
+        <div class="max-w-4xl space-y-4">
           <div class="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-blue-700">
             AI growth intelligence platform
           </div>
-          <h2 class="legible-text text-3xl font-display font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-            AI tools for lead generation, creator discovery, and social growth.
-          </h2>
-          <p class="legible-text mx-auto max-w-3xl text-sm leading-relaxed text-slate-600 sm:mx-0 sm:text-base">
-            Find verified local leads, benchmark creators and collaborators, and turn social media intelligence into actionable outreach and growth decisions—without manual research.
+
+          <h1 class="font-display text-4xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
+            Replace a full team with one intelligent growth platform.
+          </h1>
+
+          <p class="max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
+            Find verified leads, discover creators, benchmark influence, and automate repetitive growth work without hiring multiple specialists or spending hours on manual research.
           </p>
         </div>
 
-        <div class="flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-start">
-          <button type="button" class="focus-ring btn-primary inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold shadow-lg shadow-blue-500/15 transition hover:-translate-y-0.5">Replace a full team  With one intelligent platform</button>
-          <button type="button" class="focus-ring inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">Book a demo</button>
+        <div class="flex flex-col items-start gap-3 sm:flex-row">
+          <button
+            type="button"
+            class="focus-ring btn-primary rounded-2xl px-6 py-3.5 text-sm font-semibold shadow-lg shadow-blue-500/20 transition hover:-translate-y-0.5"
+            data-route="tools"
+          >
+            Get more work done
+          </button>
+
+          <button
+            type="button"
+            class="focus-ring rounded-2xl border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+            data-route="business-signup"
+          >
+            Start saving time
+          </button>
         </div>
 
         <div class="grid gap-4 sm:grid-cols-3">
-          <div class="stat-card rounded-2xl p-4">
+          <div class="stat-card rounded-2xl p-5">
             <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">Verified leads</div>
-            <div class="mt-2 text-2xl font-display font-bold text-slate-900">10k+</div>
-            <div class="mt-1 text-xs text-slate-600">Mapped across local and niche categories</div>
+            <div class="mt-2 font-display text-3xl font-bold text-slate-900">10k+</div>
+            <p class="mt-1 text-sm text-slate-600">Mapped across local and niche categories.</p>
           </div>
-          <div class="stat-card rounded-2xl p-4">
+
+          <div class="stat-card rounded-2xl p-5">
             <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">Influence scores</div>
-            <div class="mt-2 text-2xl font-display font-bold text-slate-900">AI-powered</div>
-            <div class="mt-1 text-xs text-slate-600">Reach, engagement quality, and ROI signals</div>
+            <div class="mt-2 font-display text-3xl font-bold text-slate-900">AI-powered</div>
+            <p class="mt-1 text-sm text-slate-600">Reach, engagement quality, and ROI signals.</p>
           </div>
-          <div class="stat-card rounded-2xl p-4">
+
+          <div class="stat-card rounded-2xl p-5">
             <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">Workflow speed</div>
-            <div class="mt-2 text-2xl font-display font-bold text-slate-900">Minutes</div>
-            <div class="mt-1 text-xs text-slate-600">From discovery to export-ready reporting</div>
+            <div class="mt-2 font-display text-3xl font-bold text-slate-900">Minutes</div>
+            <p class="mt-1 text-sm text-slate-600">From discovery to export-ready reporting.</p>
           </div>
         </div>
       </section>
 
-      <section class="py-6 sm:py-8" aria-labelledby="engines-heading">
-        <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <!-- Login and signup route panels -->
+      <section id="accountRoutes" class="hidden-route mb-8">
+        <div id="business-login" class="route-panel glass-card rounded-3xl p-6 sm:p-8">
+          <div class="mb-5 flex items-center gap-3">
+            <span class="menu-icon h-11 w-11">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14H4z" />
+                <path d="M8 7h8M8 11h8M8 15h5" />
+              </svg>
+            </span>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Business access</p>
+              <h2 class="font-display text-2xl font-bold text-slate-900">Business sign in</h2>
+            </div>
+          </div>
+
+          <p class="mb-5 text-sm text-slate-600">Access your lead-generation workspace, reports, and saved intelligence.</p>
+
+          <form class="route-form grid gap-4 sm:max-w-lg">
+            <input required type="email" placeholder="Business email" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500" />
+            <input required type="password" placeholder="Password" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500" />
+            <button class="btn-primary rounded-xl px-5 py-3 text-sm font-semibold">Sign in to business workspace</button>
+          </form>
+        </div>
+
+        <div id="creator-login" class="route-panel glass-card rounded-3xl p-6 sm:p-8">
+          <div class="mb-5 flex items-center gap-3">
+            <span class="menu-icon h-11 w-11">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21a8 8 0 0 1 16 0" />
+              </svg>
+            </span>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Creator access</p>
+              <h2 class="font-display text-2xl font-bold text-slate-900">Creator / influencer login</h2>
+            </div>
+          </div>
+
+          <p class="mb-5 text-sm text-slate-600">Manage your creator profile, influence score, and collaboration opportunities.</p>
+
+          <form class="route-form grid gap-4 sm:max-w-lg">
+            <input required type="email" placeholder="Creator email" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500" />
+            <input required type="password" placeholder="Password" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500" />
+            <button class="btn-primary rounded-xl px-5 py-3 text-sm font-semibold">Sign in as creator</button>
+          </form>
+        </div>
+
+        <div id="business-signup" class="route-panel glass-card rounded-3xl p-6 sm:p-8">
+          <div class="mb-5 flex items-center gap-3">
+            <span class="menu-icon h-11 w-11">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14H4z" />
+                <path d="M12 8v6M9 11h6" />
+              </svg>
+            </span>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Business onboarding</p>
+              <h2 class="font-display text-2xl font-bold text-slate-900">Create a business account</h2>
+            </div>
+          </div>
+
+          <form class="route-form grid gap-4 sm:max-w-lg">
+            <input required type="text" placeholder="Business name" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500" />
+            <input required type="email" placeholder="Work email" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500" />
+            <input required type="password" placeholder="Create password" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500" />
+            <button class="btn-primary rounded-xl px-5 py-3 text-sm font-semibold">Create business account</button>
+          </form>
+        </div>
+
+        <div id="creator-signup" class="route-panel glass-card rounded-3xl p-6 sm:p-8">
+          <div class="mb-5 flex items-center gap-3">
+            <span class="menu-icon h-11 w-11">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21a8 8 0 0 1 16 0M19 8v5M16.5 10.5h5" />
+              </svg>
+            </span>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Creator onboarding</p>
+              <h2 class="font-display text-2xl font-bold text-slate-900">Create a creator account</h2>
+            </div>
+          </div>
+
+          <form class="route-form grid gap-4 sm:max-w-lg">
+            <input required type="text" placeholder="Creator name or handle" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500" />
+            <input required type="email" placeholder="Creator email" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500" />
+            <input required type="password" placeholder="Create password" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500" />
+            <button class="btn-primary rounded-xl px-5 py-3 text-sm font-semibold">Create creator account</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="tools" class="py-6 sm:py-8" aria-labelledby="engines-heading">
+        <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Intelligence engines</p>
-            <h3 id="engines-heading" class="section-title mt-1 text-2xl font-display font-semibold text-slate-900">Choose the engine you need</h3>
+            <h2 id="engines-heading" class="mt-1 font-display text-3xl font-semibold tracking-tight text-slate-900">
+              Choose the engine you need
+            </h2>
           </div>
-          <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-2 text-[11px] font-semibold text-slate-600">
-            <span class="h-2 w-2 rounded-full bg-blue-600 animate-pulse"></span>
+
+          <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-2 text-xs font-semibold text-slate-600">
+            <span class="h-2 w-2 animate-pulse rounded-full bg-blue-600"></span>
             4 engines available
           </div>
         </div>
 
         <div class="space-y-4">
-          <article class="glass-card engine-card rounded-[28px] p-0">
-            <div class="engine-toggle flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6" data-target="location-panel" aria-expanded="false">
-              <div class="flex-1 min-w-0">
-                <div class="mb-2 flex flex-wrap items-center gap-2">
-                  <span class="chip bg-blue-50 text-blue-700 border-blue-200">Lead generation</span>
-                  <span class="text-[10px] font-mono font-bold uppercase tracking-[0.12em] text-slate-600">3 tools</span>
-                </div>
-                <div class="flex items-center gap-3">
-                  <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200 bg-white shadow-sm">
-                    <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true">
-                      <path fill="#EA4335" d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.25 6.24 11.51 6.99 12.24a.7.7 0 0 0 1.02 0C13.26 21 19.5 14.75 19.5 9.5 19.5 5.36 16.14 2 12 2Z"/>
-                      <circle cx="12" cy="9.3" r="3.1" fill="#fff"/>
+          <!-- Location leads -->
+          <article id="location-engine" class="glass-card overflow-hidden rounded-[28px]">
+            <button
+              type="button"
+              class="engine-toggle flex w-full flex-col gap-4 p-5 text-left sm:flex-row sm:items-center sm:justify-between sm:p-6"
+              data-target="location-panel"
+              aria-expanded="false"
+            >
+              <span>
+                <span class="mb-2 inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-700">
+                  Lead generation
+                </span>
+                <span class="flex items-center gap-3">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200 bg-white shadow-sm">
+                    <svg class="h-6 w-6 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.25 6.24 11.51 6.99 12.24a.7.7 0 0 0 1.02 0C13.26 21 19.5 14.75 19.5 9.5 19.5 5.36 16.14 2 12 2Z" />
+                      <circle cx="12" cy="9.3" r="3.1" fill="white" />
                     </svg>
-                  </div>
-                  <h4 class="text-xl font-display font-bold text-slate-900">Location Leads</h4>
-                </div>
-                <p class="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">
-                  Find verified local businesses, creators, and collaborators from any target location and export clean contact data into Excel-ready sheets.
-                </p>
-              </div>
+                  </span>
+                  <span class="font-display text-xl font-bold text-slate-900">Location Leads</span>
+                </span>
+                <span class="mt-3 block max-w-2xl text-sm leading-relaxed text-slate-600">
+                  Find verified local businesses, creators, and collaborators from any target location.
+                </span>
+              </span>
 
-              <button type="button" class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 px-4 py-2.5 text-xs font-bold text-slate-700 transition hover:bg-slate-200" aria-controls="location-panel" aria-expanded="false">
-                <span>Run &amp; expand</span>
-                <svg class="h-4 w-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                  <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+              <span class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-slate-100 px-4 py-2.5 text-xs font-bold text-slate-700">
+                Open tools
+                <svg class="chevron h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="m19 9-7 7-7-7" />
                 </svg>
-              </button>
-            </div>
+              </span>
+            </button>
 
-            <div id="location-panel" class="engine-panel hidden border-t border-slate-100 bg-slate-50/70 p-4 sm:p-6" aria-label="Location Leads tools">
-              <div class="space-y-4">
-                <div class="tool-card rounded-2xl border border-blue-200 bg-white p-4 shadow-sm">
-                  <div class="tool-toggle flex items-start justify-between gap-3" data-target="tool-1a" aria-expanded="true">
-                    <div class="flex items-start gap-3">
-                      <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-yellow-300 via-pink-500 to-orange-500 text-white shadow-sm">
-                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                          <rect x="3" y="3" width="18" height="18" rx="5"/>
-                          <circle cx="12" cy="12" r="4"/>
-                          <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="flex items-center gap-2">
-                          <h5 class="text-sm font-bold text-slate-900">Instagram Leads Tool</h5>
-                          <span class="hidden rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-[10px] font-semibold text-slate-700 sm:inline">Single-sheet Excel</span>
-                        </div>
-                        <p class="mt-1 text-xs text-slate-600">Verified local businesses, creators, and collaborators in one export.</p>
-                      </div>
+            <div id="location-panel" class="engine-panel hidden border-t border-slate-100 bg-slate-50/70 p-4 sm:p-6">
+              <div class="grid gap-4 lg:grid-cols-2">
+                <div id="instagram-leads" class="rounded-2xl border border-blue-200 bg-white p-5 shadow-sm">
+                  <div class="mb-4 flex items-center gap-3">
+                    <span class="menu-icon h-11 w-11 bg-gradient-to-br from-yellow-300 via-pink-500 to-orange-500 text-white">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="3" y="3" width="18" height="18" rx="5" />
+                        <circle cx="12" cy="12" r="4" />
+                        <circle cx="17.5" cy="6.5" r="1.3" fill="currentColor" stroke="none" />
+                      </svg>
+                    </span>
+                    <div>
+                      <h3 class="font-bold text-slate-900">Instagram Leads Tool</h3>
+                      <p class="text-xs text-slate-600">Find local businesses and creators.</p>
                     </div>
-                    <svg class="h-5 w-5 text-blue-600 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                      <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
                   </div>
 
-                  <div id="tool-1a" class="mt-4 space-y-4">
-                    <div class="grid gap-4 sm:grid-cols-2">
-                      <div>
-                        <label class="mb-1.5 block text-xs font-semibold text-slate-700">Target location / city / area</label>
-                        <input type="text" placeholder="e.g. Bandra, Dubai, London, New York" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-blue-500" />
-                      </div>
-                      <div>
-                        <label class="mb-1.5 block text-xs font-semibold text-slate-700">Follow-up niche (optional)</label>
-                        <input type="text" placeholder="e.g. cafes, real estate, salons" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-blue-500" />
-                      </div>
-                    </div>
-                    <div>
-                      <label class="mb-2 block text-xs font-semibold text-slate-700">Follower reach threshold</label>
-                      <div class="grid grid-cols-2 gap-2 sm:grid-cols-5">
-                        <button type="button" class="rounded-xl border border-blue-600 bg-blue-600 px-3 py-2.5 text-[11px] font-bold text-white">All reach</button>
-                        <button type="button" class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-[11px] font-semibold text-slate-700">1k+</button>
-                        <button type="button" class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-[11px] font-semibold text-slate-700">5k+</button>
-                        <button type="button" class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-[11px] font-semibold text-slate-700">10k+</button>
-                        <button type="button" class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-[11px] font-semibold text-slate-700">25k+</button>
-                      </div>
-                    </div>
-                    <button type="button" class="focus-ring btn-primary w-full rounded-2xl px-5 py-3.5 text-sm font-semibold shadow-lg shadow-blue-500/15">Find Instagram leads</button>
+                  <div class="grid gap-3">
+                    <input type="text" placeholder="Target location or city" class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-blue-500" />
+                    <input type="text" placeholder="Niche, such as cafes or salons" class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-blue-500" />
+                    <button type="button" class="btn-primary rounded-xl px-4 py-3 text-sm font-semibold">Find Instagram leads</button>
                   </div>
                 </div>
 
-                <div class="tool-card rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                  <div class="tool-toggle flex items-start justify-between gap-3" data-target="tool-1b" aria-expanded="false">
-                    <div class="flex items-start gap-3">
-                      <div class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white shadow-sm">
-                        <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
-                          <path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82Z"/>
-                          <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24Z"/>
-                          <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29A11.93 11.93 0 0 0 0 12c0 1.92.46 3.74 1.29 5.38l3.98-3.09Z"/>
-                          <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96Z"/>
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="flex items-center gap-2">
-                          <h5 class="text-sm font-bold text-slate-900">Google Leads from Location</h5>
-                          <span class="hidden rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-[10px] font-semibold text-slate-700 sm:inline">Lead directory</span>
-                        </div>
-                        <p class="mt-1 text-xs text-slate-600">Pull every business lead from your target location into a clean lead sheet.</p>
-                      </div>
+                <div id="google-leads" class="rounded-2xl border border-blue-200 bg-white p-5 shadow-sm">
+                  <div class="mb-4 flex items-center gap-3">
+                    <span class="menu-icon h-11 w-11">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="11" cy="11" r="7" />
+                        <path d="m20 20-4-4M8 11h6" />
+                      </svg>
+                    </span>
+                    <div>
+                      <h3 class="font-bold text-slate-900">Google Leads from Location</h3>
+                      <p class="text-xs text-slate-600">Build a clean local business directory.</p>
                     </div>
-                    <svg class="h-5 w-5 text-slate-400 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                      <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
                   </div>
 
-                  <div id="tool-1b" class="mt-4 hidden space-y-4">
-                    <div class="grid gap-4 sm:grid-cols-[minmax(0,2fr)_180px]">
-                      <div>
-                        <label class="mb-1.5 block text-xs font-semibold text-slate-700">Target query &amp; location</label>
-                        <input type="text" placeholder="e.g. cafes in Bandra, dentists in Dubai" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-blue-500" />
-                      </div>
-                      <div>
-                        <label class="mb-1.5 block text-xs font-semibold text-slate-700">Max leads</label>
-                        <select class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-blue-500">
-                          <option>10</option>
-                          <option selected>20</option>
-                          <option>50</option>
-                          <option>100</option>
-                        </select>
-                      </div>
-                    </div>
-                    <button type="button" class="focus-ring btn-primary w-full rounded-2xl px-5 py-3.5 text-sm font-semibold shadow-lg shadow-blue-500/15">Extract Google leads</button>
+                  <div class="grid gap-3">
+                    <input type="text" placeholder="Cafes in Dubai, dentists in London..." class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-blue-500" />
+                    <select class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-blue-500">
+                      <option>Maximum leads: 20</option>
+                      <option>Maximum leads: 50</option>
+                      <option>Maximum leads: 100</option>
+                    </select>
+                    <button type="button" class="btn-primary rounded-xl px-4 py-3 text-sm font-semibold">Extract Google leads</button>
                   </div>
                 </div>
               </div>
             </div>
           </article>
 
-          <article class="glass-card engine-card rounded-[28px] p-0">
-            <div class="engine-toggle flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6" data-target="score-panel" aria-expanded="false">
-              <div class="flex-1 min-w-0">
-                <div class="mb-2 flex flex-wrap items-center gap-2">
-                  <span class="chip bg-blue-50 text-blue-700 border-blue-200">Reach &amp; ROI</span>
-                  <span class="text-[10px] font-mono font-bold uppercase tracking-[0.12em] text-slate-600">AI engine</span>
-                </div>
-                <div class="flex items-center gap-3">
-                  <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 text-blue-600 shadow-sm">
-                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                      <path d="M13 10V3L4 14h7v7l9-11h-7Z" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Influencer score -->
+          <article id="score-engine" class="glass-card overflow-hidden rounded-[28px]">
+            <button
+              type="button"
+              class="engine-toggle flex w-full flex-col gap-4 p-5 text-left sm:flex-row sm:items-center sm:justify-between sm:p-6"
+              data-target="score-panel"
+              aria-expanded="false"
+            >
+              <span>
+                <span class="mb-2 inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-700">
+                  Reach and ROI
+                </span>
+                <span class="flex items-center gap-3">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 text-blue-600">
+                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M13 2 4 14h7l-1 8 9-12h-7z" />
                     </svg>
-                  </div>
-                  <h4 class="text-xl font-display font-bold text-slate-900">Influencer Benchmark Score</h4>
-                </div>
-                <p class="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">
-                  Measure authentic reach, engagement quality, bot penalties, niche fit, and momentum with a clear proof-of-ROI score.
-                </p>
-              </div>
+                  </span>
+                  <span class="font-display text-xl font-bold text-slate-900">Influencer Benchmark Score</span>
+                </span>
+                <span class="mt-3 block max-w-2xl text-sm leading-relaxed text-slate-600">
+                  Measure authentic reach, engagement quality, niche fit, and proof of ROI.
+                </span>
+              </span>
 
-              <button type="button" class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 px-4 py-2.5 text-xs font-bold text-slate-700 transition hover:bg-slate-200" aria-controls="score-panel" aria-expanded="false">
-                <span>Run &amp; expand</span>
-                <svg class="h-4 w-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                  <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+              <span class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-slate-100 px-4 py-2.5 text-xs font-bold text-slate-700">
+                Open score tool
+                <svg class="chevron h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="m19 9-7 7-7-7" />
                 </svg>
-              </button>
-            </div>
+              </span>
+            </button>
 
             <div id="score-panel" class="engine-panel hidden border-t border-slate-100 bg-slate-50/70 p-4 sm:p-6">
-              <div class="space-y-4">
-                <div class="tool-card rounded-2xl border border-blue-200 bg-white p-4 shadow-sm">
-                  <div class="tool-toggle flex items-start justify-between gap-3" data-target="tool-score-single" aria-expanded="true">
-                    <div class="flex items-start gap-3">
-                      <div class="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-100 bg-blue-50 text-blue-600">
-                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                          <path d="M13 10V3L4 14h7v7l9-11h-7Z" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="flex items-center gap-2">
-                          <h5 class="text-sm font-bold text-slate-900">Account Reach &amp; Influence Score</h5>
-                          <span class="hidden rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-[10px] font-semibold text-slate-700 sm:inline">Single profile</span>
-                        </div>
-                        <p class="mt-1 text-xs text-slate-600">Calculate reach, authenticity, niche fit, and benchmark performance for one account.</p>
-                      </div>
-                    </div>
-                    <svg class="h-5 w-5 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                      <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+              <div id="influencer-score" class="rounded-2xl border border-blue-200 bg-white p-5 shadow-sm">
+                <div class="mb-4 flex items-center gap-3">
+                  <span class="menu-icon h-11 w-11">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M13 2 4 14h7l-1 8 9-12h-7z" />
                     </svg>
-                  </div>
-
-                  <div id="tool-score-single" class="mt-4 space-y-4">
-                    <div class="grid gap-4 sm:grid-cols-2">
-                      <div>
-                        <label class="mb-1.5 block text-xs font-semibold text-slate-700">Instagram account handle</label>
-                        <input type="text" placeholder="e.g. virat.kohli, zomato" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-blue-500" />
-                      </div>
-                      <div>
-                        <label class="mb-1.5 block text-xs font-semibold text-slate-700">Primary content niche</label>
-                        <select class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-blue-500">
-                          <option>General lifestyle &amp; entertainment</option>
-                          <option>Food, cafes &amp; dining</option>
-                          <option>Fashion, beauty &amp; grooming</option>
-                          <option>Fitness, gym &amp; wellness</option>
-                          <option>Tech, gadgets &amp; AI</option>
-                        </select>
-                      </div>
-                    </div>
-                    <button type="button" class="focus-ring btn-primary w-full rounded-2xl px-5 py-3.5 text-sm font-semibold shadow-lg shadow-blue-500/15">Calculate influence score</button>
+                  </span>
+                  <div>
+                    <h3 class="font-bold text-slate-900">Account Reach and Influence Score</h3>
+                    <p class="text-xs text-slate-600">Benchmark one Instagram account.</p>
                   </div>
                 </div>
+
+                <div class="grid gap-4 sm:grid-cols-2">
+                  <input type="text" placeholder="Instagram account handle" class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-blue-500" />
+                  <select class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-blue-500">
+                    <option>General lifestyle</option>
+                    <option>Food and dining</option>
+                    <option>Fashion and beauty</option>
+                    <option>Fitness and wellness</option>
+                    <option>Technology and AI</option>
+                  </select>
+                </div>
+
+                <button type="button" class="btn-primary mt-4 w-full rounded-xl px-4 py-3 text-sm font-semibold">
+                  Calculate influence score
+                </button>
               </div>
             </div>
           </article>
 
-          <article class="glass-card engine-card rounded-[28px] p-0">
-            <div class="engine-toggle flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6" data-target="account-panel" aria-expanded="false">
-              <div class="flex-1 min-w-0">
-                <div class="mb-2 flex flex-wrap items-center gap-2">
-                  <span class="chip bg-blue-50 text-blue-700 border-blue-200">Account intelligence</span>
-                  <span class="text-[10px] font-mono font-bold uppercase tracking-[0.12em] text-slate-600">5 tools</span>
-                </div>
-                <div class="flex items-center gap-3">
-                  <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 text-blue-600 shadow-sm">
-                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                      <path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm-8 9a7 7 0 0 1 14 0" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Account tools -->
+          <article id="platform-tools" class="glass-card overflow-hidden rounded-[28px]">
+            <button
+              type="button"
+              class="engine-toggle flex w-full flex-col gap-4 p-5 text-left sm:flex-row sm:items-center sm:justify-between sm:p-6"
+              data-target="account-panel"
+              aria-expanded="false"
+            >
+              <span>
+                <span class="mb-2 inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-700">
+                  Platform intelligence
+                </span>
+                <span class="flex items-center gap-3">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 text-blue-600">
+                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4" />
+                      <path d="M4 21a8 8 0 0 1 16 0" />
                     </svg>
-                  </div>
-                  <h4 class="text-xl font-display font-bold text-slate-900">Account Tools</h4>
-                </div>
-                <p class="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">
-                  Audit account metrics, inspect posts and reels, mine comments, and review YouTube and X performance in one workflow.
-                </p>
-              </div>
+                  </span>
+                  <span class="font-display text-xl font-bold text-slate-900">Platform Tools</span>
+                </span>
+                <span class="mt-3 block max-w-2xl text-sm leading-relaxed text-slate-600">
+                  Review YouTube, LinkedIn, X, and account performance from one workflow.
+                </span>
+              </span>
 
-              <button type="button" class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 px-4 py-2.5 text-xs font-bold text-slate-700 transition hover:bg-slate-200" aria-controls="account-panel" aria-expanded="false">
-                <span>Run &amp; expand</span>
-                <svg class="h-4 w-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                  <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+              <span class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-slate-100 px-4 py-2.5 text-xs font-bold text-slate-700">
+                Open platform tools
+                <svg class="chevron h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="m19 9-7 7-7-7" />
                 </svg>
-              </button>
-            </div>
+              </span>
+            </button>
 
             <div id="account-panel" class="engine-panel hidden border-t border-slate-100 bg-slate-50/70 p-4 sm:p-6">
-              <div class="space-y-4">
-                <div class="tool-card rounded-2xl border border-blue-200 bg-white p-4 shadow-sm">
-                  <div class="tool-toggle flex items-start justify-between gap-3" data-target="tool-account-audit" aria-expanded="true">
-                    <div class="flex items-start gap-3">
-                      <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-yellow-300 via-pink-500 to-orange-500 text-white shadow-sm">
-                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                          <rect x="3" y="3" width="18" height="18" rx="5"/>
-                          <circle cx="12" cy="12" r="4"/>
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="flex items-center gap-2">
-                          <h5 class="text-sm font-bold text-slate-900">Account Deep Audit</h5>
-                          <span class="hidden rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-[10px] font-semibold text-slate-700 sm:inline">Deep audit</span>
-                        </div>
-                        <p class="mt-1 text-xs text-slate-600">Audit bio, contacts, posts, reels, and comments to one exportable sheet.</p>
-                      </div>
-                    </div>
-                    <svg class="h-5 w-5 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                      <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+              <div class="grid gap-4 md:grid-cols-3">
+                <div id="youtube-tools" class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <span class="menu-icon mb-4 h-11 w-11 text-red-600">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="5" width="18" height="14" rx="4" />
+                      <path d="m10 9 5 3-5 3z" />
                     </svg>
-                  </div>
+                  </span>
+                  <h3 class="font-bold text-slate-900">YouTube Tools</h3>
+                  <p class="mt-2 text-sm text-slate-600">Review channel reach, videos, and audience signals.</p>
+                  <button type="button" class="mt-4 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50">
+                    Open YouTube tools
+                  </button>
+                </div>
 
-                  <div id="tool-account-audit" class="mt-4 space-y-4">
-                    <div>
-                      <label class="mb-1.5 block text-xs font-semibold text-slate-700">Account handle or business name</label>
-                      <input type="text" placeholder="e.g. zomato, techburner, anushkasen0408" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-blue-500" />
-                    </div>
-                    <button type="button" class="focus-ring btn-primary w-full rounded-2xl px-5 py-3.5 text-sm font-semibold shadow-lg shadow-blue-500/15">Start account audit</button>
-                  </div>
+                <div id="linkedin-tools" class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <span class="menu-icon mb-4 h-11 w-11 text-blue-700">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="4" y="4" width="16" height="16" rx="2" />
+                      <path d="M8 10v6M8 7.5v.01M12 16v-4a2 2 0 0 1 4 0v4M12 10v6" />
+                    </svg>
+                  </span>
+                  <h3 class="font-bold text-slate-900">LinkedIn Tools</h3>
+                  <p class="mt-2 text-sm text-slate-600">Find professional prospects and business opportunities.</p>
+                  <button type="button" class="mt-4 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50">
+                    Open LinkedIn tools
+                  </button>
+                </div>
+
+                <div id="x-tools" class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <span class="menu-icon mb-4 h-11 w-11 text-slate-900">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 4 19 20M19 4 5 20" />
+                    </svg>
+                  </span>
+                  <h3 class="font-bold text-slate-900">X / Twitter Tools</h3>
+                  <p class="mt-2 text-sm text-slate-600">Track conversations, profiles, and audience momentum.</p>
+                  <button type="button" class="mt-4 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50">
+                    Open X tools
+                  </button>
                 </div>
               </div>
             </div>
           </article>
 
-          <article class="glass-card engine-card rounded-[28px] p-0">
-            <div class="engine-toggle flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6" data-target="report-panel" aria-expanded="false">
-              <div class="flex-1 min-w-0">
-                <div class="mb-2 flex flex-wrap items-center gap-2">
-                  <span class="chip bg-blue-50 text-blue-700 border-blue-200">Reports</span>
-                  <span class="text-[10px] font-mono font-bold uppercase tracking-[0.12em] text-slate-600">Export ready</span>
+          <!-- AI automation -->
+          <article id="ai-automation" class="glass-card rounded-[28px] p-6 sm:p-8">
+            <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+              <div class="flex items-start gap-4">
+                <span class="menu-icon h-12 w-12">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" />
+                    <circle cx="12" cy="12" r="4" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">AI automation</p>
+                  <h2 class="mt-1 font-display text-2xl font-bold text-slate-900">
+                    Automate your business with AI
+                  </h2>
+                  <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
+                    Turn repetitive research, qualification, reporting, and outreach workflows into a streamlined AI-powered operating system.
+                  </p>
                 </div>
-                <div class="flex items-center gap-3">
-                  <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200 bg-white shadow-sm">
-                    <svg class="h-6 w-6 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                      <path d="M7 3.5h7l5 5V19a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5.5a2 2 0 0 1 2-2Z" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M14 3.5v5h5M9 12h6M9 16h6" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
-                  <h4 class="text-xl font-display font-bold text-slate-900">Excel Report Archive</h4>
-                </div>
-                <p class="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">
-                  Save every research run, export results across campaigns, and keep your outreach pipeline organized in shareable Excel reports.
-                </p>
               </div>
 
-              <button type="button" class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 px-4 py-2.5 text-xs font-bold text-slate-700 transition hover:bg-slate-200" aria-controls="report-panel" aria-expanded="false">
-                <span>Open archive</span>
-                <svg class="h-4 w-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                  <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+              <button type="button" class="btn-primary shrink-0 rounded-xl px-5 py-3 text-sm font-semibold" data-route="business-signup">
+                Automate my workflow
               </button>
             </div>
-
-            <div id="report-panel" class="engine-panel hidden border-t border-slate-100 bg-slate-50/70 p-4 sm:p-6">
-              <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">Ready to export</div>
-                    <h5 class="mt-1 text-lg font-display font-bold text-slate-900">Saved reports</h5>
-                  </div>
-                  <button type="button" class="focus-ring btn-primary rounded-xl px-4 py-2.5 text-sm font-semibold">View all reports</button>
-                </div>
-                <div class="mt-4 grid gap-3 sm:grid-cols-3">
-                  <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
-                    <div class="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">Local leads</div>
-                    <div class="mt-1 font-display text-xl font-bold text-slate-900">18</div>
-                  </div>
-                  <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
-                    <div class="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">Creator scores</div>
-                    <div class="mt-1 font-display text-xl font-bold text-slate-900">7</div>
-                  </div>
-                  <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
-                    <div class="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">Campaign exports</div>
-                    <div class="mt-1 font-display text-xl font-bold text-slate-900">11</div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </article>
         </div>
       </section>
 
-      <section class="py-8" aria-labelledby="why-use-heading">
+      <section class="py-8">
         <div class="mb-5">
           <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Why teams use Vanguard</p>
-          <h3 id="why-use-heading" class="section-title mt-1 text-2xl font-display font-semibold text-slate-900">Built to keep outreach fast, measurable, and brand-safe</h3>
+          <h2 class="mt-1 font-display text-2xl font-semibold text-slate-900">
+            Built to keep growth fast and measurable
+          </h2>
         </div>
 
         <div class="grid gap-4 md:grid-cols-3">
           <div class="glass-card rounded-3xl p-5">
-            <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M3 12h18M12 3v18" stroke-linecap="round"/>
+            <span class="menu-icon mb-4 h-10 w-10">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3v18M3 12h18" />
               </svg>
-            </div>
-            <h4 class="text-lg font-display font-semibold text-slate-900">Verified data</h4>
-            <p class="mt-2 text-sm leading-relaxed text-slate-600">Target local businesses, creators, and decision-makers using high-intent data collected from relevant platforms and directories.</p>
+            </span>
+            <h3 class="font-display text-lg font-semibold text-slate-900">Verified data</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Target local businesses, creators, and decision-makers using high-intent data.
+            </p>
           </div>
 
           <div class="glass-card rounded-3xl p-5">
-            <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M5 12.5V6.5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6M5 12.5v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5" stroke-linecap="round" stroke-linejoin="round"/>
+            <span class="menu-icon mb-4 h-10 w-10">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 3h10v18H7zM10 7h4M10 11h4M10 15h4" />
               </svg>
-            </div>
-            <h4 class="text-lg font-display font-semibold text-slate-900">Export-ready reporting</h4>
-            <p class="mt-2 text-sm leading-relaxed text-slate-600">Every result can be moved into a clear Excel workflow so teams can act quickly without manual cleanup.</p>
+            </span>
+            <h3 class="font-display text-lg font-semibold text-slate-900">Export-ready reports</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Keep every lead, score, and campaign insight organized for action.
+            </p>
           </div>
 
           <div class="glass-card rounded-3xl p-5">
-            <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M12 3v18M3 12h18" stroke-linecap="round"/>
+            <span class="menu-icon mb-4 h-10 w-10">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2 4 14h7l-1 8 9-12h-7z" />
               </svg>
-            </div>
-            <h4 class="text-lg font-display font-semibold text-slate-900">Clear ROI signals</h4>
-            <p class="mt-2 text-sm leading-relaxed text-slate-600">Benchmark creators by reach, engagement patterns, niche fit, and authenticity so every recommendation is grounded in evidence.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="py-8" aria-labelledby="workflow-heading">
-        <div class="mb-5">
-          <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Simple workflow</p>
-          <h3 id="workflow-heading" class="section-title mt-1 text-2xl font-display font-semibold text-slate-900">From discovery to outreach in a few steps</h3>
-        </div>
-
-        <div class="grid gap-4 md:grid-cols-3">
-          <div class="glass-card rounded-3xl p-5">
-            <div class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-blue-600">01</div>
-            <h4 class="text-lg font-display font-semibold text-slate-900">Choose a target</h4>
-            <p class="mt-2 text-sm leading-relaxed text-slate-600">Use location filters, keyword targeting, or creator lookups to narrow the market.</p>
-          </div>
-          <div class="glass-card rounded-3xl p-5">
-            <div class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-blue-600">02</div>
-            <h4 class="text-lg font-display font-semibold text-slate-900">Run an intelligence engine</h4>
-            <p class="mt-2 text-sm leading-relaxed text-slate-600">Pull verified leads, score creator quality, or inspect a profile in seconds.</p>
-          </div>
-          <div class="glass-card rounded-3xl p-5">
-            <div class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-blue-600">03</div>
-            <h4 class="text-lg font-display font-semibold text-slate-900">Export and act</h4>
-            <p class="mt-2 text-sm leading-relaxed text-slate-600">Deliver a clean lead sheet or report to sales, partnerships, or growth teams for execution.</p>
+            </span>
+            <h3 class="font-display text-lg font-semibold text-slate-900">Clear ROI signals</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Make smarter outreach decisions with measurable performance signals.
+            </p>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="border-t border-slate-200 bg-white/70">
-      <div class="container flex flex-col gap-4 py-8 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between">
+      <div class="container flex flex-col gap-3 py-8 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <span class="font-display text-lg font-semibold text-slate-900">Vanguard Social</span>
           <span class="ml-2 text-slate-500">AI lead generation and creator intelligence.</span>
         </div>
-        <div class="flex items-center gap-4 text-xs font-medium sm:text-sm">
-          <a href="#" class="focus-ring rounded-md px-1 py-1 text-slate-600 hover:text-slate-900">Privacy</a>
-          <a href="#" class="focus-ring rounded-md px-1 py-1 text-slate-600 hover:text-slate-900">Terms</a>
-          <a href="#" class="focus-ring rounded-md px-1 py-1 text-slate-600 hover:text-slate-900">Contact</a>
+
+        <div class="flex gap-4 text-xs font-medium sm:text-sm">
+          <a href="#tools" class="hover:text-slate-900">Privacy</a>
+          <a href="#tools" class="hover:text-slate-900">Terms</a>
+          <a href="#business-signup" data-route="business-signup" class="hover:text-slate-900">Contact</a>
         </div>
       </div>
     </footer>
 
     <script>
+      const menuToggle = document.getElementById('menuToggle');
+      const menuDropdown = document.getElementById('menuDropdown');
+      const accountToggle = document.getElementById('accountToggle');
+      const accountDropdown = document.getElementById('accountDropdown');
+
       const engineToggles = document.querySelectorAll('.engine-toggle');
-      const toolToggles = document.querySelectorAll('.tool-toggle');
+
+      const routeTargets = {
+        tools: '#tools',
+        google-leads: '#google-leads',
+        influencer-score: '#influencer-score',
+        instagram-leads: '#instagram-leads',
+        youtube-tools: '#youtube-tools',
+        linkedin-tools: '#linkedin-tools',
+        x-tools: '#x-tools',
+        'ai-automation': '#ai-automation',
+        reports: '#ai-automation',
+        'business-login': '#business-login',
+        'creator-login': '#creator-login',
+        'business-signup': '#business-signup',
+        'creator-signup': '#creator-signup'
+      };
+
+      function closeMenus() {
+        [menuDropdown, accountDropdown].forEach((panel) => {
+          if (panel) panel.classList.remove('open');
+        });
+
+        [menuToggle, accountToggle].forEach((button) => {
+          if (button) button.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      function toggleMenu(button, panel) {
+        const wasOpen = panel.classList.contains('open');
+        closeMenus();
+
+        if (!wasOpen) {
+          panel.classList.add('open');
+          button.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      menuToggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        toggleMenu(menuToggle, menuDropdown);
+      });
+
+      accountToggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        toggleMenu(accountToggle, accountDropdown);
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!event.target.closest('.nav-dropdown')) {
+          closeMenus();
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeMenus();
+        }
+      });
 
       engineToggles.forEach((toggle) => {
         toggle.addEventListener('click', () => {
           const targetId = toggle.dataset.target;
           const panel = document.getElementById(targetId);
-          const button = toggle.querySelector('button') || toggle;
           const expanded = toggle.getAttribute('aria-expanded') === 'true';
-
-          if (!panel) return;
-
-          toggle.setAttribute('aria-expanded', String(!expanded));
-          if (button && button.tagName === 'BUTTON') {
-            button.setAttribute('aria-expanded', String(!expanded));
-          }
-
-          panel.hidden = expanded;
-
-          const chevron = button?.querySelector('svg');
-          if (chevron) {
-            chevron.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
-          }
-        });
-      });
-
-      toolToggles.forEach((toggle) => {
-        toggle.addEventListener('click', () => {
-          const targetId = toggle.dataset.target;
-          const panel = document.getElementById(targetId);
-          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          const chevron = toggle.querySelector('.chevron');
 
           if (!panel) return;
 
           toggle.setAttribute('aria-expanded', String(!expanded));
           panel.hidden = expanded;
 
-          const chevron = toggle.parentElement?.querySelector('svg:last-of-type') || toggle.querySelector('svg:last-of-type');
           if (chevron) {
             chevron.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
           }
         });
       });
 
-      const glow = document.getElementById('cursorGlow');
-      if (window.matchMedia('(pointer: fine)').matches) {
-        window.addEventListener('pointermove', (event) => {
-          const x = event.clientX;
-          const y = event.clientY;
-          glow.style.left = `${x}px`;
-          glow.style.top = `${y}px`;
-          glow.classList.add('active');
-        });
-        window.addEventListener('pointerleave', () => glow.classList.remove('active'));
+      function openRelevantEngine(targetId) {
+        if (targetId === 'google-leads' || targetId === 'instagram-leads') {
+          const toggle = document.querySelector('[data-target="location-panel"]');
+          const panel = document.getElementById('location-panel');
+
+          if (toggle && panel) {
+            toggle.setAttribute('aria-expanded', 'true');
+            panel.hidden = false;
+            const chevron = toggle.querySelector('.chevron');
+            if (chevron) chevron.style.transform = 'rotate(180deg)';
+          }
+        }
+
+        if (targetId === 'influencer-score') {
+          const toggle = document.querySelector('[data-target="score-panel"]');
+          const panel = document.getElementById('score-panel');
+
+          if (toggle && panel) {
+            toggle.setAttribute('aria-expanded', 'true');
+            panel.hidden = false;
+            const chevron = toggle.querySelector('.chevron');
+            if (chevron) chevron.style.transform = 'rotate(180deg)';
+          }
+        }
+
+        if (['youtube-tools', 'linkedin-tools', 'x-tools'].includes(targetId)) {
+          const toggle = document.querySelector('[data-target="account-panel"]');
+          const panel = document.getElementById('account-panel');
+
+          if (toggle && panel) {
+            toggle.setAttribute('aria-expanded', 'true');
+            panel.hidden = false;
+            const chevron = toggle.querySelector('.chevron');
+            if (chevron) chevron.style.transform = 'rotate(180deg)';
+          }
+        }
       }
+
+      function showRoute(route, updateHash = true) {
+        closeMenus();
+
+        document.querySelectorAll('.route-panel').forEach((panel) => {
+          panel.classList.remove('active');
+        });
+
+        const targetSelector = routeTargets[route] || '#tools';
+        const target = document.querySelector(targetSelector);
+
+        if (!target) return;
+
+        const isAccountRoute = target.classList.contains('route-panel');
+
+        if (isAccountRoute) {
+          document.getElementById('accountRoutes').classList.remove('hidden-route');
+          target.classList.add('active');
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          document.getElementById('accountRoutes').classList.add('hidden-route');
+          openRelevantEngine(route);
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        if (updateHash && window.location.hash !== `#${route}`) {
+          history.pushState({ route }, '', `#${route}`);
+        }
+      }
+
+      document.querySelectorAll('[data-route]').forEach((element) => {
+        element.addEventListener('click', (event) => {
+          const route = element.dataset.route;
+
+          if (!route || !routeTargets[route]) return;
+
+          event.preventDefault();
+          showRoute(route);
+        });
+      });
+
+      document.querySelectorAll('.menu-item').forEach((item) => {
+        item.addEventListener('click', (event) => {
+          event.preventDefault();
+          showRoute(item.dataset.route);
+        });
+      });
+
+      document.querySelectorAll('.route-form').forEach((form) => {
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          const button = form.querySelector('button');
+          const originalText = button.textContent;
+
+          button.textContent = 'Request received';
+          button.disabled = true;
+
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+          }, 1800);
+        });
+      });
+
+      function routeFromHash() {
+        const route = window.location.hash.replace('#', '');
+
+        if (route && routeTargets[route]) {
+          setTimeout(() => showRoute(route, false), 100);
+        }
+      }
+
+      window.addEventListener('popstate', routeFromHash);
+      window.addEventListener('hashchange', routeFromHash);
+
+      routeFromHash();
     </script>
   </body>
 </html>
