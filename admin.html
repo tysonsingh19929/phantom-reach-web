@@ -2,615 +2,648 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vanguard Social — Master Admin Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Vanguard Social — Master Control Plane</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230F172A'/%3E%3Cpath d='M6 6h3.4L12 14.6 14.6 6H18l-5 12h-2L6 6Z' fill='white'/%3E%3C/svg%3E">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Lexend', 'Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg-dark: #090d16;
-      --card-bg: #111827;
-      --card-border: #1f293d;
-      --primary: #6366f1;
-      --primary-hover: #4f46e5;
-      --accent: #06b6d4;
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+    *, ::before, ::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--bg-dark);
-      color: var(--text-main);
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      min-height: 100dvh;
+      color: #0f172a;
+      font-family: Inter, sans-serif;
+      background: linear-gradient(135deg, #f8fbff, #eef6ff 42%, #fff);
+      touch-action: manipulation;
     }
-    header {
-      background: #0f172a;
-      border-bottom: 1px solid var(--card-border);
-      padding: 14px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 50;
+    .font-display { font-family: Lexend, Inter, sans-serif; }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1.2rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
+    .glass {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 25px 50px -12px rgba(15,23,42,.15);
     }
-    .brand-badge {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
+    .primary {
+      background: linear-gradient(135deg, #2563eb, #0f172a);
       color: #fff;
     }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .primary:hover {
+      background: linear-gradient(135deg, #1d4ed8, #020617);
     }
-    .btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      text-decoration: none;
-    }
-    .btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
-    .btn-danger { background: #dc2626; }
-    .btn-danger:hover { background: #b91c1c; }
-    .btn-secondary { background: #1e293b; border: 1px solid var(--card-border); color: #cbd5e1; }
-    .btn-secondary:hover { background: #334155; color: #fff; }
-    .btn-success { background: #059669; }
-    .btn-success:hover { background: #047857; }
-    .btn-sm { padding: 5px 12px; font-size: 0.78rem; border-radius: 6px; }
-
-    .main-container {
-      max-width: 1380px;
+    .input {
       width: 100%;
-      margin: 0 auto;
-      padding: 24px;
-      flex: 1;
+      border-radius: 0.75rem;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      padding: 0.65rem 0.85rem;
+      font-size: 0.875rem;
+      color: #0f172a;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
     }
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
+    .input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
     }
-    .kpi-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: var(--card-shadow);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .kpi-title { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; }
-    .kpi-value { font-size: 1.8rem; font-weight: 800; color: var(--text-main); font-family: 'JetBrains Mono', monospace; }
-    .kpi-sub { font-size: 0.75rem; color: var(--text-muted); }
-
-    .tab-bar {
-      display: flex;
-      gap: 8px;
-      border-bottom: 1px solid var(--card-border);
-      margin-bottom: 24px;
-      overflow-x: auto;
-    }
-    .tab-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      padding: 12px 20px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .tab-btn.active {
-      color: var(--primary);
-      border-bottom: 2px solid var(--primary);
-    }
-
-    .section-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: var(--card-shadow);
-      margin-bottom: 24px;
-    }
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .section-title { font-size: 1.15rem; font-weight: 700; }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
-    }
-    th {
-      text-align: left;
-      padding: 12px;
-      border-bottom: 1px solid var(--card-border);
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-    td {
-      padding: 14px 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    tr:hover td { background: rgba(255,255,255,0.02); }
-
-    .badge {
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 12px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-    .badge-idle { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid #10b981; }
-    .badge-busy { background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid #3b82f6; }
-    .badge-cooldown { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid #f59e0b; }
-    .badge-invalid { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid #ef4444; }
-    .badge-active { background: rgba(16, 185, 129, 0.15); color: #10b981; }
-    .badge-suspended { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
-
-    /* Modal Overlay */
     .modal-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.75);
+      background: rgba(15, 23, 42, 0.5);
       backdrop-filter: blur(4px);
       z-index: 100;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 1rem;
     }
     .modal-overlay.active { display: flex; }
-    .modal-box {
-      background: #1e293b;
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      width: 100%;
-      max-width: 520px;
-      padding: 24px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-    }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .form-group {
-      margin-bottom: 16px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%;
-      background: #0f172a;
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      outline: none;
-      font-family: inherit;
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: var(--primary);
-    }
-
-    /* Auth Gate Screen */
-    #authGateScreen {
-      position: fixed;
-      inset: 0;
-      background: var(--bg-dark);
-      z-index: 200;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    .auth-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      width: 100%;
-      max-width: 440px;
-      padding: 32px;
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
-      text-align: center;
-    }
-
-    /* Connection Pill */
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      display: inline-block;
-      transition: background 0.3s;
-    }
-    .status-dot-green { background: #10b981; box-shadow: 0 0 8px #10b981; }
-    .status-dot-amber { background: #f59e0b; box-shadow: 0 0 8px #f59e0b; }
-    .status-dot-red { background: #ef4444; box-shadow: 0 0 8px #ef4444; }
   </style>
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
 
-  <!-- AUTHENTICATION SCREEN -->
-  <div id="authGateScreen">
-    <div class="auth-card">
-      <div style="margin-bottom: 16px;">
-        <span class="brand-badge">Administrative Access Only</span>
-      </div>
-      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 8px;">Vanguard Admin Portal</h2>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px;">Authenticate with the Admin Master Key to enter the system control plane.</p>
-      
-      <div class="form-group" style="text-align: left;">
-        <label>Admin Master Key or Password</label>
-        <input type="password" id="adminKeyInput" placeholder="Enter master key..." onkeydown="if(event.key==='Enter') loginAdmin()">
-      </div>
-
-      <!-- Backend Server Configuration Box -->
-      <div style="margin-bottom: 20px; padding: 12px; background: #0c1220; border: 1px dashed var(--card-border); border-radius: 10px; text-align: left;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-          <label style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0;">
-            Backend API Endpoint
-          </label>
-          <span id="authApiStatusBadge" style="font-size: 0.7rem; font-family: monospace; color: #94a3b8;">Local / Direct</span>
+  <!-- ================= AUTHENTICATION SCREEN ================= -->
+  <div id="authGateScreen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+    <div class="card rounded-3xl p-6 sm:p-10 max-w-md w-full shadow-2xl relative border border-slate-200">
+      <div class="text-center mb-6">
+        <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 font-display text-xl font-bold text-white shadow-md mb-4">
+          V
         </div>
-        <div style="display: flex; gap: 8px;">
-          <input type="text" id="authApiInput" placeholder="https://your-tunnel.trycloudflare.com" style="font-size: 0.8rem; padding: 7px 10px;" oninput="onAuthApiInputChanged()">
-          <button class="btn btn-secondary btn-sm" type="button" onclick="testAuthApiConnection()">Ping</button>
+        <div class="flex items-center justify-center gap-2 mb-1.5">
+          <h2 class="font-display text-2xl font-bold text-slate-900">Vanguard Social</h2>
+          <span class="rounded-md bg-blue-50 border border-blue-200 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-blue-700">Admin</span>
         </div>
-        <p style="font-size: 0.7rem; color: #64748b; margin-top: 5px; line-height: 1.3;">
-          When hosted on Vercel, enter your backend server URL (e.g. Cloudflare tunnel or deployed API).
-        </p>
+        <p class="text-xs text-slate-500">Authenticate with the Admin Master Key to enter the system control plane.</p>
       </div>
 
-      <div id="loginError" style="color: var(--danger); font-size: 0.8rem; margin-bottom: 14px; display: none;"></div>
-      <button class="btn" style="width: 100%; justify-content: center; padding: 12px;" onclick="loginAdmin()">Authenticate &amp; Enter Control Plane</button>
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Admin Master Key</label>
+          <input type="password" id="adminKeyInput" placeholder="Enter master key..." onkeydown="if(event.key==='Enter') loginAdmin()" class="input">
+        </div>
+
+        <!-- Backend Target Configuration Accordion -->
+        <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-600">Backend API Endpoint</span>
+            <span id="authApiStatusBadge" class="text-[11px] font-mono text-slate-500 font-semibold">Local / Auto</span>
+          </div>
+          <div class="flex gap-2">
+            <input type="text" id="authApiInput" placeholder="https://your-tunnel.trycloudflare.com" oninput="onAuthApiInputChanged()" class="input text-xs py-2">
+            <button type="button" onclick="testAuthApiConnection()" class="px-3 py-2 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap cursor-pointer">
+              Ping
+            </button>
+          </div>
+          <p class="text-[10px] text-slate-500 mt-2 leading-tight">
+            Leave blank to use automatic Vercel serverless gateway &amp; MongoDB Atlas sync.
+          </p>
+        </div>
+
+        <div id="loginError" class="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold hidden"></div>
+
+        <button type="button" onclick="loginAdmin()" class="primary w-full rounded-xl py-3 text-sm font-semibold shadow-md cursor-pointer transition flex items-center justify-center gap-2">
+          <span>Authenticate &amp; Enter Control Plane</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <div class="mt-6 text-center">
+        <a href="/" class="text-xs font-semibold text-blue-600 hover:text-blue-700 transition">← Back to User Site</a>
+      </div>
     </div>
   </div>
 
-  <!-- ADMIN PORTAL HEADER -->
-  <header>
-    <div class="brand">
-      <span>🛡️ Vanguard Social</span>
-      <span class="brand-badge">Control Plane</span>
-    </div>
-    <div class="nav-actions">
-      <button class="btn btn-secondary btn-sm" onclick="openModal('apiConfigModal')" id="headerApiBtn" title="Click to view or edit backend API URL">
-        <span class="status-dot status-dot-green" id="headerApiDot"></span>
-        <span id="headerApiLabel" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">API: Ready</span>
-      </button>
-      <button class="btn btn-secondary btn-sm" onclick="refreshData()">🔄 Refresh</button>
-      <a href="/" target="_blank" class="btn btn-secondary btn-sm">🌐 Open User App</a>
-      <button class="btn btn-danger btn-sm" onclick="logoutAdmin()">🚪 Logout</button>
+  <!-- ================= TOP NAVIGATION HEADER ================= -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo & Title -->
+      <div class="flex items-center gap-3">
+        <a href="/admin" class="flex items-center gap-3 no-underline">
+          <span class="grid h-10 w-10 place-items-center rounded-xl bg-slate-900 font-display text-lg font-bold text-white shadow-sm">V</span>
+          <span class="font-display text-lg font-bold text-slate-900">Vanguard Social</span>
+        </a>
+        <span class="rounded-md bg-blue-50 border border-blue-200 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-blue-700">
+          Control Plane
+        </span>
+      </div>
+
+      <!-- Header Actions -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        
+        <!-- Live API Status Pill -->
+        <button type="button" onclick="openModal('apiConfigModal')" id="headerApiBtn" class="inline-flex h-9 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 shadow-sm hover:bg-slate-50 transition cursor-pointer" title="Inspect Backend Connection">
+          <span id="headerApiDot" class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span id="headerApiLabel" class="font-mono text-[11px] font-semibold text-slate-700">API: Ready</span>
+        </button>
+
+        <!-- Refresh Button -->
+        <button type="button" onclick="refreshData()" class="inline-flex h-9 items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 text-slate-700 shadow-sm hover:bg-slate-50 transition text-xs font-semibold cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21h5v-5"/></svg>
+          <span class="hidden sm:inline">Refresh</span>
+        </button>
+
+        <!-- Open User App -->
+        <a href="/" target="_blank" class="inline-flex h-9 items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 text-slate-700 shadow-sm hover:bg-slate-50 transition text-xs font-semibold">
+          <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <span class="hidden sm:inline">User App</span>
+        </a>
+
+        <!-- Sign Out Button -->
+        <button type="button" onclick="logoutAdmin()" class="inline-flex h-9 items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 text-rose-700 px-3 hover:bg-rose-100 transition text-xs font-semibold cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-rose-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          <span>Logout</span>
+        </button>
+
+      </div>
     </div>
   </header>
 
-  <div class="main-container">
+  <!-- ================= MAIN DASHBOARD CONTAINER ================= -->
+  <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 flex-1">
 
-    <!-- OVERVIEW KPIS -->
-    <div class="kpi-grid">
-      <div class="kpi-card">
-        <span class="kpi-title">Scraper Fleet Pool</span>
-        <span class="kpi-value" id="kpiTotalPool">--</span>
-        <span class="kpi-sub" id="kpiPoolSub">0 Idle • 0 Cooldown</span>
-      </div>
-      <div class="kpi-card">
-        <span class="kpi-title">Platform Users</span>
-        <span class="kpi-value" id="kpiTotalUsers">--</span>
-        <span class="kpi-sub" id="kpiUsersSub">0 Active • 0 Suspended</span>
-      </div>
-      <div class="kpi-card">
-        <span class="kpi-title">Intelligence Reports</span>
-        <span class="kpi-value" id="kpiTotalReports">--</span>
-        <span class="kpi-sub">Generated &amp; persisted</span>
-      </div>
-      <div class="kpi-card">
-        <span class="kpi-title">Fleet Security</span>
-        <span class="kpi-value" style="color: var(--success);" id="kpiFleetHealth">HEALTHY</span>
-        <span class="kpi-sub">Multi-Worker Concurrency Active</span>
-      </div>
-    </div>
-
-    <!-- TABS -->
-    <div class="tab-bar">
-      <button class="tab-btn active" onclick="switchTab('fleetTab', this)">🤖 Scraper Fleet (100+ Accounts)</button>
-      <button class="tab-btn" onclick="switchTab('usersTab', this)">👥 Platform Users &amp; Access</button>
-      <button class="tab-btn" onclick="switchTab('logsTab', this)">📜 System &amp; Audit Logs</button>
-    </div>
-
-    <!-- TAB 1: SCRAPER FLEET -->
-    <div id="fleetTab" class="tab-content">
-      <div class="section-card">
-        <div class="section-header">
-          <div>
-            <h3 class="section-title">Internal Scraping Accounts Pool</h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Accounts leased by the backend to fetch Instagram data, Score Me metrics, and audit comments without rate-limit downtime.</p>
+    <!-- EXECUTIVE KPIS GRID -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      
+      <!-- KPI 1: Fleet Pool -->
+      <div class="card rounded-2xl p-5 border border-slate-200">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Scraper Fleet Pool</span>
+          <div class="p-2 rounded-xl bg-blue-50 text-blue-600">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 15h.01M16 15h.01"/></svg>
           </div>
-          <div style="display: flex; gap: 8px;">
-            <button class="btn btn-secondary btn-sm" onclick="openModal('bulkImportModal')">📥 Bulk Import (100+)</button>
-            <button class="btn btn-sm" onclick="openModal('addScraperModal')">➕ Add Single Account</button>
+        </div>
+        <div id="kpiTotalPool" class="font-display text-3xl font-extrabold text-slate-900">--</div>
+        <div id="kpiPoolSub" class="text-xs text-slate-500 mt-1">0 Idle • 0 Cooldown</div>
+      </div>
+
+      <!-- KPI 2: Platform Users -->
+      <div class="card rounded-2xl p-5 border border-slate-200">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Platform Clients</span>
+          <div class="p-2 rounded-xl bg-indigo-50 text-indigo-600">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+        </div>
+        <div id="kpiTotalUsers" class="font-display text-3xl font-extrabold text-slate-900">--</div>
+        <div id="kpiUsersSub" class="text-xs text-slate-500 mt-1">0 Active • 0 Suspended</div>
+      </div>
+
+      <!-- KPI 3: Intelligence Reports -->
+      <div class="card rounded-2xl p-5 border border-slate-200">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Intelligence Records</span>
+          <div class="p-2 rounded-xl bg-purple-50 text-purple-600">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+        </div>
+        <div id="kpiTotalReports" class="font-display text-3xl font-extrabold text-slate-900">--</div>
+        <div class="text-xs text-slate-500 mt-1">Audits &amp; leads harvested</div>
+      </div>
+
+      <!-- KPI 4: Fleet Health -->
+      <div class="card rounded-2xl p-5 border border-slate-200">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Fleet Health</span>
+          <div class="p-2 rounded-xl bg-emerald-50 text-emerald-600">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+        </div>
+        <div id="kpiFleetHealth" class="font-display text-2xl font-extrabold text-emerald-600">HEALTHY</div>
+        <div class="text-xs text-slate-500 mt-1">Multi-Worker Rotation Active</div>
+      </div>
+
+    </div>
+
+    <!-- MODERN NAVIGATION TABS -->
+    <div class="flex items-center gap-2 border-b border-slate-200 mb-6 overflow-x-auto pb-px">
+      <button id="tabFleetBtn" onclick="switchTab('fleetTab', this)" class="tab-btn px-4 py-3 font-semibold text-sm border-b-2 border-blue-600 text-blue-600 flex items-center gap-2 whitespace-nowrap cursor-pointer transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 15h.01M16 15h.01"/></svg>
+        <span>Scraper Fleet (100+ Pool)</span>
+      </button>
+
+      <button id="tabUsersBtn" onclick="switchTab('usersTab', this)" class="tab-btn px-4 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-900 flex items-center gap-2 whitespace-nowrap cursor-pointer transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Platform Users &amp; Quotas</span>
+      </button>
+
+      <button id="tabSettingsBtn" onclick="switchTab('settingsTab', this)" class="tab-btn px-4 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-900 flex items-center gap-2 whitespace-nowrap cursor-pointer transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>Backend API &amp; Settings</span>
+      </button>
+
+      <button id="tabLogsBtn" onclick="switchTab('logsTab', this)" class="tab-btn px-4 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-900 flex items-center gap-2 whitespace-nowrap cursor-pointer transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <span>System Audit Logs</span>
+      </button>
+    </div>
+
+    <!-- ================= TAB 1: SCRAPER FLEET ================= -->
+    <div id="fleetTab" class="tab-content space-y-6">
+      <div class="card rounded-3xl p-6 sm:p-8 border border-slate-200">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+          <div>
+            <h3 class="font-display text-xl font-bold text-slate-900">Internal Scraping Fleet Pool</h3>
+            <p class="text-sm text-slate-500 mt-1">
+              Accounts leased by backend workers to fetch Instagram leads, Score Me metrics, and audit comments without rate limits.
+            </p>
+          </div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <button type="button" onclick="openModal('bulkImportModal')" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs transition cursor-pointer shadow-sm">
+              <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              <span>Bulk Import (100+)</span>
+            </button>
+            <button type="button" onclick="openModal('addScraperModal')" class="primary inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl font-semibold text-xs shadow-sm transition cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <span>Add Single Account</span>
+            </button>
           </div>
         </div>
 
-        <div style="overflow-x: auto;">
-          <table>
+        <!-- Accounts Table -->
+        <div class="overflow-x-auto mt-6">
+          <table class="w-full text-left text-xs border-collapse">
             <thead>
-              <tr>
-                <th>Account ID</th>
-                <th>Display Name</th>
-                <th>Instagram UID</th>
-                <th>Status</th>
-                <th>Tasks Run</th>
-                <th>Rate Limits</th>
-                <th>Proxy Attached</th>
-                <th>Actions</th>
+              <tr class="border-b border-slate-200 bg-slate-50/80 text-slate-500 font-bold uppercase tracking-wider text-[10px]">
+                <th class="py-3 px-4 rounded-l-xl">Account ID</th>
+                <th class="py-3 px-4">Display Name</th>
+                <th class="py-3 px-4">Instagram UID / Session</th>
+                <th class="py-3 px-4">Status</th>
+                <th class="py-3 px-4">Tasks Run</th>
+                <th class="py-3 px-4">Rate Limits</th>
+                <th class="py-3 px-4">Proxy Attached</th>
+                <th class="py-3 px-4 rounded-r-xl text-right">Actions</th>
               </tr>
             </thead>
-            <tbody id="fleetTableBody">
-              <tr><td colspan="8" style="text-align: center; color: var(--text-muted);">Loading fleet accounts...</td></tr>
+            <tbody id="fleetTableBody" class="divide-y divide-slate-100 text-slate-700">
+              <tr><td colspan="8" class="py-8 text-center text-slate-400">Loading scraper fleet pool...</td></tr>
             </tbody>
           </table>
         </div>
+
       </div>
     </div>
 
-    <!-- TAB 2: PLATFORM USERS -->
-    <div id="usersTab" class="tab-content" style="display: none;">
-      <div class="section-card">
-        <div class="section-header">
+    <!-- ================= TAB 2: PLATFORM USERS ================= -->
+    <div id="usersTab" class="tab-content space-y-6 hidden">
+      <div class="card rounded-3xl p-6 sm:p-8 border border-slate-200">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
           <div>
-            <h3 class="section-title">Registered Platform Users</h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Manage client accounts, change access passwords, set quotas, or suspend usage.</p>
+            <h3 class="font-display text-xl font-bold text-slate-900">Registered Platform Users</h3>
+            <p class="text-sm text-slate-500 mt-1">
+              Manage client logins, assign subscription tiers, adjust extraction quotas, or suspend accounts.
+            </p>
           </div>
-          <button class="btn btn-sm" onclick="openModal('addUserModal')">➕ Create New User</button>
+          <button type="button" onclick="openModal('addUserModal')" class="primary inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl font-semibold text-xs shadow-sm transition cursor-pointer self-start sm:self-auto">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span>Create New User</span>
+          </button>
         </div>
 
-        <div style="overflow-x: auto;">
-          <table>
+        <!-- Users Table -->
+        <div class="overflow-x-auto mt-6">
+          <table class="w-full text-left text-xs border-collapse">
             <thead>
-              <tr>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>Subscription Plan</th>
-                <th>Daily Limit</th>
-                <th>Status</th>
-                <th>Actions</th>
+              <tr class="border-b border-slate-200 bg-slate-50/80 text-slate-500 font-bold uppercase tracking-wider text-[10px]">
+                <th class="py-3 px-4 rounded-l-xl">Username</th>
+                <th class="py-3 px-4">Email Address</th>
+                <th class="py-3 px-4">Role</th>
+                <th class="py-3 px-4">Subscription Plan</th>
+                <th class="py-3 px-4">Daily Quota</th>
+                <th class="py-3 px-4">Status</th>
+                <th class="py-3 px-4 rounded-r-xl text-right">Actions</th>
               </tr>
             </thead>
-            <tbody id="usersTableBody">
-              <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Loading user records...</td></tr>
+            <tbody id="usersTableBody" class="divide-y divide-slate-100 text-slate-700">
+              <tr><td colspan="7" class="py-8 text-center text-slate-400">Loading user records...</td></tr>
             </tbody>
           </table>
         </div>
+
       </div>
     </div>
 
-    <!-- TAB 3: AUDIT LOGS -->
-    <div id="logsTab" class="tab-content" style="display: none;">
-      <div class="section-card">
-        <div class="section-header">
+    <!-- ================= TAB 3: BACKEND API & SETTINGS ================= -->
+    <div id="settingsTab" class="tab-content space-y-6 hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Left: Backend Server Connection Card -->
+        <div class="lg:col-span-2 card rounded-3xl p-6 sm:p-8 border border-slate-200 space-y-6">
           <div>
-            <h3 class="section-title">Administrative Audit Trail</h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Logged security events, password modifications, and account actions.</p>
+            <div class="flex items-center justify-between mb-1.5">
+              <h3 class="font-display text-xl font-bold text-slate-900">Backend Connection &amp; Gateway Hub</h3>
+              <span id="settingsBackendBadge" class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200">
+                ACTIVE
+              </span>
+            </div>
+            <p class="text-sm text-slate-500">
+              Vanguard Social automatically syncs the live backend tunnel from MongoDB Atlas so users can run tools seamlessly without manual configuration.
+            </p>
           </div>
-          <button class="btn btn-danger btn-sm" onclick="triggerEmergencyStop()">🛑 Emergency Stop Running Tasks</button>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Backend Server URL</label>
+              <div class="flex gap-2">
+                <input type="text" id="settingsApiInput" placeholder="https://your-tunnel.trycloudflare.com or http://localhost:8000" class="input font-mono text-sm">
+                <button type="button" onclick="testSettingsApiConnection()" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs transition cursor-pointer shadow-sm whitespace-nowrap">
+                  Ping Server
+                </button>
+              </div>
+              <div id="settingsApiPingStatus" class="mt-2 text-xs font-mono p-3 rounded-xl hidden"></div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <button type="button" onclick="saveSettingsApiUrl()" class="primary px-5 py-2.5 rounded-xl font-semibold text-xs shadow-sm transition cursor-pointer">
+                Save &amp; Apply Override
+              </button>
+              <button type="button" onclick="resetSettingsAutoDiscover()" class="px-4 py-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs transition cursor-pointer">
+                Reset to MongoDB Auto-Discovery
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-slate-100">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">Live Architecture Diagnostics</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Serverless Reverse Proxy</div>
+                <div class="text-xs font-semibold text-slate-800 mt-1">/api/run &amp; /api/tasks</div>
+                <div class="text-[10px] text-emerald-600 font-semibold mt-0.5">✓ Vercel Gateway Enabled</div>
+              </div>
+              <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Atlas Heartbeat Discovery</div>
+                <div class="text-xs font-semibold text-slate-800 mt-1">system_config.active_backend</div>
+                <div class="text-[10px] text-emerald-600 font-semibold mt-0.5">✓ Real-time Sync Active</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div style="overflow-x: auto;">
-          <table>
+        <!-- Right: Fleet Worker Tuning Card -->
+        <div class="card rounded-3xl p-6 sm:p-8 border border-slate-200 space-y-6">
+          <div>
+            <h3 class="font-display text-lg font-bold text-slate-900">Worker Fleet Tuning</h3>
+            <p class="text-xs text-slate-500 mt-1">Multi-session pool safeguards against Instagram rate limits.</p>
+          </div>
+
+          <div class="space-y-4">
+            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Account Lease Timeout</span>
+              <div class="font-display text-xl font-bold text-slate-900 mt-0.5">120 seconds</div>
+              <p class="text-[10px] text-slate-500 mt-1">Auto-releases worker back to idle pool after task execution.</p>
+            </div>
+
+            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Cooldown Window</span>
+              <div class="font-display text-xl font-bold text-slate-900 mt-0.5">90 seconds</div>
+              <p class="text-[10px] text-slate-500 mt-1">Mandatory resting period between high-volume scraping tasks.</p>
+            </div>
+
+            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Max Task Concurrency</span>
+              <div class="font-display text-xl font-bold text-slate-900 mt-0.5">3 Parallel Tasks</div>
+              <p class="text-[10px] text-slate-500 mt-1">Concurrent jobs distributed evenly across warm accounts.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ================= TAB 4: AUDIT LOGS ================= -->
+    <div id="logsTab" class="tab-content space-y-6 hidden">
+      <div class="card rounded-3xl p-6 sm:p-8 border border-slate-200">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+          <div>
+            <h3 class="font-display text-xl font-bold text-slate-900">Administrative Audit Trail</h3>
+            <p class="text-sm text-slate-500 mt-1">
+              Logged administrative modifications, password resets, and system actions.
+            </p>
+          </div>
+          <button type="button" onclick="triggerEmergencyStop()" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-rose-300 bg-rose-50 hover:bg-rose-100 text-rose-700 font-semibold text-xs transition cursor-pointer shadow-sm self-start sm:self-auto">
+            <svg class="w-3.5 h-3.5 text-rose-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Emergency Kill Switch</span>
+          </button>
+        </div>
+
+        <!-- Audit Table -->
+        <div class="overflow-x-auto mt-6">
+          <table class="w-full text-left text-xs border-collapse">
             <thead>
-              <tr>
-                <th>Timestamp</th>
-                <th>Actor</th>
-                <th>Action</th>
-                <th>Target</th>
-                <th>Details</th>
+              <tr class="border-b border-slate-200 bg-slate-50/80 text-slate-500 font-bold uppercase tracking-wider text-[10px]">
+                <th class="py-3 px-4 rounded-l-xl">Timestamp</th>
+                <th class="py-3 px-4">Actor</th>
+                <th class="py-3 px-4">Action</th>
+                <th class="py-3 px-4">Target</th>
+                <th class="py-3 px-4 rounded-r-xl">Details</th>
               </tr>
             </thead>
-            <tbody id="auditTableBody">
-              <tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Loading audit events...</td></tr>
+            <tbody id="auditTableBody" class="divide-y divide-slate-100 text-slate-700">
+              <tr><td colspan="5" class="py-8 text-center text-slate-400">Loading audit trail...</td></tr>
             </tbody>
           </table>
         </div>
+
       </div>
     </div>
 
-  </div>
+  </main>
 
-  <!-- MODAL: ADD SCRAPER ACCOUNT -->
+  <!-- ================= MODAL: ADD SCRAPER ================= -->
   <div id="addScraperModal" class="modal-overlay">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h3>Add Scraping Account</h3>
-        <button class="btn btn-secondary btn-sm" onclick="closeModal('addScraperModal')">✕</button>
+    <div class="card rounded-3xl p-6 sm:p-8 max-w-lg w-full relative border border-slate-200 shadow-2xl">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
+        <h3 class="font-display text-lg font-bold text-slate-900">Add Scraping Account</h3>
+        <button type="button" onclick="closeModal('addScraperModal')" class="h-8 w-8 grid place-items-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-500 transition cursor-pointer">✕</button>
       </div>
-      <div class="form-group">
-        <label>Account ID (e.g. acc_02, scout_mumbai)</label>
-        <input type="text" id="newScraperId" placeholder="acc_02">
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Account ID (e.g. acc_02, scout_mumbai)</label>
+          <input type="text" id="newScraperId" placeholder="acc_02" class="input">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Friendly Name</label>
+          <input type="text" id="newScraperName" placeholder="Mumbai Scout Worker" class="input">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Instagram Username (Optional for auto-login)</label>
+          <input type="text" id="newScraperUser" placeholder="my_instagram_handle" class="input">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Instagram Password (Optional for auto-login)</label>
+          <input type="password" id="newScraperPass" placeholder="••••••••" class="input">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Proxy URL (Optional, e.g. http://user:pass@host:port)</label>
+          <input type="text" id="newScraperProxy" placeholder="http://residential-proxy.com:8080" class="input">
+        </div>
       </div>
-      <div class="form-group">
-        <label>Friendly Name</label>
-        <input type="text" id="newScraperName" placeholder="Mumbai Scout Worker">
-      </div>
-      <div class="form-group">
-        <label>Instagram Username (Optional for auto-login)</label>
-        <input type="text" id="newScraperUser" placeholder="my_instagram_handle">
-      </div>
-      <div class="form-group">
-        <label>Instagram Password (Optional for auto-login)</label>
-        <input type="password" id="newScraperPass" placeholder="••••••••">
-      </div>
-      <div class="form-group">
-        <label>Proxy URL (Optional, e.g. http://user:pass@host:port)</label>
-        <input type="text" id="newScraperProxy" placeholder="http://residential-proxy.com:8080">
-      </div>
-      <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px;">
-        <button class="btn btn-secondary" onclick="closeModal('addScraperModal')">Cancel</button>
-        <button class="btn" onclick="submitAddScraper()">Save Account</button>
+
+      <div class="flex justify-end gap-3 mt-6 pt-4 border-t border-slate-100">
+        <button type="button" onclick="closeModal('addScraperModal')" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 font-semibold text-xs hover:bg-slate-50 transition cursor-pointer">Cancel</button>
+        <button type="button" onclick="submitAddScraper()" class="primary px-5 py-2.5 rounded-xl font-semibold text-xs shadow-sm transition cursor-pointer">Save Account</button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL: BULK IMPORT SCRAPERS -->
+  <!-- ================= MODAL: BULK IMPORT ================= -->
   <div id="bulkImportModal" class="modal-overlay">
-    <div class="modal-box" style="max-width: 600px;">
-      <div class="modal-header">
-        <h3>Bulk Import 100+ Accounts</h3>
-        <button class="btn btn-secondary btn-sm" onclick="closeModal('bulkImportModal')">✕</button>
+    <div class="card rounded-3xl p-6 sm:p-8 max-w-xl w-full relative border border-slate-200 shadow-2xl">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+        <h3 class="font-display text-lg font-bold text-slate-900">Bulk Import 100+ Accounts</h3>
+        <button type="button" onclick="closeModal('bulkImportModal')" class="h-8 w-8 grid place-items-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-500 transition cursor-pointer">✕</button>
       </div>
-      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Paste a JSON array of accounts containing `id`, `name`, `sessionid`, `ds_user_id`, or `proxy`.</p>
-      <div class="form-group">
-        <textarea id="bulkImportJson" rows="9" placeholder='[&#10;  {"id": "acc_01", "name": "Scout 1", "sessionid": "...", "ds_user_id": "123"}&#10;]'></textarea>
-      </div>
-      <div style="display: flex; justify-content: flex-end; gap: 8px;">
-        <button class="btn btn-secondary" onclick="closeModal('bulkImportModal')">Cancel</button>
-        <button class="btn" onclick="submitBulkImport()">Import Accounts</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: CREATE USER -->
-  <div id="addUserModal" class="modal-overlay">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h3>Create Platform User</h3>
-        <button class="btn btn-secondary btn-sm" onclick="closeModal('addUserModal')">✕</button>
-      </div>
-      <div class="form-group">
-        <label>Username</label>
-        <input type="text" id="newUsername" placeholder="john_doe">
-      </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" id="newUserEmail" placeholder="user@company.com">
-      </div>
-      <div class="form-group">
-        <label>Temporary / Initial Password</label>
-        <input type="text" id="newUserPassword" placeholder="SecretPassword123">
-      </div>
-      <div class="form-group">
-        <label>Role</label>
-        <select id="newUserRole">
-          <option value="user">User (Standard App Access)</option>
-          <option value="admin">Administrator</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Subscription Plan</label>
-        <select id="newUserPlan">
-          <option value="standard">Standard (50 audits/day)</option>
-          <option value="pro">Pro (200 audits/day)</option>
-          <option value="vip">VIP / Agency (Unlimited)</option>
-        </select>
-      </div>
-      <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px;">
-        <button class="btn btn-secondary" onclick="closeModal('addUserModal')">Cancel</button>
-        <button class="btn" onclick="submitCreateUser()">Create User</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: CHANGE PASSWORD -->
-  <div id="changePassModal" class="modal-overlay">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h3>Reset User Password</h3>
-        <button class="btn btn-secondary btn-sm" onclick="closeModal('changePassModal')">✕</button>
-      </div>
-      <input type="hidden" id="changePassUserId">
-      <div class="form-group">
-        <label>New Password</label>
-        <input type="text" id="newPassValue" placeholder="Enter new strong password...">
-      </div>
-      <div style="display: flex; justify-content: flex-end; gap: 8px;">
-        <button class="btn btn-secondary" onclick="closeModal('changePassModal')">Cancel</button>
-        <button class="btn" onclick="submitChangePassword()">Update Password</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: BACKEND API CONFIGURATION -->
-  <div id="apiConfigModal" class="modal-overlay">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h3>Backend API Configuration</h3>
-        <button class="btn btn-secondary btn-sm" onclick="closeModal('apiConfigModal')">✕</button>
-      </div>
-      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px;">
-        Set the target backend server running the scraping workers, database, and admin API.
+      <p class="text-xs text-slate-500 mb-4 leading-relaxed">
+        Paste a JSON array containing account objects with <code class="font-mono text-slate-800">id</code>, <code class="font-mono text-slate-800">name</code>, <code class="font-mono text-slate-800">sessionid</code>, or <code class="font-mono text-slate-800">proxy</code>.
       </p>
-      <div class="form-group">
-        <label>Backend API Base URL</label>
-        <input type="text" id="modalApiInput" placeholder="https://your-tunnel.trycloudflare.com">
+      <div>
+        <textarea id="bulkImportJson" rows="8" placeholder='[&#10;  {"id": "acc_01", "name": "Scout 1", "sessionid": "...", "ds_user_id": "123"}&#10;]' class="input font-mono text-xs"></textarea>
       </div>
-      <div id="modalApiPingStatus" style="font-size: 0.8rem; margin-bottom: 16px; padding: 10px; border-radius: 8px; display: none;"></div>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-        <button class="btn btn-secondary" onclick="testModalApiConnection()">Test Connection</button>
-        <div style="display: flex; gap: 8px;">
-          <button class="btn btn-secondary" onclick="closeModal('apiConfigModal')">Cancel</button>
-          <button class="btn" onclick="saveModalApiUrl()">Save &amp; Connect</button>
+      <div class="flex justify-end gap-3 mt-6 pt-4 border-t border-slate-100">
+        <button type="button" onclick="closeModal('bulkImportModal')" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 font-semibold text-xs hover:bg-slate-50 transition cursor-pointer">Cancel</button>
+        <button type="button" onclick="submitBulkImport()" class="primary px-5 py-2.5 rounded-xl font-semibold text-xs shadow-sm transition cursor-pointer">Import Accounts</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: CREATE USER ================= -->
+  <div id="addUserModal" class="modal-overlay">
+    <div class="card rounded-3xl p-6 sm:p-8 max-w-lg w-full relative border border-slate-200 shadow-2xl">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
+        <h3 class="font-display text-lg font-bold text-slate-900">Create Platform User</h3>
+        <button type="button" onclick="closeModal('addUserModal')" class="h-8 w-8 grid place-items-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-500 transition cursor-pointer">✕</button>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Username</label>
+          <input type="text" id="newUsername" placeholder="john_doe" class="input">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Email Address</label>
+          <input type="email" id="newUserEmail" placeholder="user@company.com" class="input">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Initial Password</label>
+          <input type="text" id="newUserPassword" placeholder="SecretPassword123" class="input">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">User Role</label>
+          <select id="newUserRole" class="input">
+            <option value="user">User (Standard App Access)</option>
+            <option value="admin">Administrator</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Subscription Plan</label>
+          <select id="newUserPlan" class="input">
+            <option value="standard">Standard (50 audits/day)</option>
+            <option value="pro">Pro (200 audits/day)</option>
+            <option value="vip">VIP / Agency (Unlimited)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-3 mt-6 pt-4 border-t border-slate-100">
+        <button type="button" onclick="closeModal('addUserModal')" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 font-semibold text-xs hover:bg-slate-50 transition cursor-pointer">Cancel</button>
+        <button type="button" onclick="submitCreateUser()" class="primary px-5 py-2.5 rounded-xl font-semibold text-xs shadow-sm transition cursor-pointer">Create User</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: CHANGE PASSWORD ================= -->
+  <div id="changePassModal" class="modal-overlay">
+    <div class="card rounded-3xl p-6 sm:p-8 max-w-md w-full relative border border-slate-200 shadow-2xl">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
+        <h3 class="font-display text-lg font-bold text-slate-900">Reset User Password</h3>
+        <button type="button" onclick="closeModal('changePassModal')" class="h-8 w-8 grid place-items-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-500 transition cursor-pointer">✕</button>
+      </div>
+
+      <input type="hidden" id="changePassUserId">
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">New Password</label>
+        <input type="text" id="newPassValue" placeholder="Enter new strong password..." class="input">
+      </div>
+
+      <div class="flex justify-end gap-3 mt-6 pt-4 border-t border-slate-100">
+        <button type="button" onclick="closeModal('changePassModal')" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 font-semibold text-xs hover:bg-slate-50 transition cursor-pointer">Cancel</button>
+        <button type="button" onclick="submitChangePassword()" class="primary px-5 py-2.5 rounded-xl font-semibold text-xs shadow-sm transition cursor-pointer">Update Password</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: API CONFIGURATION ================= -->
+  <div id="apiConfigModal" class="modal-overlay">
+    <div class="card rounded-3xl p-6 sm:p-8 max-w-lg w-full relative border border-slate-200 shadow-2xl">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+        <h3 class="font-display text-lg font-bold text-slate-900">Backend Server Connection</h3>
+        <button type="button" onclick="closeModal('apiConfigModal')" class="h-8 w-8 grid place-items-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-500 transition cursor-pointer">✕</button>
+      </div>
+
+      <p class="text-xs text-slate-500 mb-4">
+        The system automatically pulls the active tunnel from MongoDB Atlas. You can also specify a custom VPS or domain URL override below.
+      </p>
+
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Backend URL</label>
+        <input type="text" id="modalApiInput" placeholder="https://your-tunnel.trycloudflare.com" class="input font-mono text-sm">
+      </div>
+
+      <div id="modalApiPingStatus" class="mt-3 text-xs font-mono p-3 rounded-xl hidden"></div>
+
+      <div class="flex justify-between items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+        <button type="button" onclick="testModalApiConnection()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition cursor-pointer">
+          Ping
+        </button>
+        <div class="flex gap-2">
+          <button type="button" onclick="closeModal('apiConfigModal')" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 font-semibold text-xs hover:bg-slate-50 transition cursor-pointer">Cancel</button>
+          <button type="button" onclick="saveModalApiUrl()" class="primary px-5 py-2.5 rounded-xl font-semibold text-xs shadow-sm transition cursor-pointer">Save &amp; Connect</button>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- ================= JAVASCRIPT ENGINE ================= -->
   <script>
     let adminToken = localStorage.getItem('vanguard_admin_token') || '';
 
-    // ──────────────────────────────────────────────────────────────
-    // API BASE RESOLUTION & PERSISTENCE
-    // ──────────────────────────────────────────────────────────────
-        // Purge any stale ephemeral tunnels from older sessions
+    // Purge any stale ephemeral tunnels from older sessions
     (function purgeStaleTunnels() {
       try {
         const custom = localStorage.getItem('phantom_custom_api') || '';
@@ -659,10 +692,10 @@
       const authBadge = document.getElementById('authApiStatusBadge');
       const headerLabel = document.getElementById('headerApiLabel');
       const headerDot = document.getElementById('headerApiDot');
+      const settingsInput = document.getElementById('settingsApiInput');
 
-      if (authInput && document.activeElement !== authInput) {
-        authInput.value = base;
-      }
+      if (authInput && document.activeElement !== authInput) authInput.value = base;
+      if (settingsInput && document.activeElement !== settingsInput) settingsInput.value = base;
 
       if (base) {
         try {
@@ -673,16 +706,12 @@
           if (authBadge) authBadge.innerText = 'Configured';
           if (headerLabel) headerLabel.innerText = 'API: Configured';
         }
-        if (headerDot) {
-          headerDot.className = 'status-dot status-dot-green';
-        }
+        if (headerDot) headerDot.className = 'h-2 w-2 rounded-full bg-emerald-500 animate-pulse';
       } else {
         const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
-        if (authBadge) authBadge.innerText = isLocal ? 'Local Origin' : 'Not Configured';
-        if (headerLabel) headerLabel.innerText = isLocal ? 'API: Localhost' : 'API: Not Connected';
-        if (headerDot) {
-          headerDot.className = isLocal ? 'status-dot status-dot-green' : 'status-dot status-dot-amber';
-        }
+        if (authBadge) authBadge.innerText = isLocal ? 'Localhost (8000)' : 'Auto-Sync';
+        if (headerLabel) headerLabel.innerText = isLocal ? 'API: Localhost' : 'API: Auto-Sync';
+        if (headerDot) headerDot.className = 'h-2 w-2 rounded-full bg-emerald-500 animate-pulse';
       }
     }
 
@@ -698,7 +727,7 @@
       const url = (input ? input.value : '').trim().replace(/\/+$/, '');
       if (badge) {
         badge.innerText = 'Pinging...';
-        badge.style.color = '#38bdf8';
+        badge.className = 'text-[11px] font-mono text-blue-600 font-semibold';
       }
 
       const pingEndpoint = url ? `${url}/api/system-info` : `/api/system-info`;
@@ -711,12 +740,12 @@
         setApiBase(url);
         if (badge) {
           badge.innerText = `✓ Connected (${latency}ms)`;
-          badge.style.color = '#10b981';
+          badge.className = 'text-[11px] font-mono text-emerald-600 font-semibold';
         }
       } catch (err) {
         if (badge) {
           badge.innerText = `✕ Error: ${err.message}`;
-          badge.style.color = '#ef4444';
+          badge.className = 'text-[11px] font-mono text-rose-600 font-semibold';
         }
       }
     }
@@ -725,11 +754,9 @@
       const input = document.getElementById('modalApiInput');
       const box = document.getElementById('modalApiPingStatus');
       const url = (input ? input.value : '').trim().replace(/\/+$/, '');
-      box.style.display = 'block';
-      box.style.background = 'rgba(59, 130, 246, 0.1)';
-      box.style.border = '1px solid #3b82f6';
-      box.style.color = '#93c5fd';
-      box.innerText = `Pinging ${url || 'local origin'}...`;
+      box.classList.remove('hidden');
+      box.className = 'mt-3 text-xs font-mono p-3 rounded-xl bg-blue-50 border border-blue-200 text-blue-700';
+      box.innerText = `Pinging ${url || 'serverless origin'}...`;
 
       const endpoint = url ? `${url}/api/system-info` : `/api/system-info`;
       try {
@@ -738,14 +765,10 @@
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         const latency = Date.now() - start;
-        box.style.background = 'rgba(16, 185, 129, 0.1)';
-        box.style.border = '1px solid #10b981';
-        box.style.color = '#6ee7b7';
+        box.className = 'mt-3 text-xs font-mono p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700';
         box.innerHTML = `<strong>✓ Connection Successful (${latency}ms)</strong><br>Server reports: ${data.status} • Total reports: ${data.total_reports || 0}`;
       } catch (err) {
-        box.style.background = 'rgba(239, 68, 68, 0.1)';
-        box.style.border = '1px solid #ef4444';
-        box.style.color = '#fca5a5';
+        box.className = 'mt-3 text-xs font-mono p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700';
         box.innerHTML = `<strong>✕ Connection Failed</strong><br>${err.message}`;
       }
     }
@@ -754,6 +777,45 @@
       const input = document.getElementById('modalApiInput');
       setApiBase(input ? input.value : '');
       closeModal('apiConfigModal');
+      refreshData();
+    }
+
+    async function testSettingsApiConnection() {
+      const input = document.getElementById('settingsApiInput');
+      const box = document.getElementById('settingsApiPingStatus');
+      const url = (input ? input.value : '').trim().replace(/\/+$/, '');
+      box.classList.remove('hidden');
+      box.className = 'mt-2 text-xs font-mono p-3 rounded-xl bg-blue-50 border border-blue-200 text-blue-700';
+      box.innerText = `Pinging ${url || 'serverless origin'}...`;
+
+      const endpoint = url ? `${url}/api/system-info` : `/api/system-info`;
+      try {
+        const start = Date.now();
+        const res = await fetch(endpoint);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const latency = Date.now() - start;
+        box.className = 'mt-2 text-xs font-mono p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700';
+        box.innerHTML = `<strong>✓ Connection Successful (${latency}ms)</strong><br>Server reports: ${data.status} • Harvested: ${data.total_reports || 0} records`;
+      } catch (err) {
+        box.className = 'mt-2 text-xs font-mono p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700';
+        box.innerHTML = `<strong>✕ Connection Failed</strong><br>${err.message}`;
+      }
+    }
+
+    function saveSettingsApiUrl() {
+      const input = document.getElementById('settingsApiInput');
+      setApiBase(input ? input.value : '');
+      alert('Custom backend override applied.');
+      refreshData();
+    }
+
+    function resetSettingsAutoDiscover() {
+      localStorage.removeItem('phantom_custom_api');
+      const input = document.getElementById('settingsApiInput');
+      if (input) input.value = '';
+      syncApiUi();
+      alert('Reset to automatic MongoDB Atlas discovery.');
       refreshData();
     }
 
@@ -773,11 +835,11 @@
     async function loginAdmin() {
       const key = document.getElementById('adminKeyInput').value.trim();
       const errBox = document.getElementById('loginError');
-      errBox.style.display = 'none';
+      errBox.classList.add('hidden');
 
       if (!key) {
         errBox.innerText = 'Please enter admin key.';
-        errBox.style.display = 'block';
+        errBox.classList.remove('hidden');
         return;
       }
 
@@ -789,7 +851,7 @@
         const res = await fetch(loginUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ key })
+          body: JSON.stringify({ key, username: 'admin' })
         });
         const data = await res.json();
         if (data.success && data.token) {
@@ -799,15 +861,15 @@
           refreshData();
         } else {
           errBox.innerText = data.error || 'Invalid Admin Key.';
-          errBox.style.display = 'block';
+          errBox.classList.remove('hidden');
         }
       } catch (e) {
         if (isRemote && !apiBase) {
-          errBox.innerHTML = `Backend server not configured.<br>Please enter your Backend API URL above.`;
+          errBox.innerHTML = 'Backend server not responding.<br>Please confirm run_vanguard.py is active.';
         } else {
           errBox.innerHTML = `Cannot reach backend (${apiBase || 'local origin'}):<br>${e.message}`;
         }
-        errBox.style.display = 'block';
+        errBox.classList.remove('hidden');
       }
     }
 
@@ -828,10 +890,12 @@
     // NAVIGATION & MODALS
     // ──────────────────────────────────────────────────────────────
     function switchTab(tabId, btn) {
-      document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
-      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-      document.getElementById(tabId).style.display = 'block';
-      btn.classList.add('active');
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.className = 'tab-btn px-4 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-900 flex items-center gap-2 whitespace-nowrap cursor-pointer transition';
+      });
+      document.getElementById(tabId).classList.remove('hidden');
+      btn.className = 'tab-btn px-4 py-3 font-semibold text-sm border-b-2 border-blue-600 text-blue-600 flex items-center gap-2 whitespace-nowrap cursor-pointer transition';
     }
 
     function openModal(id) { 
@@ -841,7 +905,7 @@
         const input = document.getElementById('modalApiInput');
         if (input) input.value = getApiBase();
         const box = document.getElementById('modalApiPingStatus');
-        if (box) box.style.display = 'none';
+        if (box) box.classList.add('hidden');
       }
     }
     function closeModal(id) { 
@@ -905,49 +969,71 @@
     function renderFleetTable(accounts) {
       const tbody = document.getElementById('fleetTableBody');
       if (!accounts.length) {
-        tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: var(--text-muted);">No scraper accounts configured yet.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="8" class="py-8 text-center text-slate-400">No scraper accounts configured in rotation pool yet.</td></tr>';
         return;
       }
-      tbody.innerHTML = accounts.map(a => `
-        <tr>
-          <td><strong>${a.id}</strong></td>
-          <td>${a.name}</td>
-          <td>${a.username || '<span style="color:#64748b;">Not logged in</span>'}</td>
-          <td>
-            <span class="badge badge-${a.status}">${a.status} ${a.cooldown_remaining_seconds ? '('+a.cooldown_remaining_seconds+'s)' : ''}</span>
-          </td>
-          <td>${a.total_tasks_run || 0}</td>
-          <td>${a.rate_limit_hits || 0}</td>
-          <td>${a.has_proxy ? '<span style="color:#10b981;">Yes</span>' : '<span style="color:#64748b;">Direct IP</span>'}</td>
-          <td>
-            <button class="btn btn-secondary btn-sm" onclick="removeScraperAccount('${a.id}')">Remove</button>
-          </td>
-        </tr>
-      `).join('');
+      tbody.innerHTML = accounts.map(a => {
+        let badgeClass = 'bg-slate-100 text-slate-700 border-slate-200';
+        if (a.status === 'idle') badgeClass = 'bg-emerald-50 text-emerald-700 border-emerald-200';
+        else if (a.status === 'busy') badgeClass = 'bg-blue-50 text-blue-700 border-blue-200';
+        else if (a.status === 'cooldown') badgeClass = 'bg-amber-50 text-amber-700 border-amber-200';
+        else if (a.status === 'invalid') badgeClass = 'bg-rose-50 text-rose-700 border-rose-200';
+
+        return `
+          <tr class="hover:bg-slate-50/80 transition">
+            <td class="py-3 px-4 font-bold text-slate-900 font-mono">${a.id}</td>
+            <td class="py-3 px-4 font-semibold text-slate-800">${a.name}</td>
+            <td class="py-3 px-4 font-mono text-slate-600">${a.username || '<span class="text-slate-400">Session ID Loaded</span>'}</td>
+            <td class="py-3 px-4">
+              <span class="inline-block px-2.5 py-0.5 rounded-lg border text-[11px] font-mono font-bold ${badgeClass}">
+                ${a.status.toUpperCase()} ${a.cooldown_remaining_seconds ? '('+a.cooldown_remaining_seconds+'s)' : ''}
+              </span>
+            </td>
+            <td class="py-3 px-4 font-mono font-semibold">${a.total_tasks_run || 0}</td>
+            <td class="py-3 px-4 font-mono">${a.rate_limit_hits || 0}</td>
+            <td class="py-3 px-4">
+              ${a.has_proxy ? '<span class="text-emerald-600 font-semibold">✓ Proxy Attached</span>' : '<span class="text-slate-400">Direct IP</span>'}
+            </td>
+            <td class="py-3 px-4 text-right">
+              <button onclick="removeScraperAccount('${a.id}')" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 text-slate-600 font-semibold text-xs transition cursor-pointer">
+                Remove
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
     }
 
     function renderUsersTable(users) {
       const tbody = document.getElementById('usersTableBody');
       if (!users.length) {
-        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">No user accounts found.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="7" class="py-8 text-center text-slate-400">No user accounts found.</td></tr>';
         return;
       }
       tbody.innerHTML = users.map(u => `
-        <tr>
-          <td><strong>${u.username}</strong></td>
-          <td>${u.email || '—'}</td>
-          <td><span class="badge" style="background:#312e81; color:#a5b4fc;">${u.role}</span></td>
-          <td>${u.plan.toUpperCase()}</td>
-          <td>${u.daily_limit} / day</td>
-          <td><span class="badge badge-${u.status}">${u.status}</span></td>
-          <td>
-            <div style="display: flex; gap: 6px;">
+        <tr class="hover:bg-slate-50/80 transition">
+          <td class="py-3 px-4 font-bold text-slate-900">${u.username}</td>
+          <td class="py-3 px-4 text-slate-600">${u.email || '—'}</td>
+          <td class="py-3 px-4">
+            <span class="inline-block px-2.5 py-0.5 rounded-lg border text-[10px] font-bold uppercase tracking-wider ${u.role === 'admin' ? 'bg-purple-50 text-purple-700 border-purple-200' : 'bg-slate-100 text-slate-700 border-slate-200'}">
+              ${u.role}
+            </span>
+          </td>
+          <td class="py-3 px-4 font-semibold text-slate-800">${u.plan.toUpperCase()}</td>
+          <td class="py-3 px-4 font-mono text-slate-600">${u.daily_limit} / day</td>
+          <td class="py-3 px-4">
+            <span class="inline-block px-2.5 py-0.5 rounded-lg border text-[11px] font-mono font-bold ${u.status === 'active' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-rose-50 text-rose-700 border-rose-200'}">
+              ${u.status.toUpperCase()}
+            </span>
+          </td>
+          <td class="py-3 px-4 text-right">
+            <div class="inline-flex items-center gap-1.5 justify-end">
               ${u.status === 'active' 
-                ? `<button class="btn btn-secondary btn-sm" onclick="toggleUserStatus('${u.id}', 'suspended')">Suspend</button>`
-                : `<button class="btn btn-success btn-sm" onclick="toggleUserStatus('${u.id}', 'active')">Activate</button>`
+                ? `<button onclick="toggleUserStatus('${u.id}', 'suspended')" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs transition cursor-pointer">Suspend</button>`
+                : `<button onclick="toggleUserStatus('${u.id}', 'active')" class="px-2.5 py-1 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-700 font-semibold text-xs transition cursor-pointer">Activate</button>`
               }
-              <button class="btn btn-secondary btn-sm" onclick="promptChangePassword('${u.id}')">Password</button>
-              ${u.role !== 'superadmin' ? `<button class="btn btn-danger btn-sm" onclick="deleteUser('${u.id}')">Delete</button>` : ''}
+              <button onclick="promptChangePassword('${u.id}')" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs transition cursor-pointer">Password</button>
+              ${u.role !== 'superadmin' ? `<button onclick="deleteUser('${u.id}')" class="px-2.5 py-1 rounded-lg border border-rose-200 bg-rose-50 hover:bg-rose-100 text-rose-700 font-semibold text-xs transition cursor-pointer">Delete</button>` : ''}
             </div>
           </td>
         </tr>
@@ -957,16 +1043,20 @@
     function renderAuditTable(logs) {
       const tbody = document.getElementById('auditTableBody');
       if (!logs.length) {
-        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">No audit logs recorded yet.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="5" class="py-8 text-center text-slate-400">No audit events recorded yet.</td></tr>';
         return;
       }
       tbody.innerHTML = logs.map(l => `
-        <tr>
-          <td>${new Date(l.timestamp * 1000).toLocaleTimeString()}</td>
-          <td><strong>${l.actor}</strong></td>
-          <td><span class="badge" style="background:#1e293b;">${l.action}</span></td>
-          <td>${l.target}</td>
-          <td>${l.details || '—'}</td>
+        <tr class="hover:bg-slate-50/80 transition">
+          <td class="py-3 px-4 font-mono text-slate-500">${new Date(l.timestamp * 1000).toLocaleTimeString()}</td>
+          <td class="py-3 px-4 font-bold text-slate-900">${l.actor}</td>
+          <td class="py-3 px-4">
+            <span class="inline-block px-2.5 py-0.5 rounded-lg border border-slate-200 bg-slate-100 text-slate-700 font-mono text-[11px] font-bold">
+              ${l.action}
+            </span>
+          </td>
+          <td class="py-3 px-4 font-semibold text-slate-800">${l.target}</td>
+          <td class="py-3 px-4 text-slate-600">${l.details || '—'}</td>
         </tr>
       `).join('');
     }
@@ -975,7 +1065,7 @@
     // ADMIN ACTIONS
     // ──────────────────────────────────────────────────────────────
     async function toggleUserStatus(userId, newStatus) {
-      if (!confirm(`Change status to ${newStatus}?`)) return;
+      if (!confirm(`Change user status to ${newStatus}?`)) return;
       const apiBase = getApiBase();
       await fetch(`${apiBase}/api/admin/users/${userId}/status`, {
         method: 'POST',
@@ -1086,7 +1176,7 @@
     }
 
     async function triggerEmergencyStop() {
-      if (!confirm('Emergency Stop: Terminate all running scrapers and tasks immediately?')) return;
+      if (!confirm('Emergency Kill Switch: Terminate all running scrapers and tasks immediately?')) return;
       const apiBase = getApiBase();
       await fetch(`${apiBase}/api/stop`, { method: 'POST' });
       alert('All running scraper instances terminated and resources released.');
