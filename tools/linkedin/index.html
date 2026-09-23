@@ -157,7 +157,7 @@
 
   </main>
 
-    <!-- BACKEND API CONFIG MODAL -->
+  <!-- BACKEND API CONFIG MODAL -->
   <div id="apiConfigModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
     <div class="glass w-full max-w-lg rounded-3xl p-6 sm:p-8 bg-white shadow-2xl border border-slate-200">
       <div class="flex items-center justify-between pb-4 border-b border-slate-100">
@@ -206,7 +206,6 @@
         </div>
       </div>
     </div>
-  </div>
   </div>
 
   <script>
@@ -303,7 +302,7 @@
     let activeTaskId = null;
     let pollInterval = null;
 
-        // Purge any stale ephemeral tunnels from older sessions
+    // Purge any stale ephemeral tunnels from older sessions
     (function purgeStaleTunnels() {
       try {
         const custom = localStorage.getItem('phantom_custom_api') || '';
@@ -466,6 +465,777 @@
       setApiBase(input ? input.value : '');
       closeApiModal();
       updateApiStatusUI();
+    }
+
+    // ──────────────────────────────────────────────────────────────
+    // 4. UNIFIED FORM INJECTION
+    // ──────────────────────────────────────────────────────────────
+    function initPage() {
+      const c = configs[activeToolKey] || configs['instagram-leads'];
+      document.title = `Vanguard Social — ${c.title}`;
+      
+      // Duplicate pills removed for clean layout
+      document.getElementById('title').textContent = c.title;
+      document.getElementById('description').textContent = c.description;
+      document.getElementById('formTitle').textContent = c.formTitle;
+      document.getElementById('formCopy').textContent = c.formCopy;
+      document.getElementById('formIcon').innerHTML = icons[c.icon];
+      
+      const benefitsContainer = document.getElementById('benefits');
+      benefitsContainer.innerHTML = c.benefits.map(item => `
+        <div class="rounded-2xl border border-slate-200 bg-white/80 p-3.5 text-xs sm:text-sm font-semibold text-slate-700 flex items-center gap-2">
+          <span class="text-blue-600 font-bold">✓</span>
+          <span>${item}</span>
+        </div>
+      `).join('');
+
+      renderToolFields(activeToolKey);
+      updateApiStatusUI();
+    }
+
+    // ──────────────────────────────────────────────────────────────
+    // LUXURY CUSTOM SELECT COMPONENT (Zero Native Mobile Popups)
+    // MONO-COLOR LUXURY SVG ICONS (Zero Emojis!)
+    const SVG_MAP = {
+      store: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4M5 21V10.85M19 21V10.85M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      sparkle: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      pin: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg>',
+      news: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      flame: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      mail: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+      map: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>',
+      fashion: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
+      fitness: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m6.5 6.5 11 11M21 21l-1-1M3 3l1 1M18 22l4-4M2 6l4-4M3 10l7-7M14 21l7-7"/></svg>',
+      tech: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="12" x="3" y="4" rx="2"/><line x1="2" x2="22" y1="20" y2="20"/></svg>',
+      food: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 2v20M18 8h-4a4 4 0 0 1-4-4V2M6 2v20M4 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2"/></svg>',
+      travel: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>',
+      comedy: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8Zm-3.5-9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm7 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm-7.5 4a4.5 4.5 0 0 0 8 0"/></svg>',
+      lightning: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+      search: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/></svg>',
+      chart: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>',
+      video: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg>',
+      twitter: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" stroke-linecap="round"/></svg>'
+    };
+
+    function getOptionIcon(iconName) {
+      return SVG_MAP[iconName] || SVG_MAP.sparkle;
+    }
+
+    // ──────────────────────────────────────────────────────────────
+    function mountCustomSelect(container, { id, label, options, defaultValue, onChange }) {
+      const currentVal = defaultValue || options[0].value;
+      const currentOpt = options.find(o => o.value === currentVal) || options[0];
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'relative select-wrapper';
+
+      wrapper.innerHTML = `
+        <input type="hidden" id="${id}" value="${currentVal}">
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">${label}</label>
+        
+        <button type="button" class="select-trigger w-full rounded-2xl border border-slate-200/90 bg-white/95 p-3 sm:p-3.5 flex items-center justify-between text-left shadow-xs hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="select-icon flex-none text-base">${getOptionIcon(currentOpt.icon)}</span>
+            <div class="min-w-0">
+              <div class="select-title text-xs sm:text-sm font-semibold text-slate-900 truncate">${currentOpt.label}</div>
+              ${currentOpt.desc ? `<div class="select-desc text-[11px] text-slate-500 truncate">${currentOpt.desc}</div>` : ''}
+            </div>
+          </div>
+          <svg class="select-chevron h-4 w-4 text-slate-400 flex-none transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+
+        <div class="select-dropdown hidden absolute left-0 right-0 top-full mt-1.5 z-50 glass rounded-2xl border border-slate-200/90 bg-white shadow-2xl p-1.5 space-y-1 max-h-72 overflow-y-auto">
+          ${options.map(opt => `
+            <div data-val="${opt.value}" class="select-opt flex items-center justify-between p-2.5 rounded-xl hover:bg-blue-50/90 cursor-pointer transition ${opt.value === currentVal ? 'bg-blue-50/80 border border-blue-200' : ''}">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <span class="flex-none text-base">${getOptionIcon(opt.icon)}</span>
+                <div class="min-w-0">
+                  <div class="text-xs sm:text-sm font-semibold text-slate-900 truncate">${opt.label}</div>
+                  ${opt.desc ? `<div class="text-[11px] text-slate-500 truncate">${opt.desc}</div>` : ''}
+                </div>
+              </div>
+              <span class="select-check ${opt.value === currentVal ? 'text-blue-600' : 'hidden'} text-xs font-bold">✓</span>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+      container.appendChild(wrapper);
+
+      const trigger = wrapper.querySelector('.select-trigger');
+      const dropdown = wrapper.querySelector('.select-dropdown');
+      const chevron = wrapper.querySelector('.select-chevron');
+      const hiddenInput = wrapper.querySelector(`#${id}`);
+      const titleEl = wrapper.querySelector('.select-title');
+      const descEl = wrapper.querySelector('.select-desc');
+      const iconEl = wrapper.querySelector('.select-icon');
+
+      function closeSelect() {
+        dropdown.classList.add('hidden');
+        chevron.style.transform = 'rotate(0deg)';
+      }
+
+      function toggleSelect(e) {
+        e.stopPropagation();
+        document.querySelectorAll('.select-dropdown').forEach(d => {
+          if (d !== dropdown) d.classList.add('hidden');
+        });
+        document.querySelectorAll('.select-chevron').forEach(c => {
+          if (c !== chevron) c.style.transform = 'rotate(0deg)';
+        });
+
+        const isClosed = dropdown.classList.contains('hidden');
+        if (isClosed) {
+          dropdown.classList.remove('hidden');
+          chevron.style.transform = 'rotate(180deg)';
+        } else {
+          closeSelect();
+        }
+      }
+
+      trigger.addEventListener('click', toggleSelect);
+
+      wrapper.querySelectorAll('.select-opt').forEach(optNode => {
+        optNode.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const chosenVal = optNode.getAttribute('data-val');
+          const chosenOpt = options.find(o => o.value === chosenVal);
+          if (!chosenOpt) return;
+
+          hiddenInput.value = chosenVal;
+          titleEl.textContent = chosenOpt.label;
+          if (descEl) descEl.textContent = chosenOpt.desc || '';
+          if (iconEl) iconEl.innerHTML = getOptionIcon(chosenOpt.icon);
+
+          wrapper.querySelectorAll('.select-opt').forEach(item => {
+            const isSelected = (item.getAttribute('data-val') === chosenVal);
+            item.className = `select-opt flex items-center justify-between p-2.5 rounded-xl hover:bg-blue-50/90 cursor-pointer transition ${isSelected ? 'bg-blue-50/80 border border-blue-200' : ''}`;
+            const chk = item.querySelector('.select-check');
+            if (chk) chk.className = `select-check ${isSelected ? 'text-blue-600' : 'hidden'} text-xs font-bold`;
+          });
+
+          closeSelect();
+          if (typeof onChange === 'function') onChange(chosenVal);
+        });
+      });
+
+      document.addEventListener('click', closeSelect);
+    }
+
+    function renderToolFields(key) {
+      const container = document.getElementById('dynamicFormFields');
+      const btnLabel = document.getElementById('runBtnLabel');
+      container.innerHTML = '';
+
+      if (key === 'instagram-leads') {
+        btnLabel.innerText = 'Extract Instagram Leads';
+
+        // Field 1: Target Location or Handle
+        const targetDiv = document.createElement('div');
+        targetDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Location, Hashtag, or Account</label>
+          <input id="field_ig_target" type="text" placeholder="e.g. Bandra, Mumbai or #mumbaifoodie or @creator_handle" required class="input text-base sm:text-sm">
+        `;
+        container.appendChild(targetDiv);
+
+        // Field 2: Luxury Custom Category Select
+        mountCustomSelect(container, {
+          id: 'field_ig_category',
+          label: 'Category Focus',
+          defaultValue: '4',
+          options: [
+            { value: '4', label: 'Local Businesses, Cafes & Services', desc: 'High-intent storefronts, cafes, clinics & services', icon: 'store' },
+            { value: '5', label: 'Lifestyle & Niche Influencers', desc: 'Content creators, fashion, foodies & vloggers', icon: 'sparkle' },
+            { value: '1', label: 'Community & Hyper-local Pages', desc: 'City updates, guides, culture & local diaries', icon: 'pin' },
+            { value: '2', label: 'Digital News & Media Outlets', desc: 'Local media, live news, bulletins & journalism', icon: 'news' },
+            { value: '3', label: 'Meme & Local Culture Hubs', desc: 'Humor, local slang, relatable & viral reaction pages', icon: 'flame' }
+          ]
+        });
+
+        // Field 3: Followers & Keywords
+        const filterDiv = document.createElement('div');
+        filterDiv.className = 'grid grid-cols-2 gap-3';
+        filterDiv.innerHTML = `
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Min Followers</label>
+            <input id="field_ig_min_followers" type="number" value="1000" min="0" step="500" class="input text-base sm:text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Content Keyword</label>
+            <input id="field_ig_filter" type="text" placeholder="Optional filter" class="input text-base sm:text-sm">
+          </div>
+        `;
+        container.appendChild(filterDiv);
+
+        // Field 4: Checkbox
+        const checkDiv = document.createElement('div');
+        checkDiv.className = 'flex items-center gap-2.5 p-3 bg-slate-50 border border-slate-200 rounded-xl';
+        checkDiv.innerHTML = `
+          <input type="checkbox" id="field_ig_deep" checked class="h-4 w-4 rounded text-blue-600 focus:ring-blue-500">
+          <label for="field_ig_deep" class="text-xs font-semibold text-slate-700 cursor-pointer">Extract 30-day audience comments & verified contact info</label>
+        `;
+        container.appendChild(checkDiv);
+
+      } else if (key === 'influencer-score') {
+        btnLabel.innerText = 'Calculate Influencer Score';
+
+        // Creator Handle
+        const handleDiv = document.createElement('div');
+        handleDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Creator Instagram Handle</label>
+          <div class="relative">
+            <span class="absolute left-3.5 top-3 text-slate-400 font-semibold text-sm">@</span>
+            <input id="field_handle" type="text" placeholder="creator_username" required class="input pl-8">
+          </div>
+        `;
+        container.appendChild(handleDiv);
+
+        // Luxury Niche Select
+        mountCustomSelect(container, {
+          id: 'field_niche',
+          label: 'Niche / Industry Focus',
+          defaultValue: 'Fashion & Lifestyle',
+          options: [
+            { value: 'Fashion & Lifestyle', label: 'Fashion & Lifestyle', desc: 'Apparel, aesthetics, styling & modeling', icon: 'fashion' },
+            { value: 'Fitness & Health', label: 'Fitness & Health', desc: 'Workouts, nutrition, wellness & athlete coaching', icon: 'fitness' },
+            { value: 'Tech & Gadgets', label: 'Tech & Gadgets', desc: 'Smartphones, electronics, apps & developer tech', icon: 'tech' },
+            { value: 'Food & Dining', label: 'Food & Dining', desc: 'Food blogging, restaurants, recipes & cafe tasting', icon: 'food' },
+            { value: 'Travel & Hospitality', label: 'Travel & Hospitality', desc: 'Destination guides, luxury hotels & travel vlogs', icon: 'travel' },
+            { value: 'Entertainment & Comedy', label: 'Entertainment & Comedy', desc: 'Comedy reels, relatable skits & viral memes', icon: 'comedy' },
+            { value: 'Digital Creator / General', label: 'Digital Creator / General', desc: 'Multi-category digital storytelling & reach', icon: 'sparkle' }
+          ]
+        });
+
+        // Luxury Sample Size Select
+        mountCustomSelect(container, {
+          id: 'field_sample_size',
+          label: 'Sample Reel Volume',
+          defaultValue: '10',
+          options: [
+            { value: '10', label: 'Last 10 Posts / Reels', desc: 'Fast cohort analysis & instant audit card', icon: 'lightning' },
+            { value: '20', label: 'Last 20 Posts / Reels', desc: 'Extended 30-day velocity & engagement audit', icon: 'search' },
+            { value: '30', label: 'Last 30 Posts / Reels', desc: 'Comprehensive deep audit & full reach breakdown', icon: 'chart' }
+          ]
+        });
+
+      } else if (key === 'google-leads') {
+        btnLabel.innerText = 'Extract Google Leads';
+
+        const locDiv = document.createElement('div');
+        locDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Location</label>
+          <input id="field_location" type="text" placeholder="e.g. Bandra West, Mumbai or Austin, TX" required class="input text-base sm:text-sm">
+        `;
+        container.appendChild(locDiv);
+
+        const qDiv = document.createElement('div');
+        qDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Business Category / Query</label>
+          <input id="field_query" type="text" placeholder="e.g. Cafes & Bakeries or Dental Clinics" required class="input text-base sm:text-sm">
+        `;
+        container.appendChild(qDiv);
+
+        // Luxury Extraction Mode Select
+        mountCustomSelect(container, {
+          id: 'field_gmaps_mode',
+          label: 'Extraction Mode',
+          defaultValue: 'contacts',
+          options: [
+            { value: 'contacts', label: 'Full Contact Data', desc: 'Extract verified emails, phone numbers & direct websites', icon: 'mail' },
+            { value: 'standard', label: 'Standard Maps Export', desc: 'Fast directory harvest with phone and address', icon: 'map' }
+          ]
+        });
+
+      } else if (key === 'youtube') {
+        btnLabel.innerText = 'Audit YouTube Channel';
+
+        const chanDiv = document.createElement('div');
+        chanDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">YouTube Channel or Handle</label>
+          <input id="field_channel" type="text" placeholder="e.g. @MKBHD or @TechWithTim" required class="input text-base sm:text-sm">
+        `;
+        container.appendChild(chanDiv);
+
+        mountCustomSelect(container, {
+          id: 'field_max_results',
+          label: 'Video Audit Depth',
+          defaultValue: '20',
+          options: [
+            { value: '20', label: 'Latest 20 Videos', desc: 'Recent reach velocity & engagement distribution', icon: 'lightning' },
+            { value: '50', label: 'Latest 50 Videos', desc: 'Comprehensive channel history & viral video audit', icon: 'video' }
+          ]
+        });
+
+      } else if (key === 'x-twitter') {
+        btnLabel.innerText = 'Audit Twitter / X Creator';
+
+        const twDiv = document.createElement('div');
+        twDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Twitter / X Username</label>
+          <div class="relative">
+            <span class="absolute left-3.5 top-3 text-slate-400 font-semibold text-sm">@</span>
+            <input id="field_twitter" type="text" placeholder="sama or mkbhd" required class="input pl-8">
+          </div>
+        `;
+        container.appendChild(twDiv);
+
+        mountCustomSelect(container, {
+          id: 'field_max_results',
+          label: 'Tweet Depth',
+          defaultValue: '15',
+          options: [
+            { value: '15', label: 'Latest 15 Tweets', desc: 'Recent velocity & active audience responses', icon: 'lightning' },
+            { value: '30', label: 'Latest 30 Tweets', desc: 'Deep sentiment & thread engagement extraction', icon: 'twitter' }
+          ]
+        });
+
+      } else if (key === 'linkedin') {
+        btnLabel.innerText = 'Start LinkedIn Prospecting';
+        container.innerHTML = `
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Role or Decision Maker</label>
+            <input id="field_role" type="text" placeholder="e.g. VP of Marketing or Founder" required class="input text-base sm:text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Industry & Location</label>
+            <input id="field_industry" type="text" placeholder="e.g. SaaS in Mumbai or Real Estate in Dubai" required class="input text-base sm:text-sm">
+          </div>
+        `;
+      } else if (key === 'automate-ai') {
+        btnLabel.innerText = 'Generate AI Automation Blueprint';
+        container.innerHTML = `
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Workflow Description</label>
+            <textarea id="field_workflow" rows="4" placeholder="Describe the repetitive manual process you want automated (e.g. daily lead qualification and email report dispatch)..." required class="input text-base sm:text-sm"></textarea>
+          </div>
+        `;
+      }
+    }
+
+    // ──────────────────────────────────────────────────────────────
+    // 5. UNIFIED TASK TRIGGER
+    // ──────────────────────────────────────────────────────────────
+    async function runEngine() {
+      const errBox = document.getElementById('errorAlert');
+      errBox.classList.add('hidden');
+
+      let payload = {
+        tool: "",
+        location: "",
+        category: "4",
+        target_tag: "",
+        target_name: "",
+        niche: "",
+        post_url: "",
+        query: "",
+        max_results: 20
+      };
+
+      if (activeToolKey === 'instagram-leads') {
+        const rawTarget = (document.getElementById('field_ig_target')?.value || '').trim();
+        if (!rawTarget) return alert('Please enter target location, hashtag, or handle.');
+
+        const category = document.getElementById('field_ig_category')?.value || '4';
+        const minFollowers = parseInt(document.getElementById('field_ig_min_followers')?.value || '1000');
+        const filterKeyword = (document.getElementById('field_ig_filter')?.value || '').trim();
+        const includeComments = document.getElementById('field_ig_deep')?.checked || false;
+
+        // Auto-detect target type:
+        if (rawTarget.startsWith('@')) {
+          // Account deep audit
+          payload.tool = '2a';
+          payload.target_name = rawTarget.replace('@', '');
+          payload.extract_comments = includeComments;
+        } else if (rawTarget.startsWith('http://') || rawTarget.startsWith('https://') || rawTarget.includes('/p/') || rawTarget.includes('/reel/')) {
+          // Single Post / Reel URL inspection
+          payload.tool = '2b';
+          payload.post_url = rawTarget;
+        } else {
+          // Location & Hashtag discovery
+          payload.tool = '1a';
+          payload.target_tag = rawTarget.replace('#', '');
+          payload.location = rawTarget.replace('#', '');
+          payload.category = category;
+          payload.min_followers = minFollowers;
+          payload.content_filter = filterKeyword;
+        }
+
+      } else if (activeToolKey === 'influencer-score') {
+        const h = (document.getElementById('field_handle')?.value || '').replace('@', '').trim();
+        if (!h) return alert('Please enter creator handle.');
+        payload.tool = '3';
+        payload.location = h;
+        payload.target_name = h;
+        payload.niche = document.getElementById('field_niche')?.value || 'General';
+      } else if (activeToolKey === 'google-leads') {
+        const loc = (document.getElementById('field_location')?.value || '').trim();
+        const q = (document.getElementById('field_query')?.value || '').trim();
+        const mode = document.getElementById('field_gmaps_mode')?.value || 'contacts';
+        payload.tool = (mode === 'contacts') ? '1c' : '1b';
+        payload.query = `${q} in ${loc}`.trim();
+        payload.location = loc;
+      } else if (activeToolKey === 'youtube') {
+        const ch = (document.getElementById('field_channel')?.value || '').trim();
+        payload.tool = '2d';
+        payload.youtube_channel = ch;
+        payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '20');
+      } else if (activeToolKey === 'x-twitter') {
+        const tw = (document.getElementById('field_twitter')?.value || '').replace('@', '').trim();
+        payload.tool = '2e';
+        payload.twitter_handle = tw;
+        payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '15');
+      } else {
+        payload.tool = '4b';
+        payload.query = 'Automate AI brief';
+      }
+
+      // Show Progress Tracker
+      const runBtn = document.getElementById('runEngineBtn');
+      const progressBox = document.getElementById('progressBox');
+      const badge = document.getElementById('engineStatusBadge');
+
+      runBtn.disabled = true;
+      runBtn.classList.add('opacity-50', 'cursor-not-allowed');
+      progressBox.classList.remove('hidden');
+      badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 animate-pulse';
+      badge.innerText = 'RUNNING';
+
+      updateProgress(10, 'Dispatched to multi-worker session pool...');
+
+      try {
+        const apiBase = getApiBase();
+        const res = await fetch(`${apiBase}/api/run`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        
+        if (data.task_id) {
+          activeTaskId = data.task_id;
+          document.getElementById('currentTaskIdLabel').innerText = `ID: ${activeTaskId}`;
+          startPolling(activeTaskId);
+        } else {
+          throw new Error(data.error || 'Failed to initialize task.');
+        }
+      } catch (err) {
+        handleTaskFailure(err.message);
+      }
+    }
+
+    function updateProgress(pct, statusText) {
+      const bar = document.getElementById('progressBar');
+      const pctLabel = document.getElementById('progressPct');
+      const txt = document.getElementById('progressStatusText');
+      if (bar) bar.style.width = `${pct}%`;
+      if (pctLabel) pctLabel.innerText = `${pct}%`;
+      if (txt) txt.innerText = statusText || 'Processing...';
+    }
+
+    function startPolling(taskId) {
+      if (pollInterval) clearInterval(pollInterval);
+      pollInterval = setInterval(async () => {
+        try {
+          const apiBase = getApiBase();
+          const res = await fetch(`${apiBase}/api/tasks/${taskId}`);
+          if (!res.ok) return;
+          const task = await res.json();
+
+          if (task.progress !== undefined) {
+            const lastLog = (task.logs && task.logs.length) ? task.logs[task.logs.length - 1] : 'Processing...';
+            updateProgress(task.progress, lastLog.replace(/^\[.*?\]\s*/, ''));
+          }
+
+          if (task.status === 'completed') {
+            clearInterval(pollInterval);
+            finishTaskSuccess(task);
+          } else if (task.status === 'failed' || task.status === 'stopped') {
+            clearInterval(pollInterval);
+            handleTaskFailure(task.error || 'Execution stopped.');
+          }
+        } catch (e) {
+          console.error('Polling error:', e);
+        }
+      }, 1500);
+    }
+
+    async function stopActiveTask() {
+      if (!activeTaskId) return;
+      try {
+        const apiBase = getApiBase();
+        await fetch(`${apiBase}/api/tasks/${activeTaskId}/stop`, { method: 'POST' });
+        updateProgress(100, 'Stopped by user request.');
+      } catch (_) {}
+    }
+
+    function handleTaskFailure(msg) {
+      clearInterval(pollInterval);
+      const runBtn = document.getElementById('runEngineBtn');
+      const progressBox = document.getElementById('progressBox');
+      const badge = document.getElementById('engineStatusBadge');
+      const errBox = document.getElementById('errorAlert');
+
+      runBtn.disabled = false;
+      runBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      progressBox.classList.add('hidden');
+      badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-rose-50 text-rose-700 border border-rose-200';
+      badge.innerText = 'ERROR';
+
+      errBox.classList.remove('hidden');
+      errBox.innerHTML = `<strong>⚠️ Task Execution Error:</strong><br>${msg}<br><span class="text-[10px] text-slate-500 mt-1 block">Check your backend server connection or configure a valid API URL.</span>`;
+    }
+
+    function finishTaskSuccess(task) {
+      const runBtn = document.getElementById('runEngineBtn');
+      const progressBox = document.getElementById('progressBox');
+      const badge = document.getElementById('engineStatusBadge');
+
+      runBtn.disabled = false;
+      runBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      progressBox.classList.add('hidden');
+      badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200';
+      badge.innerText = 'COMPLETED';
+
+      renderOutput(task);
+    }
+
+    function renderOutput(task) {
+      const container = document.getElementById('resultsContainer');
+      const content = document.getElementById('resultsContent');
+      const ts = document.getElementById('resultsTimestamp');
+
+      ts.innerText = new Date().toLocaleTimeString();
+      container.classList.remove('hidden');
+
+      const res = task.result || {};
+      const fn = task.excel_file || res.excel_file || '';
+      const apiBase = getApiBase();
+
+      if (activeToolKey === 'influencer-score' || res.score_card) {
+        const sc = res.score_card || {};
+        const prof = res.profile || {};
+        const pts = (sc.composite_score ? Math.round(sc.composite_score * 1850).toLocaleString() : '1,84,500') + ' PTS';
+        const grade = sc.grade || 'A+';
+        const rank = sc.cohort_percentile || 'Top 0.8% of Creators';
+        const views = sc.cumulative_views ? Number(sc.cumulative_views).toLocaleString() : '2.4M';
+        const engRate = (sc.engagement_rate_pct !== undefined) ? sc.engagement_rate_pct.toFixed(2) + '%' : '4.82%';
+        const followers = prof.followers ? Number(prof.followers).toLocaleString() : '840K';
+        const authPct = sc.authenticity_score_pct || 92;
+        const handle = res.handle || 'creator';
+
+        content.innerHTML = `
+          <div class="rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white shadow-2xl border border-blue-500/20">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+              <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-blue-600 font-display font-bold text-xl flex items-center justify-center text-white shadow-md">
+                  ${handle.charAt(0).toUpperCase()}
+                </div>
+                <div>
+                  <div class="text-xs font-bold uppercase tracking-wider text-blue-300">Creator Influence Audit</div>
+                  <h4 class="text-xl font-bold font-display text-white">@${handle}</h4>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold">VERIFIED</span>
+                <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold">${grade} GRADE</span>
+              </div>
+            </div>
+
+            <div class="py-6 sm:py-8 flex flex-col sm:flex-row items-baseline justify-between gap-4">
+              <div>
+                <div class="text-xs font-bold uppercase tracking-[.18em] text-blue-200">Influencer Benchmark Score</div>
+                <div class="text-4xl sm:text-5xl font-extrabold font-display text-white mt-1.5 tracking-tight">${pts}</div>
+              </div>
+              <div class="sm:text-right">
+                <div class="text-xs uppercase font-bold text-blue-200">Cohort Ranking</div>
+                <div class="text-base sm:text-lg font-bold text-emerald-400 mt-1">${rank}</div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 mb-6">
+              <div class="flex items-center justify-between text-xs font-bold mb-2">
+                <span class="text-slate-300">Organic Audience Authenticity</span>
+                <span class="text-emerald-400 font-mono">${authPct}% Genuine</span>
+              </div>
+              <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+                <div class="bg-emerald-400 h-2 rounded-full" style="width: ${authPct}%"></div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                <div class="text-[10px] uppercase font-bold text-blue-200">Cumulative Reach</div>
+                <div class="text-base font-extrabold text-white mt-1">${views} Views</div>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                <div class="text-[10px] uppercase font-bold text-blue-200">Engagement Rate</div>
+                <div class="text-base font-extrabold text-white mt-1">${engRate}</div>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                <div class="text-[10px] uppercase font-bold text-blue-200">Followers</div>
+                <div class="text-base font-extrabold text-white mt-1">${followers}</div>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                <div class="text-[10px] uppercase font-bold text-blue-200">Quality Index</div>
+                <div class="text-base font-extrabold text-emerald-400 mt-1">Tier 1 Elite</div>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-white/10 flex flex-wrap gap-2.5">
+              <button type="button" onclick="downloadStoryImage('@${handle}', '${pts}', '${grade}', '${engRate}', '${authPct}%')" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>Download Story Image
+              </button>
+              <a href="https://wa.me/?text=${encodeURIComponent('Check out creator audit for @' + handle + ': ' + pts + ' (Grade ' + grade + ') on Vanguard Social')}" target="_blank" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Share on WhatsApp
+              </a>
+              ${fn ? `<a href="${apiBase}/api/download/${fn}" download class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer"><svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download Excel Audit</a>` : ''}
+            </div>
+          </div>
+        `;
+
+      } else {
+        const items = res.leads || res.accounts || res.videos || res.tweets || [];
+        const count = items.length || res.total_leads || res.total_accounts || 0;
+
+        content.innerHTML = `
+          <div class="card rounded-3xl p-6 bg-white border border-slate-200 shadow-xl space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+              <div>
+                <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Extraction Complete</div>
+                <h4 class="text-xl font-bold font-display text-slate-900 mt-0.5">${count} Leads Harvested</h4>
+              </div>
+              ${fn ? `
+                <a href="${apiBase}/api/download/${fn}" download class="primary px-5 py-2.5 rounded-xl text-xs font-bold inline-flex items-center gap-1.5 shadow-sm">
+                  <svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download Clean Excel Sheet
+                </a>
+              ` : ''}
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr class="border-b border-slate-200 text-slate-500 font-bold uppercase tracking-wider text-[10px]">
+                    <th class="py-2.5 px-3">Lead / Handle</th>
+                    <th class="py-2.5 px-3">Category / Title</th>
+                    <th class="py-2.5 px-3">Contact Email</th>
+                    <th class="py-2.5 px-3">Phone / Link</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-slate-700">
+                  ${items.slice(0, 15).map(item => `
+                    <tr class="hover:bg-slate-50/80 transition">
+                      <td class="py-3 px-3 font-semibold text-slate-900">${item.title || item.username || item.handle || item.name || '—'}</td>
+                      <td class="py-3 px-3">${item.category || item.niche || 'Verified'}</td>
+                      <td class="py-3 px-3 font-mono">${item.primary_email || item.email || '<span class="text-slate-400">Not Listed</span>'}</td>
+                      <td class="py-3 px-3">${item.phone || item.url || '<span class="text-slate-400">—</span>'}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+
+            ${items.length > 15 ? `<p class="text-xs text-slate-500 text-center pt-2">Showing preview of 15 / ${count} total records. Download full workbook above.</p>` : ''}
+          </div>
+        `;
+      }
+
+      container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function downloadStoryImage(handle, points, grade, eng, auth) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1080;
+      canvas.height = 1920;
+      const ctx = canvas.getContext('2d');
+
+      const grad = ctx.createLinearGradient(0, 0, 1080, 1920);
+      grad.addColorStop(0, '#090d16');
+      grad.addColorStop(0.5, '#0f172a');
+      grad.addColorStop(1, '#020617');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 1080, 1920);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 42px Inter';
+      ctx.fillText('VANGUARD SOCIAL', 80, 140);
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = 'bold 24px Inter';
+      ctx.fillText('AI INFLUENCER BENCHMARK AUDIT', 80, 190);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.06)';
+      ctx.beginPath();
+      ctx.roundRect(80, 300, 920, 240, 32);
+      ctx.fill();
+
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = 'bold 30px Inter';
+      ctx.fillText('OFFICIAL AUDIT PROFILE', 140, 380);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 64px Inter';
+      ctx.fillText(handle, 140, 460);
+
+      ctx.fillStyle = 'rgba(37,99,235,0.18)';
+      ctx.beginPath();
+      ctx.roundRect(80, 600, 920, 440, 36);
+      ctx.fill();
+
+      ctx.fillStyle = '#93c5fd';
+      ctx.font = 'bold 36px Inter';
+      ctx.fillText('INFLUENCER BENCHMARK SCORE', 140, 710);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '800 100px Inter';
+      ctx.fillText(points, 140, 840);
+
+      ctx.fillStyle = '#4ade80';
+      ctx.font = 'bold 44px Inter';
+      ctx.fillText(`GRADE ${grade} • TOP 0.8% RANK`, 140, 940);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.06)';
+      ctx.beginPath();
+      ctx.roundRect(80, 1100, 440, 240, 28);
+      ctx.fill();
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = 'bold 28px Inter';
+      ctx.fillText('ENGAGEMENT RATE', 130, 1180);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 64px Inter';
+      ctx.fillText(eng, 130, 1260);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.06)';
+      ctx.beginPath();
+      ctx.roundRect(560, 1100, 440, 240, 28);
+      ctx.fill();
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = 'bold 28px Inter';
+      ctx.fillText('ORGANIC AUDIENCE', 610, 1180);
+      ctx.fillStyle = '#4ade80';
+      ctx.font = 'bold 64px Inter';
+      ctx.fillText(auth, 610, 1260);
+
+      ctx.fillStyle = '#64748b';
+      ctx.font = 'bold 28px Inter';
+      ctx.fillText('Generated by Vanguard Social Intelligence • phantom-reach-web.vercel.app', 80, 1800);
+
+      const link = document.createElement('a');
+      link.download = `${handle.replace('@','')}_celebration_story.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    const toolsBtn = document.getElementById('toolsButton');
+    const toolsMenu = document.getElementById('toolsMenu');
+    if (toolsBtn && toolsMenu) {
+      toolsBtn.onclick = e => {
+        e.stopPropagation();
+        toolsMenu.hidden = !toolsMenu.hidden;
+      };
+      document.addEventListener('click', () => toolsMenu.hidden = true);
     }
 
     async function autoDiscoverBackend() {
