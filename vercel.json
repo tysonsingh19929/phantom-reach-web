@@ -2,12 +2,20 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/api/backend-url",
+      "destination": "/api/backend-url"
+    },
+    {
       "source": "/api/run",
       "destination": "/api/run"
     },
     {
       "source": "/api/tasks/:id",
       "destination": "/api/task?id=:id"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "/api/proxy?path=:path*"
     },
     {
       "source": "/tools/:tool*",

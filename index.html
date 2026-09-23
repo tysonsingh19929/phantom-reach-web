@@ -184,7 +184,7 @@
     </div>
   </footer>
 
-  <!-- BACKEND API CONFIG MODAL -->
+    <!-- BACKEND API CONFIG MODAL -->
   <div id="apiConfigModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
     <div class="glass w-full max-w-lg rounded-3xl p-6 sm:p-8 bg-white shadow-2xl border border-slate-200">
       <div class="flex items-center justify-between pb-4 border-b border-slate-100">
@@ -192,27 +192,48 @@
           <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
           <div>
             <h3 class="font-display text-lg font-bold text-slate-900">Backend Server API</h3>
-            <p class="text-xs text-slate-500">Target scrapers and database endpoint</p>
+            <p class="text-xs text-slate-500">Live intelligence engine &amp; scraper sync</p>
           </div>
         </div>
         <button type="button" onclick="closeApiModal()" class="h-8 w-8 inline-flex items-center justify-center rounded-xl hover:bg-slate-100 text-slate-500 font-bold cursor-pointer">✕</button>
       </div>
+
       <div class="py-5 space-y-4">
-        <div>
-          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Backend API URL</label>
-          <input id="customApiInput" type="text" placeholder="https://your-tunnel.trycloudflare.com" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <p class="mt-1 text-[11px] text-slate-500">Leave blank when running locally. When hosted on Vercel, enter your Cloudflare tunnel or backend URL.</p>
+        <!-- Live Auto-Sync Status Card -->
+        <div class="rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Auto-Sync Status</span>
+            <span id="activeBackendBadgeDisplay" class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-slate-200 text-slate-700">Checking...</span>
+          </div>
+          <div class="flex items-center justify-between text-xs gap-2">
+            <span class="text-slate-600 font-medium shrink-0">Live Engine:</span>
+            <span id="activeBackendUrlDisplay" class="font-mono text-[11px] text-slate-800 font-semibold truncate">Syncing...</span>
+          </div>
+          <div class="text-[11px] text-slate-500 flex items-center justify-between pt-1 border-t border-slate-200/60">
+            <span>Synced automatically via MongoDB Atlas</span>
+            <button type="button" onclick="resetApiToAuto()" class="text-blue-600 hover:text-blue-700 font-bold underline cursor-pointer">Sync Now / Reset</button>
+          </div>
         </div>
+
+        <!-- Custom Override Field (Optional) -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Custom Override (Optional)</label>
+          <input id="customApiInput" type="text" placeholder="Leave empty for automatic zero-config sync" class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <p class="mt-1 text-[11px] text-slate-500">Zero manual configuration required! When you run Vanguard on your PC, all devices sync instantly.</p>
+        </div>
+
         <div id="apiPingStatus" class="hidden p-3 rounded-xl text-xs font-medium"></div>
       </div>
-      <div class="flex items-center justify-between pt-4 border-t border-slate-100">
-        <button type="button" onclick="testApiConnection()" class="px-4 py-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 transition cursor-pointer">Ping Server</button>
+
+      <div class="flex items-center justify-between pt-4 border-t border-slate-100 gap-2">
+        <button type="button" onclick="testApiConnection()" class="px-3.5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 transition cursor-pointer">Test Ping</button>
         <div class="flex gap-2">
-          <button type="button" onclick="closeApiModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50 transition cursor-pointer">Cancel</button>
-          <button type="button" onclick="saveCustomApiUrl()" class="primary px-5 py-2.5 rounded-xl text-xs font-semibold transition cursor-pointer">Save &amp; Connect</button>
+          <button type="button" onclick="resetApiToAuto()" class="px-3.5 py-2 rounded-xl border border-blue-200 bg-blue-50 text-xs font-semibold text-blue-700 hover:bg-blue-100 transition cursor-pointer">Reset to Auto</button>
+          <button type="button" onclick="saveCustomApiUrl()" class="primary px-4 py-2 rounded-xl text-xs font-semibold transition cursor-pointer">Save Override</button>
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <script>
@@ -240,6 +261,23 @@
     document.addEventListener('click',closeMenus);
     document.addEventListener('keydown',e=>e.key==='Escape'&&closeMenus());
 
+        // Purge any stale ephemeral tunnels from older sessions
+    (function purgeStaleTunnels() {
+      try {
+        const custom = localStorage.getItem('phantom_custom_api') || '';
+        if (/trycloudflare\.com|loca\.lt|ngrok/i.test(custom)) {
+          localStorage.removeItem('phantom_custom_api');
+        }
+        const base = localStorage.getItem('vanguard_api_base') || '';
+        if (/trycloudflare\.com|loca\.lt|ngrok/i.test(base)) {
+          localStorage.removeItem('vanguard_api_base');
+        }
+      } catch (_) {}
+    })();
+
+    let activeBackendUrl = '';
+    let activeBackendStatus = 'checking'; // 'online', 'offline', 'local', 'checking'
+
     function getApiBase() {
       try {
         const urlParams = new URLSearchParams(window.location.search);
@@ -247,46 +285,53 @@
         if (param && param.trim().startsWith('http')) return param.trim().replace(/\/+$/, '');
       } catch (_) {}
 
-      const custom = localStorage.getItem('phantom_custom_api') || localStorage.getItem('vanguard_api_base');
-      if (custom && custom.trim()) return custom.trim().replace(/\/+$/, '');
+      // Explicit non-ephemeral custom VPS/domain if set by user
+      const custom = localStorage.getItem('phantom_custom_api');
+      if (custom && custom.trim() && !/trycloudflare\.com|loca\.lt|ngrok/i.test(custom)) {
+        return custom.trim().replace(/\/+$/, '');
+      }
 
-      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') return '';
+      // On localhost or Vercel, return '' to use same-origin serverless proxy or local FastAPI
       return '';
+    }
+
+    function getActiveEngineUrl() {
+      return activeBackendUrl || localStorage.getItem('vanguard_api_base') || '';
     }
 
     function setApiBase(url) {
       const clean = (url || '').trim().replace(/\/+$/, '');
-      if (clean) {
+      if (clean && !/trycloudflare\.com|loca\.lt|ngrok/i.test(clean)) {
         localStorage.setItem('phantom_custom_api', clean);
-        localStorage.setItem('vanguard_api_base', clean);
       } else {
         localStorage.removeItem('phantom_custom_api');
-        localStorage.removeItem('vanguard_api_base');
       }
-      updateApiStatusUI();
+      autoDiscoverBackend();
     }
 
     function updateApiStatusUI() {
-      const base = getApiBase();
       const dot = document.getElementById('apiStatusDot');
       const label = document.getElementById('apiStatusLabel');
       const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
 
-      if (base) {
+      if (isLocal) {
+        if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500';
+        if (label) label.innerText = 'API: Localhost (8000)';
+      } else if (activeBackendStatus === 'online') {
+        if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500 animate-pulse';
         try {
-          const host = new URL(base).hostname;
-          if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500 animate-pulse';
+          const u = getActiveEngineUrl();
+          const host = u ? new URL(u).hostname.split('.')[0] : 'Live';
           if (label) label.innerText = `API: ${host}`;
         } catch (_) {
-          if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500 animate-pulse';
-          if (label) label.innerText = 'API: Live';
+          if (label) label.innerText = 'API: Live (Synced)';
         }
-      } else if (isLocal) {
-        if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500';
-        if (label) label.innerText = 'API: Localhost';
+      } else if (activeBackendStatus === 'checking') {
+        if (dot) dot.className = 'h-2 w-2 rounded-full bg-blue-500 animate-pulse';
+        if (label) label.innerText = 'API: Syncing...';
       } else {
-        if (dot) dot.className = 'h-2 w-2 rounded-full bg-amber-500 animate-pulse';
-        if (label) label.innerText = 'API: Config';
+        if (dot) dot.className = 'h-2 w-2 rounded-full bg-rose-500';
+        if (label) label.innerText = 'API: Offline';
       }
     }
 
@@ -294,7 +339,29 @@
       const modal = document.getElementById('apiConfigModal');
       const input = document.getElementById('customApiInput');
       const statusBox = document.getElementById('apiPingStatus');
-      if (input) input.value = getApiBase();
+      const liveUrlLabel = document.getElementById('activeBackendUrlDisplay');
+      const liveBadge = document.getElementById('activeBackendBadgeDisplay');
+
+      const liveUrl = getActiveEngineUrl();
+      if (liveUrlLabel) liveUrlLabel.innerText = liveUrl || 'No active tunnel detected';
+      if (liveBadge) {
+        if (activeBackendStatus === 'online') {
+          liveBadge.className = 'px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800';
+          liveBadge.innerText = 'Online & Synced';
+        } else if (activeBackendStatus === 'local') {
+          liveBadge.className = 'px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800';
+          liveBadge.innerText = 'Localhost (8000)';
+        } else {
+          liveBadge.className = 'px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-rose-100 text-rose-800';
+          liveBadge.innerText = 'Offline';
+        }
+      }
+
+      const custom = localStorage.getItem('phantom_custom_api') || '';
+      if (input) {
+        input.value = custom;
+        input.placeholder = liveUrl ? `Auto: ${liveUrl}` : 'https://api.yourdomain.com';
+      }
       if (statusBox) statusBox.className = 'hidden';
       if (modal) modal.classList.remove('hidden');
     }
@@ -304,24 +371,48 @@
       if (modal) modal.classList.add('hidden');
     }
 
+    function resetApiToAuto() {
+      localStorage.removeItem('phantom_custom_api');
+      localStorage.removeItem('vanguard_api_base');
+      const input = document.getElementById('customApiInput');
+      if (input) input.value = '';
+      const statusBox = document.getElementById('apiPingStatus');
+      if (statusBox) {
+        statusBox.className = 'p-3 rounded-xl text-xs font-medium bg-blue-50 text-blue-700 block';
+        statusBox.innerText = 'Syncing latest live backend from MongoDB Atlas...';
+      }
+      autoDiscoverBackend().then(() => {
+        openApiModal();
+        if (statusBox) {
+          if (activeBackendStatus === 'online') {
+            statusBox.className = 'p-3 rounded-xl text-xs font-medium bg-emerald-50 text-emerald-800 block';
+            statusBox.innerHTML = `<strong>✓ Auto-Synced Successfully!</strong><br>Connected Engine: ${getActiveEngineUrl()}`;
+          } else {
+            statusBox.className = 'p-3 rounded-xl text-xs font-medium bg-rose-50 text-rose-800 block';
+            statusBox.innerHTML = `<strong>Backend Offline</strong><br>Please start 'start_vanguard.bat' or 'python run_vanguard.py' on your computer.`;
+          }
+        }
+      });
+    }
+
     async function testApiConnection() {
       const input = document.getElementById('customApiInput');
       const statusBox = document.getElementById('apiPingStatus');
-      const url = (input ? input.value : '').trim().replace(/\/+$/, '');
+      const customUrl = (input ? input.value : '').trim().replace(/\/+$/, '');
       if (!statusBox) return;
 
       statusBox.className = 'p-3 rounded-xl text-xs font-medium bg-blue-50 text-blue-700 block';
-      statusBox.innerText = `Pinging ${url || 'local origin'}...`;
+      statusBox.innerText = `Testing connection to ${customUrl || 'live auto-synced backend'}...`;
 
-      const endpoint = url ? `${url}/api/system-info` : `/api/system-info`;
+      const endpoint = customUrl ? `${customUrl}/api/system-info` : '/api/system-info';
       try {
         const start = Date.now();
-        const res = await fetch(endpoint);
+        const res = await fetch(endpoint, { cache: 'no-store' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         const latency = Date.now() - start;
         statusBox.className = 'p-3 rounded-xl text-xs font-medium bg-emerald-50 text-emerald-800 block';
-        statusBox.innerHTML = `<strong>✓ Connected (${latency}ms)</strong><br>Status: ${data.status} • Total Reports: ${data.total_reports || 0}`;
+        statusBox.innerHTML = `<strong>✓ Connected (${latency}ms)</strong><br>Status: ${data.status} • Total Reports: ${data.total_reports || 0} • Active Pool: ${data.account_pool ? data.account_pool.length : 0} account(s)`;
       } catch (err) {
         statusBox.className = 'p-3 rounded-xl text-xs font-medium bg-rose-50 text-rose-800 block';
         statusBox.innerHTML = `<strong>✕ Connection Failed</strong><br>${err.message}`;
@@ -336,32 +427,57 @@
     }
 
     async function autoDiscoverBackend() {
-      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') return;
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        activeBackendStatus = 'local';
+        activeBackendUrl = window.location.origin;
+        updateApiStatusUI();
+        return;
+      }
+
+      activeBackendStatus = 'checking';
+      updateApiStatusUI();
+
       try {
-        // Step 1: Check static endpoint (Instant 0ms, works globally)
-        const staticRes = await fetch('/endpoint.json?t=' + Date.now());
-        if (staticRes.ok) {
-          const sData = await staticRes.json();
-          if (sData && sData.url && sData.url.startsWith('https://')) {
-            localStorage.setItem('vanguard_api_base', sData.url);
+        const res = await fetch('/api/backend-url?t=' + Date.now(), { cache: 'no-store' });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.status === 'online' && data.url) {
+            activeBackendUrl = data.url.replace(/\/+$/, '');
+            activeBackendStatus = 'online';
+            localStorage.setItem('vanguard_api_base', activeBackendUrl);
+            updateApiStatusUI();
+            return;
+          } else {
+            activeBackendUrl = '';
+            activeBackendStatus = 'offline';
+            localStorage.removeItem('vanguard_api_base');
             updateApiStatusUI();
             return;
           }
         }
-        // Step 2: Fallback to MongoDB serverless resolver
-        const res = await fetch('/api/backend-url');
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.url) {
-            localStorage.setItem('vanguard_api_base', data.url);
+      } catch (_) {}
+
+      try {
+        const staticRes = await fetch('/endpoint.json?t=' + Date.now(), { cache: 'no-store' });
+        if (staticRes.ok) {
+          const sData = await staticRes.json();
+          if (sData && sData.url && sData.url.startsWith('https://')) {
+            activeBackendUrl = sData.url.replace(/\/+$/, '');
+            activeBackendStatus = 'online';
+            localStorage.setItem('vanguard_api_base', activeBackendUrl);
             updateApiStatusUI();
+            return;
           }
         }
       } catch (_) {}
+
+      activeBackendStatus = 'offline';
+      updateApiStatusUI();
     }
 
     updateApiStatusUI();
     autoDiscoverBackend();
+    setInterval(autoDiscoverBackend, 60000);
   </script>
 </body>
 </html>

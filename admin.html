@@ -610,43 +610,45 @@
     // ──────────────────────────────────────────────────────────────
     // API BASE RESOLUTION & PERSISTENCE
     // ──────────────────────────────────────────────────────────────
+        // Purge any stale ephemeral tunnels from older sessions
+    (function purgeStaleTunnels() {
+      try {
+        const custom = localStorage.getItem('phantom_custom_api') || '';
+        if (/trycloudflare\.com|loca\.lt|ngrok/i.test(custom)) {
+          localStorage.removeItem('phantom_custom_api');
+        }
+        const base = localStorage.getItem('vanguard_api_base') || '';
+        if (/trycloudflare\.com|loca\.lt|ngrok/i.test(base)) {
+          localStorage.removeItem('vanguard_api_base');
+        }
+      } catch (_) {}
+    })();
+
+    let activeBackendUrl = '';
+    let activeBackendStatus = 'checking';
+
     function getApiBase() {
-      // 1. Query parameter (?api=... or ?backend=...)
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const param = urlParams.get('api') || urlParams.get('backend');
-        if (param && param.trim().startsWith('http')) {
-          return param.trim().replace(/\/+$/, '');
-        }
+        if (param && param.trim().startsWith('http')) return param.trim().replace(/\/+$/, '');
       } catch (_) {}
 
-      // 2. Custom override in localStorage
-      const custom = localStorage.getItem('phantom_custom_api') || localStorage.getItem('vanguard_api_base');
-      if (custom && custom.trim()) {
+      const custom = localStorage.getItem('phantom_custom_api');
+      if (custom && custom.trim() && !/trycloudflare\.com|loca\.lt|ngrok/i.test(custom)) {
         return custom.trim().replace(/\/+$/, '');
       }
 
-      // 3. Localhost runs against local origin
-      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        return '';
-      }
-
-      // 4. Global backend fallback
-      if (window.BACKEND_API_BASE && window.BACKEND_API_BASE.startsWith('http')) {
-        return window.BACKEND_API_BASE.trim().replace(/\/+$/, '');
-      }
-
+      // On localhost or Vercel, return '' to use same-origin proxy or local FastAPI
       return '';
     }
 
     function setApiBase(url) {
       const clean = (url || '').trim().replace(/\/+$/, '');
-      if (clean) {
+      if (clean && !/trycloudflare\.com|loca\.lt|ngrok/i.test(clean)) {
         localStorage.setItem('phantom_custom_api', clean);
-        localStorage.setItem('vanguard_api_base', clean);
       } else {
         localStorage.removeItem('phantom_custom_api');
-        localStorage.removeItem('vanguard_api_base');
       }
       syncApiUi();
     }
