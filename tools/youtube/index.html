@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="description" content="Vanguard Social — AI-powered multi-platform intelligence and lead generation engines.">
   <title>Vanguard Social — Intelligence Engine</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230F172A'/%3E%3Cpath d='M6 6h3.4L12 14.6 14.6 6H18l-5 12h-2L6 6Z' fill='white'/%3E%3C/svg%3E">
@@ -12,7 +12,144 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:#0f172a;font-family:Inter,sans-serif;background:linear-gradient(135deg,#f8fbff,#eef6ff 42%,#fff)}.container{max-width:1200px;margin:auto;padding:0 1rem}.font-display{font-family:Lexend,Inter,sans-serif}.glass{background:#ffffff;border:1px solid #cbd5e1;box-shadow:0 25px 50px -12px rgba(15,23,42,.25),0 0 0 1px rgba(226,232,240,.9)}.primary{background:linear-gradient(135deg,#2563eb,#0f172a);color:#fff}.primary:hover{background:linear-gradient(135deg,#3b82f6,#111827)}.card{background:#fff;border:1px solid #dbeafe;box-shadow:0 20px 50px -25px rgba(15,23,42,.22)}.icon{display:grid;place-items:center;width:3.25rem;height:3.25rem;border-radius:1rem;background:#eff6ff;color:#2563eb}.icon svg{width:1.75rem;height:1.75rem}.input{width:100%;border:1px solid #cbd5e1;border-radius:.8rem;padding:.75rem 1rem;color:#0f172a;background:#fff;font-size:0.9rem}.input:focus{outline:3px solid #bfdbfe;outline-offset:1px}.menu{position:absolute;top:calc(100% + .7rem);z-index:50;width:min(24rem,calc(100vw - 2rem));left:0;background:#ffffff !important;border:1px solid #cbd5e1 !important;box-shadow:0 25px 50px -12px rgba(15,23,42,.28),0 0 0 1px rgba(226,232,240,.9) !important}.account{right:0;left:auto;width:min(22rem,calc(100vw - 2rem));background:#ffffff !important;border:1px solid #cbd5e1 !important;box-shadow:0 25px 50px -12px rgba(15,23,42,.28),0 0 0 1px rgba(226,232,240,.9) !important}.menu[hidden]{display:none}.menu a{display:flex;align-items:center;gap:.9rem;padding:.85rem .9rem;border-radius:.8rem;color:#334155;font-size:.95rem;font-weight:600;line-height:1.35;text-decoration:none}.menu a:hover{background:#eff6ff;color:#1d4ed8}.menu svg{width:1.3rem;height:1.3rem;color:#2563eb;flex:none}
+    *, ::before, ::after {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    html {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    body {
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      min-height: 100vh;
+      min-height: 100dvh;
+      color: #0f172a;
+      font-family: Inter, sans-serif;
+      background: linear-gradient(135deg, #f8fbff, #eef6ff 42%, #fff);
+      touch-action: manipulation;
+      position: relative;
+    }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 1rem;
+      overflow-x: hidden;
+    }
+    .font-display { font-family: Lexend, Inter, sans-serif; }
+    .glass {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 25px 50px -12px rgba(15,23,42,.25), 0 0 0 1px rgba(226,232,240,.9);
+    }
+    .primary {
+      background: linear-gradient(135deg, #2563eb, #0f172a);
+      color: #fff;
+    }
+    .primary:hover {
+      background: linear-gradient(135deg, #3b82f6, #111827);
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #dbeafe;
+      box-shadow: 0 20px 50px -25px rgba(15,23,42,.22);
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 3.25rem;
+      height: 3.25rem;
+      border-radius: 1rem;
+      background: #eff6ff;
+      color: #2563eb;
+    }
+    .icon svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+    /* Strictly enforce 16px minimum font size to eliminate iOS Safari & Android Chrome auto-zoom & page stretching */
+    .input, input, select, textarea {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 0.875rem !important;
+      padding: 0.85rem 1rem !important;
+      color: #0f172a !important;
+      background: #ffffff !important;
+      font-size: 16px !important;
+      line-height: 1.4 !important;
+      -webkit-appearance: none;
+    }
+    .input:focus, input:focus, select:focus, textarea:focus {
+      outline: 3px solid rgba(37,99,235,.25) !important;
+      border-color: #2563eb !important;
+    }
+    @media (min-width: 640px) {
+      .input, input, select, textarea {
+        font-size: 0.875rem !important;
+        padding: 0.75rem 1rem !important;
+      }
+    }
+    /* Prevent any grid or flex child from blowing out the 100% mobile viewport */
+    .grid, .grid > *, main, section, .card, form {
+      min-width: 0;
+      max-width: 100%;
+    }
+    .menu {
+      position: absolute;
+      top: calc(100% + .7rem);
+      z-index: 50;
+      width: min(24rem, calc(100vw - 2rem));
+      max-width: calc(100vw - 2rem);
+      left: 0;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 25px 50px -12px rgba(15,23,42,.28), 0 0 0 1px rgba(226,232,240,.9) !important;
+    }
+    .account {
+      right: 0;
+      left: auto;
+      width: min(22rem, calc(100vw - 2rem));
+      max-width: calc(100vw - 2rem);
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 25px 50px -12px rgba(15,23,42,.28), 0 0 0 1px rgba(226,232,240,.9) !important;
+    }
+    .menu[hidden] { display: none; }
+    .menu a {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      padding: .85rem .9rem;
+      border-radius: .8rem;
+      color: #334155;
+      font-size: .95rem;
+      font-weight: 600;
+      line-height: 1.35;
+      text-decoration: none;
+    }
+    .menu a:hover {
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+    .menu svg {
+      width: 1.3rem;
+      height: 1.3rem;
+      color: #2563eb;
+      flex: none;
+    }
   </style>
 </head>
 <body>
@@ -63,7 +200,7 @@
   </header>
 
   <!-- MAIN VIEW CONTAINER -->
-  <main class="mx-auto max-w-6xl px-4 sm:px-6 py-6 sm:py-12">
+  <main class="mx-auto w-full max-w-6xl px-4 sm:px-6 py-6 sm:py-12 overflow-x-hidden">
     
     <div class="pb-6">
       <a href="/" class="text-sm font-semibold text-blue-700 hover:text-blue-800 transition inline-flex items-center gap-1.5">
@@ -71,10 +208,10 @@
       </a>
     </div>
 
-    <section class="grid gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-start">
+    <section class="w-full min-w-0 grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-start">
       
       <!-- LEFT COLUMN: ENGINE OVERVIEW & LIVE RESULTS -->
-      <div class="space-y-6">
+      <div class="space-y-6 w-full min-w-0 overflow-hidden">
         <div>
           <div class="flex items-center gap-2">
             <p class="text-xs font-bold uppercase tracking-[.18em] text-blue-700">Vanguard intelligence engine</p>
@@ -102,7 +239,7 @@
       </div>
 
       <!-- RIGHT COLUMN: UNIFIED INTERACTIVE FORM & EXECUTION ENGINE -->
-      <section class="card rounded-3xl p-5 sm:p-8 relative lg:sticky lg:top-24">
+      <section class="card rounded-3xl p-5 sm:p-8 relative lg:sticky lg:top-24 w-full min-w-0">
         
         <div class="flex items-center justify-between mb-3">
           <div class="icon" id="formIcon">
@@ -125,7 +262,7 @@
         </form>
 
         <!-- LIVE PROGRESS & EXECUTION TRACKER -->
-        <div id="progressBox" class="hidden mt-5 rounded-2xl bg-slate-50 border border-slate-200 p-4 space-y-3">
+        <div id="progressBox" class="hidden mt-5 rounded-2xl bg-slate-50 border border-slate-200 p-4 space-y-3 w-full min-w-0 overflow-hidden">
           <div class="flex items-center justify-between text-xs font-bold">
             <span class="text-blue-700 flex items-center gap-1.5">
               <span class="inline-block w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
@@ -1115,27 +1252,34 @@
               ` : ''}
             </div>
 
-            <div class="overflow-x-auto">
-              <table class="w-full text-left text-xs border-collapse">
-                <thead>
-                  <tr class="border-b border-slate-200 text-slate-500 font-bold uppercase tracking-wider text-[10px]">
-                    <th class="py-2.5 px-3">Lead / Handle</th>
-                    <th class="py-2.5 px-3">Category / Title</th>
-                    <th class="py-2.5 px-3">Contact Email</th>
-                    <th class="py-2.5 px-3">Phone / Link</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100 text-slate-700">
-                  ${items.slice(0, 15).map(item => `
-                    <tr class="hover:bg-slate-50/80 transition">
-                      <td class="py-3 px-3 font-semibold text-slate-900">${item.title || item.username || item.handle || item.name || '—'}</td>
-                      <td class="py-3 px-3">${item.category || item.niche || 'Verified'}</td>
-                      <td class="py-3 px-3 font-mono">${item.primary_email || item.email || '<span class="text-slate-400">Not Listed</span>'}</td>
-                      <td class="py-3 px-3">${item.phone || item.url || '<span class="text-slate-400">—</span>'}</td>
+            <!-- RESPONSIVE TABLE WRAPPER WITH HORIZONTAL SCROLL ISOLATION -->
+            <div class="w-full max-w-full overflow-hidden rounded-2xl border border-slate-200 bg-white">
+              <div class="sm:hidden flex items-center justify-between px-3.5 py-2 bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500">
+                <span>Leads Data Preview</span>
+                <span class="text-blue-600 font-bold flex items-center gap-1">Swipe sideways →</span>
+              </div>
+              <div class="w-full overflow-x-auto" style="-webkit-overflow-scrolling: touch;">
+                <table class="w-full min-w-[560px] text-left text-xs border-collapse">
+                  <thead>
+                    <tr class="bg-slate-50/80 border-b border-slate-200 text-slate-500 font-bold uppercase tracking-wider text-[10px]">
+                      <th class="py-3 px-3.5">Lead / Handle</th>
+                      <th class="py-3 px-3.5">Category / Title</th>
+                      <th class="py-3 px-3.5">Contact Email</th>
+                      <th class="py-3 px-3.5">Phone / Link</th>
                     </tr>
-                  `).join('')}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody class="divide-y divide-slate-100 text-slate-700">
+                    ${items.slice(0, 15).map(item => `
+                      <tr class="hover:bg-slate-50/80 transition">
+                        <td class="py-3 px-3.5 font-semibold text-slate-900">${item.title || item.username || item.handle || item.name || '—'}</td>
+                        <td class="py-3 px-3.5">${item.category || item.niche || 'Verified'}</td>
+                        <td class="py-3 px-3.5 font-mono">${item.primary_email || item.email || '<span class="text-slate-400">Not Listed</span>'}</td>
+                        <td class="py-3 px-3.5">${item.phone || item.url || '<span class="text-slate-400">—</span>'}</td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             ${items.length > 15 ? `<p class="text-xs text-slate-500 text-center pt-2">Showing preview of 15 / ${count} total records. Download full workbook above.</p>` : ''}
