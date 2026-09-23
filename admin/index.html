@@ -945,7 +945,7 @@
         if (userRes.status === 401) return logoutAdmin();
         if (userRes.ok) {
           const userData = await userRes.json();
-          const users = userData.users || [];
+          const users = Array.isArray(userData) ? userData : (userData.users || []);
 
           document.getElementById('kpiTotalUsers').innerText = users.length;
           const activeUsers = users.filter(u => u.status === 'active').length;
@@ -958,7 +958,7 @@
         const logsRes = await fetch(`${apiBase}/api/admin/audit-logs`, { headers: authHeaders() });
         if (logsRes.ok) {
           const logsData = await logsRes.json();
-          renderAuditTable(logsData.logs || []);
+          renderAuditTable(Array.isArray(logsData) ? logsData : (logsData.logs || []));
         }
 
       } catch (e) {
@@ -1029,11 +1029,11 @@
           <td class="py-3 px-4 text-right">
             <div class="inline-flex items-center gap-1.5 justify-end">
               ${u.status === 'active' 
-                ? `<button onclick="toggleUserStatus('${u.id}', 'suspended')" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs transition cursor-pointer">Suspend</button>`
-                : `<button onclick="toggleUserStatus('${u.id}', 'active')" class="px-2.5 py-1 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-700 font-semibold text-xs transition cursor-pointer">Activate</button>`
+                ? `<button onclick="toggleUserStatus('${u.id || u.user_id}', 'suspended')" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs transition cursor-pointer">Suspend</button>`
+                : `<button onclick="toggleUserStatus('${u.id || u.user_id}', 'active')" class="px-2.5 py-1 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-700 font-semibold text-xs transition cursor-pointer">Activate</button>`
               }
-              <button onclick="promptChangePassword('${u.id}')" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs transition cursor-pointer">Password</button>
-              ${u.role !== 'superadmin' ? `<button onclick="deleteUser('${u.id}')" class="px-2.5 py-1 rounded-lg border border-rose-200 bg-rose-50 hover:bg-rose-100 text-rose-700 font-semibold text-xs transition cursor-pointer">Delete</button>` : ''}
+              <button onclick="promptChangePassword('${u.id || u.user_id}')" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs transition cursor-pointer">Password</button>
+              ${u.role !== 'superadmin' ? `<button onclick="deleteUser('${u.id || u.user_id}')" class="px-2.5 py-1 rounded-lg border border-rose-200 bg-rose-50 hover:bg-rose-100 text-rose-700 font-semibold text-xs transition cursor-pointer">Delete</button>` : ''}
             </div>
           </td>
         </tr>
@@ -1116,13 +1116,23 @@
       if (!u || !pw) return alert('Username and password are required.');
 
       const apiBase = getApiBase();
-      await fetch(`${apiBase}/api/admin/users`, {
-        method: 'POST',
-        headers: authHeaders(),
-        body: JSON.stringify({ username: u, email: em, password: pw, role, plan })
-      });
-      closeModal('addUserModal');
-      refreshData();
+      try {
+        const res = await fetch(`${apiBase}/api/admin/users`, {
+          method: 'POST',
+          headers: authHeaders(),
+          body: JSON.stringify({ username: u, email: em, password: pw, role, plan })
+        });
+        const d = await res.json();
+        if (!res.ok || (d && d.success === false)) {
+          alert('Error: ' + (d.error || 'Failed to create user.'));
+          return;
+        }
+        alert('User ' + u + ' created successfully.');
+        closeModal('addUserModal');
+        refreshData();
+      } catch (err) {
+        alert('Communication error: ' + err.message);
+      }
     }
 
     async function submitAddScraper() {

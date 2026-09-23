@@ -6,6 +6,26 @@
       "destination": "/api/backend-url"
     },
     {
+      "source": "/api/auth/:path*",
+      "destination": "/api/auth?path=:path*"
+    },
+    {
+      "source": "/api/admin/audit-logs",
+      "destination": "/api/admin-users?action=logs"
+    },
+    {
+      "source": "/api/admin/users/:id/status",
+      "destination": "/api/admin-users?id=:id&action=status"
+    },
+    {
+      "source": "/api/admin/users/:id",
+      "destination": "/api/admin-users?id=:id"
+    },
+    {
+      "source": "/api/admin/users",
+      "destination": "/api/admin-users"
+    },
+    {
       "source": "/api/run",
       "destination": "/api/run"
     },

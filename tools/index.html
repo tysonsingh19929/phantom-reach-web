@@ -42,7 +42,14 @@
       max-width: 1200px;
       margin: auto;
       padding: 0 1rem;
-      overflow-x: hidden;
+    }
+    header, header .container, header > div, header .relative {
+      overflow: visible !important;
+    }
+    header {
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 1000 !important;
     }
     .font-display { font-family: Lexend, Inter, sans-serif; }
     .glass {
@@ -110,7 +117,7 @@
     .menu {
       position: absolute;
       top: calc(100% + .7rem);
-      z-index: 50;
+      z-index: 1050 !important;
       width: min(24rem, calc(100vw - 2rem));
       max-width: calc(100vw - 2rem);
       left: 0;
@@ -126,6 +133,20 @@
       background: #ffffff !important;
       border: 1px solid #cbd5e1 !important;
       box-shadow: 0 25px 50px -12px rgba(15,23,42,.28), 0 0 0 1px rgba(226,232,240,.9) !important;
+    }
+    @media (max-width: 640px) {
+      .menu {
+        left: 0;
+        right: auto;
+        width: calc(100vw - 2rem) !important;
+        max-width: calc(100vw - 2rem) !important;
+      }
+      .account {
+        right: 0;
+        left: auto;
+        width: calc(100vw - 2rem) !important;
+        max-width: calc(100vw - 2rem) !important;
+      }
     }
     .menu[hidden] { display: none; }
     .menu a {
@@ -155,7 +176,7 @@
 <body>
 
   <!-- HEADER -->
-  <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl" style="padding-top:env(safe-area-inset-top)">
+  <header class="sticky top-0 z-[1000] border-b border-slate-200/80 bg-white/90 backdrop-blur-xl" style="padding-top:env(safe-area-inset-top)">
     <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5">
       
       <div class="flex items-center gap-3">
@@ -193,6 +214,20 @@
           <span class="hidden sm:inline font-mono text-[11px] font-semibold" id="apiStatusLabel">API</span>
         </button>
 
+                <!-- Account Button -->
+        <div class="relative">
+          <button id="accountButton" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm cursor-pointer hover:bg-slate-50 transition" aria-label="Open account access menu" aria-expanded="false">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg>
+          </button>
+          <nav id="accountMenu" class="menu account glass rounded-2xl p-3" hidden>
+            <div class="px-3 pb-3 pt-1">
+              <p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-500">Account access</p>
+              <p class="mt-1 text-sm text-slate-500">Choose your Vanguard workspace</p>
+            </div>
+            <a href="/business-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16M2 21h20M9 7h6M9 11h6M9 15h3" stroke-linecap="round"/></svg><span>Business workspace</span></a>
+            <a href="/creator-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg><span>Creator / Influencer workspace</span></a>
+          </nav>
+        </div>
         <a href="/signup" class="primary rounded-xl px-4 py-2 text-xs font-semibold shadow-sm">Get started</a>
       </div>
 
