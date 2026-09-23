@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
 
     if (doc && doc.url && doc.status === 'online') {
       const now = Date.now() / 1000;
-      if (doc.last_heartbeat && (now - doc.last_heartbeat > 180)) {
+      if (doc.last_heartbeat && (now - doc.last_heartbeat > 3600)) {
         return res.status(200).json({
           url: '',
           status: 'offline',

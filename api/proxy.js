@@ -12,7 +12,7 @@ async function getBackendUrl() {
     const doc = await cachedClient.db('vanguard').collection('system_config').findOne({ key: 'active_backend' });
     if (doc && doc.url && doc.status === 'online') {
       const now = Date.now() / 1000;
-      if (!doc.last_heartbeat || (now - doc.last_heartbeat < 180)) {
+      if (!doc.last_heartbeat || (now - doc.last_heartbeat < 3600)) {
         return doc.url.replace(/\/+$/, '');
       }
     }

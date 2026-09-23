@@ -10,7 +10,7 @@ async function getBackendUrl() {
       await cachedClient.connect();
     }
     const doc = await cachedClient.db('vanguard').collection('system_config').findOne({ key: 'active_backend' });
-    if (doc && doc.url) return doc.url.replace(/\/+$/, '');
+    if (doc && doc.url && doc.status !== 'offline') return doc.url.replace(/\/+$/, '');
   } catch (err) {}
   return null;
 }
