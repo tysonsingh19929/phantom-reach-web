@@ -1,21 +1,7 @@
-const { MongoClient } = require('mongodb');
+const { getDb } = require('./_db');
 
-const uri = process.env.MONGODB_URI || "mongodb+srv://tysonsingh056_db_user:Aa327538%40@vanguard.ko1tjkw.mongodb.net/?retryWrites=true&w=majority";
-const dbName = process.env.MONGODB_DB || "vanguard";
-
-let clientPromise;
-if (!global._mongoClientPromise) {
-  const client = new MongoClient(uri, {
-    serverSelectionTimeoutMS: 5000,
-    maxPoolSize: 10
-  });
-  global._mongoClientPromise = client.connect();
-}
-clientPromise = global._mongoClientPromise;
-
-async function getDb() {
-  const client = await clientPromise;
-  return client.db(dbName);
+function escapeRegex(str) {
+  return typeof str === 'string' ? str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') : '';
 }
 
 const SEED_CREATORS = [
@@ -165,12 +151,16 @@ const SEED_CREATORS = [
   }
 ];
 
+let isCreatorsSeeded = false;
+
 async function ensureSeedCreators(creatorsCol) {
+  if (isCreatorsSeeded) return;
   try {
     const count = await creatorsCol.countDocuments({});
     if (count === 0) {
       await creatorsCol.insertMany(SEED_CREATORS);
     }
+    isCreatorsSeeded = true;
   } catch (err) {
     console.error('[CREATORS] Seed warning:', err.message);
   }
@@ -197,8 +187,8 @@ module.exports = async (req, res) => {
   const tier = (req.query.follower_tier || req.query.tier || '').trim();
   const search = (req.query.search || '').trim();
 
-  let db;
-  let creatorsCol;
+  let db = null;
+  let creatorsCol = null;
 
   try {
     db = await getDb();
@@ -212,23 +202,24 @@ module.exports = async (req, res) => {
     const queryFilter = {};
 
     if (niche && niche.toLowerCase() !== 'all') {
-      queryFilter.niche = new RegExp(niche, 'i');
+      queryFilter.niche = new RegExp(escapeRegex(niche), 'i');
     }
 
     if (city && city.toLowerCase() !== 'all') {
-      queryFilter.city = new RegExp(city, 'i');
+      queryFilter.city = new RegExp(escapeRegex(city), 'i');
     }
 
     if (tier && tier.toLowerCase() !== 'all') {
-      queryFilter.follower_tier = new RegExp(tier, 'i');
+      queryFilter.follower_tier = new RegExp(escapeRegex(tier), 'i');
     }
 
     if (search) {
+      const safeSearch = escapeRegex(search);
       queryFilter.$or = [
-        { name: new RegExp(search, 'i') },
-        { handle: new RegExp(search, 'i') },
-        { niche: new RegExp(search, 'i') },
-        { bio: new RegExp(search, 'i') }
+        { name: new RegExp(safeSearch, 'i') },
+        { handle: new RegExp(safeSearch, 'i') },
+        { niche: new RegExp(safeSearch, 'i') },
+        { bio: new RegExp(safeSearch, 'i') }
       ];
     }
 

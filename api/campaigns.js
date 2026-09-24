@@ -1,22 +1,8 @@
-const { MongoClient } = require('mongodb');
 const crypto = require('crypto');
+const { getDb } = require('./_db');
 
-const uri = process.env.MONGODB_URI || "mongodb+srv://tysonsingh056_db_user:Aa327538%40@vanguard.ko1tjkw.mongodb.net/?retryWrites=true&w=majority";
-const dbName = process.env.MONGODB_DB || "vanguard";
-
-let clientPromise;
-if (!global._mongoClientPromise) {
-  const client = new MongoClient(uri, {
-    serverSelectionTimeoutMS: 5000,
-    maxPoolSize: 10
-  });
-  global._mongoClientPromise = client.connect();
-}
-clientPromise = global._mongoClientPromise;
-
-async function getDb() {
-  const client = await clientPromise;
-  return client.db(dbName);
+function escapeRegex(str) {
+  return typeof str === 'string' ? str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') : '';
 }
 
 const SEED_CAMPAIGNS = [
@@ -98,7 +84,10 @@ const SEED_CAMPAIGNS = [
   }
 ];
 
+let isCampaignsSeeded = false;
+
 async function ensureSeedData(campaignsCol, escrowLedgerCol) {
+  if (isCampaignsSeeded) return;
   try {
     const count = await campaignsCol.countDocuments({});
     if (count === 0) {
@@ -116,6 +105,7 @@ async function ensureSeedData(campaignsCol, escrowLedgerCol) {
       }));
       await escrowLedgerCol.insertMany(ledgerEntries);
     }
+    isCampaignsSeeded = true;
   } catch (err) {
     console.error('[CAMPAIGNS] Seed initialization warning:', err.message);
   }
@@ -141,10 +131,10 @@ module.exports = async (req, res) => {
   }
   action = action.replace(/\/+$/, '');
 
-  let db;
-  let campaignsCol;
-  let escrowLedgerCol;
-  let participationsCol;
+  let db = null;
+  let campaignsCol = null;
+  let escrowLedgerCol = null;
+  let participationsCol = null;
 
   try {
     db = await getDb();
@@ -178,6 +168,16 @@ module.exports = async (req, res) => {
         return res.status(404).json({ success: false, error: 'Campaign not found' });
       }
 
+      // Check participant capacity
+      const currentParticipants = Number(campaign.participating_creators) || 0;
+      const participantCap = Number(campaign.participant_cap) || 50;
+      if (currentParticipants >= participantCap) {
+        return res.status(400).json({
+          success: false,
+          error: 'Campaign has reached maximum creator capacity.'
+        });
+      }
+
       const trackingToken = `trk_${Date.now().toString(36)}_${crypto.randomBytes(4).toString('hex')}`;
       const host = req.headers.host || 'socialbyvanguard.com';
       const proto = req.headers['x-forwarded-proto'] || 'https';
@@ -186,7 +186,7 @@ module.exports = async (req, res) => {
 
       if (participationsCol && campaignsCol) {
         const now = Math.floor(Date.now() / 1000);
-        await participationsCol.updateOne(
+        const result = await participationsCol.updateOne(
           { campaign_id: campaignId, user_id: creatorId },
           {
             $setOnInsert: {
@@ -205,13 +205,16 @@ module.exports = async (req, res) => {
           { upsert: true }
         );
 
-        await campaignsCol.updateOne(
-          { campaign_id: campaignId },
-          {
-            $addToSet: { creator_ids: creatorId },
-            $inc: { participating_creators: 1 }
-          }
-        );
+        // Idempotent increment: only increment if a new participation was inserted
+        if (result.upsertedCount > 0) {
+          await campaignsCol.updateOne(
+            { campaign_id: campaignId },
+            {
+              $addToSet: { creator_ids: creatorId },
+              $inc: { participating_creators: 1 }
+            }
+          );
+        }
       }
 
       return res.status(200).json({
@@ -323,15 +326,15 @@ module.exports = async (req, res) => {
       }
 
       if (req.query.category && req.query.category !== 'all') {
-        queryFilter.category = new RegExp(`^${req.query.category.trim()}$`, 'i');
+        queryFilter.category = new RegExp(`^${escapeRegex(req.query.category.trim())}$`, 'i');
       }
 
       if (req.query.search) {
-        const term = req.query.search.trim();
+        const safeTerm = escapeRegex(req.query.search.trim());
         queryFilter.$or = [
-          { brand_name: new RegExp(term, 'i') },
-          { title: new RegExp(term, 'i') },
-          { description: new RegExp(term, 'i') }
+          { brand_name: new RegExp(safeTerm, 'i') },
+          { title: new RegExp(safeTerm, 'i') },
+          { description: new RegExp(safeTerm, 'i') }
         ];
       }
 
