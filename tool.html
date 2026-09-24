@@ -1158,7 +1158,7 @@
       badge.innerText = 'ERROR';
 
       errBox.classList.remove('hidden');
-      errBox.innerHTML = `<strong>⚠️ Task Execution Error:</strong><br>${msg}<br><span class="text-[10px] text-slate-500 mt-1 block">Check your backend server connection or configure a valid API URL.</span>`;
+      errBox.innerHTML = '<strong>[ERROR] Task Execution Error:</strong><br>' + msg + '<br><span class="text-[10px] text-slate-500 mt-1 block">Check your backend server connection or configure a valid API URL.</span>';
     }
 
     function finishTaskSuccess(task) {
@@ -1198,7 +1198,7 @@
         const followers = prof.followers ? Number(prof.followers).toLocaleString() : '840K';
         const authPct = sc.authenticity_score_pct || 92;
         const rawHandle = res.handle || 'creator';
-        const handle = rawHandle.replace(/^@/, '');
+        const handle = rawHandle.replace(/^@/, '').replace(/[^a-zA-Z0-9._]/g, '') || 'creator';
 
         const rates = calculateMonetizationRates(prof.followers || followers, sc.engagement_rate_pct !== undefined ? sc.engagement_rate_pct : engRate, authPct);
 
@@ -1650,6 +1650,13 @@
         document.body.appendChild(modal);
       }
 
+      if (!window._mediaKitEscListenerAdded) {
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeMediaKitModal();
+        });
+        window._mediaKitEscListenerAdded = true;
+      }
+
       const cleanHandle = String(handle || '').replace(/^@/, '');
       const mediaKitUrl = `https://socialbyvanguard.com/c/@${cleanHandle}`;
 
@@ -1692,6 +1699,12 @@
             <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200">
               <div class="text-[10px] uppercase font-bold text-slate-500">Sponsored Story Valuation</div>
               <div class="text-sm font-extrabold text-slate-800 mt-0.5">${storyRate}</div>
+            </div>
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 col-span-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] uppercase font-bold text-slate-500">Projected Effective CPM</span>
+                <span class="text-xs font-mono font-bold text-emerald-600">${cpm || '$18 - $24 CPM'}</span>
+              </div>
             </div>
           </div>
 
