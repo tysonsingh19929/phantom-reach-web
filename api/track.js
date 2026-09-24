@@ -21,8 +21,13 @@ function sanitizeDestination(dest) {
     cleaned = decodeURIComponent(cleaned);
   } catch (_) {}
 
-  // Allow safe relative paths, blocking protocol-relative URLs (e.g., //evil.com)
-  if (cleaned.startsWith('/') && !cleaned.startsWith('//')) {
+  // Prevent header injection / CRLF splitting
+  if (/[\r\n\x00-\x1F\x7F]/.test(cleaned)) {
+    return '/exchange';
+  }
+
+  // Allow safe relative paths, blocking protocol-relative URLs (e.g., //evil.com, /\evil.com, / evil.com)
+  if (cleaned.startsWith('/') && !cleaned.startsWith('//') && !cleaned.startsWith('/\\') && !cleaned.startsWith('/ ')) {
     return cleaned;
   }
 
@@ -61,8 +66,9 @@ module.exports = async (req, res) => {
   const targetUrl = sanitizeDestination(rawDest);
 
   // Client IP hashing for privacy-compliant analytics
-  const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress || '127.0.0.1';
-  const ipHash = crypto.createHash('sha256').update(clientIp).digest('hex').substring(0, 16);
+  const forwarded = req.headers['x-forwarded-for'];
+  const rawIp = (typeof forwarded === 'string' ? forwarded.split(',')[0].trim() : null) || req.socket.remoteAddress || '127.0.0.1';
+  const ipHash = crypto.createHash('sha256').update(rawIp).digest('hex').substring(0, 16);
   const userAgent = req.headers['user-agent'] || 'unknown';
   const now = Math.floor(Date.now() / 1000);
   const trkToken = crypto.randomBytes(8).toString('hex');
@@ -84,44 +90,44 @@ module.exports = async (req, res) => {
   }
 
   // Set 30-day attribution cookie (single declaration)
-  const cookieHeader = `vanguard_attr=${encodeURIComponent(uid)}; Path=/; Max-Age=2592000; SameSite=Lax; HttpOnly`;
+  const isHttps = req.headers['x-forwarded-proto'] === 'https' || (req.headers.host && !req.headers.host.includes('localhost'));
+  const secureFlag = isHttps ? '; Secure' : '';
+  const cookieHeader = `vanguard_attr=${encodeURIComponent(uid)}; Path=/; Max-Age=2592000; SameSite=Lax; HttpOnly${secureFlag}`;
   res.setHeader('Set-Cookie', cookieHeader);
 
-  // Immediate 302 Redirection (<25ms latency guarantee without blocking on remote DB I/O)
+  // Await attribution recording in serverless environment to prevent premature runtime termination
+  try {
+    const db = await getDb();
+    const attributionsCol = db.collection('campaign_attributions');
+    const participationsCol = db.collection('campaign_participations');
+
+    const attributionRecord = {
+      campaign_id: cid,
+      creator_id: uid,
+      token: trkToken,
+      destination: targetUrl,
+      ip_hash: ipHash,
+      user_agent: userAgent,
+      timestamp: now
+    };
+
+    const tasks = [attributionsCol.insertOne(attributionRecord)];
+
+    if (cid && uid && uid !== 'anonymous') {
+      tasks.push(
+        participationsCol.updateOne(
+          { campaign_id: cid, user_id: uid },
+          { $inc: { clicks: 1 } }
+        )
+      );
+    }
+
+    await Promise.allSettled(tasks);
+  } catch (err) {
+    console.error('[TRACK] Attribution recording error:', err.message);
+  }
+
+  // Redirection after attribution tasks settle (<25ms with pooled Mongo connection)
   res.writeHead(302, { Location: redirectLocation });
   res.end();
-
-  // Background asynchronous attribution recording
-  setImmediate(async () => {
-    try {
-      const db = await getDb();
-      const attributionsCol = db.collection('campaign_attributions');
-      const participationsCol = db.collection('campaign_participations');
-
-      const attributionRecord = {
-        campaign_id: cid,
-        creator_id: uid,
-        token: trkToken,
-        destination: targetUrl,
-        ip_hash: ipHash,
-        user_agent: userAgent,
-        timestamp: now
-      };
-
-      const tasks = [attributionsCol.insertOne(attributionRecord)];
-
-      if (cid && uid && uid !== 'anonymous') {
-        tasks.push(
-          participationsCol.updateOne(
-            { campaign_id: cid, user_id: uid },
-            { $inc: { clicks: 1 } }
-          )
-        );
-      }
-
-      await Promise.allSettled(tasks);
-    } catch (err) {
-      console.error('[TRACK] Background attribution warning:', err.message);
-    }
-  });
 };

@@ -372,13 +372,13 @@
 
         <!-- Niche Filter Pills -->
         <div class="flex items-center gap-1.5 overflow-x-auto pb-1 pt-1 text-xs no-scrollbar" id="nichePillContainer">
-          <button type="button" onclick="setNicheFilter('all')" class="filter-pill active px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">All Niches</button>
-          <button type="button" onclick="setNicheFilter('Fitness')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Fitness</button>
-          <button type="button" onclick="setNicheFilter('SaaS & Tech')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Tech &amp; SaaS</button>
-          <button type="button" onclick="setNicheFilter('Lifestyle')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Lifestyle</button>
-          <button type="button" onclick="setNicheFilter('Beauty')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Beauty</button>
-          <button type="button" onclick="setNicheFilter('Food')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Food</button>
-          <button type="button" onclick="setNicheFilter('Art')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Art &amp; Design</button>
+          <button type="button" data-niche="all" onclick="setNicheFilter('all')" class="filter-pill active px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">All Niches</button>
+          <button type="button" data-niche="Fitness" onclick="setNicheFilter('Fitness')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Fitness</button>
+          <button type="button" data-niche="SaaS & Tech" onclick="setNicheFilter('SaaS & Tech')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">SaaS &amp; Tech</button>
+          <button type="button" data-niche="Lifestyle" onclick="setNicheFilter('Lifestyle')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Lifestyle</button>
+          <button type="button" data-niche="Beauty & Skincare" onclick="setNicheFilter('Beauty & Skincare')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Beauty &amp; Skincare</button>
+          <button type="button" data-niche="Food & Beverage" onclick="setNicheFilter('Food & Beverage')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Food &amp; Beverage</button>
+          <button type="button" data-niche="Art & Design" onclick="setNicheFilter('Art & Design')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Art &amp; Design</button>
         </div>
 
       </div>
@@ -540,13 +540,19 @@
         <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900">
           <div class="flex items-center gap-2 font-bold text-xs">
             <svg class="h-4 w-4 text-emerald-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Collaboration Proposal Dispatched</span>
+            <span>Collaboration Proposal Generated &amp; Saved</span>
           </div>
-          <p class="text-[11px] text-emerald-800 mt-1">Your invitation and co-pitch pitch have been transmitted to this creator's Vanguard inbox.</p>
+          <p class="text-[11px] text-emerald-800 mt-1">Your invitation and custom pitch proposal have been saved to your outbound requests and copied to your clipboard. You can paste it directly into Instagram DM, email, or WhatsApp.</p>
         </div>
-        <button type="button" onclick="closeCollabModal()" class="w-full py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 hover:bg-slate-50 cursor-pointer">
-          Done
-        </button>
+        <div class="flex gap-2">
+          <button type="button" onclick="copyPitchText()" class="flex-1 py-2.5 rounded-xl border border-emerald-300 bg-emerald-100/70 text-xs font-semibold text-emerald-900 hover:bg-emerald-200 cursor-pointer flex items-center justify-center gap-1.5">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span>Copy Pitch Again</span>
+          </button>
+          <button type="button" onclick="closeCollabModal()" class="py-2.5 px-5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 hover:bg-slate-50 cursor-pointer">
+            Close
+          </button>
+        </div>
       </div>
 
     </div>
@@ -1010,7 +1016,7 @@
             </div>
 
             <!-- Request Collab Action -->
-            <button type="button" onclick="openCollabModal('${escapeHtml(c.creator_id)}')" class="primary w-full py-2.5 rounded-xl text-xs font-semibold shadow-sm cursor-pointer transition flex items-center justify-center gap-2">
+            <button type="button" data-creator-id="${escapeHtml(c.creator_id)}" onclick="openCollabModal(this.getAttribute('data-creator-id'))" class="primary w-full py-2.5 rounded-xl text-xs font-semibold shadow-sm cursor-pointer transition flex items-center justify-center gap-2">
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               <span>Request Collab</span>
             </button>
@@ -1023,7 +1029,8 @@
       currentNiche = niche;
       const pills = document.querySelectorAll('.filter-pill');
       pills.forEach(p => {
-        if (p.innerText.toLowerCase().includes(niche.toLowerCase()) || (niche === 'all' && p.innerText.includes('All'))) {
+        const pNiche = p.getAttribute('data-niche') || (p.innerText.includes('All') ? 'all' : p.innerText.trim());
+        if (pNiche.toLowerCase() === niche.toLowerCase()) {
           p.classList.add('active');
         } else {
           p.classList.remove('active');
@@ -1222,9 +1229,13 @@
     document.addEventListener('DOMContentLoaded', () => {
       const searchInput = document.getElementById('creatorSearchInput');
       if (searchInput) {
+        let debounceTimer;
         searchInput.addEventListener('input', (e) => {
-          searchQuery = e.target.value;
-          renderCreators();
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(() => {
+            searchQuery = e.target.value;
+            renderCreators();
+          }, 150);
         });
       }
 

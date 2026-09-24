@@ -1025,10 +1025,16 @@
             </div>
 
             <!-- Action Button -->
-            <button type="button" onclick="openParticipateModal('${escapeHtml(c.campaign_id)}')" class="primary w-full py-3 rounded-xl text-xs font-semibold shadow-sm cursor-pointer transition flex items-center justify-center gap-2">
-              <span>Participate in Campaign</span>
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+            ${spotsLeft === 0 ? `
+              <button type="button" disabled class="w-full py-3 rounded-xl text-xs font-semibold bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed flex items-center justify-center gap-2">
+                <span>Capacity Reached</span>
+              </button>
+            ` : `
+              <button type="button" data-campaign-id="${escapeHtml(c.campaign_id)}" onclick="openParticipateModal(this.getAttribute('data-campaign-id'))" class="primary w-full py-3 rounded-xl text-xs font-semibold shadow-sm cursor-pointer transition flex items-center justify-center gap-2">
+                <span>Participate in Campaign</span>
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            `}
           </article>
         `;
       }).join('');
@@ -1326,21 +1332,11 @@
         renderCampaigns();
         closeLaunchModal();
       } catch (err) {
-        console.warn('[CAMPAIGNS] Local listing fallback:', err.message);
-        const fallbackCampaign = {
-          ...payload,
-          campaign_id: `cmp_${Date.now().toString(36)}`,
-          participating_creators: 0,
-          verified: true,
-          created_at: Math.floor(Date.now() / 1000)
-        };
-        allCampaigns.unshift(fallbackCampaign);
-        try {
-          sessionStorage.setItem(CACHE_KEY, JSON.stringify(allCampaigns));
-        } catch (_) {}
-        updateStatsUI(allCampaigns);
-        renderCampaigns();
-        closeLaunchModal();
+        console.error('[CAMPAIGNS] Launch error:', err.message);
+        if (errBox) {
+          errBox.innerText = `Failed to publish campaign: ${err.message || 'Please check your inputs and try again.'}`;
+          errBox.classList.remove('hidden');
+        }
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerText = 'Publish & Fund Escrow Pool';
@@ -1351,9 +1347,13 @@
     document.addEventListener('DOMContentLoaded', () => {
       const searchInput = document.getElementById('campaignSearchInput');
       if (searchInput) {
+        let debounceTimer;
         searchInput.addEventListener('input', (e) => {
-          searchQuery = e.target.value;
-          renderCampaigns();
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(() => {
+            searchQuery = e.target.value;
+            renderCampaigns();
+          }, 150);
         });
       }
 
