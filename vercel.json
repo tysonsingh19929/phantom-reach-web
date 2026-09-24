@@ -34,6 +34,22 @@
       "destination": "/api/task?id=:id"
     },
     {
+      "source": "/api/campaigns/:path*",
+      "destination": "/api/campaigns?path=:path*"
+    },
+    {
+      "source": "/api/campaigns",
+      "destination": "/api/campaigns.js"
+    },
+    {
+      "source": "/api/track",
+      "destination": "/api/track.js"
+    },
+    {
+      "source": "/api/creators",
+      "destination": "/api/creators.js"
+    },
+    {
       "source": "/api/:path*",
       "destination": "/api/proxy?path=:path*"
     },
@@ -68,6 +84,14 @@
     {
       "source": "/admin",
       "destination": "/admin.html"
+    },
+    {
+      "source": "/exchange",
+      "destination": "/exchange/index.html"
+    },
+    {
+      "source": "/collabs",
+      "destination": "/collabs/index.html"
     }
   ]
 }
