@@ -984,7 +984,7 @@
               </div>
 
               <!-- Key Metrics Grid -->
-              <div class="grid grid-cols-3 gap-2 mb-4 text-center">
+              <div class="grid grid-cols-4 gap-1.5 sm:gap-2 mb-4 text-center">
                 <div class="rounded-xl border border-slate-200/80 bg-slate-50/60 p-2">
                   <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Followers</div>
                   <div class="font-display text-sm font-bold text-slate-900 mt-0.5">${followers}</div>
@@ -992,6 +992,10 @@
                 <div class="rounded-xl border border-slate-200/80 bg-slate-50/60 p-2">
                   <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Engage</div>
                   <div class="font-display text-sm font-bold text-slate-900 mt-0.5">${c.engagement_rate || 5.0}%</div>
+                </div>
+                <div class="rounded-xl border border-slate-200/80 bg-slate-50/60 p-2">
+                  <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Audit</div>
+                  <div class="font-display text-sm font-bold text-emerald-700 mt-0.5">${authenticity}</div>
                 </div>
                 <div class="rounded-xl border border-slate-200/80 bg-slate-50/60 p-2">
                   <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Base Yield</div>
@@ -1146,7 +1150,20 @@
       const city = activeCreatorForCollab.city || 'our region';
       const collabType = document.getElementById('collabTypeSelect').value;
 
-      const pitch = `Hey ${creatorName}, I came across your profile on Vanguard Social and would love to propose a joint campaign syndication. With our complementary audiences in ${niche} across ${city} and shared high OmniScore ratings, cross-distributing our content and co-applying for verified escrow brand bounties can multiply our reach and campaign yield by 2.4x. Let's connect to review deliverable schedules.`;
+      let proposalFocus = '';
+      if (collabType === 'Joint Escrow Co-Pitch') {
+        proposalFocus = `co-pitching verified brands on the Vanguard Campaign Exchange. By pooling our reach in ${niche}, we can unlock higher-tier escrow pools and earn shared dividend payouts without agency splits.`;
+      } else if (collabType === 'Content Syndication & Reel') {
+        proposalFocus = `co-hosting and cross-syndicating a collaborative Reel series in ${niche}. With our synchronized posting schedules across ${city}, we can cross-pollinate our engaged audiences and boost organic reach by 2.4x.`;
+      } else if (collabType === 'Cross-Audience Giveaway') {
+        proposalFocus = `launching a high-conversion cross-audience giveaway and livestream. We can bundle our community influence in ${city} to drive 10x authentic interactions and follower acquisition.`;
+      } else if (collabType === 'Newsletter & Product Swap') {
+        proposalFocus = `executing a direct newsletter feature and product review swap. We can tap each other's verified subscriber bases in ${niche} to drive compounding conversions.`;
+      } else {
+        proposalFocus = `proposing a joint ${collabType} collaboration across ${niche} to multiply our organic engagement and commercial campaign yield.`;
+      }
+
+      const pitch = `Hey ${creatorName}, I came across your profile on Vanguard Social and would love to collaborate on a ${collabType}. Specifically, I'm proposing ${proposalFocus} Let's connect to review deliverable schedules and alignment.`;
 
       document.getElementById('pitchTextArea').value = pitch;
     }

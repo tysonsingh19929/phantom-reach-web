@@ -128,6 +128,8 @@ async function runVerification() {
   assert(collabsHtml.includes('pitchTextArea'), 'Collabs includes pre-generated pitch text area');
   assert(collabsHtml.includes('Pitch Copied'), 'Collabs includes Pitch Copied feedback');
   assert(collabsHtml.includes('Vanguard Syndication Blueprint'), 'Collabs includes syndication blueprint');
+  assert(collabsHtml.includes('${authenticity}'), 'Collabs displays calculated authenticity in creator card UI');
+  assert(collabsHtml.includes('collabTypeSelect') && collabsHtml.includes('collabType === \'Joint Escrow Co-Pitch\''), 'Collabs dynamically updates pitch based on collaboration objective');
 
   // 4. API Endpoints functional tests
   console.log('\n--- Checking Backend API Endpoints ---');
