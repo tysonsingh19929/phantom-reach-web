@@ -65,13 +65,30 @@ module.exports = async (req, res) => {
   const ipHash = crypto.createHash('sha256').update(clientIp).digest('hex').substring(0, 16);
   const userAgent = req.headers['user-agent'] || 'unknown';
   const now = Math.floor(Date.now() / 1000);
+  const trkToken = crypto.randomBytes(8).toString('hex');
+
+  // Append deterministic attribution token to destination URL
+  let redirectLocation = targetUrl;
+  try {
+    if (redirectLocation.startsWith('http://') || redirectLocation.startsWith('https://')) {
+      const parsedUrl = new URL(redirectLocation);
+      parsedUrl.searchParams.set('vng_trk', trkToken);
+      redirectLocation = parsedUrl.toString();
+    } else {
+      const delimiter = redirectLocation.includes('?') ? '&' : '?';
+      redirectLocation = `${redirectLocation}${delimiter}vng_trk=${trkToken}`;
+    }
+  } catch (_) {
+    const delimiter = redirectLocation.includes('?') ? '&' : '?';
+    redirectLocation = `${redirectLocation}${delimiter}vng_trk=${trkToken}`;
+  }
 
   // Set 30-day attribution cookie (single declaration)
   const cookieHeader = `vanguard_attr=${encodeURIComponent(uid)}; Path=/; Max-Age=2592000; SameSite=Lax; HttpOnly`;
   res.setHeader('Set-Cookie', cookieHeader);
 
   // Immediate 302 Redirection (<25ms latency guarantee without blocking on remote DB I/O)
-  res.writeHead(302, { Location: targetUrl });
+  res.writeHead(302, { Location: redirectLocation });
   res.end();
 
   // Background asynchronous attribution recording
@@ -84,6 +101,7 @@ module.exports = async (req, res) => {
       const attributionRecord = {
         campaign_id: cid,
         creator_id: uid,
+        token: trkToken,
         destination: targetUrl,
         ip_hash: ipHash,
         user_agent: userAgent,

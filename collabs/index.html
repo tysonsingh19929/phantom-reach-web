@@ -1,0 +1,1234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="description" content="Vanguard Social Creator Collaboration Hub — Discover verified peers, co-pitch for brand escrow bounties, and syndicate cross-platform reach.">
+  <title>Creator Collab Hub — Vanguard Social</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230F172A'/%3E%3Cpath d='M6 6h3.4L12 14.6 14.6 6H18l-5 12h-2L6 6Z' fill='white'/%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],display:['Lexend','Inter','system-ui','sans-serif']}}}};</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, ::before, ::after {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    html {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    body {
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      min-height: 100vh;
+      min-height: 100dvh;
+      color: #0f172a;
+      font-family: Inter, sans-serif;
+      background: linear-gradient(135deg, #f8fbff, #eef6ff 42%, #fff);
+      touch-action: manipulation;
+      position: relative;
+    }
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: auto;
+      padding: 0 1rem;
+    }
+    header, header .container, header > div, header .relative {
+      overflow: visible !important;
+    }
+    header {
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 1000 !important;
+    }
+    .font-display { font-family: Lexend, Inter, sans-serif; }
+    .glass {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 20px 45px -15px rgba(15,23,42,.15), 0 0 0 1px rgba(226,232,240,.9);
+    }
+    .primary {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+    }
+    .primary:hover {
+      background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 10px 30px -10px rgba(15,23,42,.08);
+      transition: all 0.2s ease;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+    .card:hover {
+      border-color: #94a3b8;
+      box-shadow: 0 20px 35px -15px rgba(15,23,42,.14);
+      transform: translateY(-2px);
+    }
+    .input, input, select, textarea {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 0.75rem !important;
+      padding: 0.75rem 1rem !important;
+      color: #0f172a !important;
+      background: #ffffff !important;
+      font-size: 16px !important;
+      line-height: 1.4 !important;
+      -webkit-appearance: none;
+    }
+    .input:focus, input:focus, select:focus, textarea:focus {
+      outline: 3px solid rgba(37,99,235,.2) !important;
+      border-color: #2563eb !important;
+    }
+    @media (min-width: 640px) {
+      .input, input, select, textarea {
+        font-size: 0.875rem !important;
+        padding: 0.65rem 0.875rem !important;
+      }
+    }
+    .grid, .grid > *, main, section, .card, form {
+      min-width: 0;
+      max-width: 100%;
+    }
+    .menu {
+      position: absolute;
+      top: calc(100% + .7rem);
+      z-index: 1050 !important;
+      width: min(24rem, calc(100vw - 2rem));
+      max-width: calc(100vw - 2rem);
+      left: 0;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 25px 50px -12px rgba(15,23,42,.28), 0 0 0 1px rgba(226,232,240,.9) !important;
+    }
+    .account {
+      right: 0;
+      left: auto;
+      width: min(22rem, calc(100vw - 2rem));
+      max-width: calc(100vw - 2rem);
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 25px 50px -12px rgba(15,23,42,.28), 0 0 0 1px rgba(226,232,240,.9) !important;
+    }
+    @media (max-width: 640px) {
+      .menu {
+        left: 0;
+        right: auto;
+        width: calc(100vw - 2rem) !important;
+        max-width: calc(100vw - 2rem) !important;
+      }
+      .account {
+        right: 0;
+        left: auto;
+        width: calc(100vw - 2rem) !important;
+        max-width: calc(100vw - 2rem) !important;
+      }
+    }
+    .menu[hidden] { display: none; }
+    .menu a {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .75rem .9rem;
+      border-radius: .75rem;
+      color: #334155;
+      font-size: .9rem;
+      font-weight: 600;
+      line-height: 1.35;
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .menu a:hover {
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+    .menu svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: #2563eb;
+      flex: none;
+    }
+    .filter-pill.active {
+      background: #2563eb !important;
+      color: #ffffff !important;
+      border-color: #2563eb !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-[1000] border-b border-slate-200/80 bg-white/95 backdrop-blur-xl" style="padding-top:env(safe-area-inset-top)">
+    <div class="container relative flex h-16 items-center justify-between gap-3">
+      
+      <div class="flex items-center gap-3">
+        <!-- Tools Menu Button -->
+        <div class="relative">
+          <button id="toolsButton" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm cursor-pointer hover:bg-slate-50 transition" aria-label="Open tools menu" aria-expanded="false">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 6h14M5 12h14M5 18h14" stroke-linecap="round"/></svg>
+          </button>
+          <nav id="toolsMenu" class="menu glass rounded-2xl p-3" hidden>
+            <div class="px-3 pb-3 pt-1">
+              <p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-500">Explore Vanguard</p>
+              <p class="mt-1 text-sm text-slate-500">Jump to an intelligence workflow</p>
+            </div>
+            <a href="/#tools"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h16" stroke-linecap="round"/></svg><span>View all tools</span></a>
+            <a href="/exchange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 3 4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Campaign Exchange</span></a>
+            <a href="/collabs" class="bg-blue-50/60 text-blue-700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Creator Collabs</span></a>
+            <a href="/tools/google-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg><span>Google Leads Tools</span></a>
+            <a href="/tools/influencer-score"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg><span>Score Me — Influencer ROI</span></a>
+            <a href="/tools/instagram-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg><span>Instagram Leads Tools</span></a>
+            <a href="/tools/youtube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7.5a2.5 2.5 0 0 0-1.8-1.8C17.6 5.3 12 5.3 12 5.3s-5.6 0-7.2.4A2.5 2.5 0 0 0 3 7.5 26 26 0 0 0 2.6 12 26 26 0 0 0 3 16.5a2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.2.4 7.2.4s5.6 0 7.2-.4a2.5 2.5 0 0 0 1.8-1.8 26 26 0 0 0 .4-4.5 26 26 0 0 0-.4-4.5Z"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg><span>YouTube Tools</span></a>
+            <a href="/tools/linkedin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg><span>LinkedIn Tools</span></a>
+            <a href="/tools/x-twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4 19 20M19 4 5 20" stroke-linecap="round"/></svg><span>X / Twitter Tools</span></a>
+            <a href="/tools/automate-ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke-linecap="round"/><circle cx="12" cy="12" r="4"/></svg><span>Automate your business with AI</span></a>
+          </nav>
+        </div>
+
+        <!-- Brand Link -->
+        <a href="/" class="flex min-w-0 items-center gap-3 no-underline">
+          <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-lg font-bold text-white">V</span>
+          <span class="min-w-0">
+            <span class="flex items-center gap-2 truncate font-display text-base font-semibold sm:text-lg">
+              Vanguard Social <b class="rounded-md border border-slate-300 px-1.5 py-0.5 text-[10px] tracking-[.12em] text-slate-600">COLLABS</b>
+            </span>
+            <span class="hidden text-[11px] text-slate-600 sm:block">Syndication network &amp; verified peer co-pitching</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Center Nav Links (Desktop) -->
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="/collabs" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 text-blue-700">Creator Collabs</a>
+        <a href="/exchange" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition">Campaign Exchange</a>
+        <a href="/tools" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition">Intelligence Tools</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="flex items-center gap-2">
+        <a href="/exchange" class="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 shadow-sm hover:bg-slate-50 transition cursor-pointer">
+          <svg class="h-4 w-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 3 4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>View Escrows</span>
+        </a>
+
+        <!-- Backend API Status Button -->
+        <button id="apiConfigButton" onclick="openApiModal()" class="inline-flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-slate-700 shadow-sm hover:bg-slate-50 transition cursor-pointer" title="Configure Backend Server API">
+          <span id="apiStatusDot" class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="hidden sm:inline font-mono text-[11px] font-semibold text-slate-700" id="apiStatusLabel">API</span>
+        </button>
+
+        <!-- Account Button -->
+        <div class="relative">
+          <button id="accountButton" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm cursor-pointer hover:bg-slate-50 transition" aria-label="Open account access menu" aria-expanded="false">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg>
+          </button>
+          <nav id="accountMenu" class="menu account glass rounded-2xl p-3" hidden>
+            <div class="px-3 pb-3 pt-1">
+              <p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-500">Account access</p>
+              <p class="mt-1 text-sm text-slate-500">Choose your Vanguard workspace</p>
+            </div>
+            <a href="/business-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16M2 21h20M9 7h6M9 11h6M9 15h3" stroke-linecap="round"/></svg><span>Business workspace</span></a>
+            <a href="/creator-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg><span>Creator / Influencer workspace</span></a>
+          </nav>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container py-8 sm:py-10">
+
+    <!-- HERO SECTION -->
+    <div class="mb-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-slate-200">
+        <div>
+          <div class="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-blue-700 mb-3">
+            <span class="h-1.5 w-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+            Peer Syndication Engine
+          </div>
+          <h1 class="font-display text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Creator Collaboration Hub — Discover &amp; Syndicate with Verified Peers
+          </h1>
+          <p class="mt-2 text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed">
+            Co-pitch for locked brand escrow bounties, cross-distribute high-retention content, and multiply campaign reach with verified high-OmniScore creators.
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="/exchange" class="primary inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold shadow-sm cursor-pointer transition">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 3 4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Browse Escrow Pools</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- NETWORK HIGHLIGHTS / STATS -->
+    <section class="mb-8" aria-label="Network Highlights">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        
+        <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
+          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span>Verified Network Peers</span>
+            <span class="rounded bg-emerald-50 px-1.5 py-0.5 text-[10px] font-bold text-emerald-700 border border-emerald-200">[VERIFIED]</span>
+          </div>
+          <div id="statCreatorsNetwork" class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">500+</div>
+          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
+            <span>Audited OmniScore &gt; 80</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
+          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span>Audience Overlap Index</span>
+            <span class="rounded bg-blue-50 px-1.5 py-0.5 text-[10px] font-bold text-blue-700 border border-blue-200">[OPTIMAL]</span>
+          </div>
+          <div class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">14.2%</div>
+          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
+            <span>Zero Cannibalization Target</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
+          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span>Co-Pitch Win Rate</span>
+            <span class="rounded bg-indigo-50 px-1.5 py-0.5 text-[10px] font-bold text-indigo-700 border border-indigo-200">[SYNDICATE]</span>
+          </div>
+          <div class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">78%</div>
+          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
+            <span>Enterprise Escrow Approvals</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
+          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span>Syndicated Reach Pool</span>
+            <span class="rounded bg-purple-50 px-1.5 py-0.5 text-[10px] font-bold text-purple-700 border border-purple-200">[AGGREGATE]</span>
+          </div>
+          <div class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">42.8M</div>
+          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
+            <span>High-Engagement Audiences</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEARCH & MULTI-FILTER BAR -->
+    <section class="mb-8" aria-label="Creator Filters">
+      <div class="glass rounded-2xl p-4 border border-slate-200/90 bg-white space-y-3.5">
+        
+        <!-- Search and Dropdowns -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+          
+          <!-- Text Search -->
+          <div class="relative md:col-span-2">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </span>
+            <input id="creatorSearchInput" type="text" placeholder="Search by creator name, handle, bio, or skills..." class="pl-10 !py-2.5 text-xs text-slate-900 placeholder:text-slate-400">
+          </div>
+
+          <!-- City Filter -->
+          <div>
+            <select id="cityFilterSelect" class="!py-2.5 text-xs text-slate-800 font-medium">
+              <option value="all">All Cities</option>
+              <option value="New York">New York</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="London">London</option>
+              <option value="Los Angeles">Los Angeles</option>
+              <option value="San Francisco">San Francisco</option>
+              <option value="Berlin">Berlin</option>
+              <option value="Paris">Paris</option>
+              <option value="Chicago">Chicago</option>
+            </select>
+          </div>
+
+          <!-- Tier Filter -->
+          <div>
+            <select id="tierFilterSelect" class="!py-2.5 text-xs text-slate-800 font-medium">
+              <option value="all">All Follower Tiers</option>
+              <option value="Micro">Micro (&lt;100K)</option>
+              <option value="Mid-Tier">Mid-Tier (100K - 300K)</option>
+              <option value="Macro">Macro (300K+)</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- Niche Filter Pills -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 pt-1 text-xs no-scrollbar" id="nichePillContainer">
+          <button type="button" onclick="setNicheFilter('all')" class="filter-pill active px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">All Niches</button>
+          <button type="button" onclick="setNicheFilter('Fitness')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Fitness</button>
+          <button type="button" onclick="setNicheFilter('SaaS & Tech')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Tech &amp; SaaS</button>
+          <button type="button" onclick="setNicheFilter('Lifestyle')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Lifestyle</button>
+          <button type="button" onclick="setNicheFilter('Beauty')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Beauty</button>
+          <button type="button" onclick="setNicheFilter('Food')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Food</button>
+          <button type="button" onclick="setNicheFilter('Art')" class="filter-pill px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Art &amp; Design</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CREATOR CARDS GRID -->
+    <section class="mb-12" aria-label="Creators Directory">
+      <div id="creatorsLoading" class="hidden text-center py-12">
+        <div class="inline-flex items-center gap-2 text-sm text-slate-500 font-medium">
+          <span class="h-2 w-2 rounded-full bg-blue-600 animate-ping"></span>
+          <span>Indexing verified creator peers...</span>
+        </div>
+      </div>
+
+      <div id="creatorsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div id="emptyCreatorsState" class="hidden text-center py-16 bg-white rounded-3xl border border-slate-200 p-8">
+        <div class="mx-auto h-12 w-12 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 mb-3">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <h3 class="font-display text-lg font-bold text-slate-800">No matching creators found</h3>
+        <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Try broadening your city, follower tier, or niche filter criteria.</p>
+        <button type="button" onclick="resetCreatorFilters()" class="mt-4 px-4 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 cursor-pointer">Reset All Filters</button>
+      </div>
+    </section>
+
+    <!-- VANGUARD SYNDICATION BLUEPRINT -->
+    <section class="glass rounded-3xl p-6 sm:p-10 border border-slate-200/90 bg-white mb-12">
+      <div class="max-w-3xl mb-8">
+        <p class="text-[11px] font-bold uppercase tracking-[.18em] text-blue-700">Collaboration Architecture</p>
+        <h2 class="mt-1 font-display text-xl sm:text-2xl font-bold text-slate-900">The Vanguard Syndication Blueprint</h2>
+        <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+          How top-performing creators coordinate cross-platform distribution and multiply earnings through institutional brand joint-proposals.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="rounded-2xl border border-slate-200/80 bg-slate-50/50 p-5">
+          <div class="flex items-center gap-2 mb-2 font-display text-sm font-bold text-slate-900">
+            <span class="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-100 text-blue-700 text-xs font-mono font-bold">1</span>
+            <span>Escrow Bounty Multipliers</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Enterprise brands prioritize creator coalitions offering complementary audiences over solo accounts. Joint submissions achieve 2.4x higher escrow contract sizes.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200/80 bg-slate-50/50 p-5">
+          <div class="flex items-center gap-2 mb-2 font-display text-sm font-bold text-slate-900">
+            <span class="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-100 text-blue-700 text-xs font-mono font-bold">2</span>
+            <span>Zero Audience Cannibalization</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Vanguard demographic mapping ensures peer overlap index remains under 15%, providing genuine incremental reach and compounding follower growth for both partners.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200/80 bg-slate-50/50 p-5">
+          <div class="flex items-center gap-2 mb-2 font-display text-sm font-bold text-slate-900">
+            <span class="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-100 text-blue-700 text-xs font-mono font-bold">3</span>
+            <span>Automated Split Disbursal</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Revenue-share and base escrow bounties earned through joint tracking links are cryptographically partitioned and wired to each creator wallet with zero manual reconciliation.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- COLLABORATION INVITE MODAL -->
+  <div id="collabModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden" role="dialog" aria-modal="true" aria-labelledby="collabModalTitle">
+    <div class="glass w-full max-w-xl rounded-3xl p-6 sm:p-8 bg-white shadow-2xl border border-slate-200 relative max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          <div>
+            <h3 id="collabModalTitle" class="font-display text-lg font-bold text-slate-900">Request Collaboration</h3>
+            <p id="collabTargetHandle" class="text-xs text-slate-500 font-mono">@creator</p>
+          </div>
+        </div>
+        <button type="button" onclick="closeCollabModal()" class="h-8 w-8 inline-flex items-center justify-center rounded-xl hover:bg-slate-100 text-slate-500 font-bold cursor-pointer" aria-label="Close modal">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <!-- Selected Creator Quick Header -->
+      <div class="mt-4 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 space-y-2">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <div id="collabTargetAvatar" class="h-9 w-9 rounded-xl bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-700 overflow-hidden">
+              V
+            </div>
+            <div>
+              <div id="collabTargetName" class="text-xs font-bold text-slate-900">Creator Name</div>
+              <div id="collabTargetMeta" class="text-[11px] text-slate-500">City &bull; Niche</div>
+            </div>
+          </div>
+          <div class="text-right">
+            <span id="collabTargetScoreBadge" class="inline-block rounded-md bg-blue-50 px-2 py-0.5 text-[11px] font-bold text-blue-700 border border-blue-200">
+              1,84,000 PTS &bull; Grade A+
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Invite Pitch Form -->
+      <form id="collabForm" onsubmit="handleSendCollab(event)" class="mt-5 space-y-4">
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="senderIdInput" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Your Handle or Name <span class="text-rose-500">*</span></label>
+            <input id="senderIdInput" type="text" required placeholder="@yourhandle" class="text-xs text-slate-900">
+          </div>
+          <div>
+            <label for="collabTypeSelect" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Collaboration Objective</label>
+            <select id="collabTypeSelect" onchange="regeneratePitchText()" class="text-xs text-slate-900">
+              <option value="Joint Escrow Co-Pitch">Joint Brand Escrow Co-Pitch</option>
+              <option value="Content Syndication & Reel">Content Syndication &amp; Co-Hosted Reel</option>
+              <option value="Cross-Audience Giveaway">Cross-Audience Giveaway &amp; Live Stream</option>
+              <option value="Newsletter & Product Swap">Newsletter &amp; Product Swap</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label for="pitchTextArea" class="block text-xs font-bold uppercase tracking-wider text-slate-700">Pre-Generated Pitch Proposal</label>
+            <button type="button" onclick="regeneratePitchText()" class="text-[11px] font-semibold text-blue-600 hover:text-blue-800 cursor-pointer">Reset Default</button>
+          </div>
+          <textarea id="pitchTextArea" rows="5" required class="text-xs text-slate-800 leading-relaxed"></textarea>
+          <p class="mt-1 text-[11px] text-slate-500">Highlighted value: Joint campaign syndication, audience amplification, and shared escrow yield.</p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="pt-2 flex flex-col sm:flex-row gap-2.5">
+          <button type="button" id="btnCopyPitch" onclick="copyPitchText()" class="flex-1 py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 hover:bg-slate-50 transition cursor-pointer flex items-center justify-center gap-1.5">
+            <svg class="h-4 w-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span id="btnCopyPitchLabel">Copy Pitch Template</span>
+          </button>
+          <button type="submit" id="btnSendInvite" class="primary flex-1 py-2.5 rounded-xl text-xs font-semibold shadow-sm cursor-pointer transition flex items-center justify-center gap-1.5">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            <span>Send Collaboration Request</span>
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Sent Confirmation State -->
+      <div id="collabSuccessState" class="hidden mt-5 pt-4 border-t border-slate-200 space-y-3">
+        <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900">
+          <div class="flex items-center gap-2 font-bold text-xs">
+            <svg class="h-4 w-4 text-emerald-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Collaboration Proposal Dispatched</span>
+          </div>
+          <p class="text-[11px] text-emerald-800 mt-1">Your invitation and co-pitch pitch have been transmitted to this creator's Vanguard inbox.</p>
+        </div>
+        <button type="button" onclick="closeCollabModal()" class="w-full py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 hover:bg-slate-50 cursor-pointer">
+          Done
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BACKEND API CONFIG MODAL -->
+  <div id="apiConfigModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+    <div class="glass w-full max-w-lg rounded-3xl p-6 sm:p-8 bg-white shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-2.5">
+          <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </span>
+          <div>
+            <h3 class="font-display text-lg font-bold text-slate-900">Backend Server API</h3>
+            <p class="text-xs text-slate-500">Live intelligence engine &amp; scraper sync</p>
+          </div>
+        </div>
+        <button type="button" onclick="closeApiModal()" class="h-8 w-8 inline-flex items-center justify-center rounded-xl hover:bg-slate-100 text-slate-500 font-bold cursor-pointer">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <div class="py-5 space-y-4">
+        <div class="rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Auto-Sync Status</span>
+            <span id="activeBackendBadgeDisplay" class="rounded px-2 py-0.5 text-[10px] font-bold bg-emerald-100 text-emerald-800">Connected</span>
+          </div>
+          <div id="activeBackendUrlDisplay" class="font-mono text-xs font-semibold text-slate-800 break-all">Checking backend link...</div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Custom Override (Optional)</label>
+          <input id="customApiInput" type="text" placeholder="Leave empty for automatic zero-config sync" class="text-xs text-slate-900">
+          <p class="mt-1 text-[11px] text-slate-500">Zero manual configuration required! When running Vanguard on your PC, all devices sync instantly.</p>
+        </div>
+
+        <div id="apiPingStatus" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+      </div>
+
+      <div class="flex items-center justify-between pt-4 border-t border-slate-100 gap-2">
+        <button type="button" onclick="testApiConnection()" class="px-3.5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 transition cursor-pointer">Test Ping</button>
+        <div class="flex gap-2">
+          <button type="button" onclick="resetApiToAuto()" class="px-3.5 py-2 rounded-xl border border-blue-200 bg-blue-50 text-xs font-semibold text-blue-700 hover:bg-blue-100 transition cursor-pointer">Reset to Auto</button>
+          <button type="button" onclick="saveCustomApiUrl()" class="primary px-4 py-2 rounded-xl text-xs font-semibold transition cursor-pointer">Save Override</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200 bg-white/70">
+    <div class="container py-8 text-center text-sm text-slate-600">
+      <b class="font-display text-lg text-slate-900">Vanguard Social</b>
+      <span class="ml-2">Institutional lead generation, campaign exchange &amp; creator intelligence.</span>
+      <div class="mt-2 text-xs text-slate-400">Creator syndication protocol &copy; 2026 Vanguard Social. Strictly verified peer network.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation Menus Toggles
+    const pairs = [['toolsButton', 'toolsMenu'], ['accountButton', 'accountMenu']];
+    function closeMenus() {
+      pairs.forEach(([b, m]) => {
+        const el = document.getElementById(m);
+        const btn = document.getElementById(b);
+        if (el) el.hidden = true;
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+    pairs.forEach(([b, m]) => {
+      const btn = document.getElementById(b), menu = document.getElementById(m);
+      if (!btn || !menu) return;
+      btn.onclick = e => {
+        e.stopPropagation();
+        const open = menu.hidden;
+        closeMenus();
+        menu.hidden = !open;
+        btn.setAttribute('aria-expanded', open);
+      };
+      menu.onclick = e => { if (e.target.closest('a')) closeMenus(); };
+    });
+    document.addEventListener('click', closeMenus);
+    document.addEventListener('keydown', e => e.key === 'Escape' && (closeMenus(), closeCollabModal(), closeApiModal()));
+
+    // API Base URL
+    function getApiBase() {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const param = urlParams.get('api') || urlParams.get('backend');
+        if (param && param.trim().startsWith('http')) return param.trim().replace(/\/+$/, '');
+      } catch (_) {}
+      const custom = localStorage.getItem('phantom_custom_api');
+      if (custom && custom.trim() && !/trycloudflare\.com|loca\.lt|ngrok/i.test(custom)) {
+        return custom.trim().replace(/\/+$/, '');
+      }
+      return '';
+    }
+
+    function updateApiStatusUI() {
+      const dot = document.getElementById('apiStatusDot');
+      const label = document.getElementById('apiStatusLabel');
+      const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+      if (isLocal) {
+        if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500';
+        if (label) label.innerText = 'API: Local';
+      } else {
+        if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500 animate-pulse';
+        if (label) label.innerText = 'API: Live';
+      }
+    }
+
+    function openApiModal() {
+      const modal = document.getElementById('apiConfigModal');
+      const input = document.getElementById('customApiInput');
+      const liveUrlLabel = document.getElementById('activeBackendUrlDisplay');
+      if (input) input.value = localStorage.getItem('phantom_custom_api') || '';
+      if (liveUrlLabel) liveUrlLabel.innerText = getApiBase() || window.location.origin;
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeApiModal() {
+      const modal = document.getElementById('apiConfigModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function saveCustomApiUrl() {
+      const input = document.getElementById('customApiInput');
+      const val = (input ? input.value : '').trim().replace(/\/+$/, '');
+      if (val) {
+        localStorage.setItem('phantom_custom_api', val);
+      } else {
+        localStorage.removeItem('phantom_custom_api');
+      }
+      closeApiModal();
+      fetchCreators(true);
+    }
+
+    function resetApiToAuto() {
+      localStorage.removeItem('phantom_custom_api');
+      closeApiModal();
+      fetchCreators(true);
+    }
+
+    function testApiConnection() {
+      const pingStatus = document.getElementById('apiPingStatus');
+      if (pingStatus) {
+        pingStatus.className = 'p-3 rounded-xl text-xs font-medium bg-blue-50 text-blue-700 block';
+        pingStatus.innerText = 'Testing connection...';
+      }
+      const base = getApiBase();
+      fetch(`${base}/api/creators`)
+        .then(r => r.json())
+        .then(() => {
+          if (pingStatus) {
+            pingStatus.className = 'p-3 rounded-xl text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200 block';
+            pingStatus.innerText = 'Connection verified. Creators directory reachable.';
+          }
+        })
+        .catch(err => {
+          if (pingStatus) {
+            pingStatus.className = 'p-3 rounded-xl text-xs font-medium bg-rose-50 text-rose-800 border border-rose-200 block';
+            pingStatus.innerText = 'Connection error: ' + err.message;
+          }
+        });
+    }
+
+    // Seed Creators Fallback (matches api/creators.js)
+    const SEED_CREATORS = [
+      {
+        creator_id: 'cr_marcus_vance',
+        handle: '@marcusvance',
+        name: 'Marcus Vance',
+        niche: 'Fitness',
+        city: 'New York',
+        follower_tier: 'Macro',
+        followers: 480000,
+        followers_formatted: '480K',
+        platform: 'Instagram',
+        engagement_rate: 4.8,
+        omniscore: 92,
+        base_rate_usd: 1850,
+        bio: 'Elite conditioning coach and endurance athlete based in Manhattan.',
+        verified: true,
+        created_at: 1727136000
+      },
+      {
+        creator_id: 'cr_elena_rostova',
+        handle: '@elenarostova',
+        name: 'Elena Rostova',
+        niche: 'Beauty & Skincare',
+        city: 'London',
+        follower_tier: 'Mid-Tier',
+        followers: 185000,
+        followers_formatted: '185K',
+        platform: 'TikTok',
+        engagement_rate: 6.2,
+        omniscore: 89,
+        base_rate_usd: 950,
+        bio: 'Biochemist turned cosmetic formulator reviewing clinical skincare formulations.',
+        verified: true,
+        created_at: 1727136000
+      },
+      {
+        creator_id: 'cr_david_chen',
+        handle: '@davidchen_ai',
+        name: 'David Chen',
+        niche: 'SaaS & Tech',
+        city: 'San Francisco',
+        follower_tier: 'Macro',
+        followers: 310000,
+        followers_formatted: '310K',
+        platform: 'YouTube',
+        engagement_rate: 5.4,
+        omniscore: 95,
+        base_rate_usd: 2400,
+        bio: 'AI tools educator and software systems architect based in the Bay Area.',
+        verified: true,
+        created_at: 1727136000
+      },
+      {
+        creator_id: 'cr_maya_lin',
+        handle: '@mayalincrafts',
+        name: 'Maya Lin',
+        niche: 'Food & Beverage',
+        city: 'Los Angeles',
+        follower_tier: 'Mid-Tier',
+        followers: 140000,
+        followers_formatted: '140K',
+        platform: 'Instagram',
+        engagement_rate: 7.1,
+        omniscore: 91,
+        base_rate_usd: 800,
+        bio: 'Specialty coffee roaster and culinary visual storyteller in Venice Beach.',
+        verified: true,
+        created_at: 1727136000
+      },
+      {
+        creator_id: 'cr_arjun_mehta',
+        handle: '@arjunmehtafit',
+        name: 'Arjun Mehta',
+        niche: 'Fitness',
+        city: 'Mumbai',
+        follower_tier: 'Micro',
+        followers: 45000,
+        followers_formatted: '45K',
+        platform: 'Instagram',
+        engagement_rate: 8.5,
+        omniscore: 88,
+        base_rate_usd: 400,
+        bio: 'Functional movement specialist and calisthenics instructor.',
+        verified: true,
+        created_at: 1727136000
+      },
+      {
+        creator_id: 'cr_sophie_laurent',
+        handle: '@sophielaurent_ai',
+        name: 'Sophie Laurent',
+        niche: 'SaaS & Tech',
+        city: 'Paris',
+        follower_tier: 'Mid-Tier',
+        followers: 95000,
+        followers_formatted: '95K',
+        platform: 'LinkedIn',
+        engagement_rate: 6.8,
+        omniscore: 93,
+        base_rate_usd: 1100,
+        bio: 'B2B growth strategist and product marketing consultant.',
+        verified: true,
+        created_at: 1727136000
+      },
+      {
+        creator_id: 'cr_liam_oconnor',
+        handle: '@liamcreates',
+        name: 'Liam O\'Connor',
+        niche: 'Art & Design',
+        city: 'Berlin',
+        follower_tier: 'Micro',
+        followers: 62000,
+        followers_formatted: '62K',
+        platform: 'Instagram',
+        engagement_rate: 9.1,
+        omniscore: 90,
+        base_rate_usd: 550,
+        bio: 'Visual artist and 3D motion designer creating commercial branding.',
+        verified: true,
+        created_at: 1727136000
+      },
+      {
+        creator_id: 'cr_sarah_jenkins',
+        handle: '@sarahj_style',
+        name: 'Sarah Jenkins',
+        niche: 'Fashion & Lifestyle',
+        city: 'Chicago',
+        follower_tier: 'Macro',
+        followers: 520000,
+        followers_formatted: '520K',
+        platform: 'Instagram',
+        engagement_rate: 4.1,
+        omniscore: 90,
+        base_rate_usd: 2100,
+        bio: 'Minimalist fashion editor and sustainable wardrobe stylist.',
+        verified: true,
+        created_at: 1727136000
+      }
+    ];
+
+    // State
+    let allCreators = [];
+    let currentNiche = 'all';
+    let currentCity = 'all';
+    let currentTier = 'all';
+    let searchQuery = '';
+    const CACHE_KEY = 'vanguard_creators_cache';
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function formatOmniScore(score) {
+      const s = Number(score) || 90;
+      const pts = (s * 2000).toLocaleString() + ' PTS';
+      const grade = s >= 90 ? 'Grade A+' : (s >= 80 ? 'Grade A' : 'Grade B+');
+      return `${pts} &bull; ${grade}`;
+    }
+
+    function calculateAuthenticity(creator) {
+      const base = 96.5;
+      const bonus = ((creator.omniscore || 90) % 5) * 0.6;
+      return (base + bonus).toFixed(1) + '% Authenticity';
+    }
+
+    function renderCreators() {
+      const grid = document.getElementById('creatorsGrid');
+      const emptyState = document.getElementById('emptyCreatorsState');
+      if (!grid) return;
+
+      let filtered = allCreators.slice();
+
+      // Niche Filter
+      if (currentNiche && currentNiche !== 'all') {
+        const n = currentNiche.toLowerCase();
+        filtered = filtered.filter(c => (c.niche || '').toLowerCase().includes(n));
+      }
+
+      // City Filter
+      if (currentCity && currentCity !== 'all') {
+        const ct = currentCity.toLowerCase();
+        filtered = filtered.filter(c => (c.city || '').toLowerCase().includes(ct));
+      }
+
+      // Tier Filter
+      if (currentTier && currentTier !== 'all') {
+        const t = currentTier.toLowerCase();
+        filtered = filtered.filter(c => (c.follower_tier || '').toLowerCase().includes(t));
+      }
+
+      // Search Query
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase().trim();
+        filtered = filtered.filter(c => 
+          (c.name || '').toLowerCase().includes(q) ||
+          (c.handle || '').toLowerCase().includes(q) ||
+          (c.city || '').toLowerCase().includes(q) ||
+          (c.niche || '').toLowerCase().includes(q) ||
+          (c.bio || '').toLowerCase().includes(q)
+        );
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        if (emptyState) emptyState.classList.remove('hidden');
+        return;
+      }
+
+      if (emptyState) emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(c => {
+        const initials = (c.name || 'Creator').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+        const scoreBadge = formatOmniScore(c.omniscore);
+        const authenticity = calculateAuthenticity(c);
+        const followers = c.followers_formatted || (c.followers ? (c.followers / 1000).toFixed(0) + 'K' : '100K');
+        const rate = c.base_rate_usd ? `$${Number(c.base_rate_usd).toLocaleString()}` : '$1,200';
+
+        return `
+          <article class="card rounded-3xl p-5 sm:p-6 flex flex-col justify-between" data-id="${escapeHtml(c.creator_id)}">
+            <div>
+              <!-- Header Row: Avatar, Names & Badges -->
+              <div class="flex items-start justify-between gap-3 mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-slate-900 to-blue-900 text-white font-display text-base font-bold flex items-center justify-center flex-shrink-0 shadow-sm border border-slate-200">
+                    ${initials}
+                  </div>
+                  <div>
+                    <h3 class="font-display text-base font-bold text-slate-900 leading-snug">${escapeHtml(c.name)}</h3>
+                    <p class="text-xs text-blue-600 font-mono font-medium">${escapeHtml(c.handle)}</p>
+                  </div>
+                </div>
+                <span class="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700 border border-emerald-200 flex-shrink-0">
+                  <svg class="h-3 w-3 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>[VERIFIED]</span>
+                </span>
+              </div>
+
+              <!-- Badges Row -->
+              <div class="flex flex-wrap items-center gap-1.5 mb-3.5">
+                <span class="rounded-lg bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold text-slate-700 border border-slate-200">
+                  ${escapeHtml(c.city || 'Remote')}
+                </span>
+                <span class="rounded-lg bg-blue-50 px-2.5 py-0.5 text-[11px] font-semibold text-blue-700 border border-blue-200">
+                  ${escapeHtml(c.niche || 'General')}
+                </span>
+                <span class="rounded-lg bg-indigo-50 px-2.5 py-0.5 text-[11px] font-semibold text-indigo-700 border border-indigo-200">
+                  ${escapeHtml(c.follower_tier || 'Mid-Tier')}
+                </span>
+              </div>
+
+              <!-- OmniScore Bar -->
+              <div class="rounded-xl border border-blue-100 bg-blue-50/70 p-3 mb-4">
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-blue-700">Verified Vanguard OmniScore</span>
+                  <span class="text-[10px] font-mono font-semibold text-slate-500">Tier-1 Audit</span>
+                </div>
+                <div class="font-display text-sm font-extrabold text-slate-900 mt-0.5">
+                  ${scoreBadge}
+                </div>
+              </div>
+
+              <!-- Key Metrics Grid -->
+              <div class="grid grid-cols-3 gap-2 mb-4 text-center">
+                <div class="rounded-xl border border-slate-200/80 bg-slate-50/60 p-2">
+                  <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Followers</div>
+                  <div class="font-display text-sm font-bold text-slate-900 mt-0.5">${followers}</div>
+                </div>
+                <div class="rounded-xl border border-slate-200/80 bg-slate-50/60 p-2">
+                  <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Engage</div>
+                  <div class="font-display text-sm font-bold text-slate-900 mt-0.5">${c.engagement_rate || 5.0}%</div>
+                </div>
+                <div class="rounded-xl border border-slate-200/80 bg-slate-50/60 p-2">
+                  <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Base Yield</div>
+                  <div class="font-display text-sm font-bold text-slate-900 mt-0.5">${rate}</div>
+                </div>
+              </div>
+
+              <!-- Bio Snippet -->
+              <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed mb-5">
+                ${escapeHtml(c.bio || 'Verified content syndicator and high-engagement creator.')}
+              </p>
+            </div>
+
+            <!-- Request Collab Action -->
+            <button type="button" onclick="openCollabModal('${escapeHtml(c.creator_id)}')" class="primary w-full py-2.5 rounded-xl text-xs font-semibold shadow-sm cursor-pointer transition flex items-center justify-center gap-2">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span>Request Collab</span>
+            </button>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function setNicheFilter(niche) {
+      currentNiche = niche;
+      const pills = document.querySelectorAll('.filter-pill');
+      pills.forEach(p => {
+        if (p.innerText.toLowerCase().includes(niche.toLowerCase()) || (niche === 'all' && p.innerText.includes('All'))) {
+          p.classList.add('active');
+        } else {
+          p.classList.remove('active');
+        }
+      });
+      renderCreators();
+    }
+
+    function resetCreatorFilters() {
+      currentNiche = 'all';
+      currentCity = 'all';
+      currentTier = 'all';
+      searchQuery = '';
+      const s = document.getElementById('creatorSearchInput');
+      const c = document.getElementById('cityFilterSelect');
+      const t = document.getElementById('tierFilterSelect');
+      if (s) s.value = '';
+      if (c) c.value = 'all';
+      if (t) t.value = 'all';
+      setNicheFilter('all');
+    }
+
+    // SWR Fetch Creators
+    async function fetchCreators(forceFresh = false) {
+      const loading = document.getElementById('creatorsLoading');
+
+      // 1. SWR Step: check cache first for instantaneous 0ms load
+      if (!forceFresh) {
+        try {
+          const cached = sessionStorage.getItem(CACHE_KEY);
+          if (cached) {
+            const data = JSON.parse(cached);
+            if (Array.isArray(data) && data.length > 0) {
+              allCreators = data;
+              renderCreators();
+            }
+          }
+        } catch (_) {}
+      }
+
+      if (allCreators.length === 0 && loading) {
+        loading.classList.remove('hidden');
+      }
+
+      // 2. Fresh fetch
+      try {
+        const base = getApiBase();
+        const res = await fetch(`${base}/api/creators`);
+        if (!res.ok) throw new Error('API failed');
+        const data = await res.json();
+        const list = Array.isArray(data.creators) && data.creators.length > 0 ? data.creators : SEED_CREATORS;
+
+        allCreators = list;
+        try {
+          sessionStorage.setItem(CACHE_KEY, JSON.stringify(allCreators));
+        } catch (_) {}
+
+        renderCreators();
+        activeBackendStatus = 'online';
+      } catch (err) {
+        console.warn('[CREATORS] Using fallback seed creators:', err.message);
+        if (allCreators.length === 0) {
+          allCreators = SEED_CREATORS;
+          try {
+            sessionStorage.setItem(CACHE_KEY, JSON.stringify(allCreators));
+          } catch (_) {}
+          renderCreators();
+        }
+      } finally {
+        if (loading) loading.classList.add('hidden');
+        updateApiStatusUI();
+      }
+    }
+
+    // Collaboration Invite Modal Logic
+    let activeCreatorForCollab = null;
+
+    function openCollabModal(creatorId) {
+      const creator = allCreators.find(c => c.creator_id === creatorId) || SEED_CREATORS.find(c => c.creator_id === creatorId);
+      if (!creator) return;
+
+      activeCreatorForCollab = creator;
+      const initials = (creator.name || 'Creator').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+
+      document.getElementById('collabTargetHandle').innerText = creator.handle;
+      document.getElementById('collabTargetName').innerText = creator.name;
+      document.getElementById('collabTargetMeta').innerText = `${creator.city || 'Global'} &bull; ${creator.niche || 'General'} &bull; ${creator.followers_formatted || '100K'} Followers`;
+      document.getElementById('collabTargetAvatar').innerText = initials;
+      document.getElementById('collabTargetScoreBadge').innerHTML = formatOmniScore(creator.omniscore);
+
+      // Auto-fill sender handle if logged in
+      let defaultSender = '';
+      try {
+        const sessionStr = localStorage.getItem('vanguard_session');
+        if (sessionStr) {
+          const session = JSON.parse(sessionStr);
+          defaultSender = session.handle || (session.email ? session.email.split('@')[0] : '') || session.name || '';
+        }
+      } catch (_) {}
+      if (defaultSender && !defaultSender.startsWith('@')) defaultSender = '@' + defaultSender;
+      document.getElementById('senderIdInput').value = defaultSender;
+
+      // Populate pre-generated pitch text
+      generatePitchText();
+
+      // Reset modal view states
+      document.getElementById('collabForm').classList.remove('hidden');
+      document.getElementById('collabSuccessState').classList.add('hidden');
+
+      const modal = document.getElementById('collabModal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeCollabModal() {
+      const modal = document.getElementById('collabModal');
+      if (modal) modal.classList.add('hidden');
+      activeCreatorForCollab = null;
+    }
+
+    function generatePitchText() {
+      if (!activeCreatorForCollab) return;
+      const creatorName = activeCreatorForCollab.name;
+      const niche = activeCreatorForCollab.niche;
+      const city = activeCreatorForCollab.city || 'our region';
+      const collabType = document.getElementById('collabTypeSelect').value;
+
+      const pitch = `Hey ${creatorName}, I came across your profile on Vanguard Social and would love to propose a joint campaign syndication. With our complementary audiences in ${niche} across ${city} and shared high OmniScore ratings, cross-distributing our content and co-applying for verified escrow brand bounties can multiply our reach and campaign yield by 2.4x. Let's connect to review deliverable schedules.`;
+
+      document.getElementById('pitchTextArea').value = pitch;
+    }
+
+    function regeneratePitchText() {
+      generatePitchText();
+    }
+
+    function copyPitchText() {
+      const textarea = document.getElementById('pitchTextArea');
+      const label = document.getElementById('btnCopyPitchLabel');
+      if (!textarea) return;
+
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(textarea.value).then(() => {
+        if (label) {
+          const prev = label.innerText;
+          label.innerHTML = `&check; Pitch Copied`;
+          setTimeout(() => { label.innerText = prev; }, 2000);
+        }
+      }).catch(() => {
+        alert('Copied pitch: ' + textarea.value);
+      });
+    }
+
+    function handleSendCollab(e) {
+      e.preventDefault();
+      const sender = document.getElementById('senderIdInput').value.trim();
+      const pitch = document.getElementById('pitchTextArea').value.trim();
+      const target = activeCreatorForCollab ? activeCreatorForCollab.handle : '@creator';
+
+      if (!sender || !pitch) {
+        alert('Please fill out your handle and pitch.');
+        return;
+      }
+
+      // Record invite locally in localStorage for audit
+      try {
+        const invites = JSON.parse(localStorage.getItem('vanguard_collab_invites') || '[]');
+        invites.push({
+          sender,
+          target,
+          creator_id: activeCreatorForCollab ? activeCreatorForCollab.creator_id : '',
+          pitch,
+          timestamp: Date.now()
+        });
+        localStorage.setItem('vanguard_collab_invites', JSON.stringify(invites));
+      } catch (_) {}
+
+      document.getElementById('collabForm').classList.add('hidden');
+      document.getElementById('collabSuccessState').classList.remove('hidden');
+    }
+
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('creatorSearchInput');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value;
+          renderCreators();
+        });
+      }
+
+      const citySelect = document.getElementById('cityFilterSelect');
+      if (citySelect) {
+        citySelect.addEventListener('change', (e) => {
+          currentCity = e.target.value;
+          renderCreators();
+        });
+      }
+
+      const tierSelect = document.getElementById('tierFilterSelect');
+      if (tierSelect) {
+        tierSelect.addEventListener('change', (e) => {
+          currentTier = e.target.value;
+          renderCreators();
+        });
+      }
+
+      fetchCreators();
+    });
+  </script>
+</body>
+</html>

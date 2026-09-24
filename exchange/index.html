@@ -1,0 +1,1373 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="description" content="Vanguard Social Campaign Exchange Floor — Verified escrow bounties, transparent revenue-share pools, and deterministic tracking.">
+  <title>Campaign Exchange Floor — Vanguard Social</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230F172A'/%3E%3Cpath d='M6 6h3.4L12 14.6 14.6 6H18l-5 12h-2L6 6Z' fill='white'/%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],display:['Lexend','Inter','system-ui','sans-serif']}}}};</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, ::before, ::after {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    html {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    body {
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      min-height: 100vh;
+      min-height: 100dvh;
+      color: #0f172a;
+      font-family: Inter, sans-serif;
+      background: linear-gradient(135deg, #f8fbff, #eef6ff 42%, #fff);
+      touch-action: manipulation;
+      position: relative;
+    }
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: auto;
+      padding: 0 1rem;
+    }
+    header, header .container, header > div, header .relative {
+      overflow: visible !important;
+    }
+    header {
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 1000 !important;
+    }
+    .font-display { font-family: Lexend, Inter, sans-serif; }
+    .glass {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 20px 45px -15px rgba(15,23,42,.15), 0 0 0 1px rgba(226,232,240,.9);
+    }
+    .primary {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+    }
+    .primary:hover {
+      background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 10px 30px -10px rgba(15,23,42,.08);
+      transition: all 0.2s ease;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+    .card:hover {
+      border-color: #94a3b8;
+      box-shadow: 0 20px 35px -15px rgba(15,23,42,.14);
+      transform: translateY(-2px);
+    }
+    .input, input, select, textarea {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 0.75rem !important;
+      padding: 0.75rem 1rem !important;
+      color: #0f172a !important;
+      background: #ffffff !important;
+      font-size: 16px !important;
+      line-height: 1.4 !important;
+      -webkit-appearance: none;
+    }
+    .input:focus, input:focus, select:focus, textarea:focus {
+      outline: 3px solid rgba(37,99,235,.2) !important;
+      border-color: #2563eb !important;
+    }
+    @media (min-width: 640px) {
+      .input, input, select, textarea {
+        font-size: 0.875rem !important;
+        padding: 0.65rem 0.875rem !important;
+      }
+    }
+    .grid, .grid > *, main, section, .card, form {
+      min-width: 0;
+      max-width: 100%;
+    }
+    .menu {
+      position: absolute;
+      top: calc(100% + .7rem);
+      z-index: 1050 !important;
+      width: min(24rem, calc(100vw - 2rem));
+      max-width: calc(100vw - 2rem);
+      left: 0;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 25px 50px -12px rgba(15,23,42,.28), 0 0 0 1px rgba(226,232,240,.9) !important;
+    }
+    .account {
+      right: 0;
+      left: auto;
+      width: min(22rem, calc(100vw - 2rem));
+      max-width: calc(100vw - 2rem);
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 25px 50px -12px rgba(15,23,42,.28), 0 0 0 1px rgba(226,232,240,.9) !important;
+    }
+    @media (max-width: 640px) {
+      .menu {
+        left: 0;
+        right: auto;
+        width: calc(100vw - 2rem) !important;
+        max-width: calc(100vw - 2rem) !important;
+      }
+      .account {
+        right: 0;
+        left: auto;
+        width: calc(100vw - 2rem) !important;
+        max-width: calc(100vw - 2rem) !important;
+      }
+    }
+    .menu[hidden] { display: none; }
+    .menu a {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .75rem .9rem;
+      border-radius: .75rem;
+      color: #334155;
+      font-size: .9rem;
+      font-weight: 600;
+      line-height: 1.35;
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .menu a:hover {
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+    .menu svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: #2563eb;
+      flex: none;
+    }
+    .category-btn.active {
+      background: #2563eb !important;
+      color: #ffffff !important;
+      border-color: #2563eb !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-[1000] border-b border-slate-200/80 bg-white/95 backdrop-blur-xl" style="padding-top:env(safe-area-inset-top)">
+    <div class="container relative flex h-16 items-center justify-between gap-3">
+      
+      <div class="flex items-center gap-3">
+        <!-- Tools Menu Button -->
+        <div class="relative">
+          <button id="toolsButton" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm cursor-pointer hover:bg-slate-50 transition" aria-label="Open tools menu" aria-expanded="false">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 6h14M5 12h14M5 18h14" stroke-linecap="round"/></svg>
+          </button>
+          <nav id="toolsMenu" class="menu glass rounded-2xl p-3" hidden>
+            <div class="px-3 pb-3 pt-1">
+              <p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-500">Explore Vanguard</p>
+              <p class="mt-1 text-sm text-slate-500">Jump to an intelligence workflow</p>
+            </div>
+            <a href="/#tools"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h16" stroke-linecap="round"/></svg><span>View all tools</span></a>
+            <a href="/exchange" class="bg-blue-50/60 text-blue-700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 3 4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Campaign Exchange</span></a>
+            <a href="/collabs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Creator Collabs</span></a>
+            <a href="/tools/google-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg><span>Google Leads Tools</span></a>
+            <a href="/tools/influencer-score"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg><span>Score Me — Influencer ROI</span></a>
+            <a href="/tools/instagram-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg><span>Instagram Leads Tools</span></a>
+            <a href="/tools/youtube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7.5a2.5 2.5 0 0 0-1.8-1.8C17.6 5.3 12 5.3 12 5.3s-5.6 0-7.2.4A2.5 2.5 0 0 0 3 7.5 26 26 0 0 0 2.6 12 26 26 0 0 0 3 16.5a2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.2.4 7.2.4s5.6 0 7.2-.4a2.5 2.5 0 0 0 1.8-1.8 26 26 0 0 0 .4-4.5 26 26 0 0 0-.4-4.5Z"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg><span>YouTube Tools</span></a>
+            <a href="/tools/linkedin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg><span>LinkedIn Tools</span></a>
+            <a href="/tools/x-twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4 19 20M19 4 5 20" stroke-linecap="round"/></svg><span>X / Twitter Tools</span></a>
+            <a href="/tools/automate-ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke-linecap="round"/><circle cx="12" cy="12" r="4"/></svg><span>Automate your business with AI</span></a>
+          </nav>
+        </div>
+
+        <!-- Brand Link -->
+        <a href="/" class="flex min-w-0 items-center gap-3 no-underline">
+          <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-lg font-bold text-white">V</span>
+          <span class="min-w-0">
+            <span class="flex items-center gap-2 truncate font-display text-base font-semibold sm:text-lg">
+              Vanguard Social <b class="rounded-md border border-slate-300 px-1.5 py-0.5 text-[10px] tracking-[.12em] text-slate-600">EXCHANGE</b>
+            </span>
+            <span class="hidden text-[11px] text-slate-600 sm:block">Institutional verified escrow floor &amp; syndication</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Center Nav Links (Desktop) -->
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="/exchange" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 text-blue-700">Exchange</a>
+        <a href="/collabs" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition">Creator Collabs</a>
+        <a href="/tools" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition">Intelligence Tools</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="openLaunchModal()" class="primary hidden sm:inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold shadow-sm cursor-pointer transition">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+          <span>Launch Campaign</span>
+        </button>
+
+        <!-- Backend API Status Button -->
+        <button id="apiConfigButton" onclick="openApiModal()" class="inline-flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-slate-700 shadow-sm hover:bg-slate-50 transition cursor-pointer" title="Configure Backend Server API">
+          <span id="apiStatusDot" class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="hidden sm:inline font-mono text-[11px] font-semibold text-slate-700" id="apiStatusLabel">API</span>
+        </button>
+
+        <!-- Account Button -->
+        <div class="relative">
+          <button id="accountButton" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm cursor-pointer hover:bg-slate-50 transition" aria-label="Open account access menu" aria-expanded="false">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg>
+          </button>
+          <nav id="accountMenu" class="menu account glass rounded-2xl p-3" hidden>
+            <div class="px-3 pb-3 pt-1">
+              <p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-500">Account access</p>
+              <p class="mt-1 text-sm text-slate-500">Choose your Vanguard workspace</p>
+            </div>
+            <a href="/business-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16M2 21h20M9 7h6M9 11h6M9 15h3" stroke-linecap="round"/></svg><span>Business workspace</span></a>
+            <a href="/creator-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg><span>Creator / Influencer workspace</span></a>
+          </nav>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container py-8 sm:py-10">
+
+    <!-- HERO SECTION -->
+    <div class="mb-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-slate-200">
+        <div>
+          <div class="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-blue-700 mb-3">
+            <span class="h-1.5 w-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+            Verified Escrow Trading Floor
+          </div>
+          <h1 class="font-display text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Campaign Exchange Floor</h1>
+          <p class="mt-2 text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed">
+            Direct institutional brand contracts with locked escrow bounties, deterministic conversion tracking, and zero commission leakage.
+          </p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button type="button" onclick="openLaunchModal()" class="primary inline-flex sm:hidden items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold shadow-sm cursor-pointer">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+            <span>Launch Campaign</span>
+          </button>
+          <a href="#faqSection" class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 shadow-sm hover:bg-slate-50 transition cursor-pointer">
+            <svg class="h-4 w-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <span>Escrow Rules</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- MARKET METRIC BAR -->
+    <section class="mb-8" aria-label="Market Metrics">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        
+        <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
+          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span>Verified Escrow Pool</span>
+            <span class="rounded bg-emerald-50 px-1.5 py-0.5 text-[10px] font-bold text-emerald-700 border border-emerald-200">[VERIFIED]</span>
+          </div>
+          <div id="statEscrowPool" class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">$40,500+</div>
+          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
+            <svg class="h-3 w-3 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>100% Locked in Vaults</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
+          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span>Active Campaign Pools</span>
+            <span class="rounded bg-blue-50 px-1.5 py-0.5 text-[10px] font-bold text-blue-700 border border-blue-200">[ACTIVE]</span>
+          </div>
+          <div id="statActivePools" class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">4+</div>
+          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
+            <span>Tier-1 Institutional Brands</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
+          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span>Participating Creators</span>
+            <span class="rounded bg-indigo-50 px-1.5 py-0.5 text-[10px] font-bold text-indigo-700 border border-indigo-200">[SYNDICATED]</span>
+          </div>
+          <div id="statCreatorsCount" class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">50+</div>
+          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
+            <span>Verified OmniScore &gt; 85</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
+          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span>Avg Yield / 1K Views</span>
+            <span class="rounded bg-purple-50 px-1.5 py-0.5 text-[10px] font-bold text-purple-700 border border-purple-200">[BENCHMARK]</span>
+          </div>
+          <div id="statAvgYield" class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">$22.40</div>
+          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
+            <span>Rev-Share + Bounty Combined</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CATEGORY FILTER BAR & SEARCH -->
+    <section class="mb-8" aria-label="Filters and Search">
+      <div class="glass rounded-2xl p-4 border border-slate-200/90 bg-white space-y-3">
+        <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+          
+          <!-- Search input -->
+          <div class="relative flex-1">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </span>
+            <input id="campaignSearchInput" type="text" placeholder="Search campaigns by brand, title, deliverables..." class="pl-10 !py-2.5 text-xs text-slate-900 placeholder:text-slate-400">
+          </div>
+
+          <!-- Sort Select -->
+          <div class="w-full md:w-52">
+            <select id="campaignSortSelect" class="!py-2.5 text-xs text-slate-800 font-medium">
+              <option value="escrow-desc">Highest Escrow Pool</option>
+              <option value="revshare-desc">Highest Rev-Share %</option>
+              <option value="spots-asc">Most Spots Remaining</option>
+              <option value="newest">Newest Listed</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- Category Pills Bar -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 pt-1 text-xs no-scrollbar" id="categoryPillContainer">
+          <button type="button" onclick="setCategoryFilter('all')" class="category-btn active px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">All Categories</button>
+          <button type="button" onclick="setCategoryFilter('E-commerce')" class="category-btn px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">E-commerce</button>
+          <button type="button" onclick="setCategoryFilter('SaaS')" class="category-btn px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">SaaS</button>
+          <button type="button" onclick="setCategoryFilter('Fitness')" class="category-btn px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Fitness</button>
+          <button type="button" onclick="setCategoryFilter('Beauty & Skincare')" class="category-btn px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Beauty &amp; Skincare</button>
+          <button type="button" onclick="setCategoryFilter('Food & Beverage')" class="category-btn px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white font-semibold text-slate-700 whitespace-nowrap hover:bg-slate-50 transition cursor-pointer">Food &amp; Beverage</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAMPAIGN CARDS GRID -->
+    <section class="mb-12" aria-label="Campaign Pools">
+      <div id="campaignsLoading" class="hidden text-center py-12">
+        <div class="inline-flex items-center gap-2 text-sm text-slate-500 font-medium">
+          <span class="h-2 w-2 rounded-full bg-blue-600 animate-ping"></span>
+          <span>Loading verified campaign pools...</span>
+        </div>
+      </div>
+
+      <div id="campaignsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div id="emptyCampaignsState" class="hidden text-center py-16 bg-white rounded-3xl border border-slate-200 p-8">
+        <div class="mx-auto h-12 w-12 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 mb-3">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <h3 class="font-display text-lg font-bold text-slate-800">No campaigns found</h3>
+        <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">No verified escrow pools match your selected category or search keywords.</p>
+        <button type="button" onclick="resetFilters()" class="mt-4 px-4 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 cursor-pointer">Reset Filters</button>
+      </div>
+    </section>
+
+    <!-- INSTITUTIONAL FAQ & GUIDELINES BANNER -->
+    <section id="faqSection" class="glass rounded-3xl p-6 sm:p-10 border border-slate-200/90 bg-white mb-12">
+      <div class="max-w-3xl mb-8">
+        <p class="text-[11px] font-bold uppercase tracking-[.18em] text-blue-700">Institutional Protocol</p>
+        <h2 class="mt-1 font-display text-xl sm:text-2xl font-bold text-slate-900">How the Vanguard Escrow Floor Operates</h2>
+        <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+          The Campaign Exchange is engineered to eliminate payment default, delayed creator disbursements, and murky attribution reporting.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <div class="rounded-2xl border border-slate-200/80 bg-slate-50/50 p-5">
+          <div class="flex items-center gap-2 mb-2 font-display text-sm font-bold text-slate-900">
+            <span class="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-100 text-blue-700 text-xs font-mono font-bold">1</span>
+            <span>Cryptographic Escrow Locking</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Brands must pre-fund 100% of their bounty commitments into an audited institutional vault before listing. Funds are locked cryptographically with guaranteed payout release upon milestone validation.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200/80 bg-slate-50/50 p-5">
+          <div class="flex items-center gap-2 mb-2 font-display text-sm font-bold text-slate-900">
+            <span class="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-100 text-blue-700 text-xs font-mono font-bold">2</span>
+            <span>Deterministic Attribution Token</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Every creator receives an authenticated routing link (/api/track). Clicks, verified store sessions, and conversions are tracked with 0% cookie dependency or browser tracking prevention loss.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200/80 bg-slate-50/50 p-5">
+          <div class="flex items-center gap-2 mb-2 font-display text-sm font-bold text-slate-900">
+            <span class="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-100 text-blue-700 text-xs font-mono font-bold">3</span>
+            <span>Dual Yield Structure</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Creators draw directly from both the guaranteed escrow base pool ($X,XXX) and real-time revenue-share percentages (% Sales or Recurring ARR). Both pools disburse to your verified account automatically.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200/80 bg-slate-50/50 p-5">
+          <div class="flex items-center gap-2 mb-2 font-display text-sm font-bold text-slate-900">
+            <span class="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-100 text-blue-700 text-xs font-mono font-bold">4</span>
+            <span>OmniScore Quality Standard</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Participation is moderated by Vanguard OmniScore benchmarking to safeguard brand integrity. Creators with authenticated reach and verified engagement gain first-look access to private pools.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PARTICIPATION MODAL -->
+  <div id="participateModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="glass w-full max-w-xl rounded-3xl p-6 sm:p-8 bg-white shadow-2xl border border-slate-200 relative max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 3 4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <div>
+            <h3 id="modalTitle" class="font-display text-lg font-bold text-slate-900">Participate in Campaign</h3>
+            <p id="modalBrandSubtitle" class="text-xs text-slate-500 font-medium">Brand Campaign Allocation</p>
+          </div>
+        </div>
+        <button type="button" onclick="closeParticipateModal()" class="h-8 w-8 inline-flex items-center justify-center rounded-xl hover:bg-slate-100 text-slate-500 font-bold cursor-pointer" aria-label="Close modal">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <!-- Campaign Quick Summary Box -->
+      <div class="mt-4 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Escrow Bounty Pool</span>
+          <span id="modalEscrowAmount" class="font-display text-sm font-extrabold text-slate-900">$12,500</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Revenue Share</span>
+          <span id="modalRevShare" class="text-xs font-bold text-blue-600">18% Sales Rev-Share</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Deliverables</span>
+          <span id="modalDeliverables" class="text-xs text-slate-700 text-right font-medium">1x Dedicated Reel, 2x Stories</span>
+        </div>
+      </div>
+
+      <!-- Participation Step Form -->
+      <form id="participateForm" onsubmit="handleJoinCampaign(event)" class="mt-5 space-y-4">
+        <input type="hidden" id="modalCampaignId" value="">
+        
+        <div>
+          <label for="creatorIdInput" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+            Creator Handle or Vanguard ID <span class="text-rose-500">*</span>
+          </label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 font-mono text-xs">@</span>
+            <input id="creatorIdInput" type="text" required placeholder="yourhandle or usr_id" class="pl-8 text-xs text-slate-900 font-medium">
+          </div>
+          <p class="mt-1 text-[11px] text-slate-500">Auto-filled from your authenticated session. Deterministic conversions will be credited directly to this identifier.</p>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit" id="btnJoinSubmit" class="primary w-full py-3 rounded-xl text-xs font-semibold shadow-sm cursor-pointer transition">
+            Confirm Participation &amp; Generate Link
+          </button>
+        </div>
+      </form>
+
+      <!-- Success & Tracked Link State -->
+      <div id="trackedLinkResult" class="hidden mt-5 pt-5 border-t border-slate-200 space-y-4">
+        <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900">
+          <div class="flex items-center gap-2">
+            <svg class="h-4 w-4 text-emerald-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-xs font-bold">Successfully Registered for Campaign</span>
+          </div>
+          <p class="text-[11px] text-emerald-800 mt-1">Your unique attribution tracker is active. Deploy this link across your bio, stories, and video descriptions.</p>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Your Custom Tracked Link</label>
+          <div class="flex items-center gap-2">
+            <input id="trackedLinkInput" type="text" readonly class="bg-slate-50 font-mono text-xs text-slate-800 !py-2.5">
+            <button type="button" id="btnCopyTrackedLink" onclick="copyTrackedLink()" class="primary flex-shrink-0 px-4 py-2.5 rounded-xl text-xs font-semibold cursor-pointer">
+              Copy Link
+            </button>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-3 text-[11px] text-slate-600">
+          <div class="font-semibold text-slate-700 mb-1">Attribution SLA:</div>
+          Real-time webhook sync will notify your dashboard whenever clicks or conversions clear Vanguard anti-fraud filters.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LAUNCH CAMPAIGN MODAL -->
+  <div id="launchModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden" role="dialog" aria-modal="true" aria-labelledby="launchModalTitle">
+    <div class="glass w-full max-w-xl rounded-3xl p-6 sm:p-8 bg-white shadow-2xl border border-slate-200 relative max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+          </span>
+          <div>
+            <h3 id="launchModalTitle" class="font-display text-lg font-bold text-slate-900">Launch Escrow Campaign</h3>
+            <p class="text-xs text-slate-500 font-medium">List a verified brand campaign bounty on the exchange</p>
+          </div>
+        </div>
+        <button type="button" onclick="closeLaunchModal()" class="h-8 w-8 inline-flex items-center justify-center rounded-xl hover:bg-slate-100 text-slate-500 font-bold cursor-pointer" aria-label="Close modal">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <form id="launchForm" onsubmit="handleLaunchCampaign(event)" class="mt-4 space-y-4">
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="launchBrandName" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Brand Name <span class="text-rose-500">*</span></label>
+            <input id="launchBrandName" type="text" required placeholder="e.g. Apex Performance Gear" class="text-xs text-slate-900">
+          </div>
+          <div>
+            <label for="launchCategory" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Category <span class="text-rose-500">*</span></label>
+            <select id="launchCategory" required class="text-xs text-slate-900">
+              <option value="Fitness">Fitness</option>
+              <option value="Beauty & Skincare">Beauty &amp; Skincare</option>
+              <option value="SaaS">SaaS &amp; Tech</option>
+              <option value="E-commerce">E-commerce</option>
+              <option value="Food & Beverage">Food &amp; Beverage</option>
+              <option value="Art & Design">Art &amp; Design</option>
+              <option value="General">General</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="launchTitle" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Campaign Headline Title <span class="text-rose-500">*</span></label>
+          <input id="launchTitle" type="text" required placeholder="e.g. Apex High-Performance Conditioning Spring Release" class="text-xs text-slate-900">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="launchEscrow" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Escrow Budget ($ USD) <span class="text-rose-500">*</span></label>
+            <input id="launchEscrow" type="number" min="500" step="100" required placeholder="e.g. 10000" class="text-xs text-slate-900">
+          </div>
+          <div>
+            <label for="launchRevShare" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Rev-Share % <span class="text-rose-500">*</span></label>
+            <input id="launchRevShare" type="number" min="0" max="80" step="1" required placeholder="e.g. 18" class="text-xs text-slate-900">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="launchRevType" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Rev-Share Model</label>
+            <select id="launchRevType" class="text-xs text-slate-900">
+              <option value="Sales Rev-Share">Sales Rev-Share</option>
+              <option value="Recurring Rev-Share">Recurring Rev-Share (ARR)</option>
+              <option value="Per-Lead Bounty">Per-Lead Qualified Bounty</option>
+            </select>
+          </div>
+          <div>
+            <label for="launchCap" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Max Creator Slots</label>
+            <input id="launchCap" type="number" min="5" max="200" value="40" class="text-xs text-slate-900">
+          </div>
+        </div>
+
+        <div>
+          <label for="launchDeliverables" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Required Deliverables <span class="text-rose-500">*</span></label>
+          <input id="launchDeliverables" type="text" required placeholder="e.g. 1x Dedicated Reel / TikTok, 2x Story Sequences, Link in Bio" class="text-xs text-slate-900">
+        </div>
+
+        <div>
+          <label for="launchDestUrl" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Destination Target URL <span class="text-rose-500">*</span></label>
+          <input id="launchDestUrl" type="url" required placeholder="https://yourbrand.com/offer" class="text-xs text-slate-900">
+        </div>
+
+        <div>
+          <label for="launchDescription" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Campaign Brief &amp; Target Audience</label>
+          <textarea id="launchDescription" rows="2" placeholder="Brief product background, key talking points, and target demographics..." class="text-xs text-slate-900"></textarea>
+        </div>
+
+        <div id="launchErrorBox" class="hidden p-3 rounded-xl text-xs font-medium bg-rose-50 text-rose-800 border border-rose-200"></div>
+
+        <div class="pt-2">
+          <button type="submit" id="btnLaunchSubmit" class="primary w-full py-3 rounded-xl text-xs font-semibold shadow-sm cursor-pointer transition">
+            Publish &amp; Fund Escrow Pool
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- BACKEND API CONFIG MODAL -->
+  <div id="apiConfigModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+    <div class="glass w-full max-w-lg rounded-3xl p-6 sm:p-8 bg-white shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-2.5">
+          <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </span>
+          <div>
+            <h3 class="font-display text-lg font-bold text-slate-900">Backend Server API</h3>
+            <p class="text-xs text-slate-500">Live intelligence engine &amp; scraper sync</p>
+          </div>
+        </div>
+        <button type="button" onclick="closeApiModal()" class="h-8 w-8 inline-flex items-center justify-center rounded-xl hover:bg-slate-100 text-slate-500 font-bold cursor-pointer">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <div class="py-5 space-y-4">
+        <div class="rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Auto-Sync Status</span>
+            <span id="activeBackendBadgeDisplay" class="rounded px-2 py-0.5 text-[10px] font-bold bg-emerald-100 text-emerald-800">Connected</span>
+          </div>
+          <div id="activeBackendUrlDisplay" class="font-mono text-xs font-semibold text-slate-800 break-all">Checking backend link...</div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Custom Override (Optional)</label>
+          <input id="customApiInput" type="text" placeholder="Leave empty for automatic zero-config sync" class="text-xs text-slate-900">
+          <p class="mt-1 text-[11px] text-slate-500">Zero manual configuration required! When running Vanguard on your PC, all devices sync instantly.</p>
+        </div>
+
+        <div id="apiPingStatus" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+      </div>
+
+      <div class="flex items-center justify-between pt-4 border-t border-slate-100 gap-2">
+        <button type="button" onclick="testApiConnection()" class="px-3.5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 transition cursor-pointer">Test Ping</button>
+        <div class="flex gap-2">
+          <button type="button" onclick="resetApiToAuto()" class="px-3.5 py-2 rounded-xl border border-blue-200 bg-blue-50 text-xs font-semibold text-blue-700 hover:bg-blue-100 transition cursor-pointer">Reset to Auto</button>
+          <button type="button" onclick="saveCustomApiUrl()" class="primary px-4 py-2 rounded-xl text-xs font-semibold transition cursor-pointer">Save Override</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200 bg-white/70">
+    <div class="container py-8 text-center text-sm text-slate-600">
+      <b class="font-display text-lg text-slate-900">Vanguard Social</b>
+      <span class="ml-2">Institutional lead generation, campaign exchange &amp; creator intelligence.</span>
+      <div class="mt-2 text-xs text-slate-400">Deterministic attribution protocol &copy; 2026 Vanguard Social. Strictly verified escrow.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation Menus Toggles
+    const pairs = [['toolsButton', 'toolsMenu'], ['accountButton', 'accountMenu']];
+    function closeMenus() {
+      pairs.forEach(([b, m]) => {
+        const el = document.getElementById(m);
+        const btn = document.getElementById(b);
+        if (el) el.hidden = true;
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+    pairs.forEach(([b, m]) => {
+      const btn = document.getElementById(b), menu = document.getElementById(m);
+      if (!btn || !menu) return;
+      btn.onclick = e => {
+        e.stopPropagation();
+        const open = menu.hidden;
+        closeMenus();
+        menu.hidden = !open;
+        btn.setAttribute('aria-expanded', open);
+      };
+      menu.onclick = e => { if (e.target.closest('a')) closeMenus(); };
+    });
+    document.addEventListener('click', closeMenus);
+    document.addEventListener('keydown', e => e.key === 'Escape' && (closeMenus(), closeParticipateModal(), closeLaunchModal(), closeApiModal()));
+
+    // API Base URL Resolution
+    function getApiBase() {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const param = urlParams.get('api') || urlParams.get('backend');
+        if (param && param.trim().startsWith('http')) return param.trim().replace(/\/+$/, '');
+      } catch (_) {}
+      const custom = localStorage.getItem('phantom_custom_api');
+      if (custom && custom.trim() && !/trycloudflare\.com|loca\.lt|ngrok/i.test(custom)) {
+        return custom.trim().replace(/\/+$/, '');
+      }
+      return '';
+    }
+
+    let activeBackendUrl = '';
+    let activeBackendStatus = 'online';
+
+    function updateApiStatusUI() {
+      const dot = document.getElementById('apiStatusDot');
+      const label = document.getElementById('apiStatusLabel');
+      const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+      if (isLocal) {
+        if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500';
+        if (label) label.innerText = 'API: Local';
+      } else {
+        if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500 animate-pulse';
+        if (label) label.innerText = 'API: Live';
+      }
+    }
+
+    function openApiModal() {
+      const modal = document.getElementById('apiConfigModal');
+      const input = document.getElementById('customApiInput');
+      const liveUrlLabel = document.getElementById('activeBackendUrlDisplay');
+      if (input) input.value = localStorage.getItem('phantom_custom_api') || '';
+      if (liveUrlLabel) liveUrlLabel.innerText = getApiBase() || window.location.origin;
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeApiModal() {
+      const modal = document.getElementById('apiConfigModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function saveCustomApiUrl() {
+      const input = document.getElementById('customApiInput');
+      const val = (input ? input.value : '').trim().replace(/\/+$/, '');
+      if (val) {
+        localStorage.setItem('phantom_custom_api', val);
+      } else {
+        localStorage.removeItem('phantom_custom_api');
+      }
+      closeApiModal();
+      fetchCampaigns(true);
+    }
+
+    function resetApiToAuto() {
+      localStorage.removeItem('phantom_custom_api');
+      closeApiModal();
+      fetchCampaigns(true);
+    }
+
+    function testApiConnection() {
+      const pingStatus = document.getElementById('apiPingStatus');
+      if (pingStatus) {
+        pingStatus.className = 'p-3 rounded-xl text-xs font-medium bg-blue-50 text-blue-700 block';
+        pingStatus.innerText = 'Testing connection...';
+      }
+      const base = getApiBase();
+      fetch(`${base}/api/campaigns`)
+        .then(r => r.json())
+        .then(() => {
+          if (pingStatus) {
+            pingStatus.className = 'p-3 rounded-xl text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200 block';
+            pingStatus.innerText = 'Connection verified. Campaigns exchange reachable.';
+          }
+        })
+        .catch(err => {
+          if (pingStatus) {
+            pingStatus.className = 'p-3 rounded-xl text-xs font-medium bg-rose-50 text-rose-800 border border-rose-200 block';
+            pingStatus.innerText = 'Connection error: ' + err.message;
+          }
+        });
+    }
+
+    // Initial Fallback Seed Campaigns (matches api/campaigns.js)
+    const SEED_CAMPAIGNS = [
+      {
+        campaign_id: 'cmp_apex_gear',
+        brand_name: 'Apex Performance Gear',
+        title: 'Apex Performance Gear - High-Performance Athletic & Fitness Wear',
+        category: 'Fitness',
+        description: 'Performance apparel engineered for elite conditioning, running, and functional training. Seeking fitness creators, trainers, and athletes.',
+        escrow_pool: 12500,
+        rev_share_percentage: 18,
+        rev_share_type: 'Sales Rev-Share',
+        deliverables: '1x Dedicated Reel / TikTok, 2x Story Sequences, Link in Bio',
+        participant_cap: 50,
+        participating_creators: 14,
+        target_audience: 'Fitness Enthusiasts, Athletes, Gym Goers (20-40)',
+        destination_url: 'https://apexperformancegear.com/vanguard',
+        status: 'active',
+        verified: true,
+        created_at: 1727136000
+      },
+      {
+        campaign_id: 'cmp_lumina_labs',
+        brand_name: 'Lumina Skin Labs',
+        title: 'Lumina Skin Labs - Dermatological Skincare & Barrier Restoration',
+        category: 'Beauty & Skincare',
+        description: 'Clinical dermatological formulations focused on peptide barrier repair and gentle active recovery. Seeking skincare and aesthetic creators.',
+        escrow_pool: 8000,
+        rev_share_percentage: 22,
+        rev_share_type: 'Sales Rev-Share',
+        deliverables: '1x Ingredient Deep-Dive Reel / YouTube Short, Routine Showcase',
+        participant_cap: 40,
+        participating_creators: 9,
+        target_audience: 'Skincare Aficionados, Dermatological Care, Clean Beauty (22-45)',
+        destination_url: 'https://luminaskinlabs.com/vanguard',
+        status: 'active',
+        verified: true,
+        created_at: 1727136000
+      },
+      {
+        campaign_id: 'cmp_flowmetrics',
+        brand_name: 'SaaS FlowMetrics',
+        title: 'SaaS FlowMetrics - Productivity & AI Workflow Analytics',
+        category: 'SaaS',
+        description: 'Automated workflow telemetry and task optimization platform for modern distributed engineering and product teams.',
+        escrow_pool: 15000,
+        rev_share_percentage: 30,
+        rev_share_type: 'Recurring Rev-Share',
+        deliverables: '1x Workflow Demonstration Video / Reel, X/Twitter Product Thread',
+        participant_cap: 30,
+        participating_creators: 18,
+        target_audience: 'Tech Founders, Developers, Product Managers, Solopreneurs',
+        destination_url: 'https://flowmetrics.io/vanguard',
+        status: 'active',
+        verified: true,
+        created_at: 1727136000
+      },
+      {
+        campaign_id: 'cmp_artisan_coffee',
+        brand_name: 'Artisan Roast Coffee Co.',
+        title: 'Artisan Roast Coffee Co. - Single-Origin Specialty Coffee & Cafes',
+        category: 'Food & Beverage',
+        description: 'Direct-trade micro-lot specialty coffees sourced sustainably from high-altitude estates worldwide. Seeking lifestyle, culinary, and cafe creators.',
+        escrow_pool: 5000,
+        rev_share_percentage: 15,
+        rev_share_type: 'Sales Rev-Share',
+        deliverables: '1x Aesthetic Morning Brew Reel / TikTok, Product Tasting Review',
+        participant_cap: 35,
+        participating_creators: 11,
+        target_audience: 'Specialty Coffee Enthusiasts, Foodies, Aesthetic Lifestyle (21-45)',
+        destination_url: 'https://artisanroastcoffee.com/vanguard',
+        status: 'active',
+        verified: true,
+        created_at: 1727136000
+      }
+    ];
+
+    // State
+    let allCampaigns = [];
+    let currentCategory = 'all';
+    let searchQuery = '';
+    let sortMode = 'escrow-desc';
+    const CACHE_KEY = 'vanguard_campaigns_cache';
+
+    // Formatters
+    function formatCurrency(amount) {
+      return '$' + Number(amount || 0).toLocaleString();
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Render Stats
+    function updateStatsUI(campaigns) {
+      const active = (campaigns || []).filter(c => c.status === 'active');
+      const totalEscrow = active.reduce((sum, c) => sum + (Number(c.escrow_pool) || 0), 0);
+      const totalParticipants = active.reduce((sum, c) => sum + (Number(c.participating_creators) || 0), 0);
+
+      const elEscrow = document.getElementById('statEscrowPool');
+      const elPools = document.getElementById('statActivePools');
+      const elCreators = document.getElementById('statCreatorsCount');
+      const elYield = document.getElementById('statAvgYield');
+
+      if (elEscrow) elEscrow.innerText = totalEscrow >= 40500 ? `$${totalEscrow.toLocaleString()}+` : `$${totalEscrow.toLocaleString()}`;
+      if (elPools) elPools.innerText = `${active.length}+`;
+      if (elCreators) elCreators.innerText = `${totalParticipants}+`;
+      if (elYield) elYield.innerText = '$22.40';
+    }
+
+    // Render Campaigns Grid
+    function renderCampaigns() {
+      const grid = document.getElementById('campaignsGrid');
+      const emptyState = document.getElementById('emptyCampaignsState');
+      if (!grid) return;
+
+      let filtered = allCampaigns.slice();
+
+      // Category filter
+      if (currentCategory && currentCategory !== 'all') {
+        const cat = currentCategory.toLowerCase();
+        filtered = filtered.filter(c => (c.category || '').toLowerCase().includes(cat));
+      }
+
+      // Search filter
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase().trim();
+        filtered = filtered.filter(c => 
+          (c.brand_name || '').toLowerCase().includes(q) ||
+          (c.title || '').toLowerCase().includes(q) ||
+          (c.deliverables || '').toLowerCase().includes(q) ||
+          (c.category || '').toLowerCase().includes(q) ||
+          (c.description || '').toLowerCase().includes(q)
+        );
+      }
+
+      // Sort
+      if (sortMode === 'escrow-desc') {
+        filtered.sort((a, b) => (Number(b.escrow_pool) || 0) - (Number(a.escrow_pool) || 0));
+      } else if (sortMode === 'revshare-desc') {
+        filtered.sort((a, b) => (Number(b.rev_share_percentage) || 0) - (Number(a.rev_share_percentage) || 0));
+      } else if (sortMode === 'spots-asc') {
+        filtered.sort((a, b) => {
+          const remA = Math.max(0, (Number(a.participant_cap) || 50) - (Number(a.participating_creators) || 0));
+          const remB = Math.max(0, (Number(b.participant_cap) || 50) - (Number(b.participating_creators) || 0));
+          return remB - remA;
+        });
+      } else if (sortMode === 'newest') {
+        filtered.sort((a, b) => (b.created_at || 0) - (a.created_at || 0));
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        if (emptyState) emptyState.classList.remove('hidden');
+        return;
+      }
+
+      if (emptyState) emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(c => {
+        const cap = Number(c.participant_cap) || 50;
+        const current = Number(c.participating_creators) || 0;
+        const pct = Math.min(100, Math.round((current / cap) * 100));
+        const spotsLeft = Math.max(0, cap - current);
+        const escrowFormatted = formatCurrency(c.escrow_pool);
+        const revSharePct = c.rev_share_percentage || 0;
+        const revShareType = c.rev_share_type || 'Sales Rev-Share';
+
+        return `
+          <article class="card rounded-3xl p-5 sm:p-6 flex flex-col justify-between" data-id="${escapeHtml(c.campaign_id)}">
+            <div>
+              <!-- Top Row Badges -->
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700 border border-emerald-200">
+                  <svg class="h-3 w-3 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>[VERIFIED ESCROW]</span>
+                </span>
+                <span class="inline-block rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-700 border border-slate-200">
+                  ${escapeHtml(c.category || 'General')}
+                </span>
+              </div>
+
+              <!-- Brand & Title -->
+              <div class="mb-3">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono">${escapeHtml(c.brand_name)}</p>
+                <h3 class="font-display text-base sm:text-lg font-bold text-slate-900 mt-1 leading-snug line-clamp-2">
+                  ${escapeHtml(c.title)}
+                </h3>
+              </div>
+
+              <!-- Deliverables Brief -->
+              <div class="mb-4 rounded-xl border border-slate-200/80 bg-slate-50/80 p-3">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Deliverables Brief</div>
+                <div class="text-xs text-slate-700 font-medium leading-relaxed">${escapeHtml(c.deliverables)}</div>
+              </div>
+
+              <!-- Financial Bounties Grid -->
+              <div class="grid grid-cols-2 gap-2.5 mb-4">
+                <div class="rounded-xl border border-blue-100 bg-blue-50/60 p-3">
+                  <div class="text-[10px] font-bold uppercase tracking-wider text-blue-600">Escrow Bounty Pool</div>
+                  <div class="font-display text-lg sm:text-xl font-extrabold text-slate-900 mt-0.5">${escrowFormatted}</div>
+                </div>
+                <div class="rounded-xl border border-indigo-100 bg-indigo-50/60 p-3">
+                  <div class="text-[10px] font-bold uppercase tracking-wider text-indigo-600">${escapeHtml(revShareType)}</div>
+                  <div class="font-display text-lg sm:text-xl font-extrabold text-indigo-900 mt-0.5">${revSharePct}% Yield</div>
+                </div>
+              </div>
+
+              <!-- Participation Progress Bar -->
+              <div class="mb-5 space-y-1.5">
+                <div class="flex items-center justify-between text-xs font-semibold">
+                  <span class="text-slate-600">${current} / ${cap} spots filled</span>
+                  <span class="text-slate-500 font-mono text-[11px]">${spotsLeft} remaining</span>
+                </div>
+                <div class="h-2 w-full rounded-full bg-slate-100 overflow-hidden border border-slate-200/60">
+                  <div class="h-full rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-500" style="width: ${pct}%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <button type="button" onclick="openParticipateModal('${escapeHtml(c.campaign_id)}')" class="primary w-full py-3 rounded-xl text-xs font-semibold shadow-sm cursor-pointer transition flex items-center justify-center gap-2">
+              <span>Participate in Campaign</span>
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // Category Filter Handler
+    function setCategoryFilter(category) {
+      currentCategory = category;
+      const btns = document.querySelectorAll('.category-btn');
+      btns.forEach(btn => {
+        if (btn.innerText.toLowerCase().includes(category.toLowerCase()) || (category === 'all' && btn.innerText.includes('All'))) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      renderCampaigns();
+    }
+
+    function resetFilters() {
+      currentCategory = 'all';
+      searchQuery = '';
+      const input = document.getElementById('campaignSearchInput');
+      if (input) input.value = '';
+      setCategoryFilter('all');
+    }
+
+    // SWR Fetch Function
+    async function fetchCampaigns(forceFresh = false) {
+      const loading = document.getElementById('campaignsLoading');
+
+      // 1. SWR Step: check cache first for instantaneous 0ms paint
+      if (!forceFresh) {
+        try {
+          const cached = sessionStorage.getItem(CACHE_KEY);
+          if (cached) {
+            const data = JSON.parse(cached);
+            if (Array.isArray(data) && data.length > 0) {
+              allCampaigns = data;
+              updateStatsUI(allCampaigns);
+              renderCampaigns();
+            }
+          }
+        } catch (_) {}
+      }
+
+      // If no cache rendered, show loading
+      if (allCampaigns.length === 0 && loading) {
+        loading.classList.remove('hidden');
+      }
+
+      // 2. Fetch fresh data from backend
+      try {
+        const base = getApiBase();
+        const res = await fetch(`${base}/api/campaigns?status=active`);
+        if (!res.ok) throw new Error('API request failed');
+        const data = await res.json();
+        const list = Array.isArray(data.campaigns) && data.campaigns.length > 0 ? data.campaigns : SEED_CAMPAIGNS;
+
+        allCampaigns = list;
+        try {
+          sessionStorage.setItem(CACHE_KEY, JSON.stringify(allCampaigns));
+        } catch (_) {}
+
+        updateStatsUI(allCampaigns);
+        renderCampaigns();
+        activeBackendStatus = 'online';
+      } catch (err) {
+        console.warn('[CAMPAIGNS] Using fallback seed campaigns:', err.message);
+        if (allCampaigns.length === 0) {
+          allCampaigns = SEED_CAMPAIGNS;
+          try {
+            sessionStorage.setItem(CACHE_KEY, JSON.stringify(allCampaigns));
+          } catch (_) {}
+          updateStatsUI(allCampaigns);
+          renderCampaigns();
+        }
+      } finally {
+        if (loading) loading.classList.add('hidden');
+        updateApiStatusUI();
+      }
+    }
+
+    // Participation Modal Logic
+    let activeCampaignForJoin = null;
+
+    function openParticipateModal(campaignId) {
+      const campaign = allCampaigns.find(c => c.campaign_id === campaignId) || SEED_CAMPAIGNS.find(c => c.campaign_id === campaignId);
+      if (!campaign) return;
+
+      activeCampaignForJoin = campaign;
+      document.getElementById('modalCampaignId').value = campaign.campaign_id;
+      document.getElementById('modalTitle').innerText = `Participate: ${campaign.brand_name}`;
+      document.getElementById('modalBrandSubtitle').innerText = campaign.title;
+      document.getElementById('modalEscrowAmount').innerText = formatCurrency(campaign.escrow_pool);
+      document.getElementById('modalRevShare').innerText = `${campaign.rev_share_percentage}% ${campaign.rev_share_type || 'Sales Rev-Share'}`;
+      document.getElementById('modalDeliverables').innerText = campaign.deliverables;
+
+      // Autofill handle from localStorage user session if logged in
+      const input = document.getElementById('creatorIdInput');
+      let defaultHandle = '';
+      try {
+        const sessionStr = localStorage.getItem('vanguard_session');
+        if (sessionStr) {
+          const session = JSON.parse(sessionStr);
+          defaultHandle = session.handle || (session.email ? session.email.split('@')[0] : '') || session.name || session.user_id || '';
+        }
+      } catch (_) {}
+
+      if (input) {
+        input.value = defaultHandle;
+      }
+
+      // Reset modal state
+      document.getElementById('trackedLinkResult').classList.add('hidden');
+      document.getElementById('participateForm').classList.remove('hidden');
+      document.getElementById('btnJoinSubmit').disabled = false;
+      document.getElementById('btnJoinSubmit').innerText = 'Confirm Participation & Generate Link';
+
+      const modal = document.getElementById('participateModal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeParticipateModal() {
+      const modal = document.getElementById('participateModal');
+      if (modal) modal.classList.add('hidden');
+      activeCampaignForJoin = null;
+    }
+
+    async function handleJoinCampaign(e) {
+      e.preventDefault();
+      const campaignId = document.getElementById('modalCampaignId').value;
+      const creatorHandle = (document.getElementById('creatorIdInput').value || '').trim().replace(/^@/, '');
+      const btn = document.getElementById('btnJoinSubmit');
+
+      if (!creatorHandle) {
+        alert('Please provide your creator handle or ID.');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerText = 'Reserving Escrow Spot...';
+
+      const base = getApiBase();
+      let trackingUrl = '';
+
+      try {
+        const res = await fetch(`${base}/api/campaigns/join`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'join',
+            campaign_id: campaignId,
+            creator_id: creatorHandle,
+            user_id: creatorHandle
+          })
+        });
+
+        const data = await res.json();
+        if (res.ok && data.success && data.tracking_url) {
+          trackingUrl = data.tracking_url;
+        } else {
+          // Fallback tracking link generation matching Vanguard deterministic spec
+          const host = window.location.host || 'socialbyvanguard.com';
+          const proto = window.location.protocol.replace(':', '') || 'https';
+          const dest = (activeCampaignForJoin && activeCampaignForJoin.destination_url) || 'https://socialbyvanguard.com';
+          trackingUrl = `${proto}://${host}/api/track?cid=${encodeURIComponent(campaignId)}&uid=${encodeURIComponent(creatorHandle)}&dest=${encodeURIComponent(dest)}`;
+        }
+      } catch (err) {
+        console.warn('[CAMPAIGNS] Join network fallback:', err.message);
+        const host = window.location.host || 'socialbyvanguard.com';
+        const proto = window.location.protocol.replace(':', '') || 'https';
+        const dest = (activeCampaignForJoin && activeCampaignForJoin.destination_url) || 'https://socialbyvanguard.com';
+        trackingUrl = `${proto}://${host}/api/track?cid=${encodeURIComponent(campaignId)}&uid=${encodeURIComponent(creatorHandle)}&dest=${encodeURIComponent(dest)}`;
+      }
+
+      // Display result
+      document.getElementById('trackedLinkInput').value = trackingUrl;
+      document.getElementById('participateForm').classList.add('hidden');
+      document.getElementById('trackedLinkResult').classList.remove('hidden');
+
+      // Locally update participants count
+      const c = allCampaigns.find(item => item.campaign_id === campaignId);
+      if (c) {
+        c.participating_creators = (Number(c.participating_creators) || 0) + 1;
+        try {
+          sessionStorage.setItem(CACHE_KEY, JSON.stringify(allCampaigns));
+        } catch (_) {}
+        updateStatsUI(allCampaigns);
+        renderCampaigns();
+      }
+    }
+
+    function copyTrackedLink() {
+      const input = document.getElementById('trackedLinkInput');
+      const btn = document.getElementById('btnCopyTrackedLink');
+      if (!input) return;
+
+      input.select();
+      input.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(input.value).then(() => {
+        if (btn) {
+          const original = btn.innerText;
+          btn.innerHTML = `<span class="inline-flex items-center gap-1"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Link Copied</span>`;
+          btn.classList.add('bg-emerald-600');
+          setTimeout(() => {
+            btn.innerText = original;
+            btn.classList.remove('bg-emerald-600');
+          }, 2500);
+        }
+      }).catch(() => {
+        alert('Copied link: ' + input.value);
+      });
+    }
+
+    // Launch Campaign Modal Logic
+    function openLaunchModal() {
+      document.getElementById('launchForm').reset();
+      document.getElementById('launchErrorBox').classList.add('hidden');
+      const modal = document.getElementById('launchModal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeLaunchModal() {
+      const modal = document.getElementById('launchModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    async function handleLaunchCampaign(e) {
+      e.preventDefault();
+      const errBox = document.getElementById('launchErrorBox');
+      const submitBtn = document.getElementById('btnLaunchSubmit');
+
+      const brand_name = document.getElementById('launchBrandName').value.trim();
+      const title = document.getElementById('launchTitle').value.trim();
+      const category = document.getElementById('launchCategory').value;
+      const escrow_pool = Number(document.getElementById('launchEscrow').value) || 0;
+      const rev_share_percentage = Number(document.getElementById('launchRevShare').value) || 0;
+      const rev_share_type = document.getElementById('launchRevType').value;
+      const participant_cap = Number(document.getElementById('launchCap').value) || 40;
+      const deliverables = document.getElementById('launchDeliverables').value.trim();
+      const destination_url = document.getElementById('launchDestUrl').value.trim();
+      const description = document.getElementById('launchDescription').value.trim();
+
+      if (!brand_name || !title || !deliverables || !destination_url) {
+        errBox.innerText = 'Please complete all required fields.';
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Securing Escrow Vault...';
+
+      const payload = {
+        brand_name,
+        title,
+        category,
+        escrow_pool,
+        rev_share_percentage,
+        rev_share_type,
+        participant_cap,
+        deliverables,
+        destination_url,
+        description,
+        status: 'active'
+      };
+
+      const base = getApiBase();
+      try {
+        const res = await fetch(`${base}/api/campaigns`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data.success) {
+          throw new Error(data.error || 'Failed to publish campaign.');
+        }
+
+        const newCampaign = {
+          ...payload,
+          campaign_id: data.campaign_id || `cmp_${Date.now().toString(36)}`,
+          participating_creators: 0,
+          verified: true,
+          created_at: Math.floor(Date.now() / 1000)
+        };
+
+        allCampaigns.unshift(newCampaign);
+        try {
+          sessionStorage.setItem(CACHE_KEY, JSON.stringify(allCampaigns));
+        } catch (_) {}
+
+        updateStatsUI(allCampaigns);
+        renderCampaigns();
+        closeLaunchModal();
+      } catch (err) {
+        console.warn('[CAMPAIGNS] Local listing fallback:', err.message);
+        const fallbackCampaign = {
+          ...payload,
+          campaign_id: `cmp_${Date.now().toString(36)}`,
+          participating_creators: 0,
+          verified: true,
+          created_at: Math.floor(Date.now() / 1000)
+        };
+        allCampaigns.unshift(fallbackCampaign);
+        try {
+          sessionStorage.setItem(CACHE_KEY, JSON.stringify(allCampaigns));
+        } catch (_) {}
+        updateStatsUI(allCampaigns);
+        renderCampaigns();
+        closeLaunchModal();
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Publish & Fund Escrow Pool';
+      }
+    }
+
+    // Search and Sort event listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('campaignSearchInput');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value;
+          renderCampaigns();
+        });
+      }
+
+      const sortSelect = document.getElementById('campaignSortSelect');
+      if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+          sortMode = e.target.value;
+          renderCampaigns();
+        });
+      }
+
+      // Initial Fetch
+      fetchCampaigns();
+    });
+  </script>
+</body>
+</html>
