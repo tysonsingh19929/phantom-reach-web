@@ -39,7 +39,7 @@ for (const filePath of filesToTest) {
   assert(!hasEmoji, `${fileName} contains strictly ZERO emojis (no warning emojis or pictographs)`);
 
   // Check 2: Error box uses [ERROR] indicator instead of emoji
-  assert(!content.includes('⚠️'), `${fileName} does not contain warning emoji ⚠️`);
+  assert(!content.includes('\u26A0'), `${fileName} does not contain warning emoji \\u26A0`);
   assert(content.includes('[ERROR] Task Execution Error:'), `${fileName} uses '[ERROR] Task Execution Error:' text indicator`);
 
   // Check 3: Handle sanitization
