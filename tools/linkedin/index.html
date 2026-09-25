@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="description" content="Identify high-value executive prospects, company decision-makers, and industry leaders with structured B2B intelligence.">
-  <title>Enterprise B2B Prospecting and Account Intelligence | Vanguard Social</title>
+  <meta name="description" content="Vanguard Social — AI-powered multi-platform intelligence and lead generation engines.">
+  <title>Vanguard Social — Intelligence Engine</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230F172A'/%3E%3Cpath d='M6 6h3.4L12 14.6 14.6 6H18l-5 12h-2L6 6Z' fill='white'/%3E%3C/svg%3E">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],display:['Lexend','Inter','system-ui','sans-serif']}}}};</script>
@@ -172,18 +172,6 @@
       flex: none;
     }
   </style>
-  <link rel="canonical" href="https://socialbyvanguard.com/tools/linkedin">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://socialbyvanguard.com/tools/linkedin">
-  <meta property="og:site_name" content="Vanguard Social">
-  <meta property="og:title" content="Enterprise B2B Prospecting and Account Intelligence | Vanguard Social">
-  <meta property="og:description" content="Identify high-value executive prospects, company decision-makers, and industry leaders with structured B2B intelligence.">
-  <meta property="og:image" content="https://socialbyvanguard.com/assets/og-preview.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@vanguardsocial">
-  <meta name="twitter:title" content="Enterprise B2B Prospecting and Account Intelligence | Vanguard Social">
-  <meta name="twitter:description" content="Identify high-value executive prospects, company decision-makers, and industry leaders with structured B2B intelligence.">
-  <meta name="twitter:image" content="https://socialbyvanguard.com/assets/og-preview.png">
 </head>
 <body>
 
@@ -1172,7 +1160,7 @@
       badge.innerText = 'ERROR';
 
       errBox.classList.remove('hidden');
-      errBox.innerHTML = `<strong>Task Execution Error:</strong><br>${msg}<br><span class="text-[10px] text-slate-500 mt-1 block">Check your backend server connection or configure a valid API URL.</span>`;
+      errBox.innerHTML = '<strong>[ERROR] Task Execution Error:</strong><br>' + msg + '<br><span class="text-[10px] text-slate-500 mt-1 block">Check your backend server connection or configure a valid API URL.</span>';
     }
 
     function finishTaskSuccess(task) {
@@ -1211,9 +1199,13 @@
         const engRate = (sc.engagement_rate_pct !== undefined) ? sc.engagement_rate_pct.toFixed(2) + '%' : '4.82%';
         const followers = prof.followers ? Number(prof.followers).toLocaleString() : '840K';
         const authPct = sc.authenticity_score_pct || 92;
-        const handle = res.handle || 'creator';
+        const rawHandle = res.handle || 'creator';
+        const handle = rawHandle.replace(/^@/, '').replace(/[^a-zA-Z0-9._]/g, '') || 'creator';
+
+        const rates = calculateMonetizationRates(prof.followers || followers, sc.engagement_rate_pct !== undefined ? sc.engagement_rate_pct : engRate, authPct);
 
         content.innerHTML = `
+          <!-- CARD 1: DARK CREATOR INFLUENCE AUDIT -->
           <div class="rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white shadow-2xl border border-blue-500/20">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
               <div class="flex items-center gap-3.5">
@@ -1281,6 +1273,145 @@
               ${fn ? `<a href="${apiBase}/api/download/${fn}" download class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer"><svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download Excel Audit</a>` : ''}
             </div>
           </div>
+
+          <!-- CARD 2: INSTITUTIONAL CREATOR MONETIZATION & RATE CARD AUDIT -->
+          <div class="mt-6 rounded-3xl p-6 sm:p-8 bg-white border border-slate-200 shadow-xl text-slate-900 space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+              <div>
+                <div class="flex items-center gap-2.5 mb-1.5">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase bg-blue-50 text-blue-700 border border-blue-200">
+                    <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    Public Media Kit Certified
+                  </span>
+                  <span class="text-xs font-mono text-slate-400">@${handle}</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-extrabold font-display text-slate-900 tracking-tight">
+                  CREATOR MONETIZATION &amp; RATE CARD AUDIT
+                </h3>
+                <p class="text-xs text-slate-500 mt-1">
+                  Institutional brand sponsorship valuations calculated from verified reach, cohort density, and organic engagement quality.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-2.5 shrink-0">
+                <button type="button" onclick="copyMediaKitLink('@${handle}', this)" class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold text-xs inline-flex items-center gap-1.5 transition shadow-sm cursor-pointer">
+                  <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                  <span>Copy Shareable Media Kit Link</span>
+                </button>
+                <button type="button" onclick="openMediaKitModal('@${handle}', '${grade}', '${pts}', '${followers}', '${engRate}', '${rates.reelRateDisplayUSD}', '${rates.storyRateDisplayUSD}', '${rates.cpmDisplay}')" class="px-4 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 font-bold text-xs inline-flex items-center gap-1.5 transition cursor-pointer">
+                  <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                  <span>Preview Kit</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 4 Valuation Metric Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <!-- Metric 1: Sponsored Reel Valuation -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                  <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Sponsored Reel Valuation</span>
+                  <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </div>
+                <div class="text-xl sm:text-2xl font-extrabold font-display text-slate-900 tracking-tight">${rates.reelRateDisplayUSD}</div>
+                <div class="text-xs font-bold text-blue-600 mt-1">${rates.reelRateDisplayINR}</div>
+                <div class="text-[11px] text-slate-500 mt-2 pt-2 border-t border-slate-200/60">Dedicated 60-90s commercial reel with sound sync</div>
+              </div>
+
+              <!-- Metric 2: Sponsored Story Valuation -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                  <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Sponsored Story Valuation</span>
+                  <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                </div>
+                <div class="text-xl sm:text-2xl font-extrabold font-display text-slate-900 tracking-tight">${rates.storyRateDisplayUSD}</div>
+                <div class="text-xs font-bold text-blue-600 mt-1">${rates.storyRateDisplayINR}</div>
+                <div class="text-[11px] text-slate-500 mt-2 pt-2 border-t border-slate-200/60">24-hour story sequence with link sticker (~35% Reel base)</div>
+              </div>
+
+              <!-- Metric 3: Projected Brand Campaign Yield -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                  <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Projected Brand Campaign Yield</span>
+                  <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div class="text-xl sm:text-2xl font-extrabold font-display text-emerald-600 tracking-tight">${rates.yieldDisplayUSD}</div>
+                <div class="text-xs font-bold text-slate-700 mt-1">${rates.yieldDisplayINR}</div>
+                <div class="text-[11px] text-slate-500 mt-2 pt-2 border-t border-slate-200/60">Recommended package: 1 Dedicated Reel + 2 Stories</div>
+              </div>
+
+              <!-- Metric 4: Projected Effective CPM -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                  <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Projected Effective CPM</span>
+                  <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                </div>
+                <div class="text-xl sm:text-2xl font-extrabold font-display text-slate-900 tracking-tight">${rates.cpmDisplay}</div>
+                <div class="text-xs font-bold text-emerald-600 mt-1">${authPct}% Authenticity Factor</div>
+                <div class="text-[11px] text-slate-500 mt-2 pt-2 border-t border-slate-200/60">Estimated institutional CPM across targeted advertiser pools</div>
+              </div>
+            </div>
+
+            <!-- Top-Paying Advertiser Niches -->
+            <div class="p-5 rounded-2xl bg-slate-50/60 border border-slate-200 space-y-3">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                <div>
+                  <div class="text-xs font-bold uppercase tracking-wider text-slate-700">Top-Paying Advertiser Niches</div>
+                  <p class="text-xs text-slate-500">Optimal category matches commanding premium sponsor CPMs for this audience demographic</p>
+                </div>
+                <span class="text-[11px] font-mono font-semibold text-slate-400">Algorithmic Niche Match</span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 pt-1">
+                ${rates.sponsorNiches.map(niche => `
+                  <div class="p-3 bg-white rounded-xl border border-slate-200 flex flex-col justify-between shadow-xs">
+                    <div class="flex items-center justify-between">
+                      <span class="text-xs font-bold text-slate-900">${niche.name}</span>
+                      <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">${niche.tier}</span>
+                    </div>
+                    <div class="text-xs font-mono text-emerald-600 font-semibold mt-2">${niche.cpm}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Direct Guided Redirection Buttons -->
+            <div class="pt-6 border-t border-slate-200">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                <div>
+                  <div class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Monetization Actions &amp; Deal Flow</div>
+                  <div class="text-sm font-bold text-slate-900">Pitch verified commercial sponsors or participate in active revenue share pools</div>
+                </div>
+                <span class="text-xs text-blue-600 font-semibold">Institutional Routing Active</span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <!-- Button 1: Pitch Local Businesses -->
+                <a href="/tools/google-leads" class="group flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-sm transition">
+                  <svg class="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                  </svg>
+                  <span>Pitch Local Businesses</span>
+                </a>
+
+                <!-- Button 2: Pitch Instagram Brands -->
+                <a href="/tools/instagram-leads" class="group flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-bold text-xs shadow-sm transition">
+                  <svg class="w-4 h-4 text-slate-600 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                  </svg>
+                  <span>Pitch Instagram Brands</span>
+                </a>
+
+                <!-- Button 3: Join Live Campaigns on Exchange Floor -->
+                <a href="/exchange" class="group flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-bold text-xs shadow-md transition">
+                  <svg class="w-4 h-4 text-blue-200 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                  </svg>
+                  <span>Join Live Campaigns on Exchange Floor</span>
+                </a>
+              </div>
+            </div>
+          </div>
         `;
 
       } else {
@@ -1337,6 +1468,272 @@
       }
 
       container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ──────────────────────────────────────────────────────────────
+    // CREATOR MONETIZATION & RATE CARD CALCULATION ENGINE
+    // ──────────────────────────────────────────────────────────────
+    function calculateMonetizationRates(followersVal, engRateVal, authPctVal) {
+      function parseFollowerCount(val) {
+        if (typeof val === 'number' && !isNaN(val)) return val;
+        if (!val) return 840000;
+        const str = String(val).trim().toUpperCase();
+        if (str.endsWith('M')) {
+          return parseFloat(str) * 1000000;
+        }
+        if (str.endsWith('K')) {
+          return parseFloat(str) * 1000;
+        }
+        const clean = str.replace(/[^0-9.]/g, '');
+        const parsed = parseFloat(clean);
+        return isNaN(parsed) || parsed <= 0 ? 840000 : parsed;
+      }
+
+      const rawFollowers = parseFollowerCount(followersVal);
+      const rawEngRate = (typeof engRateVal === 'number' && !isNaN(engRateVal) && engRateVal > 0)
+        ? engRateVal
+        : (parseFloat(engRateVal) || 4.82);
+      const rawAuthPct = (typeof authPctVal === 'number' && !isNaN(authPctVal) && authPctVal > 0)
+        ? authPctVal
+        : (parseInt(authPctVal) || 92);
+
+      // Multipliers: normalized around benchmark baselines (3.5% ER, 90% Authenticity)
+      const engMultiplier = Math.max(0.75, Math.min(1.85, rawEngRate / 3.5));
+      const authMultiplier = Math.max(0.85, Math.min(1.15, rawAuthPct / 90));
+      const qualityFactor = engMultiplier * authMultiplier;
+
+      let reelLowUSD = 150;
+      let reelHighUSD = 275;
+
+      if (rawFollowers < 10000) {
+        reelLowUSD = Math.round(Math.max(120, rawFollowers * 0.024 * qualityFactor));
+        reelHighUSD = Math.round(Math.max(220, rawFollowers * 0.042 * qualityFactor));
+      } else if (rawFollowers < 50000) {
+        reelLowUSD = Math.round((280 + (rawFollowers - 10000) * 0.014) * qualityFactor);
+        reelHighUSD = Math.round((480 + (rawFollowers - 10000) * 0.022) * qualityFactor);
+      } else if (rawFollowers < 150000) {
+        reelLowUSD = Math.round((850 + (rawFollowers - 50000) * 0.0055) * qualityFactor);
+        reelHighUSD = Math.round((1350 + (rawFollowers - 50000) * 0.0085) * qualityFactor);
+      } else if (rawFollowers < 500000) {
+        reelLowUSD = Math.round((1500 + (rawFollowers - 150000) * 0.0035) * qualityFactor);
+        reelHighUSD = Math.round((2300 + (rawFollowers - 150000) * 0.0055) * qualityFactor);
+      } else if (rawFollowers < 1000000) {
+        reelLowUSD = Math.round((2700 + (rawFollowers - 500000) * 0.0028) * qualityFactor);
+        reelHighUSD = Math.round((4000 + (rawFollowers - 500000) * 0.0042) * qualityFactor);
+      } else {
+        reelLowUSD = Math.round((4200 + (rawFollowers - 1000000) * 0.0020) * qualityFactor);
+        reelHighUSD = Math.round((6800 + (rawFollowers - 1000000) * 0.0032) * qualityFactor);
+      }
+
+      function roundVal(n) {
+        if (n >= 5000) return Math.round(n / 100) * 100;
+        if (n >= 1000) return Math.round(n / 50) * 50;
+        if (n >= 200) return Math.round(n / 25) * 25;
+        return Math.round(n / 10) * 10;
+      }
+
+      reelLowUSD = roundVal(reelLowUSD);
+      reelHighUSD = roundVal(reelHighUSD);
+      if (reelHighUSD <= reelLowUSD) reelHighUSD = reelLowUSD + 150;
+
+      // Story Rate is ~35% of Reel valuation
+      let storyLowUSD = roundVal(Math.round(reelLowUSD * 0.35));
+      let storyHighUSD = roundVal(Math.round(reelHighUSD * 0.35));
+      if (storyHighUSD <= storyLowUSD) storyHighUSD = storyLowUSD + 50;
+
+      // INR conversion (~83.5 INR / USD)
+      const inrRate = 83.5;
+      function toINR(usd) {
+        const raw = usd * inrRate;
+        if (raw >= 100000) return Math.round(raw / 5000) * 5000;
+        if (raw >= 20000) return Math.round(raw / 1000) * 1000;
+        return Math.round(raw / 500) * 500;
+      }
+
+      const reelLowINR = toINR(reelLowUSD);
+      const reelHighINR = toINR(reelHighUSD);
+      const storyLowINR = toINR(storyLowUSD);
+      const storyHighINR = toINR(storyHighUSD);
+
+      // Effective CPM: e.g. $18 - $24 CPM
+      const cpmLowUSD = Math.max(14, Math.round(18 * Math.min(1.45, rawEngRate / 3.8)));
+      const cpmHighUSD = Math.max(cpmLowUSD + 4, Math.round(24 * Math.min(1.45, rawEngRate / 3.8)));
+
+      // Campaign Yield: 1 Dedicated Reel + 2 Stories
+      const yieldLowUSD = reelLowUSD + (storyLowUSD * 2);
+      const yieldHighUSD = reelHighUSD + (storyHighUSD * 2);
+      const yieldLowINR = reelLowINR + (storyLowINR * 2);
+      const yieldHighINR = reelHighINR + (storyHighINR * 2);
+
+      const sponsorNiches = [
+        { name: 'Fitness & Athleisure', cpm: '$24 - $34 CPM', tier: 'Top Tier Payer' },
+        { name: 'Health & Skincare', cpm: '$22 - $30 CPM', tier: 'High Volume' },
+        { name: 'Tech SaaS & Productivity', cpm: '$28 - $42 CPM', tier: 'Max Yield' },
+        { name: 'Specialty Food & Cafes', cpm: '$18 - $26 CPM', tier: 'Local / D2C' }
+      ];
+
+      return {
+        rawFollowers,
+        rawEngRate,
+        rawAuthPct,
+        reelLowUSD,
+        reelHighUSD,
+        reelRateDisplayUSD: `$${reelLowUSD.toLocaleString()} - $${reelHighUSD.toLocaleString()}`,
+        reelRateDisplayINR: `₹${reelLowINR.toLocaleString('en-IN')} - ₹${reelHighINR.toLocaleString('en-IN')}`,
+        storyLowUSD,
+        storyHighUSD,
+        storyRateDisplayUSD: `$${storyLowUSD.toLocaleString()} - $${storyHighUSD.toLocaleString()}`,
+        storyRateDisplayINR: `₹${storyLowINR.toLocaleString('en-IN')} - ₹${storyHighINR.toLocaleString('en-IN')}`,
+        cpmLowUSD,
+        cpmHighUSD,
+        cpmDisplay: `$${cpmLowUSD} - $${cpmHighUSD} CPM`,
+        yieldLowUSD,
+        yieldHighUSD,
+        yieldDisplayUSD: `$${yieldLowUSD.toLocaleString()} - $${yieldHighUSD.toLocaleString()}`,
+        yieldDisplayINR: `₹${yieldLowINR.toLocaleString('en-IN')} - ₹${yieldHighINR.toLocaleString('en-IN')}`,
+        sponsorNiches
+      };
+    }
+
+    function copyMediaKitLink(handle, btnElement) {
+      const clean = String(handle || '').replace(/^@/, '');
+      const url = `https://socialbyvanguard.com/c/@${clean}`;
+      
+      const notifySuccess = () => {
+        if (btnElement) {
+          const orig = btnElement.getAttribute('data-original-html') || btnElement.innerHTML;
+          btnElement.setAttribute('data-original-html', orig);
+          btnElement.innerHTML = `
+            <svg class="w-3.5 h-3.5 text-emerald-600 inline mr-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>Link Copied</span>
+          `;
+          btnElement.classList.add('border-emerald-300', 'bg-emerald-50', 'text-emerald-700');
+          setTimeout(() => {
+            btnElement.innerHTML = orig;
+            btnElement.classList.remove('border-emerald-300', 'bg-emerald-50', 'text-emerald-700');
+          }, 2500);
+        }
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(notifySuccess).catch(() => {
+          fallbackCopyText(url, notifySuccess);
+        });
+      } else {
+        fallbackCopyText(url, notifySuccess);
+      }
+    }
+
+    function fallbackCopyText(text, callback) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        if (callback) callback();
+      } catch (e) {
+        console.error('Fallback copy failed', e);
+      }
+      document.body.removeChild(ta);
+    }
+
+    function openMediaKitModal(handle, grade, points, followers, engRate, reelRate, storyRate, cpm) {
+      let modal = document.getElementById('mediaKitModal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'mediaKitModal';
+        modal.className = 'fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm transition-opacity duration-200';
+        modal.onclick = (e) => {
+          if (e.target === modal) closeMediaKitModal();
+        };
+        document.body.appendChild(modal);
+      }
+
+      if (!window._mediaKitEscListenerAdded) {
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeMediaKitModal();
+        });
+        window._mediaKitEscListenerAdded = true;
+      }
+
+      const cleanHandle = String(handle || '').replace(/^@/, '');
+      const mediaKitUrl = `https://socialbyvanguard.com/c/@${cleanHandle}`;
+
+      modal.innerHTML = `
+        <div class="relative w-full max-w-lg bg-white rounded-3xl border border-slate-200 shadow-2xl p-6 sm:p-8 space-y-6 text-slate-900" onclick="event.stopPropagation()">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Verified Public Media Kit</span>
+            </div>
+            <button type="button" onclick="closeMediaKitModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-sm font-bold transition cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-blue-600 font-display font-extrabold text-2xl flex items-center justify-center text-white shadow-md">
+              ${cleanHandle.charAt(0).toUpperCase()}
+            </div>
+            <div>
+              <div class="text-xs font-bold uppercase tracking-wider text-blue-600">Official Creator Rate Card</div>
+              <h3 class="text-2xl font-bold font-display text-slate-900">@${cleanHandle}</h3>
+              <div class="text-xs text-slate-500 mt-0.5">Audited and Certified by Vanguard Social Intelligence</div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200">
+              <div class="text-[10px] uppercase font-bold text-slate-500">Benchmark Grade</div>
+              <div class="text-base font-extrabold text-slate-900 mt-0.5">${grade} (${points})</div>
+            </div>
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200">
+              <div class="text-[10px] uppercase font-bold text-slate-500">Audience and Reach</div>
+              <div class="text-base font-extrabold text-slate-900 mt-0.5">${followers} • ${engRate}</div>
+            </div>
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200">
+              <div class="text-[10px] uppercase font-bold text-slate-500">Sponsored Reel Valuation</div>
+              <div class="text-sm font-extrabold text-blue-600 mt-0.5">${reelRate}</div>
+            </div>
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200">
+              <div class="text-[10px] uppercase font-bold text-slate-500">Sponsored Story Valuation</div>
+              <div class="text-sm font-extrabold text-slate-800 mt-0.5">${storyRate}</div>
+            </div>
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 col-span-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] uppercase font-bold text-slate-500">Projected Effective CPM</span>
+                <span class="text-xs font-mono font-bold text-emerald-600">${cpm || '$18 - $24 CPM'}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600">Shareable Media Kit URL</label>
+            <div class="flex items-center gap-2">
+              <input type="text" readonly value="${mediaKitUrl}" class="input text-xs font-mono text-slate-700 bg-slate-50 select-all">
+              <button type="button" onclick="copyMediaKitLink('@${cleanHandle}', this)" class="shrink-0 px-4 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition cursor-pointer shadow-sm">
+                Copy Link
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-2 flex items-center justify-between text-[11px] text-slate-400">
+            <span>Protected by Vanguard Escrow Protocol</span>
+            <button type="button" onclick="closeMediaKitModal()" class="text-slate-600 hover:text-slate-900 font-semibold cursor-pointer">
+              Close
+            </button>
+          </div>
+        </div>
+      `;
+      modal.classList.remove('hidden');
+    }
+
+    function closeMediaKitModal() {
+      const modal = document.getElementById('mediaKitModal');
+      if (modal) modal.classList.add('hidden');
     }
 
     function downloadStoryImage(handle, points, grade, eng, auth) {
