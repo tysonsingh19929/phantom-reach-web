@@ -319,6 +319,10 @@
       min-width: 0;
       max-width: 100%;
     }
+    input.pl-8, .pl-8 { padding-left: 2.25rem !important; }
+    input.pl-9, .pl-9 { padding-left: 2.5rem !important; }
+    input.pl-10, .pl-10 { padding-left: 2.75rem !important; }
+    input.pl-11, .pl-11 { padding-left: 3rem !important; }
   </style>
 </head>
 <body>
@@ -388,9 +392,140 @@
     </div>
   </header>
 
-  <main class="container py-10 sm:py-14 overflow-x-hidden">
+  <main class="container py-8 sm:py-12 overflow-x-hidden">
+    <!-- ALL TOOLS SECTION: Exchange & Intelligence Engines -->
+    <section id="tools" class="pb-12 pt-2 sm:pt-4">
+      <div class="mb-8 text-center max-w-2xl mx-auto">
+        <p class="text-[11px] font-bold uppercase tracking-[.18em] text-slate-500">Commercial Suite</p>
+        <h2 class="mt-1 font-display text-2xl sm:text-3xl font-bold text-slate-900">Exchange &amp; Intelligence Engines</h2>
+        <p class="mt-2 text-xs sm:text-sm text-slate-600">Choose the workflow you need to acquire leads, score creators, or monetize content.</p>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-2">
+
+        <!-- Flagship 1: Campaign Exchange Floor -->
+        <article id="campaign-exchange" class="tool card rounded-3xl p-6 border-blue-200 bg-gradient-to-br from-white to-blue-50/40 relative">
+          <div class="flex items-center justify-between mb-4">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 3 4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="inline-flex rounded-full bg-blue-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-blue-800">Flagship Floor</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900">Campaign Exchange Floor</h3>
+          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
+            Browse open brand campaign pools with verified escrow backing, direct commercial terms, and real-time sales revenue-shares.
+          </p>
+          <div class="mt-4 flex items-center gap-4 text-xs font-semibold text-slate-700">
+            <span>Escrow Pool: $40,500+</span>
+            <span>&bull;</span>
+            <span>Commission: 0%</span>
+          </div>
+          <a href="/exchange" class="primary mt-5 inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold shadow-sm">
+            <span>Access Exchange Floor</span>
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <!-- Flagship 2: Creator Collabs Hub -->
+        <article id="creator-collabs" class="tool card rounded-3xl p-6 border-indigo-200 bg-gradient-to-br from-white to-indigo-50/40 relative">
+          <div class="flex items-center justify-between mb-4">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-sm">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <span class="inline-flex rounded-full bg-indigo-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-800">Syndicate Network</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900">Creator Collaboration Hub</h3>
+          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
+            Connect with verified creators in your city and niche to co-pitch brands for higher escrow tiers and cross-distribute audience reach.
+          </p>
+          <div class="mt-4 flex items-center gap-4 text-xs font-semibold text-slate-700">
+            <span>Network: 500+ Peers</span>
+            <span>&bull;</span>
+            <span>Win Rate: 78%</span>
+          </div>
+          <a href="/collabs" class="primary mt-5 inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold shadow-sm">
+            <span>Discover Peers</span>
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <!-- Engine 3: Score Me -->
+        <article id="influencer-score" class="tool card rounded-3xl p-6">
+          <div class="mb-4 text-blue-600">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900">Score Me: Creator ROI &amp; Rate Card</h3>
+          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
+            Audit commercial reel valuations, effective CPM, and audience quality score to generate an instant, verified media kit.
+          </p>
+          <a href="/tools/influencer-score" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Calculate Rate Card</a>
+        </article>
+
+        <!-- Engine 4: Google Leads -->
+        <article id="google-leads" class="tool card rounded-3xl p-6">
+          <div class="mb-4 text-blue-600">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900">Google Leads Tools</h3>
+          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
+            Extract verified local business leads with direct decision-maker emails, phone numbers, and websites for targeted brand outreach.
+          </p>
+          <a href="/tools/google-leads" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Open Google Tools</a>
+        </article>
+
+        <!-- Engine 5: Instagram Leads -->
+        <article id="instagram-leads" class="tool card rounded-3xl p-6">
+          <div class="mb-4 text-pink-600">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900">Instagram Leads Tools</h3>
+          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
+            Discover active advertisers, local brands, and creators using location intelligence, hashtag tracking, and direct contact data.
+          </p>
+          <a href="/tools/instagram-leads" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Open Instagram Tools</a>
+        </article>
+
+        <!-- Engine 6: YouTube Tools -->
+        <article id="youtube-tools" class="tool card rounded-3xl p-6">
+          <div class="mb-4 text-red-600">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.8 2.8 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2 12a29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 22 12a29 29 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900">YouTube Tools</h3>
+          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
+            Analyze channel view velocity, subscriber growth, and audience engagement metrics to benchmark brand sponsorship pricing.
+          </p>
+          <a href="/tools/youtube" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Open YouTube Tools</a>
+        </article>
+
+        <!-- Engine 7: LinkedIn Tools -->
+        <article id="linkedin-tools" class="tool card rounded-3xl p-6">
+          <div class="mb-4 text-blue-700">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900">LinkedIn Tools</h3>
+          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
+            Identify marketing leaders, partnership directors, and agency decision-makers for enterprise brand deals and corporate sponsorships.
+          </p>
+          <a href="/tools/linkedin" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Open LinkedIn Tools</a>
+        </article>
+
+        <!-- Engine 8: X / Twitter Tools -->
+        <article id="x-twitter-tools" class="tool card rounded-3xl p-6">
+          <div class="mb-4 text-slate-900">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4 19 20M19 4 5 20" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900">X / Twitter Tools</h3>
+          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
+            Track account impressions, engagement velocity, and trending community conversations across industry niches.
+          </p>
+          <a href="/tools/x-twitter" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Open X / Twitter Tools</a>
+        </article>
+
+      </div>
+    </section>
+
     <!-- HERO SECTION: Creator Monetization OS & Decentralized Campaign Exchange -->
-    <section class="pb-12 text-center max-w-5xl mx-auto">
+    <section class="pt-12 pb-12 text-center max-w-5xl mx-auto border-t border-slate-200/70">
       <div class="inline-flex rounded-full bg-blue-100 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[.18em] text-blue-700 mb-4">
         Creator Platform &amp; Campaign Exchange
       </div>
@@ -571,136 +706,6 @@
       </div>
     </section>
 
-    <!-- Flagship Exchange & Intelligence Engines Grid -->
-    <section id="tools" class="py-10 border-t border-slate-200/70">
-      <div class="mb-8 text-center max-w-2xl mx-auto">
-        <p class="text-[11px] font-bold uppercase tracking-[.18em] text-slate-500">Commercial Suite</p>
-        <h2 class="mt-1 font-display text-2xl sm:text-3xl font-bold text-slate-900">Exchange &amp; Intelligence Engines</h2>
-        <p class="mt-2 text-xs sm:text-sm text-slate-600">Choose the workflow you need to acquire leads, score creators, or monetize content.</p>
-      </div>
-
-      <div class="grid gap-5 md:grid-cols-2">
-
-        <!-- Flagship 1: Campaign Exchange Floor -->
-        <article id="campaign-exchange" class="tool card rounded-3xl p-6 border-blue-200 bg-gradient-to-br from-white to-blue-50/40 relative">
-          <div class="flex items-center justify-between mb-4">
-            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 3 4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <span class="inline-flex rounded-full bg-blue-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-blue-800">Flagship Floor</span>
-          </div>
-          <h3 class="font-display text-xl font-bold text-slate-900">Campaign Exchange Floor</h3>
-          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
-            Decentralized Escrow Floor — Browse open brand campaign pools with verified escrow backing, zero agency fees, and real-time sales revenue-shares.
-          </p>
-          <div class="mt-4 flex items-center gap-4 text-xs font-semibold text-slate-700">
-            <span>Escrow Pool: $40,500+</span>
-            <span>&bull;</span>
-            <span>Commission: 0%</span>
-          </div>
-          <a href="/exchange" class="primary mt-5 inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold shadow-sm">
-            <span>Access Exchange Floor</span>
-            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </article>
-
-        <!-- Flagship 2: Creator Collabs Hub -->
-        <article id="creator-collabs" class="tool card rounded-3xl p-6 border-indigo-200 bg-gradient-to-br from-white to-indigo-50/40 relative">
-          <div class="flex items-center justify-between mb-4">
-            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-sm">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </span>
-            <span class="inline-flex rounded-full bg-indigo-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-800">Syndicate Network</span>
-          </div>
-          <h3 class="font-display text-xl font-bold text-slate-900">Creator Collaboration Hub</h3>
-          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
-            Peer Syndication Network — Discover creators in your city and niche, co-pitch brands for higher escrow tiers, and cross-distribute content with zero cannibalization.
-          </p>
-          <div class="mt-4 flex items-center gap-4 text-xs font-semibold text-slate-700">
-            <span>Network: 500+ Peers</span>
-            <span>&bull;</span>
-            <span>Win Rate: 78%</span>
-          </div>
-          <a href="/collabs" class="primary mt-5 inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold shadow-sm">
-            <span>Discover Peers</span>
-            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </article>
-
-        <!-- Engine 3: Score Me -->
-        <article id="influencer-score" class="tool card rounded-3xl p-6">
-          <div class="mb-4 text-blue-600">
-            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="font-display text-xl font-bold text-slate-900">Score Me &mdash; Creator ROI &amp; Rate Card</h3>
-          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
-            Audit influencer pricing floor ($/INR), effective CPM, engagement quality, authenticity score, and generate a verified media kit link to anchor brand deals.
-          </p>
-          <a href="/tools/influencer-score" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Calculate Rate Card</a>
-        </article>
-
-        <!-- Engine 4: Google Leads -->
-        <article id="google-leads" class="tool card rounded-3xl p-6">
-          <div class="mb-4 text-blue-600">
-            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg>
-          </div>
-          <h3 class="font-display text-xl font-bold text-slate-900">Google Leads Tools</h3>
-          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
-            Pull local business leads from any target city into a clean, verified sheet with decision-maker emails, phone numbers, and website coordinates for direct pitching.
-          </p>
-          <a href="/tools/google-leads" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Open Google Tools</a>
-        </article>
-
-        <!-- Engine 5: Instagram Leads -->
-        <article id="instagram-leads" class="tool card rounded-3xl p-6">
-          <div class="mb-4 text-pink-600">
-            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
-          </div>
-          <h3 class="font-display text-xl font-bold text-slate-900">Instagram Leads Tools</h3>
-          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
-            Discover verified local brands, active advertisers, and creators with location intelligence, hashtag audits, and export-ready lead contacts.
-          </p>
-          <a href="/tools/instagram-leads" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Open Instagram Tools</a>
-        </article>
-
-        <!-- Engine 6: YouTube Tools -->
-        <article id="youtube-tools" class="tool card rounded-3xl p-6">
-          <div class="mb-4 text-red-600">
-            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.8 2.8 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2 12a29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 22 12a29 29 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>
-          </div>
-          <h3 class="font-display text-xl font-bold text-slate-900">YouTube Tools</h3>
-          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
-            Review channel view velocity, subscriber conversion efficiency, and audience retention metrics for smarter brand sponsorship pricing.
-          </p>
-          <a href="/tools/youtube" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Open YouTube Tools</a>
-        </article>
-
-        <!-- Engine 7: LinkedIn Tools -->
-        <article id="linkedin-tools" class="tool card rounded-3xl p-6">
-          <div class="mb-4 text-blue-700">
-            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg>
-          </div>
-          <h3 class="font-display text-xl font-bold text-slate-900">LinkedIn Tools</h3>
-          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
-            Identify VP of Marketing, Brand Partnership heads, and agency directors at scaling brands for corporate sponsorship deals.
-          </p>
-          <a href="/tools/linkedin" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Open LinkedIn Tools</a>
-        </article>
-
-        <!-- Engine 8: X / Twitter Tools -->
-        <article id="x-twitter-tools" class="tool card rounded-3xl p-6">
-          <div class="mb-4 text-slate-900">
-            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4 19 20M19 4 5 20" stroke-linecap="round"/></svg>
-          </div>
-          <h3 class="font-display text-xl font-bold text-slate-900">X / Twitter Tools</h3>
-          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
-            Inspect creator tweet velocity, measure influential accounts, and track high-engagement community discussions across niche verticals.
-          </p>
-          <a href="/tools/x-twitter" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Open X / Twitter Tools</a>
-        </article>
-
-      </div>
-    </section>
 
     <!-- AI Automation Category -->
     <section class="card my-10 rounded-[28px] bg-gradient-to-br from-white to-blue-50/60 p-7 text-center sm:p-10 border-slate-200">

@@ -84,7 +84,10 @@
       box-sizing: border-box !important;
       border: 1px solid #cbd5e1 !important;
       border-radius: 0.75rem !important;
-      padding: 0.75rem 1rem !important;
+      padding-top: 0.75rem !important;
+      padding-bottom: 0.75rem !important;
+      padding-right: 1rem !important;
+      padding-left: 1rem;
       color: #0f172a !important;
       background: #ffffff !important;
       font-size: 16px !important;
@@ -98,8 +101,24 @@
     @media (min-width: 640px) {
       .input, input, select, textarea {
         font-size: 0.875rem !important;
-        padding: 0.65rem 0.875rem !important;
+        padding-top: 0.65rem !important;
+        padding-bottom: 0.65rem !important;
+        padding-right: 0.875rem !important;
+        padding-left: 0.875rem;
       }
+    }
+    /* Explicit padding rules for inputs with prefix signs or search icons */
+    input.pl-8, .pl-8 {
+      padding-left: 2.25rem !important;
+    }
+    input.pl-9, .pl-9 {
+      padding-left: 2.5rem !important;
+    }
+    input.pl-10, .pl-10 {
+      padding-left: 2.75rem !important;
+    }
+    input.pl-11, .pl-11 {
+      padding-left: 3rem !important;
     }
     .grid, .grid > *, main, section, .card, form {
       min-width: 0;
@@ -283,47 +302,47 @@
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         
         <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
-          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
-            <span>Verified Escrow Pool</span>
-            <span class="inline-flex rounded-full bg-emerald-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-800">Verified</span>
+          <div class="flex items-center justify-between gap-1 text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span class="truncate">Verified Escrow Pool</span>
+            <span class="shrink-0 inline-flex rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700">100% Locked</span>
           </div>
           <div id="statEscrowPool" class="font-display text-2xl sm:text-3xl font-bold text-slate-900">$40,500+</div>
-          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
-            <svg class="h-3 w-3 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>100% Locked in Vaults</span>
+          <div class="mt-1 flex items-center gap-1.5 text-xs text-slate-500">
+            <svg class="h-3 w-3 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Guaranteed Vault Reserve</span>
           </div>
         </div>
 
         <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
-          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
-            <span>Active Campaign Pools</span>
-            <span class="inline-flex rounded-full bg-blue-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-blue-700">Active</span>
+          <div class="flex items-center justify-between gap-1 text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span class="truncate">Active Campaigns</span>
+            <span class="shrink-0 inline-flex rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-bold text-blue-700">Open Pools</span>
           </div>
           <div id="statActivePools" class="font-display text-2xl sm:text-3xl font-bold text-slate-900">4+</div>
-          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
-            <span>Tier-1 Institutional Brands</span>
+          <div class="mt-1 flex items-center gap-1.5 text-xs text-slate-500">
+            <span>Direct Brand Contracts</span>
           </div>
         </div>
 
         <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
-          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
-            <span>Participating Creators</span>
-            <span class="inline-flex rounded-full bg-indigo-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700">Syndicated</span>
+          <div class="flex items-center justify-between gap-1 text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span class="truncate">Creator Network</span>
+            <span class="shrink-0 inline-flex rounded-full bg-indigo-50 px-2 py-0.5 text-[10px] font-bold text-indigo-700">Verified</span>
           </div>
           <div id="statCreatorsCount" class="font-display text-2xl sm:text-3xl font-bold text-slate-900">50+</div>
-          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
-            <span>Verified OmniScore &gt; 85</span>
+          <div class="mt-1 flex items-center gap-1.5 text-xs text-slate-500">
+            <span>Audited OmniScore &gt; 85</span>
           </div>
         </div>
 
         <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
-          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
-            <span>Avg Yield / 1K Views</span>
-            <span class="inline-flex rounded-full bg-purple-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-purple-700">Benchmark</span>
+          <div class="flex items-center justify-between gap-1 text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span class="truncate">Average Yield</span>
+            <span class="shrink-0 inline-flex rounded-full bg-purple-50 px-2 py-0.5 text-[10px] font-bold text-purple-700">Per 1K Views</span>
           </div>
           <div id="statAvgYield" class="font-display text-2xl sm:text-3xl font-bold text-slate-900">$22.40</div>
-          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
-            <span>Rev-Share + Bounty Combined</span>
+          <div class="mt-1 flex items-center gap-1.5 text-xs text-slate-500">
+            <span>Bounty + Commission Combined</span>
           </div>
         </div>
 
@@ -340,7 +359,7 @@
             <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
             </span>
-            <input id="campaignSearchInput" type="text" placeholder="Search campaigns by brand, title, deliverables..." class="pl-10 !py-2.5 text-xs text-slate-900 placeholder:text-slate-400">
+            <input id="campaignSearchInput" type="text" placeholder="Search campaigns by brand, title, deliverables..." class="pl-11 !py-2.5 text-xs text-slate-900 placeholder:text-slate-400">
           </div>
 
           <!-- Sort Select -->
@@ -491,8 +510,8 @@
             Creator Handle or Vanguard ID <span class="text-rose-500">*</span>
           </label>
           <div class="relative">
-            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 font-mono text-xs">@</span>
-            <input id="creatorIdInput" type="text" required placeholder="yourhandle or usr_id" class="pl-8 text-xs text-slate-900 font-medium">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 font-semibold text-sm">@</span>
+            <input id="creatorIdInput" type="text" required placeholder="yourhandle or usr_id" class="pl-9 text-xs text-slate-900 font-medium">
           </div>
           <p class="mt-1 text-[11px] text-slate-500">Auto-filled from your authenticated session. Deterministic conversions will be credited directly to this identifier.</p>
         </div>
@@ -803,7 +822,7 @@
       {
         campaign_id: 'cmp_apex_gear',
         brand_name: 'Apex Performance Gear',
-        title: 'Apex Performance Gear - High-Performance Athletic & Fitness Wear',
+        title: 'High-Performance Athletic & Fitness Wear',
         category: 'Fitness',
         description: 'Performance apparel engineered for elite conditioning, running, and functional training. Seeking fitness creators, trainers, and athletes.',
         escrow_pool: 12500,
@@ -821,7 +840,7 @@
       {
         campaign_id: 'cmp_lumina_labs',
         brand_name: 'Lumina Skin Labs',
-        title: 'Lumina Skin Labs - Dermatological Skincare & Barrier Restoration',
+        title: 'Dermatological Skincare & Barrier Restoration',
         category: 'Beauty & Skincare',
         description: 'Clinical dermatological formulations focused on peptide barrier repair and gentle active recovery. Seeking skincare and aesthetic creators.',
         escrow_pool: 8000,
@@ -839,7 +858,7 @@
       {
         campaign_id: 'cmp_flowmetrics',
         brand_name: 'SaaS FlowMetrics',
-        title: 'SaaS FlowMetrics - Productivity & AI Workflow Analytics',
+        title: 'Productivity & AI Workflow Analytics',
         category: 'SaaS',
         description: 'Automated workflow telemetry and task optimization platform for modern distributed engineering and product teams.',
         escrow_pool: 15000,
@@ -857,7 +876,7 @@
       {
         campaign_id: 'cmp_artisan_coffee',
         brand_name: 'Artisan Roast Coffee Co.',
-        title: 'Artisan Roast Coffee Co. - Single-Origin Specialty Coffee & Cafes',
+        title: 'Single-Origin Specialty Coffee & Cafes',
         category: 'Food & Beverage',
         description: 'Direct-trade micro-lot specialty coffees sourced sustainably from high-altitude estates worldwide. Seeking lifestyle, culinary, and cafe creators.',
         escrow_pool: 5000,
@@ -987,7 +1006,7 @@
 
               <!-- Brand & Title -->
               <div class="mb-3">
-                <p class="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono">${escapeHtml(c.brand_name)}</p>
+                <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">${escapeHtml(c.brand_name)}</p>
                 <h3 class="font-display text-base sm:text-lg font-bold text-slate-900 mt-1 leading-snug line-clamp-2">
                   ${escapeHtml(c.title)}
                 </h3>
@@ -1015,7 +1034,7 @@
               <div class="mb-5 space-y-1.5">
                 <div class="flex items-center justify-between text-xs font-semibold">
                   <span class="text-slate-600">${current} / ${cap} spots filled</span>
-                  <span class="text-slate-500 font-mono text-[11px]">${spotsLeft} remaining</span>
+                  <span class="text-slate-500 text-xs">${spotsLeft} remaining</span>
                 </div>
                 <div class="h-2 w-full rounded-full bg-slate-100 overflow-hidden border border-slate-200/60">
                   <div class="h-full rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-500" style="width: ${pct}%"></div>

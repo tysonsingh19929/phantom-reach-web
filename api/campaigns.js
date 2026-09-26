@@ -9,7 +9,7 @@ const SEED_CAMPAIGNS = [
   {
     campaign_id: 'cmp_apex_gear',
     brand_name: 'Apex Performance Gear',
-    title: 'Apex Performance Gear - High-Performance Athletic & Fitness Wear',
+    title: 'High-Performance Athletic & Fitness Wear',
     category: 'Fitness',
     description: 'Performance apparel engineered for elite conditioning, running, and functional training. Seeking fitness creators, trainers, and athletes.',
     escrow_pool: 12500,
@@ -28,7 +28,7 @@ const SEED_CAMPAIGNS = [
   {
     campaign_id: 'cmp_lumina_labs',
     brand_name: 'Lumina Skin Labs',
-    title: 'Lumina Skin Labs - Dermatological Skincare & Barrier Restoration',
+    title: 'Dermatological Skincare & Barrier Restoration',
     category: 'Beauty & Skincare',
     description: 'Clinical dermatological formulations focused on peptide barrier repair and gentle active recovery. Seeking skincare and aesthetic creators.',
     escrow_pool: 8000,
@@ -47,7 +47,7 @@ const SEED_CAMPAIGNS = [
   {
     campaign_id: 'cmp_flowmetrics',
     brand_name: 'SaaS FlowMetrics',
-    title: 'SaaS FlowMetrics - Productivity & AI Workflow Analytics',
+    title: 'Productivity & AI Workflow Analytics',
     category: 'SaaS',
     description: 'Automated workflow telemetry and task optimization platform for modern distributed engineering and product teams.',
     escrow_pool: 15000,
@@ -66,7 +66,7 @@ const SEED_CAMPAIGNS = [
   {
     campaign_id: 'cmp_artisan_coffee',
     brand_name: 'Artisan Roast Coffee Co.',
-    title: 'Artisan Roast Coffee Co. - Single-Origin Specialty Coffee & Cafes',
+    title: 'Single-Origin Specialty Coffee & Cafes',
     category: 'Food & Beverage',
     description: 'Direct-trade micro-lot specialty coffees sourced sustainably from high-altitude estates worldwide. Seeking lifestyle, culinary, and cafe creators.',
     escrow_pool: 5000,

@@ -84,7 +84,10 @@
       box-sizing: border-box !important;
       border: 1px solid #cbd5e1 !important;
       border-radius: 0.75rem !important;
-      padding: 0.75rem 1rem !important;
+      padding-top: 0.75rem !important;
+      padding-bottom: 0.75rem !important;
+      padding-right: 1rem !important;
+      padding-left: 1rem;
       color: #0f172a !important;
       background: #ffffff !important;
       font-size: 16px !important;
@@ -98,8 +101,24 @@
     @media (min-width: 640px) {
       .input, input, select, textarea {
         font-size: 0.875rem !important;
-        padding: 0.65rem 0.875rem !important;
+        padding-top: 0.65rem !important;
+        padding-bottom: 0.65rem !important;
+        padding-right: 0.875rem !important;
+        padding-left: 0.875rem;
       }
+    }
+    /* Explicit padding rules for inputs with prefix signs or search icons */
+    input.pl-8, .pl-8 {
+      padding-left: 2.25rem !important;
+    }
+    input.pl-9, .pl-9 {
+      padding-left: 2.5rem !important;
+    }
+    input.pl-10, .pl-10 {
+      padding-left: 2.75rem !important;
+    }
+    input.pl-11, .pl-11 {
+      padding-left: 3rem !important;
     }
     .grid, .grid > *, main, section, .card, form {
       min-width: 0;
@@ -281,45 +300,45 @@
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         
         <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
-          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
-            <span>Verified Network Peers</span>
-            <span class="inline-flex rounded-full bg-emerald-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-800">Verified</span>
+          <div class="flex items-center justify-between gap-1 text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span class="truncate">Verified Peers</span>
+            <span class="shrink-0 inline-flex rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700">Verified</span>
           </div>
           <div id="statCreatorsNetwork" class="font-display text-2xl sm:text-3xl font-bold text-slate-900">500+</div>
-          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
+          <div class="mt-1 flex items-center gap-1.5 text-xs text-slate-500">
             <span>Audited OmniScore &gt; 80</span>
           </div>
         </div>
 
         <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
-          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
-            <span>Audience Overlap Index</span>
-            <span class="inline-flex rounded-full bg-blue-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-blue-700">Optimal</span>
+          <div class="flex items-center justify-between gap-1 text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span class="truncate">Audience Overlap</span>
+            <span class="shrink-0 inline-flex rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-bold text-blue-700">Optimal</span>
           </div>
           <div class="font-display text-2xl sm:text-3xl font-bold text-slate-900">14.2%</div>
-          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
-            <span>Zero Cannibalization Target</span>
+          <div class="mt-1 flex items-center gap-1.5 text-xs text-slate-500">
+            <span>Non-Cannibalizing Cohort</span>
           </div>
         </div>
 
         <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
-          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
-            <span>Co-Pitch Win Rate</span>
-            <span class="inline-flex rounded-full bg-indigo-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700">Syndicate</span>
+          <div class="flex items-center justify-between gap-1 text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span class="truncate">Co-Pitch Win Rate</span>
+            <span class="shrink-0 inline-flex rounded-full bg-indigo-50 px-2 py-0.5 text-[10px] font-bold text-indigo-700">Top Tier</span>
           </div>
           <div class="font-display text-2xl sm:text-3xl font-bold text-slate-900">78%</div>
-          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
-            <span>Enterprise Escrow Approvals</span>
+          <div class="mt-1 flex items-center gap-1.5 text-xs text-slate-500">
+            <span>Direct Escrow Approvals</span>
           </div>
         </div>
 
         <div class="glass rounded-2xl p-4 sm:p-5 border border-slate-200/90 bg-white">
-          <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
-            <span>Syndicated Reach Pool</span>
-            <span class="inline-flex rounded-full bg-purple-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-purple-700">Aggregate</span>
+          <div class="flex items-center justify-between gap-1 text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span class="truncate">Syndicated Reach</span>
+            <span class="shrink-0 inline-flex rounded-full bg-purple-50 px-2 py-0.5 text-[10px] font-bold text-purple-700">Combined</span>
           </div>
           <div class="font-display text-2xl sm:text-3xl font-bold text-slate-900">42.8M</div>
-          <div class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500 font-mono">
+          <div class="mt-1 flex items-center gap-1.5 text-xs text-slate-500">
             <span>High-Engagement Audiences</span>
           </div>
         </div>
@@ -339,7 +358,7 @@
             <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
             </span>
-            <input id="creatorSearchInput" type="text" placeholder="Search by creator name, handle, bio, or skills..." class="pl-10 !py-2.5 text-xs text-slate-900 placeholder:text-slate-400">
+            <input id="creatorSearchInput" type="text" placeholder="Search by creator name, handle, bio, or skills..." class="pl-11 !py-2.5 text-xs text-slate-900 placeholder:text-slate-400">
           </div>
 
           <!-- City Filter -->
@@ -981,7 +1000,7 @@
               <div class="rounded-xl border border-blue-100 bg-blue-50/70 p-3 mb-4">
                 <div class="flex items-center justify-between">
                   <span class="text-[10px] font-bold uppercase tracking-wider text-blue-700">Verified Vanguard OmniScore</span>
-                  <span class="text-[10px] font-mono font-semibold text-slate-500">Tier-1 Audit</span>
+                  <span class="text-[10px] font-semibold text-slate-500">Tier-1 Audit</span>
                 </div>
                 <div class="font-display text-sm font-bold text-slate-900 mt-0.5">
                   ${scoreBadge}
