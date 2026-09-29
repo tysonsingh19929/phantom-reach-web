@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
   <!-- Mobile Browser & Status Bar Theme Color (Matches website theme like YouTube app) -->
   <meta name="theme-color" content="#ffffff">
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#ffffff">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="msapplication-navbutton-color" content="#ffffff">
   <meta name="msapplication-TileColor" content="#ffffff">
+  <link rel="manifest" href="/manifest.json">
   <meta name="description" content="Creator Rate Card Calculator & Brand Sponsorship Platform. Calculate your sponsorship rates, find local business leads, and get paid brand deals with upfront escrow protection.">
   <meta name="keywords" content="creator rate card calculator, sponsorship pricing, brand deals, creator escrow, instagram leads, google leads scraper, influencer valuation, tiktok sponsorships, youtube channel analytics, creator collaborations, social by vanguard">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -190,6 +190,9 @@
   <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],display:['Lexend','Inter','system-ui','sans-serif']}}}};</script>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      color-scheme: light;
+    }
     *, ::before, ::after {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
@@ -197,8 +200,7 @@
     html {
       width: 100%;
       max-width: 100%;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
+      overflow-x: clip;
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
       background-color: #ffffff;
@@ -207,14 +209,11 @@
       margin: 0;
       width: 100%;
       max-width: 100%;
-      overflow-x: hidden;
-      min-height: 100vh;
-      min-height: 100dvh;
+      overflow-x: clip;
       color: #0f172a;
       font-family: Inter, sans-serif;
       background-color: #ffffff;
       background: linear-gradient(135deg, #f8fbff, #eef6ff 42%, #fff);
-      touch-action: manipulation;
       position: relative;
     }
     .container {
