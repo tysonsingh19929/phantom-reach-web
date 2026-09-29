@@ -49,7 +49,7 @@ const SEED_CAMPAIGNS = [
     brand_name: 'SaaS FlowMetrics',
     title: 'Productivity & AI Workflow Analytics',
     category: 'SaaS',
-    description: 'Automated workflow telemetry and task optimization platform for modern distributed engineering and product teams.',
+    description: 'AI-powered productivity and workflow analytics software for modern teams and creators.',
     escrow_pool: 15000,
     rev_share_percentage: 30,
     rev_share_type: 'Recurring Rev-Share',
