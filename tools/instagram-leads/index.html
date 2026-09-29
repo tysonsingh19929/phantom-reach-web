@@ -3,6 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <!-- Mobile Browser & Status Bar Theme Color (Matches website theme like YouTube app) -->
+  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#ffffff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="msapplication-navbutton-color" content="#ffffff">
+  <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="description" content="Vanguard Social — AI-powered multi-platform intelligence and lead generation engines.">
   <title>Vanguard Social — Intelligence Engine</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230F172A'/%3E%3Cpath d='M6 6h3.4L12 14.6 14.6 6H18l-5 12h-2L6 6Z' fill='white'/%3E%3C/svg%3E">
@@ -23,6 +31,7 @@
       scroll-behavior: smooth;
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
+      background-color: #ffffff;
     }
     body {
       margin: 0;
@@ -33,6 +42,7 @@
       min-height: 100dvh;
       color: #0f172a;
       font-family: Inter, sans-serif;
+      background-color: #ffffff;
       background: linear-gradient(135deg, #f8fbff, #eef6ff 42%, #fff);
       touch-action: manipulation;
       position: relative;
@@ -195,7 +205,7 @@
 <body>
 
   <!-- HEADER -->
-  <header class="sticky top-0 z-[1000] border-b border-slate-200/80 bg-white/90 backdrop-blur-xl" style="padding-top:env(safe-area-inset-top)">
+  <header id="siteHeader" class="sticky top-0 z-[1000] border-b border-slate-200/80 bg-white transition-all duration-200" style="padding-top:env(safe-area-inset-top)">
     <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5">
       
       <div class="flex items-center gap-3">
@@ -1937,6 +1947,21 @@
     updateApiStatusUI();
     autoDiscoverBackend();
     setInterval(autoDiscoverBackend, 60000);
+
+    // Keep mobile browser toolbar & status bar matched to header on scroll (native app experience)
+    (function() {
+      const header = document.getElementById('siteHeader');
+      function syncHeaderOnScroll() {
+        if (!header) return;
+        if (window.scrollY > 8) {
+          header.classList.add('shadow-md');
+        } else {
+          header.classList.remove('shadow-md');
+        }
+      }
+      window.addEventListener('scroll', syncHeaderOnScroll, { passive: true });
+      syncHeaderOnScroll();
+    })();
   </script>
 </body>
 </html>

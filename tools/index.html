@@ -3,6 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <!-- Mobile Browser & Status Bar Theme Color (Matches website theme like YouTube app) -->
+  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#ffffff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="msapplication-navbutton-color" content="#ffffff">
+  <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="description" content="Vanguard Social — AI-powered multi-platform intelligence and lead generation engines.">
   <title>Vanguard Social — Intelligence Engine</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230F172A'/%3E%3Cpath d='M6 6h3.4L12 14.6 14.6 6H18l-5 12h-2L6 6Z' fill='white'/%3E%3C/svg%3E">
@@ -23,6 +31,7 @@
       scroll-behavior: smooth;
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
+      background-color: #ffffff;
     }
     body {
       margin: 0;
@@ -33,6 +42,7 @@
       min-height: 100dvh;
       color: #0f172a;
       font-family: Inter, sans-serif;
+      background-color: #ffffff;
       background: linear-gradient(135deg, #f8fbff, #eef6ff 42%, #fff);
       touch-action: manipulation;
       position: relative;
@@ -195,7 +205,7 @@
 <body>
 
   <!-- HEADER -->
-  <header class="sticky top-0 z-[1000] border-b border-slate-200/80 bg-white/90 backdrop-blur-xl" style="padding-top:env(safe-area-inset-top)">
+  <header id="siteHeader" class="sticky top-0 z-[1000] border-b border-slate-200/80 bg-white transition-all duration-200" style="padding-top:env(safe-area-inset-top)">
     <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5">
       
       <div class="flex items-center gap-3">
@@ -206,17 +216,19 @@
           </button>
           <nav id="toolsMenu" class="menu glass rounded-2xl p-3" hidden>
             <div class="px-3 pb-3 pt-1">
-              <p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-500">Switch Intelligence Engine</p>
+              <p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-500">Creator Tools &amp; Navigation</p>
+              <p class="mt-1 text-sm text-slate-500">Choose a tool or explore brand deals</p>
             </div>
-            <a href="/exchange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 3 4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Campaign Exchange</span></a>
-            <a href="/collabs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Creator Collabs</span></a>
-            <a href="/tools/influencer-score"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg><span>Score Me — Influencer ROI</span></a>
-            <a href="/tools/instagram-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg><span>Instagram Leads Tools</span></a>
-            <a href="/tools/google-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg><span>Google Leads Tools</span></a>
-            <a href="/tools/youtube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7.5a2.5 2.5 0 0 0-1.8-1.8C17.6 5.3 12 5.3 12 5.3s-5.6 0-7.2.4A2.5 2.5 0 0 0 3 7.5 26 26 0 0 0 2.6 12 26 26 0 0 0 3 16.5a2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.2.4 7.2.4s5.6 0 7.2-.4a2.5 2.5 0 0 0 1.8-1.8 26 26 0 0 0 .4-4.5 26 26 0 0 0-.4-4.5Z"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg><span>YouTube Tools</span></a>
-            <a href="/tools/linkedin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg><span>LinkedIn Tools</span></a>
-            <a href="/tools/x-twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4 19 20M19 4 5 20" stroke-linecap="round"/></svg><span>X / Twitter Tools</span></a>
-            <a href="/tools/automate-ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke-linecap="round"/><circle cx="12" cy="12" r="4"/></svg><span>Automate with AI</span></a>
+            <a href="/#tools"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h16" stroke-linecap="round"/></svg><span>View all tools</span></a>
+            <a href="/exchange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 3 4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Brand Campaigns</span></a>
+            <a href="/collabs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Creator Collaborations</span></a>
+            <a href="/tools/google-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg><span>Local Business Leads</span></a>
+            <a href="/tools/influencer-score"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg><span>Rate Card Calculator</span></a>
+            <a href="/tools/instagram-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg><span>Instagram Brand Finder</span></a>
+            <a href="/tools/youtube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7.5a2.5 2.5 0 0 0-1.8-1.8C17.6 5.3 12 5.3 12 5.3s-5.6 0-7.2.4A2.5 2.5 0 0 0 3 7.5 26 26 0 0 0 2.6 12 26 26 0 0 0 3 16.5a2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.2.4 7.2.4s5.6 0 7.2-.4a2.5 2.5 0 0 0 1.8-1.8 26 26 0 0 0 .4-4.5 26 26 0 0 0-.4-4.5Z"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg><span>YouTube Analytics</span></a>
+            <a href="/tools/linkedin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg><span>LinkedIn Brand Contacts</span></a>
+            <a href="/tools/x-twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4 19 20M19 4 5 20" stroke-linecap="round"/></svg><span>X / Twitter Insights</span></a>
+            <a href="/tools/automate-ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke-linecap="round"/><circle cx="12" cy="12" r="4"/></svg><span>Automate Outreach with AI</span></a>
           </nav>
         </div>
 
@@ -235,7 +247,7 @@
           <span class="hidden sm:inline font-mono text-[11px] font-semibold" id="apiStatusLabel">API</span>
         </button>
 
-                <!-- Account Button -->
+        <!-- Account Button -->
         <div class="relative">
           <button id="accountButton" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm cursor-pointer hover:bg-slate-50 transition" aria-label="Open account access menu" aria-expanded="false">
             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg>
@@ -270,11 +282,11 @@
       <div class="space-y-6 w-full min-w-0 overflow-hidden">
         <div>
           <div class="flex items-center gap-2 mb-3">
-            <span class="inline-flex rounded-full bg-blue-100 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[.18em] text-blue-700">Vanguard Intelligence Engine</span>
+            <span class="inline-flex rounded-full bg-blue-100 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[.18em] text-blue-700">Creator Tools &amp; Analytics</span>
           </div>
           
-          <h1 id="title" class="mt-2 font-display text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">Intelligence Engine</h1>
-          <p id="description" class="mt-4 text-base sm:text-lg leading-relaxed text-slate-600">Prepare, harvest, and analyze verified leads and creator signals directly with our multi-session worker pool.</p>
+          <h1 id="title" class="mt-2 font-display text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">Creator Tools &amp; Analytics</h1>
+          <p id="description" class="mt-4 text-base sm:text-lg leading-relaxed text-slate-600">Find local business leads, check creator engagement, and calculate sponsorship rates in seconds.</p>
           
           <div id="benefits" class="mt-6 grid gap-3 sm:grid-cols-2"></div>
         </div>
@@ -304,8 +316,8 @@
           <span id="engineStatusBadge" class="inline-flex rounded-full bg-emerald-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-800">Ready</span>
         </div>
 
-        <h2 id="formTitle" class="mt-3 font-display text-xl font-bold text-slate-900">Run Intelligence Engine</h2>
-        <p id="formCopy" class="mt-1.5 text-sm leading-relaxed text-slate-600">Define search parameters and trigger automated data extraction.</p>
+        <h2 id="formTitle" class="mt-3 font-display text-xl font-bold text-slate-900">Search &amp; Analyze</h2>
+        <p id="formCopy" class="mt-1.5 text-sm leading-relaxed text-slate-600">Enter your search details to find leads or analyze accounts.</p>
 
         <!-- DYNAMIC FORM FIELDS (Single Unified Form) -->
         <form id="engineForm" onsubmit="event.preventDefault(); runEngine();" class="mt-5 space-y-4">
@@ -313,7 +325,7 @@
 
           <!-- ACTION TRIGGER BUTTON -->
           <button type="submit" id="runEngineBtn" class="primary w-full rounded-xl px-5 py-3.5 font-semibold text-sm shadow-md flex items-center justify-center gap-2 cursor-pointer transition">
-            <span id="runBtnLabel">Run Intelligence Engine</span>
+            <span id="runBtnLabel">Start Search</span>
           </button>
         </form>
 
@@ -322,7 +334,7 @@
           <div class="flex items-center justify-between text-xs font-bold">
             <span class="text-blue-700 flex items-center gap-1.5">
               <span class="inline-block w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
-              <span id="progressStepTitle">Processing in pool...</span>
+              <span id="progressStepTitle">Searching...</span>
             </span>
             <span id="progressPct" class="font-mono text-slate-700">15%</span>
           </div>
@@ -331,7 +343,7 @@
             <div id="progressBar" class="bg-blue-600 h-2.5 rounded-full transition-all duration-300" style="width: 15%"></div>
           </div>
 
-          <p id="progressStatusText" class="text-xs text-slate-600 font-mono truncate">Leasing worker session from accounts pool...</p>
+          <p id="progressStatusText" class="text-xs text-slate-600 font-mono truncate">Finding and verifying results...</p>
 
           <div class="pt-1 flex items-center justify-between">
             <span id="currentTaskIdLabel" class="text-[10px] text-slate-600 font-mono"></span>
@@ -404,67 +416,102 @@
   <script>
     const configs = {
       'influencer-score': {
-        name: 'Score Me Engine',
-        title: 'Score Me — Influencer ROI Engine',
-        description: 'Score creators for authentic reach, engagement quality, niche fit, momentum, and partnership ROI. Multi-session extraction delivers verified benchmark scores.',
-        formTitle: 'Calculate Influencer Score',
-        formCopy: 'Enter a creator Instagram handle to evaluate benchmark points, grade, and ROI quality.',
+        name: 'Rate Card Calculator',
+        title: 'Rate Card Calculator & Creator Audit',
+        description: 'Check your real engagement rate, calculate what you should charge brands for sponsored Reels and Stories, and get a shareable media kit link.',
+        formTitle: 'Calculate Your Sponsorship Rates',
+        formCopy: 'Enter your Instagram handle to check your engagement rate, estimated Reel rates, and sponsor rate card.',
         icon: 'bolt',
-        benefits: ['Cohort-scaled Benchmark Points (thousands & lakhs)','Authentic audience vs bot penalty audit','Verified engagement rate & cumulative views','Instant downloadable story celebration card & Excel report']
+        benefits: [
+          'Real engagement rate and viewer retention audit',
+          'Estimated rates for sponsored Reels and Stories',
+          'Recommended high-paying sponsor niches',
+          'Instant shareable media kit link for brand pitching'
+        ]
       },
       'instagram-leads': {
-        name: 'Instagram Leads Tools',
-        title: 'Instagram Leads Tools',
-        description: 'Find verified local businesses, creators, and collaborators with location discovery, account audits, and export-ready lead data.',
-        formTitle: 'Extract Instagram Leads',
-        formCopy: 'Define a location, hashtag, or creator niche to identify verified Instagram prospects.',
+        name: 'Instagram Brand Finder',
+        title: 'Instagram Brand & Creator Finder',
+        description: 'Find local businesses, brands, and creators on Instagram by location or hashtag with verified contact info.',
+        formTitle: 'Find Instagram Brands & Creators',
+        formCopy: 'Search by city, niche, or hashtag to find active Instagram accounts and contact details.',
         icon: 'instagram',
-        benefits: ['Location & hashtag business discovery','Full account profiles with bio & contacts','30-day comment extraction and engagement signals','Export-ready Excel spreadsheet']
+        benefits: [
+          'Search local businesses and creators by city or hashtag',
+          'Extract public bios, email addresses, and phone numbers',
+          'Check recent post engagement and activity',
+          'Download full lead list to Excel or CSV'
+        ]
       },
       'google-leads': {
-        name: 'Google Leads Tools',
-        title: 'Google Leads Tools',
-        description: 'Pull high-intent businesses from any target location into a clean lead sheet with verified emails, phone numbers, and addresses.',
-        formTitle: 'Start a Google Leads Search',
-        formCopy: 'Enter a target location or business category to extract verified business leads.',
+        name: 'Local Business Leads',
+        title: 'Local Business Lead Finder',
+        description: 'Find local businesses in any city to pitch sponsorship or marketing services, complete with verified emails, phones, and addresses.',
+        formTitle: 'Find Local Businesses to Pitch',
+        formCopy: 'Enter a city and business category (e.g., Gyms in Miami, Cafes in Austin) to get a list of businesses.',
         icon: 'pin',
-        benefits: ['Location-based business discovery','Direct website, phone, and address extraction','Optional contact enrichment with verified emails','Ready-to-use spreadsheet export']
+        benefits: [
+          'Find local businesses by city and category',
+          'Get direct websites, phone numbers, and addresses',
+          'Verified contact information ready for pitching',
+          'Download leads directly to Excel or CSV'
+        ]
       },
       'youtube': {
-        name: 'YouTube Intelligence',
-        title: 'YouTube Tools',
-        description: 'Review channel performance, audience signals, and creator fit for smarter collaborations and influencer sponsorships.',
+        name: 'YouTube Analytics',
+        title: 'YouTube Channel & Video Analytics',
+        description: 'Analyze YouTube channels, recent video performance, view velocity, and audience engagement for sponsorships.',
         formTitle: 'Analyze a YouTube Channel',
-        formCopy: 'Enter a channel handle or keyword brief to prepare a video reach review.',
+        formCopy: 'Enter a channel handle or name to review recent videos, average views, and engagement.',
         icon: 'youtube',
-        benefits: ['Channel video reach & velocity','Engagement signals & view distribution','Audience and creator-fit insights','Complete video table export']
+        benefits: [
+          'Channel view counts, subscriber growth, and upload velocity',
+          'Engagement rates and view performance per video',
+          'Content topic and sponsor breakdown',
+          'Export complete video stats to spreadsheet'
+        ]
       },
       'linkedin': {
-        name: 'LinkedIn Intelligence',
-        title: 'LinkedIn Tools',
-        description: 'Discover professional prospects and organize high-intent B2B outreach with focused intelligence across industries.',
-        formTitle: 'Start LinkedIn Prospecting',
-        formCopy: 'Enter a role, company, or market to prepare your prospecting brief.',
+        name: 'LinkedIn Brand Contacts',
+        title: 'LinkedIn Brand & Business Contacts',
+        description: 'Find marketing managers, brand decision-makers, and corporate contacts for sponsorship pitches and B2B deals.',
+        formTitle: 'Find Brand Decision-Makers',
+        formCopy: 'Search by company, role (e.g. Head of Marketing), or industry to find contacts to pitch.',
         icon: 'linkedin',
-        benefits: ['Professional prospect discovery','Focused B2B outreach workflows','Company and role targeting','Lead export ready for CRM']
+        benefits: [
+          'Find brand managers and marketing decision-makers',
+          'Identify companies actively running influencer campaigns',
+          'Organize contacts for personalized pitch emails',
+          'Export contact list directly to your CRM or spreadsheet'
+        ]
       },
       'x-twitter': {
-        name: 'X / Twitter Intelligence',
-        title: 'X / Twitter Tools',
-        description: 'Inspect creator tweet velocity, identify influential accounts, and monitor niche community discussions.',
-        formTitle: 'Twitter / X Creator Audit',
-        formCopy: 'Enter a Twitter/X handle to inspect tweets, engagement velocity, and influence.',
+        name: 'X / Twitter Insights',
+        title: 'X / Twitter Account & Post Insights',
+        description: 'Review tweet engagement, audience discussions, and follower momentum for accounts on X (Twitter).',
+        formTitle: 'Analyze an X / Twitter Account',
+        formCopy: 'Enter a Twitter handle or topic keyword to inspect recent posts and engagement.',
         icon: 'x',
-        benefits: ['Conversation and community discovery','Tweet velocity and engagement audit','Influential account signals','Export-ready discussion logs']
+        benefits: [
+          'Recent tweet engagement and repost velocity',
+          'Top performing posts and viral impressions',
+          'Community topics and follower momentum',
+          'Export discussion logs and account data'
+        ]
       },
       'automate-ai': {
-        name: 'AI Automation',
-        title: 'Automate your business with AI',
-        description: 'Turn repetitive research, qualification, reporting, and outreach workflows into a streamlined AI-powered operating system.',
-        formTitle: 'Map an Automation Workflow',
-        formCopy: 'Describe a repetitive workflow and identify where AI can create leverage.',
+        name: 'Automate Outreach with AI',
+        title: 'Automate Brand Outreach with AI',
+        description: 'Use AI to write personalized brand pitches, follow up with sponsors automatically, and save hours on admin work.',
+        formTitle: 'Create an Automated Outreach Workflow',
+        formCopy: 'Tell AI what kind of pitches or client outreach you want to automate.',
         icon: 'ai',
-        benefits: ['Research and qualification automation','Reporting and outreach orchestration','Multi-platform intelligence synthesis','Custom workflow design']
+        benefits: [
+          'Generate personalized pitch emails tailored to each brand',
+          'Automate follow-ups so you never lose a sponsorship deal',
+          'Connect lead search directly to outreach templates',
+          'Save 10+ hours every week on pitching and admin'
+        ]
       }
     };
 
@@ -1308,7 +1355,7 @@
                   CREATOR MONETIZATION &amp; RATE CARD AUDIT
                 </h3>
                 <p class="text-xs text-slate-500 mt-1">
-                  Institutional brand sponsorship valuations calculated from verified reach, cohort density, and organic engagement quality.
+                  Estimated sponsorship rates calculated from your real engagement, follower count, and audience quality.
                 </p>
               </div>
 
@@ -1367,7 +1414,7 @@
                 </div>
                 <div class="text-xl sm:text-2xl font-bold font-display text-slate-900 tracking-tight">${rates.cpmDisplay}</div>
                 <div class="text-xs font-bold text-emerald-600 mt-1">${authPct}% Authenticity Factor</div>
-                <div class="text-[11px] text-slate-500 mt-2 pt-2 border-t border-slate-200/60">Estimated institutional CPM across targeted advertiser pools</div>
+                <div class="text-[11px] text-slate-500 mt-2 pt-2 border-t border-slate-200/60">Estimated earnings per 1,000 views from brand advertisers in your niche</div>
               </div>
             </div>
 
@@ -1376,9 +1423,9 @@
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                 <div>
                   <div class="text-xs font-bold uppercase tracking-wider text-slate-700">Top-Paying Advertiser Niches</div>
-                  <p class="text-xs text-slate-500">Optimal category matches commanding premium sponsor CPMs for this audience demographic</p>
+                  <p class="text-xs text-slate-500">Niches and industries that pay the highest sponsorship rates for your audience</p>
                 </div>
-                <span class="text-[11px] font-mono font-semibold text-slate-400">Algorithmic Niche Match</span>
+                <span class="text-[11px] font-mono font-semibold text-slate-400">Recommended Niches</span>
               </div>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 pt-1">
@@ -1398,10 +1445,10 @@
             <div class="pt-6 border-t border-slate-200">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                 <div>
-                  <div class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Monetization Actions &amp; Deal Flow</div>
-                  <div class="text-sm font-bold text-slate-900">Pitch verified commercial sponsors or participate in active revenue share pools</div>
+                  <div class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Next Steps &amp; Opportunities</div>
+                  <div class="text-sm font-bold text-slate-900">Pitch brands directly or join active campaigns with guaranteed upfront payment</div>
                 </div>
-                <span class="text-xs text-blue-600 font-semibold">Institutional Routing Active</span>
+                <span class="text-xs text-blue-600 font-semibold">Explore Opportunities</span>
               </div>
 
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -1900,6 +1947,21 @@
     updateApiStatusUI();
     autoDiscoverBackend();
     setInterval(autoDiscoverBackend, 60000);
+
+    // Keep mobile browser toolbar & status bar matched to header on scroll (native app experience)
+    (function() {
+      const header = document.getElementById('siteHeader');
+      function syncHeaderOnScroll() {
+        if (!header) return;
+        if (window.scrollY > 8) {
+          header.classList.add('shadow-md');
+        } else {
+          header.classList.remove('shadow-md');
+        }
+      }
+      window.addEventListener('scroll', syncHeaderOnScroll, { passive: true });
+      syncHeaderOnScroll();
+    })();
   </script>
 </body>
 </html>
