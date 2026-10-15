@@ -362,13 +362,18 @@
       </div>
 
       <!-- Brand -->
-      <a href="/" class="flex min-w-0 items-center gap-3 no-underline">
-        <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-lg font-bold text-white">V</span>
+      <a href="/" class="group flex min-w-0 items-center gap-2.5 sm:gap-3 no-underline">
+        <span class="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-950 shadow-sm shadow-slate-900/25 ring-1 ring-slate-800/80 transition-transform duration-200 group-hover:scale-105">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.5 4.5L12 19.5V13.5L7.8 4.5H4.5Z" fill="#FFFFFF"/>
+            <path d="M12 19.5L19.5 4.5H16.2L12 13.5V19.5Z" fill="#2563EB"/>
+          </svg>
+        </span>
         <span class="min-w-0">
-          <span class="flex items-center gap-2 truncate font-display text-base font-semibold sm:text-lg">
-            Vanguard Social <b class="rounded-md border border-slate-300 px-1.5 py-0.5 text-[10px] tracking-[.12em] text-slate-600">PRO</b>
+          <span class="truncate font-display text-base sm:text-lg font-bold tracking-tight text-slate-900 leading-tight block">
+            Vanguard<span class="text-blue-600 font-extrabold ml-1">Social</span>
           </span>
-          <span class="hidden text-[11px] text-slate-600 sm:block">Multi-platform tools for creators, brand deals, and leads</span>
+          <span class="hidden text-[11px] font-medium text-slate-500 sm:block">Multi-platform tools for creators, brand deals, and leads</span>
         </span>
       </a>
 
@@ -412,30 +417,55 @@
 
       <div class="grid gap-5 md:grid-cols-2">
 
-        <!-- Flagship 1: Campaign Exchange Floor -->
-        <article id="campaign-exchange" class="tool card rounded-3xl p-6 border-blue-200 bg-gradient-to-br from-white to-blue-50/40 relative">
-          <div class="flex items-center justify-between mb-4">
-            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 3 4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <span class="inline-flex rounded-full bg-blue-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-blue-800">Paid Brand Deals</span>
+        <!-- Tool 1: Local Business Leads -->
+        <article id="google-leads" class="tool card rounded-3xl p-6">
+          <div class="mb-4 text-blue-600">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg>
           </div>
-          <h3 class="font-display text-xl font-bold text-slate-900">Open Brand Campaigns</h3>
+          <h3 class="font-display text-xl font-bold text-slate-900">Local Business Leads</h3>
           <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
-            Browse active brand sponsorships with guaranteed upfront payments and sales commissions. No agency middleman taking a cut.
+            Find cafes, restaurants, gyms, and shops in any city with owner emails and phone numbers directly to an automated clean excel sheet to pitch sponsorships.
           </p>
-          <div class="mt-4 flex items-center gap-4 text-xs font-semibold text-slate-700">
-            <span>Campaign Budget: $40,500+</span>
-            <span>&bull;</span>
-            <span>Platform Fee: 0%</span>
-          </div>
-          <a href="/exchange" class="primary mt-5 inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold shadow-sm">
-            <span>Browse Brand Deals</span>
-            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          <a href="/tools/google-leads" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Find Local Leads</a>
         </article>
 
-        <!-- Flagship 2: Creator Collabs Hub -->
+        <!-- Tool 2: Instagram Leads Tools -->
+        <article id="instagram-leads" class="tool card rounded-3xl p-6">
+          <div class="mb-4 text-pink-600">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900">Instagram Leads Tools</h3>
+          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
+            Search Instagram by city, hashtag, or category to find active businesses and brands with emails and phone numbers into an automated clean excel sheet.
+          </p>
+          <a href="/tools/instagram-leads" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Search Instagram Brands</a>
+        </article>
+
+        <!-- Tool 3: LinkedIn Brand Contacts -->
+        <article id="linkedin-tools" class="tool card rounded-3xl p-6">
+          <div class="mb-4 text-blue-700">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900">LinkedIn Brand Contacts</h3>
+          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
+            Find marketing managers and brand partnership heads at companies to pitch for corporate sponsorships.
+          </p>
+          <a href="/tools/linkedin" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Find Brand Decision-Makers</a>
+        </article>
+
+        <!-- Tool 4: Influencer Rate Card & Pricing Calculator -->
+        <article id="influencer-score" class="tool card rounded-3xl p-6">
+          <div class="mb-4 text-blue-600">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900">Influencer Rate Card &amp; Pricing Calculator</h3>
+          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
+            Calculate what to charge for sponsored Reels, Stories, and videos based on your real engagement and views. Get an instant media kit link.
+          </p>
+          <a href="/tools/influencer-score" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Check My Rates</a>
+        </article>
+
+        <!-- Tool 5: Creator Collaborations -->
         <article id="creator-collabs" class="tool card rounded-3xl p-6 border-indigo-200 bg-gradient-to-br from-white to-indigo-50/40 relative">
           <div class="flex items-center justify-between mb-4">
             <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-sm">
@@ -458,67 +488,42 @@
           </a>
         </article>
 
-        <!-- Engine 3: Score Me -->
-        <article id="influencer-score" class="tool card rounded-3xl p-6">
-          <div class="mb-4 text-blue-600">
-            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg>
+        <!-- Tool 6: Open Brand Campaigns -->
+        <article id="campaign-exchange" class="tool card rounded-3xl p-6 border-blue-200 bg-gradient-to-br from-white to-blue-50/40 relative">
+          <div class="flex items-center justify-between mb-4">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 3 4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="inline-flex rounded-full bg-blue-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-blue-800">Paid Brand Deals</span>
           </div>
-          <h3 class="font-display text-xl font-bold text-slate-900">Rate Card &amp; Pricing Calculator</h3>
+          <h3 class="font-display text-xl font-bold text-slate-900">Open Brand Campaigns</h3>
           <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
-            Calculate what to charge for sponsored Reels, Stories, and videos based on your real engagement and views. Get an instant media kit link.
+            Browse active brand sponsorships with guaranteed upfront payments and sales commissions. No agency middleman taking a cut.
           </p>
-          <a href="/tools/influencer-score" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Check My Rates</a>
+          <div class="mt-4 flex items-center gap-4 text-xs font-semibold text-slate-700">
+            <span>Campaign Budget: $40,500+</span>
+            <span>&bull;</span>
+            <span>Platform Fee: 0%</span>
+          </div>
+          <a href="/exchange" class="primary mt-5 inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold shadow-sm">
+            <span>Browse Brand Deals</span>
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </article>
 
-        <!-- Engine 4: Google Leads -->
-        <article id="google-leads" class="tool card rounded-3xl p-6">
-          <div class="mb-4 text-blue-600">
-            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg>
-          </div>
-          <h3 class="font-display text-xl font-bold text-slate-900">Local Business Leads</h3>
-          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
-            Find cafes, restaurants, gyms, and shops in any city with owner emails and phone numbers to pitch sponsorships.
-          </p>
-          <a href="/tools/google-leads" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Find Local Leads</a>
-        </article>
-
-        <!-- Engine 5: Instagram Leads -->
-        <article id="instagram-leads" class="tool card rounded-3xl p-6">
-          <div class="mb-4 text-pink-600">
-            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
-          </div>
-          <h3 class="font-display text-xl font-bold text-slate-900">Instagram Brand Finder</h3>
-          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
-            Search Instagram by city, hashtag, or category to find active businesses and brands with emails and phone numbers.
-          </p>
-          <a href="/tools/instagram-leads" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Search Instagram Brands</a>
-        </article>
-
-        <!-- Engine 6: YouTube Tools -->
+        <!-- Tool 7: YouTube Analytics And Price Calculator -->
         <article id="youtube-tools" class="tool card rounded-3xl p-6">
           <div class="mb-4 text-red-600">
             <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.8 2.8 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2 12a29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 22 12a29 29 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>
           </div>
-          <h3 class="font-display text-xl font-bold text-slate-900">YouTube Analytics</h3>
+          <h3 class="font-display text-xl font-bold text-slate-900">YouTube Analytics And Price Calculator</h3>
           <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
             Check views, upload frequency, and engagement stats to benchmark your sponsorship pricing and spot top channels.
           </p>
           <a href="/tools/youtube" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Analyze YouTube Channels</a>
         </article>
 
-        <!-- Engine 7: LinkedIn Tools -->
-        <article id="linkedin-tools" class="tool card rounded-3xl p-6">
-          <div class="mb-4 text-blue-700">
-            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg>
-          </div>
-          <h3 class="font-display text-xl font-bold text-slate-900">LinkedIn Brand Contacts</h3>
-          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
-            Find marketing managers and brand partnership heads at companies to pitch for corporate sponsorships.
-          </p>
-          <a href="/tools/linkedin" class="primary mt-5 inline-flex rounded-xl px-4 py-2.5 text-xs font-semibold">Find Brand Decision-Makers</a>
-        </article>
-
-        <!-- Engine 8: X / Twitter Tools -->
+        <!-- Tool 8: X / Twitter Insights -->
         <article id="x-twitter-tools" class="tool card rounded-3xl p-6">
           <div class="mb-4 text-slate-900">
             <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4 19 20M19 4 5 20" stroke-linecap="round"/></svg>
