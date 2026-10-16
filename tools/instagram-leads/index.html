@@ -753,8 +753,15 @@
       search: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/></svg>',
       chart: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>',
       video: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg>',
-      twitter: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" stroke-linecap="round"/></svg>'
+      twitter: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" stroke-linecap="round"/></svg>',
+      database: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>'
     };
+
+    const UNIVERSAL_VOLUME_OPTIONS = [
+      { value: '25', label: '25 Leads / Results', desc: 'Fast tactical extraction for quick outreach', icon: 'lightning' },
+      { value: '50', label: '50 Leads / Results', desc: 'Standard deep harvest with verified contacts', icon: 'search' },
+      { value: '100', label: '100 Leads / Results', desc: 'Comprehensive master directory crawl', icon: 'database' }
+    ];
 
     function getOptionIcon(iconName) {
       return SVG_MAP[iconName] || SVG_MAP.sparkle;
@@ -917,6 +924,14 @@
         `;
         container.appendChild(checkDiv);
 
+        // Field 5: Target Lead Volume (25 / 50 / 100)
+        mountCustomSelect(container, {
+          id: 'field_max_results',
+          label: 'Target Lead Volume',
+          defaultValue: '25',
+          options: UNIVERSAL_VOLUME_OPTIONS
+        });
+
       } else if (key === 'influencer-score') {
         btnLabel.innerText = 'Calculate Influencer Score';
 
@@ -951,11 +966,11 @@
         mountCustomSelect(container, {
           id: 'field_sample_size',
           label: 'Sample Reel Volume',
-          defaultValue: '10',
+          defaultValue: '25',
           options: [
-            { value: '10', label: 'Last 10 Posts / Reels', desc: 'Fast cohort analysis & instant audit card', icon: 'lightning' },
-            { value: '20', label: 'Last 20 Posts / Reels', desc: 'Extended 30-day velocity & engagement audit', icon: 'search' },
-            { value: '30', label: 'Last 30 Posts / Reels', desc: 'Comprehensive deep audit & full reach breakdown', icon: 'chart' }
+            { value: '25', label: 'Last 25 Posts / Reels', desc: 'Standard cohort velocity & engagement audit', icon: 'lightning' },
+            { value: '50', label: 'Last 50 Posts / Reels', desc: 'Extended 60-day velocity & engagement audit', icon: 'search' },
+            { value: '100', label: 'Last 100 Posts / Reels', desc: 'Comprehensive deep audit & full reach breakdown', icon: 'database' }
           ]
         });
 
@@ -987,6 +1002,14 @@
           ]
         });
 
+        // Lead Volume Select (25 / 50 / 100)
+        mountCustomSelect(container, {
+          id: 'field_max_results',
+          label: 'Target Lead Volume',
+          defaultValue: '25',
+          options: UNIVERSAL_VOLUME_OPTIONS
+        });
+
       } else if (key === 'youtube') {
         btnLabel.innerText = 'Audit YouTube Channel';
 
@@ -999,12 +1022,9 @@
 
         mountCustomSelect(container, {
           id: 'field_max_results',
-          label: 'Video Audit Depth',
-          defaultValue: '20',
-          options: [
-            { value: '20', label: 'Latest 20 Videos', desc: 'Recent reach velocity & engagement distribution', icon: 'lightning' },
-            { value: '50', label: 'Latest 50 Videos', desc: 'Comprehensive channel history & viral video audit', icon: 'video' }
-          ]
+          label: 'Video Audit Volume',
+          defaultValue: '25',
+          options: UNIVERSAL_VOLUME_OPTIONS
         });
 
       } else if (key === 'x-twitter') {
@@ -1022,12 +1042,9 @@
 
         mountCustomSelect(container, {
           id: 'field_max_results',
-          label: 'Tweet Depth',
-          defaultValue: '15',
-          options: [
-            { value: '15', label: 'Latest 15 Tweets', desc: 'Recent velocity & active audience responses', icon: 'lightning' },
-            { value: '30', label: 'Latest 30 Tweets', desc: 'Deep sentiment & thread engagement extraction', icon: 'twitter' }
-          ]
+          label: 'Tweet Audit Volume',
+          defaultValue: '25',
+          options: UNIVERSAL_VOLUME_OPTIONS
         });
 
       } else if (key === 'linkedin') {
@@ -1069,7 +1086,7 @@
         niche: "",
         post_url: "",
         query: "",
-        max_results: 20
+        max_results: parseInt(document.getElementById('field_max_results')?.value || document.getElementById('field_sample_size')?.value || '25')
       };
 
       if (activeToolKey === 'instagram-leads') {
@@ -1080,6 +1097,7 @@
         const minFollowers = parseInt(document.getElementById('field_ig_min_followers')?.value || '1000');
         const filterKeyword = (document.getElementById('field_ig_filter')?.value || '').trim();
         const includeComments = document.getElementById('field_ig_deep')?.checked || false;
+        const volume = parseInt(document.getElementById('field_max_results')?.value || '25');
 
         // Auto-detect target type:
         if (rawTarget.startsWith('@')) {
@@ -1100,6 +1118,7 @@
           payload.min_followers = minFollowers;
           payload.content_filter = filterKeyword;
         }
+        payload.max_results = volume;
 
       } else if (activeToolKey === 'influencer-score') {
         const h = (document.getElementById('field_handle')?.value || '').replace('@', '').trim();
@@ -1108,6 +1127,7 @@
         payload.location = h;
         payload.target_name = h;
         payload.niche = document.getElementById('field_niche')?.value || 'General';
+        payload.max_results = parseInt(document.getElementById('field_sample_size')?.value || '25');
       } else if (activeToolKey === 'google-leads') {
         const loc = (document.getElementById('field_location')?.value || '').trim();
         const q = (document.getElementById('field_query')?.value || '').trim();
@@ -1115,19 +1135,21 @@
         payload.tool = (mode === 'contacts') ? '1c' : '1b';
         payload.query = `${q} in ${loc}`.trim();
         payload.location = loc;
+        payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '25');
       } else if (activeToolKey === 'youtube') {
         const ch = (document.getElementById('field_channel')?.value || '').trim();
         payload.tool = '2d';
         payload.youtube_channel = ch;
-        payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '20');
+        payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '25');
       } else if (activeToolKey === 'x-twitter') {
         const tw = (document.getElementById('field_twitter')?.value || '').replace('@', '').trim();
         payload.tool = '2e';
         payload.twitter_handle = tw;
-        payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '15');
+        payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '25');
       } else {
         payload.tool = '4b';
         payload.query = 'Automate AI brief';
+        payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '25');
       }
 
       // Show Progress Tracker
