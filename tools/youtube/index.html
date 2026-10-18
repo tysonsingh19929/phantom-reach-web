@@ -520,6 +520,13 @@
     function initPage() {
       const c = configs[activeToolKey] || configs['instagram-leads'];
       document.title = `Vanguard Social — ${c.title}`;
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.rel = 'canonical';
+        document.head.appendChild(canonical);
+      }
+      canonical.href = `https://www.socialbyvanguard.com/tools/${activeToolKey}`;
       
       // Duplicate pills removed for clean layout
       document.getElementById('title').textContent = c.title;
