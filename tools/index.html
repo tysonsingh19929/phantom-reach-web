@@ -240,11 +240,6 @@
 
       <!-- Right Header Actions (API Config Button + Get Started) -->
       <div class="flex items-center gap-2.5">
-        <!-- Backend API Status Button -->
-        <button id="apiConfigButton" style="display: none !important;" onclick="openApiModal()" class="inline-flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-slate-700 shadow-sm hover:bg-slate-50 transition cursor-pointer" title="Configure Backend Server API">
-          <span id="apiStatusDot" class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span class="hidden sm:inline font-mono text-[11px] font-semibold" id="apiStatusLabel">API</span>
-        </button>
 
         <!-- Account Button -->
         <div class="relative">
@@ -360,56 +355,6 @@
     </section>
 
   </main>
-
-  <!-- BACKEND API CONFIG MODAL -->
-  <div id="apiConfigModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
-    <div class="glass w-full max-w-lg rounded-3xl p-6 sm:p-8 bg-white shadow-2xl border border-slate-200">
-      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-        <div class="flex items-center gap-2.5">
-          <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
-          <div>
-            <h3 class="font-display text-lg font-bold text-slate-900">Backend Server API</h3>
-            <p class="text-xs text-slate-500">Live intelligence engine &amp; scraper sync</p>
-          </div>
-        </div>
-        <button type="button" onclick="closeApiModal()" class="h-8 w-8 inline-flex items-center justify-center rounded-xl hover:bg-slate-100 text-slate-500 font-bold cursor-pointer">✕</button>
-      </div>
-
-      <div class="py-5 space-y-4">
-        <!-- Live Auto-Sync Status Card -->
-        <div class="rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Auto-Sync Status</span>
-            <span id="activeBackendBadgeDisplay" class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-slate-200 text-slate-700">Checking...</span>
-          </div>
-          <div class="flex items-center justify-between text-xs gap-2">
-            <span class="text-slate-600 font-medium shrink-0">Live Engine:</span>
-            <span id="activeBackendUrlDisplay" class="font-mono text-[11px] text-slate-800 font-semibold truncate">Syncing...</span>
-          </div>
-          <div class="text-[11px] text-slate-500 flex items-center justify-between pt-1 border-t border-slate-200/60">
-            <span>Synced automatically via MongoDB Atlas</span>
-            <button type="button" onclick="resetApiToAuto()" class="text-blue-600 hover:text-blue-700 font-bold underline cursor-pointer">Sync Now / Reset</button>
-          </div>
-        </div>
-
-        <!-- Custom Override Field (Optional) -->
-        <div>
-          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Custom Override (Optional)</label>
-          <input id="customApiInput" type="text" placeholder="Leave empty for automatic zero-config sync" class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <p class="mt-1 text-[11px] text-slate-500">Zero manual configuration required! When you run Vanguard on your PC, all devices sync instantly.</p>
-        </div>
-
-        <div id="apiPingStatus" class="hidden p-3 rounded-xl text-xs font-medium"></div>
-      </div>
-
-      <div class="flex items-center justify-between pt-4 border-t border-slate-100 gap-2">
-        <button type="button" onclick="testApiConnection()" class="px-3.5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 transition cursor-pointer">Test Ping</button>
-        <div class="flex gap-2">
-          <button type="button" onclick="resetApiToAuto()" class="px-3.5 py-2 rounded-xl border border-blue-200 bg-blue-50 text-xs font-semibold text-blue-700 hover:bg-blue-100 transition cursor-pointer">Reset to Auto</button>
-          <button type="button" onclick="saveCustomApiUrl()" class="primary px-4 py-2 rounded-xl text-xs font-semibold transition cursor-pointer">Save Override</button>
-        </div>
-      </div>
-    </div>
   </div>
 
   <script>
@@ -555,158 +500,21 @@
       } catch (_) {}
     })();
 
-    let activeBackendUrl = '';
-    let activeBackendStatus = 'checking'; // 'online', 'offline', 'local', 'checking'
-
-    function getApiBase() {
-      try {
-        const urlParams = new URLSearchParams(window.location.search);
-        const param = urlParams.get('api') || urlParams.get('backend');
-        if (param && param.trim().startsWith('http')) return param.trim().replace(/\/+$/, '');
-      } catch (_) {}
-
-      // Explicit non-ephemeral custom VPS/domain if set by user
-      const custom = localStorage.getItem('phantom_custom_api');
-      if (custom && custom.trim() && !/trycloudflare\.com|loca\.lt|ngrok/i.test(custom)) {
-        return custom.trim().replace(/\/+$/, '');
-      }
-
-      // On localhost or Vercel, return '' to use same-origin serverless proxy or local FastAPI
+        function getApiBase() {
       return '';
     }
 
-    function getActiveEngineUrl() {
-      return activeBackendUrl || localStorage.getItem('vanguard_api_base') || '';
-    }
-
-    function setApiBase(url) {
-      const clean = (url || '').trim().replace(/\/+$/, '');
-      if (clean && !/trycloudflare\.com|loca\.lt|ngrok/i.test(clean)) {
-        localStorage.setItem('phantom_custom_api', clean);
-      } else {
-        localStorage.removeItem('phantom_custom_api');
+    function sanitizeErrorMessage(rawMsg) {
+      if (!rawMsg || typeof rawMsg !== 'string') {
+        return 'The intelligence engine was unable to complete this query. Please adjust your parameters or try again in a few moments.';
       }
-      autoDiscoverBackend();
-    }
-
-    function updateApiStatusUI() {
-      const dot = document.getElementById('apiStatusDot');
-      const label = document.getElementById('apiStatusLabel');
-      const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
-
-      if (isLocal) {
-        if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500';
-        if (label) label.innerText = 'API: Localhost (8000)';
-      } else if (activeBackendStatus === 'online') {
-        if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500 animate-pulse';
-        try {
-          const u = getActiveEngineUrl();
-          const host = u ? new URL(u).hostname.split('.')[0] : 'Live';
-          if (label) label.innerText = `API: ${host}`;
-        } catch (_) {
-          if (label) label.innerText = 'API: Live (Synced)';
-        }
-      } else if (activeBackendStatus === 'checking') {
-        if (dot) dot.className = 'h-2 w-2 rounded-full bg-blue-500 animate-pulse';
-        if (label) label.innerText = 'API: Syncing...';
-      } else {
-        if (dot) dot.className = 'h-2 w-2 rounded-full bg-rose-500';
-        if (label) label.innerText = 'API: Offline';
+      if (/playwright|chromium|docker|python|traceback|line \d+|launch_persistent|ms-playwright|session_profiles|accounts_pool|main\.py|run_vanguard|start_vanguard|502|503|backend|server connection|offline|econnrefused/i.test(rawMsg)) {
+        return 'The intelligence engine is currently processing high query volume or re-calibrating session nodes. Please retry in a few moments.';
       }
+      return rawMsg;
     }
 
-    function openApiModal() {
-      const modal = document.getElementById('apiConfigModal');
-      const input = document.getElementById('customApiInput');
-      const statusBox = document.getElementById('apiPingStatus');
-      const liveUrlLabel = document.getElementById('activeBackendUrlDisplay');
-      const liveBadge = document.getElementById('activeBackendBadgeDisplay');
-
-      const liveUrl = getActiveEngineUrl();
-      if (liveUrlLabel) liveUrlLabel.innerText = liveUrl || 'No active tunnel detected';
-      if (liveBadge) {
-        if (activeBackendStatus === 'online') {
-          liveBadge.className = 'px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800';
-          liveBadge.innerText = 'Online & Synced';
-        } else if (activeBackendStatus === 'local') {
-          liveBadge.className = 'px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800';
-          liveBadge.innerText = 'Localhost (8000)';
-        } else {
-          liveBadge.className = 'px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-rose-100 text-rose-800';
-          liveBadge.innerText = 'Offline';
-        }
-      }
-
-      const custom = localStorage.getItem('phantom_custom_api') || '';
-      if (input) {
-        input.value = custom;
-        input.placeholder = liveUrl ? `Auto: ${liveUrl}` : 'https://api.yourdomain.com';
-      }
-      if (statusBox) statusBox.className = 'hidden';
-      if (modal) modal.classList.remove('hidden');
-    }
-
-    function closeApiModal() {
-      const modal = document.getElementById('apiConfigModal');
-      if (modal) modal.classList.add('hidden');
-    }
-
-    function resetApiToAuto() {
-      localStorage.removeItem('phantom_custom_api');
-      localStorage.removeItem('vanguard_api_base');
-      const input = document.getElementById('customApiInput');
-      if (input) input.value = '';
-      const statusBox = document.getElementById('apiPingStatus');
-      if (statusBox) {
-        statusBox.className = 'p-3 rounded-xl text-xs font-medium bg-blue-50 text-blue-700 block';
-        statusBox.innerText = 'Syncing latest live backend from MongoDB Atlas...';
-      }
-      autoDiscoverBackend().then(() => {
-        openApiModal();
-        if (statusBox) {
-          if (activeBackendStatus === 'online') {
-            statusBox.className = 'p-3 rounded-xl text-xs font-medium bg-emerald-50 text-emerald-800 block';
-            statusBox.innerHTML = `<strong>✓ Auto-Synced Successfully!</strong><br>Connected Engine: ${getActiveEngineUrl()}`;
-          } else {
-            statusBox.className = 'p-3 rounded-xl text-xs font-medium bg-rose-50 text-rose-800 block';
-            statusBox.innerHTML = `<strong>Backend Offline</strong><br>Please start 'start_vanguard.bat' or 'python run_vanguard.py' on your computer.`;
-          }
-        }
-      });
-    }
-
-    async function testApiConnection() {
-      const input = document.getElementById('customApiInput');
-      const statusBox = document.getElementById('apiPingStatus');
-      const customUrl = (input ? input.value : '').trim().replace(/\/+$/, '');
-      if (!statusBox) return;
-
-      statusBox.className = 'p-3 rounded-xl text-xs font-medium bg-blue-50 text-blue-700 block';
-      statusBox.innerText = `Testing connection to ${customUrl || 'live auto-synced backend'}...`;
-
-      const endpoint = customUrl ? `${customUrl}/api/system-info` : '/api/system-info';
-      try {
-        const start = Date.now();
-        const res = await fetch(endpoint, { cache: 'no-store' });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        const latency = Date.now() - start;
-        statusBox.className = 'p-3 rounded-xl text-xs font-medium bg-emerald-50 text-emerald-800 block';
-        statusBox.innerHTML = `<strong>✓ Connected (${latency}ms)</strong><br>Status: ${data.status} • Total Reports: ${data.total_reports || 0} • Active Pool: ${data.account_pool ? data.account_pool.length : 0} account(s)`;
-      } catch (err) {
-        statusBox.className = 'p-3 rounded-xl text-xs font-medium bg-rose-50 text-rose-800 block';
-        statusBox.innerHTML = `<strong>✕ Connection Failed</strong><br>${err.message}`;
-      }
-    }
-
-    function saveCustomApiUrl() {
-      const input = document.getElementById('customApiInput');
-      setApiBase(input ? input.value : '');
-      closeApiModal();
-      updateApiStatusUI();
-    }
-
-    // ──────────────────────────────────────────────────────────────
+// ──────────────────────────────────────────────────────────────
     // 4. UNIFIED FORM INJECTION
     // ──────────────────────────────────────────────────────────────
     function initPage() {
@@ -729,8 +537,7 @@
       `).join('');
 
       renderToolFields(activeToolKey);
-      updateApiStatusUI();
-    }
+      }
 
     // ──────────────────────────────────────────────────────────────
     // LUXURY CUSTOM SELECT COMPONENT (Zero Native Mobile Popups)
@@ -1071,11 +878,27 @@
     }
 
     // ──────────────────────────────────────────────────────────────
-    // 5. UNIFIED TASK TRIGGER
+    // 5. UNIFIED TASK TRIGGER & DEVICE ABUSE DEFENSE
     // ──────────────────────────────────────────────────────────────
     async function runEngine() {
       const errBox = document.getElementById('errorAlert');
       errBox.classList.add('hidden');
+
+      // Device Protection: Block concurrent extraction spam from same device
+      const existingTaskStr = localStorage.getItem('vanguard_active_task');
+      if (existingTaskStr) {
+        try {
+          const existing = JSON.parse(existingTaskStr);
+          if (existing && (existing.status === 'running' || existing.status === 'queued')) {
+            const ageSeconds = (Date.now() - (existing.startTime || 0)) / 1000;
+            if (ageSeconds < 1200) { // Active within last 20 minutes
+              errBox.classList.remove('hidden');
+              errBox.innerHTML = `<strong>[NOTICE] Extraction Already in Progress:</strong><br>An extraction task is already ${existing.status} from this device (${existing.toolName || 'Tool'}, ID: ${existing.taskId}).<br><div class="mt-2.5 flex items-center gap-2 flex-wrap"><a href="${existing.toolUrl || '/tools'}" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold inline-flex items-center gap-1 transition">View Active Extraction</a><button type="button" onclick="localStorage.removeItem('vanguard_active_task'); location.reload();" class="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl text-xs font-semibold cursor-pointer transition">Dismiss &amp; Reset</button></div>`;
+              return;
+            }
+          }
+        } catch (_) {}
+      }
 
       let payload = {
         tool: "",
@@ -1161,7 +984,7 @@
       runBtn.classList.add('opacity-50', 'cursor-not-allowed');
       progressBox.classList.remove('hidden');
       badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 animate-pulse';
-      badge.innerText = 'RUNNING';
+      badge.innerText = 'DISPATCHING';
 
       updateProgress(10, 'Dispatched to multi-worker session pool...');
 
@@ -1173,12 +996,42 @@
           body: JSON.stringify(payload)
         });
 
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.error || `HTTP ${res.status}`);
+        }
         const data = await res.json();
-        
+
         if (data.task_id) {
           activeTaskId = data.task_id;
           document.getElementById('currentTaskIdLabel').innerText = `ID: ${activeTaskId}`;
+
+          // Register in global tracker and localStorage for multi-page persistence
+          const taskMeta = {
+            taskId: activeTaskId,
+            tool: activeToolKey,
+            toolName: configs[activeToolKey]?.title || 'Intelligence Tool',
+            toolUrl: window.location.pathname + window.location.search,
+            status: data.status || 'running',
+            queuePosition: data.queue_position || 0,
+            progress: data.status === 'queued' ? 5 : 10,
+            startTime: Date.now()
+          };
+          if (window.vanguardTaskTracker) {
+            window.vanguardTaskTracker.register(taskMeta);
+          } else {
+            localStorage.setItem('vanguard_active_task', JSON.stringify(taskMeta));
+          }
+
+          if (data.status === 'queued') {
+            badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-200 animate-pulse';
+            badge.innerText = `QUEUED (#${data.queue_position || 1})`;
+            updateProgress(5, `Engine occupied with active job. Task placed in priority queue (Position #${data.queue_position || 1})...`);
+          } else {
+            badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 animate-pulse';
+            badge.innerText = 'RUNNING';
+          }
+
           startPolling(activeTaskId);
         } else {
           throw new Error(data.error || 'Failed to initialize task.');
@@ -1199,27 +1052,86 @@
 
     function startPolling(taskId) {
       if (pollInterval) clearInterval(pollInterval);
+      let consecutiveErrors = 0;
       pollInterval = setInterval(async () => {
         try {
           const apiBase = getApiBase();
           const res = await fetch(`${apiBase}/api/tasks/${taskId}`);
-          if (!res.ok) return;
+          if (!res.ok) {
+            consecutiveErrors++;
+            if (res.status === 404) {
+              clearInterval(pollInterval);
+              if (window.vanguardTaskTracker) window.vanguardTaskTracker.clear();
+              handleTaskFailure('Task execution session expired or was reset. Please start a new search.');
+              return;
+            }
+            if (consecutiveErrors >= 10) {
+              clearInterval(pollInterval);
+              handleTaskFailure('Connection to the intelligence engine timed out. Please try again.');
+              return;
+            }
+            return;
+          }
+          consecutiveErrors = 0;
           const task = await res.json();
+
+          const badge = document.getElementById('engineStatusBadge');
+          if (task.status === 'queued') {
+            if (badge) {
+              badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-200 animate-pulse';
+              badge.innerText = `QUEUED (#${task.queue_position || 1})`;
+            }
+            updateProgress(5, `Waiting for available engine slot (Queue Position: #${task.queue_position || 1}). Will start automatically...`);
+            if (window.vanguardTaskTracker) {
+              window.vanguardTaskTracker.update({
+                status: 'queued',
+                queuePosition: task.queue_position || 1,
+                lastLog: `Waiting for engine slot (Position #${task.queue_position || 1})...`
+              });
+            }
+            return;
+          }
+
+          if (task.status === 'running' && badge && badge.innerText.startsWith('QUEUED')) {
+            badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 animate-pulse';
+            badge.innerText = 'RUNNING';
+          }
 
           if (task.progress !== undefined) {
             const lastLog = (task.logs && task.logs.length) ? task.logs[task.logs.length - 1] : 'Processing...';
             updateProgress(task.progress, lastLog.replace(/^\[.*?\]\s*/, ''));
+            if (window.vanguardTaskTracker) {
+              window.vanguardTaskTracker.update({
+                status: task.status,
+                progress: task.progress,
+                queuePosition: 0,
+                lastLog: lastLog.replace(/^\[.*?\]\s*/, '')
+              });
+            }
           }
 
           if (task.status === 'completed') {
             clearInterval(pollInterval);
+            if (window.vanguardTaskTracker) {
+              window.vanguardTaskTracker.update({
+                status: 'completed',
+                progress: 100,
+                excelFile: task.excel_file || (task.result && task.result.excel_file) || '',
+                result: task.result
+              });
+            }
             finishTaskSuccess(task);
           } else if (task.status === 'failed' || task.status === 'stopped') {
             clearInterval(pollInterval);
+            if (window.vanguardTaskTracker) window.vanguardTaskTracker.clear();
             handleTaskFailure(task.error || 'Execution stopped.');
           }
         } catch (e) {
-          console.error('Polling error:', e);
+          consecutiveErrors++;
+          if (consecutiveErrors >= 10) {
+            clearInterval(pollInterval);
+            handleTaskFailure('Connection interrupted while polling task progress. Please retry.');
+          }
         }
       }, 1500);
     }
@@ -1229,9 +1141,69 @@
       try {
         const apiBase = getApiBase();
         await fetch(`${apiBase}/api/tasks/${activeTaskId}/stop`, { method: 'POST' });
+        if (window.vanguardTaskTracker) window.vanguardTaskTracker.clear();
         updateProgress(100, 'Stopped by user request.');
       } catch (_) {}
     }
+
+    function checkAndRestoreActiveTask() {
+      const params = new URLSearchParams(window.location.search);
+      const resumeTaskId = params.get('resume');
+
+      let taskToResume = null;
+      const storedStr = localStorage.getItem('vanguard_active_task');
+      if (storedStr) {
+        try {
+          const stored = JSON.parse(storedStr);
+          if (resumeTaskId && stored.taskId === resumeTaskId) {
+            taskToResume = stored;
+          } else if (stored.tool === activeToolKey) {
+            taskToResume = stored;
+          }
+        } catch (_) {}
+      }
+
+      if (!taskToResume || !taskToResume.taskId) return;
+
+      // If already completed and has structured result, render output
+      if (taskToResume.status === 'completed' && taskToResume.result) {
+        finishTaskSuccess(taskToResume);
+        return;
+      }
+
+      // If running or queued, re-attach immediately
+      if (taskToResume.status === 'running' || taskToResume.status === 'queued') {
+        activeTaskId = taskToResume.taskId;
+        const runBtn = document.getElementById('runEngineBtn');
+        const progressBox = document.getElementById('progressBox');
+        const badge = document.getElementById('engineStatusBadge');
+        const taskIdLabel = document.getElementById('currentTaskIdLabel');
+
+        if (runBtn) {
+          runBtn.disabled = true;
+          runBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        }
+        if (progressBox) progressBox.classList.remove('hidden');
+        if (taskIdLabel) taskIdLabel.innerText = `ID: ${activeTaskId}`;
+
+        if (taskToResume.status === 'queued') {
+          if (badge) {
+            badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-200 animate-pulse';
+            badge.innerText = `QUEUED (#${taskToResume.queuePosition || 1})`;
+          }
+          updateProgress(5, `Waiting for available engine slot (Queue Position: #${taskToResume.queuePosition || 1})...`);
+        } else {
+          if (badge) {
+            badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 animate-pulse';
+            badge.innerText = 'RUNNING';
+          }
+          updateProgress(taskToResume.progress || 15, taskToResume.lastLog || 'Reconnected to running extraction session...');
+        }
+
+        startPolling(activeTaskId);
+      }
+    }
+
 
     function handleTaskFailure(msg) {
       clearInterval(pollInterval);
@@ -1915,60 +1887,8 @@
       document.addEventListener('click', () => toolsMenu.hidden = true);
     }
 
-    async function autoDiscoverBackend() {
-      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        activeBackendStatus = 'local';
-        activeBackendUrl = window.location.origin;
-        updateApiStatusUI();
-        return;
-      }
-
-      activeBackendStatus = 'checking';
-      updateApiStatusUI();
-
-      try {
-        const res = await fetch('/api/backend-url?t=' + Date.now(), { cache: 'no-store' });
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.status === 'online' && data.url) {
-            activeBackendUrl = data.url.replace(/\/+$/, '');
-            activeBackendStatus = 'online';
-            localStorage.setItem('vanguard_api_base', activeBackendUrl);
-            updateApiStatusUI();
-            return;
-          } else {
-            activeBackendUrl = '';
-            activeBackendStatus = 'offline';
-            localStorage.removeItem('vanguard_api_base');
-            updateApiStatusUI();
-            return;
-          }
-        }
-      } catch (_) {}
-
-      try {
-        const staticRes = await fetch('/endpoint.json?t=' + Date.now(), { cache: 'no-store' });
-        if (staticRes.ok) {
-          const sData = await staticRes.json();
-          if (sData && sData.url && sData.url.startsWith('https://')) {
-            activeBackendUrl = sData.url.replace(/\/+$/, '');
-            activeBackendStatus = 'online';
-            localStorage.setItem('vanguard_api_base', activeBackendUrl);
-            updateApiStatusUI();
-            return;
-          }
-        }
-      } catch (_) {}
-
-      activeBackendStatus = 'offline';
-      updateApiStatusUI();
-    }
-
     initPage();
-    updateApiStatusUI();
-    autoDiscoverBackend();
-    setInterval(autoDiscoverBackend, 60000);
-
+    checkAndRestoreActiveTask();
     // Keep mobile browser toolbar & status bar matched to header on scroll (native app experience)
     (function() {
       const header = document.getElementById('siteHeader');
@@ -1984,5 +1904,6 @@
       syncHeaderOnScroll();
     })();
   </script>
+  <script src="/global-tracker.js"></script>
 </body>
 </html>

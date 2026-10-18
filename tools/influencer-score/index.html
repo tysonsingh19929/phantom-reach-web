@@ -878,11 +878,27 @@
     }
 
     // ──────────────────────────────────────────────────────────────
-    // 5. UNIFIED TASK TRIGGER
+    // 5. UNIFIED TASK TRIGGER & DEVICE ABUSE DEFENSE
     // ──────────────────────────────────────────────────────────────
     async function runEngine() {
       const errBox = document.getElementById('errorAlert');
       errBox.classList.add('hidden');
+
+      // Device Protection: Block concurrent extraction spam from same device
+      const existingTaskStr = localStorage.getItem('vanguard_active_task');
+      if (existingTaskStr) {
+        try {
+          const existing = JSON.parse(existingTaskStr);
+          if (existing && (existing.status === 'running' || existing.status === 'queued')) {
+            const ageSeconds = (Date.now() - (existing.startTime || 0)) / 1000;
+            if (ageSeconds < 1200) { // Active within last 20 minutes
+              errBox.classList.remove('hidden');
+              errBox.innerHTML = `<strong>[NOTICE] Extraction Already in Progress:</strong><br>An extraction task is already ${existing.status} from this device (${existing.toolName || 'Tool'}, ID: ${existing.taskId}).<br><div class="mt-2.5 flex items-center gap-2 flex-wrap"><a href="${existing.toolUrl || '/tools'}" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold inline-flex items-center gap-1 transition">View Active Extraction</a><button type="button" onclick="localStorage.removeItem('vanguard_active_task'); location.reload();" class="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl text-xs font-semibold cursor-pointer transition">Dismiss &amp; Reset</button></div>`;
+              return;
+            }
+          }
+        } catch (_) {}
+      }
 
       let payload = {
         tool: "",
@@ -968,7 +984,7 @@
       runBtn.classList.add('opacity-50', 'cursor-not-allowed');
       progressBox.classList.remove('hidden');
       badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 animate-pulse';
-      badge.innerText = 'RUNNING';
+      badge.innerText = 'DISPATCHING';
 
       updateProgress(10, 'Dispatched to multi-worker session pool...');
 
@@ -980,12 +996,42 @@
           body: JSON.stringify(payload)
         });
 
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.error || `HTTP ${res.status}`);
+        }
         const data = await res.json();
-        
+
         if (data.task_id) {
           activeTaskId = data.task_id;
           document.getElementById('currentTaskIdLabel').innerText = `ID: ${activeTaskId}`;
+
+          // Register in global tracker and localStorage for multi-page persistence
+          const taskMeta = {
+            taskId: activeTaskId,
+            tool: activeToolKey,
+            toolName: configs[activeToolKey]?.title || 'Intelligence Tool',
+            toolUrl: window.location.pathname + window.location.search,
+            status: data.status || 'running',
+            queuePosition: data.queue_position || 0,
+            progress: data.status === 'queued' ? 5 : 10,
+            startTime: Date.now()
+          };
+          if (window.vanguardTaskTracker) {
+            window.vanguardTaskTracker.register(taskMeta);
+          } else {
+            localStorage.setItem('vanguard_active_task', JSON.stringify(taskMeta));
+          }
+
+          if (data.status === 'queued') {
+            badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-200 animate-pulse';
+            badge.innerText = `QUEUED (#${data.queue_position || 1})`;
+            updateProgress(5, `Engine occupied with active job. Task placed in priority queue (Position #${data.queue_position || 1})...`);
+          } else {
+            badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 animate-pulse';
+            badge.innerText = 'RUNNING';
+          }
+
           startPolling(activeTaskId);
         } else {
           throw new Error(data.error || 'Failed to initialize task.');
@@ -1015,10 +1061,11 @@
             consecutiveErrors++;
             if (res.status === 404) {
               clearInterval(pollInterval);
+              if (window.vanguardTaskTracker) window.vanguardTaskTracker.clear();
               handleTaskFailure('Task execution session expired or was reset. Please start a new search.');
               return;
             }
-            if (consecutiveErrors >= 8) {
+            if (consecutiveErrors >= 10) {
               clearInterval(pollInterval);
               handleTaskFailure('Connection to the intelligence engine timed out. Please try again.');
               return;
@@ -1028,21 +1075,60 @@
           consecutiveErrors = 0;
           const task = await res.json();
 
+          const badge = document.getElementById('engineStatusBadge');
+          if (task.status === 'queued') {
+            if (badge) {
+              badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-200 animate-pulse';
+              badge.innerText = `QUEUED (#${task.queue_position || 1})`;
+            }
+            updateProgress(5, `Waiting for available engine slot (Queue Position: #${task.queue_position || 1}). Will start automatically...`);
+            if (window.vanguardTaskTracker) {
+              window.vanguardTaskTracker.update({
+                status: 'queued',
+                queuePosition: task.queue_position || 1,
+                lastLog: `Waiting for engine slot (Position #${task.queue_position || 1})...`
+              });
+            }
+            return;
+          }
+
+          if (task.status === 'running' && badge && badge.innerText.startsWith('QUEUED')) {
+            badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 animate-pulse';
+            badge.innerText = 'RUNNING';
+          }
+
           if (task.progress !== undefined) {
             const lastLog = (task.logs && task.logs.length) ? task.logs[task.logs.length - 1] : 'Processing...';
             updateProgress(task.progress, lastLog.replace(/^\[.*?\]\s*/, ''));
+            if (window.vanguardTaskTracker) {
+              window.vanguardTaskTracker.update({
+                status: task.status,
+                progress: task.progress,
+                queuePosition: 0,
+                lastLog: lastLog.replace(/^\[.*?\]\s*/, '')
+              });
+            }
           }
 
           if (task.status === 'completed') {
             clearInterval(pollInterval);
+            if (window.vanguardTaskTracker) {
+              window.vanguardTaskTracker.update({
+                status: 'completed',
+                progress: 100,
+                excelFile: task.excel_file || (task.result && task.result.excel_file) || '',
+                result: task.result
+              });
+            }
             finishTaskSuccess(task);
           } else if (task.status === 'failed' || task.status === 'stopped') {
             clearInterval(pollInterval);
+            if (window.vanguardTaskTracker) window.vanguardTaskTracker.clear();
             handleTaskFailure(task.error || 'Execution stopped.');
           }
         } catch (e) {
           consecutiveErrors++;
-          if (consecutiveErrors >= 8) {
+          if (consecutiveErrors >= 10) {
             clearInterval(pollInterval);
             handleTaskFailure('Connection interrupted while polling task progress. Please retry.');
           }
@@ -1055,9 +1141,69 @@
       try {
         const apiBase = getApiBase();
         await fetch(`${apiBase}/api/tasks/${activeTaskId}/stop`, { method: 'POST' });
+        if (window.vanguardTaskTracker) window.vanguardTaskTracker.clear();
         updateProgress(100, 'Stopped by user request.');
       } catch (_) {}
     }
+
+    function checkAndRestoreActiveTask() {
+      const params = new URLSearchParams(window.location.search);
+      const resumeTaskId = params.get('resume');
+
+      let taskToResume = null;
+      const storedStr = localStorage.getItem('vanguard_active_task');
+      if (storedStr) {
+        try {
+          const stored = JSON.parse(storedStr);
+          if (resumeTaskId && stored.taskId === resumeTaskId) {
+            taskToResume = stored;
+          } else if (stored.tool === activeToolKey) {
+            taskToResume = stored;
+          }
+        } catch (_) {}
+      }
+
+      if (!taskToResume || !taskToResume.taskId) return;
+
+      // If already completed and has structured result, render output
+      if (taskToResume.status === 'completed' && taskToResume.result) {
+        finishTaskSuccess(taskToResume);
+        return;
+      }
+
+      // If running or queued, re-attach immediately
+      if (taskToResume.status === 'running' || taskToResume.status === 'queued') {
+        activeTaskId = taskToResume.taskId;
+        const runBtn = document.getElementById('runEngineBtn');
+        const progressBox = document.getElementById('progressBox');
+        const badge = document.getElementById('engineStatusBadge');
+        const taskIdLabel = document.getElementById('currentTaskIdLabel');
+
+        if (runBtn) {
+          runBtn.disabled = true;
+          runBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        }
+        if (progressBox) progressBox.classList.remove('hidden');
+        if (taskIdLabel) taskIdLabel.innerText = `ID: ${activeTaskId}`;
+
+        if (taskToResume.status === 'queued') {
+          if (badge) {
+            badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-200 animate-pulse';
+            badge.innerText = `QUEUED (#${taskToResume.queuePosition || 1})`;
+          }
+          updateProgress(5, `Waiting for available engine slot (Queue Position: #${taskToResume.queuePosition || 1})...`);
+        } else {
+          if (badge) {
+            badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 animate-pulse';
+            badge.innerText = 'RUNNING';
+          }
+          updateProgress(taskToResume.progress || 15, taskToResume.lastLog || 'Reconnected to running extraction session...');
+        }
+
+        startPolling(activeTaskId);
+      }
+    }
+
 
     function handleTaskFailure(msg) {
       clearInterval(pollInterval);
@@ -1742,6 +1888,7 @@
     }
 
     initPage();
+    checkAndRestoreActiveTask();
     // Keep mobile browser toolbar & status bar matched to header on scroll (native app experience)
     (function() {
       const header = document.getElementById('siteHeader');
@@ -1757,5 +1904,6 @@
       syncHeaderOnScroll();
     })();
   </script>
+  <script src="/global-tracker.js"></script>
 </body>
 </html>
