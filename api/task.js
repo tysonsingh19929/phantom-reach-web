@@ -30,9 +30,15 @@ module.exports = async (req, res) => {
 
   try {
     const targetUrl = `${backendUrl}/api/tasks/${taskId}`;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 9000);
+
     const upstreamRes = await fetch(targetUrl, {
-      headers: { 'User-Agent': 'Vanguard-Serverless-Proxy/1.0' }
+      headers: { 'User-Agent': 'Vanguard-Serverless-Proxy/1.0' },
+      signal: controller.signal
     });
+    clearTimeout(timeout);
+
     const data = await upstreamRes.json();
     return res.status(upstreamRes.status).json(data);
   } catch (err) {

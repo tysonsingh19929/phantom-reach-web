@@ -1006,11 +1006,26 @@
 
     function startPolling(taskId) {
       if (pollInterval) clearInterval(pollInterval);
+      let consecutiveErrors = 0;
       pollInterval = setInterval(async () => {
         try {
           const apiBase = getApiBase();
           const res = await fetch(`${apiBase}/api/tasks/${taskId}`);
-          if (!res.ok) return;
+          if (!res.ok) {
+            consecutiveErrors++;
+            if (res.status === 404) {
+              clearInterval(pollInterval);
+              handleTaskFailure('Task execution session expired or was reset. Please start a new search.');
+              return;
+            }
+            if (consecutiveErrors >= 8) {
+              clearInterval(pollInterval);
+              handleTaskFailure('Connection to the intelligence engine timed out. Please try again.');
+              return;
+            }
+            return;
+          }
+          consecutiveErrors = 0;
           const task = await res.json();
 
           if (task.progress !== undefined) {
@@ -1026,7 +1041,11 @@
             handleTaskFailure(task.error || 'Execution stopped.');
           }
         } catch (e) {
-          console.error('Polling error:', e);
+          consecutiveErrors++;
+          if (consecutiveErrors >= 8) {
+            clearInterval(pollInterval);
+            handleTaskFailure('Connection interrupted while polling task progress. Please retry.');
+          }
         }
       }, 1500);
     }
