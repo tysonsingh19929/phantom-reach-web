@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-const uri = "mongodb+srv://tysonsingh056_db_user:Aa327538%40@vanguard.ko1tjkw.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI || "mongodb+srv://tysonsingh056_db_user:Aa327538%40@vanguard.ko1tjkw.mongodb.net/?retryWrites=true&w=majority";
 let cachedClient = null;
 
 async function getBackendUrl() {
@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
   if (!taskId) return res.status(400).json({ error: "Missing task ID" });
 
   const backendUrl = await getBackendUrl();
-  if (!backendUrl) return res.status(503).json({ error: "Backend offline" });
+  if (!backendUrl) return res.status(503).json({ error: "Intelligence engine provisioning." });
 
   try {
     const targetUrl = `${backendUrl}/api/tasks/${taskId}`;
@@ -36,6 +36,6 @@ module.exports = async (req, res) => {
     const data = await upstreamRes.json();
     return res.status(upstreamRes.status).json(data);
   } catch (err) {
-    return res.status(502).json({ error: err.message });
+    return res.status(502).json({ error: "Failed to poll task status." });
   }
 };

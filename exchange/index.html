@@ -254,12 +254,6 @@
           <span>Post a Campaign</span>
         </button>
 
-        <!-- Backend API Status Button -->
-        <button id="apiConfigButton" style="display: none !important;" onclick="openApiModal()" class="inline-flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-slate-700 shadow-sm hover:bg-slate-50 transition cursor-pointer" title="Configure Backend Server API">
-          <span id="apiStatusDot" class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span class="hidden sm:inline font-mono text-[11px] font-semibold text-slate-700" id="apiStatusLabel">API</span>
-        </button>
-
         <!-- Account Button -->
         <div class="relative">
           <button id="accountButton" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm cursor-pointer hover:bg-slate-50 transition" aria-label="Open account access menu" aria-expanded="false">
@@ -658,51 +652,6 @@
       </form>
     </div>
   </div>
-
-  <!-- BACKEND API CONFIG MODAL -->
-  <div id="apiConfigModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
-    <div class="glass w-full max-w-lg rounded-3xl p-6 sm:p-8 bg-white shadow-2xl border border-slate-200">
-      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-        <div class="flex items-center gap-2.5">
-          <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </span>
-          <div>
-            <h3 class="font-display text-lg font-bold text-slate-900">Backend Server API</h3>
-            <p class="text-xs text-slate-500">Live intelligence engine &amp; scraper sync</p>
-          </div>
-        </div>
-        <button type="button" onclick="closeApiModal()" class="h-8 w-8 inline-flex items-center justify-center rounded-xl hover:bg-slate-100 text-slate-500 font-bold cursor-pointer">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>
-        </button>
-      </div>
-
-      <div class="py-5 space-y-4">
-        <div class="rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Auto-Sync Status</span>
-            <span id="activeBackendBadgeDisplay" class="rounded px-2 py-0.5 text-[10px] font-bold bg-emerald-100 text-emerald-800">Connected</span>
-          </div>
-          <div id="activeBackendUrlDisplay" class="font-mono text-xs font-semibold text-slate-800 break-all">Checking backend link...</div>
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Custom Override (Optional)</label>
-          <input id="customApiInput" type="text" placeholder="Leave empty for automatic zero-config sync" class="text-xs text-slate-900">
-          <p class="mt-1 text-[11px] text-slate-500">Zero manual configuration required! When running Vanguard on your PC, all devices sync instantly.</p>
-        </div>
-
-        <div id="apiPingStatus" class="hidden p-3 rounded-xl text-xs font-medium"></div>
-      </div>
-
-      <div class="flex items-center justify-between pt-4 border-t border-slate-100 gap-2">
-        <button type="button" onclick="testApiConnection()" class="px-3.5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 transition cursor-pointer">Test Ping</button>
-        <div class="flex gap-2">
-          <button type="button" onclick="resetApiToAuto()" class="px-3.5 py-2 rounded-xl border border-blue-200 bg-blue-50 text-xs font-semibold text-blue-700 hover:bg-blue-100 transition cursor-pointer">Reset to Auto</button>
-          <button type="button" onclick="saveCustomApiUrl()" class="primary px-4 py-2 rounded-xl text-xs font-semibold transition cursor-pointer">Save Override</button>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- FOOTER -->
@@ -757,74 +706,7 @@
     let activeBackendUrl = '';
     let activeBackendStatus = 'online';
 
-    function updateApiStatusUI() {
-      const dot = document.getElementById('apiStatusDot');
-      const label = document.getElementById('apiStatusLabel');
-      const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
 
-      if (isLocal) {
-        if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500';
-        if (label) label.innerText = 'API: Local';
-      } else {
-        if (dot) dot.className = 'h-2 w-2 rounded-full bg-emerald-500 animate-pulse';
-        if (label) label.innerText = 'API: Live';
-      }
-    }
-
-    function openApiModal() {
-      const modal = document.getElementById('apiConfigModal');
-      const input = document.getElementById('customApiInput');
-      const liveUrlLabel = document.getElementById('activeBackendUrlDisplay');
-      if (input) input.value = localStorage.getItem('phantom_custom_api') || '';
-      if (liveUrlLabel) liveUrlLabel.innerText = getApiBase() || window.location.origin;
-      if (modal) modal.classList.remove('hidden');
-    }
-
-    function closeApiModal() {
-      const modal = document.getElementById('apiConfigModal');
-      if (modal) modal.classList.add('hidden');
-    }
-
-    function saveCustomApiUrl() {
-      const input = document.getElementById('customApiInput');
-      const val = (input ? input.value : '').trim().replace(/\/+$/, '');
-      if (val) {
-        localStorage.setItem('phantom_custom_api', val);
-      } else {
-        localStorage.removeItem('phantom_custom_api');
-      }
-      closeApiModal();
-      fetchCampaigns(true);
-    }
-
-    function resetApiToAuto() {
-      localStorage.removeItem('phantom_custom_api');
-      closeApiModal();
-      fetchCampaigns(true);
-    }
-
-    function testApiConnection() {
-      const pingStatus = document.getElementById('apiPingStatus');
-      if (pingStatus) {
-        pingStatus.className = 'p-3 rounded-xl text-xs font-medium bg-blue-50 text-blue-700 block';
-        pingStatus.innerText = 'Testing connection...';
-      }
-      const base = getApiBase();
-      fetch(`${base}/api/campaigns`)
-        .then(r => r.json())
-        .then(() => {
-          if (pingStatus) {
-            pingStatus.className = 'p-3 rounded-xl text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200 block';
-            pingStatus.innerText = 'Connection verified. Campaigns exchange reachable.';
-          }
-        })
-        .catch(err => {
-          if (pingStatus) {
-            pingStatus.className = 'p-3 rounded-xl text-xs font-medium bg-rose-50 text-rose-800 border border-rose-200 block';
-            pingStatus.innerText = 'Connection error: ' + err.message;
-          }
-        });
-    }
 
     // Initial Fallback Seed Campaigns (matches api/campaigns.js)
     const SEED_CAMPAIGNS = [

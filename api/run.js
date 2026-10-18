@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-const uri = "mongodb+srv://tysonsingh056_db_user:Aa327538%40@vanguard.ko1tjkw.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI || "mongodb+srv://tysonsingh056_db_user:Aa327538%40@vanguard.ko1tjkw.mongodb.net/?retryWrites=true&w=majority";
 let cachedClient = null;
 
 async function getBackendUrl() {
@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
   const backendUrl = await getBackendUrl();
   if (!backendUrl) {
     return res.status(503).json({
-      error: "Backend server is currently offline. Please launch 'python run_vanguard.py' on your computer."
+      error: "The intelligence engine is currently provisioning resources. Please try again shortly."
     });
   }
 
@@ -46,7 +46,7 @@ module.exports = async (req, res) => {
     return res.status(upstreamRes.status).json(data);
   } catch (err) {
     return res.status(502).json({
-      error: `Failed to communicate with backend server: ${err.message}`
+      error: "The intelligence engine encountered an upstream network delay. Please retry shortly."
     });
   }
 };
