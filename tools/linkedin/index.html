@@ -976,10 +976,24 @@
         payload.tool = '2e';
         payload.twitter_handle = tw;
         payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '25');
-      } else {
-        payload.tool = '4b';
-        payload.query = 'Automate AI brief';
+      } else if (activeToolKey === 'linkedin') {
+        const role = (document.getElementById('field_role')?.value || '').trim();
+        const ind = (document.getElementById('field_industry')?.value || '').trim();
+        if (!role && !ind) return alert('Please enter target role or industry.');
+        payload.tool = '1c';
+        payload.query = `${role} in ${ind}`.trim();
+        payload.location = ind;
         payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '25');
+      } else if (activeToolKey === 'automate-ai') {
+        const wf = (document.getElementById('field_workflow')?.value || '').trim();
+        if (!wf) return alert('Please describe your automation workflow.');
+        payload.tool = '4a';
+        payload.query = wf;
+        payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '25');
+      } else {
+        payload.tool = '4a';
+        payload.query = 'AI Automation Trends';
+        payload.max_results = 25;
       }
 
       // Show Progress Tracker
