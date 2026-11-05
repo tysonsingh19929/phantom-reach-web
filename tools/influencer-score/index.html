@@ -1081,9 +1081,12 @@
           if (!res.ok) {
             consecutiveErrors++;
             if (res.status === 404) {
-              clearInterval(pollInterval);
-              if (window.vanguardTaskTracker) window.vanguardTaskTracker.clear();
-              handleTaskFailure('Task execution session expired or was reset. Please start a new search.');
+              if (consecutiveErrors >= 4) {
+                clearInterval(pollInterval);
+                if (window.vanguardTaskTracker) window.vanguardTaskTracker.clear();
+                handleTaskFailure('Task execution session expired or was reset. Please start a new search.');
+                return;
+              }
               return;
             }
             if (consecutiveErrors >= 10) {

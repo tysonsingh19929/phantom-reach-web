@@ -1,6 +1,7 @@
 const { MongoClient } = require('mongodb');
 
 const uri = process.env.MONGODB_URI || "mongodb+srv://tysonsingh056_db_user:Aa327538%40@vanguard.ko1tjkw.mongodb.net/?retryWrites=true&w=majority";
+const FALLBACK_RENDER_URL = "https://vanguard-backend-s89x.onrender.com";
 let cachedClient = null;
 
 // Edge in-memory rate limiting: max 6 requests per 15 minutes per IP
@@ -22,7 +23,7 @@ function isRateLimited(ip) {
 async function getBackendUrl() {
   try {
     if (!cachedClient) {
-      cachedClient = new MongoClient(uri, { serverSelectionTimeoutMS: 4000 });
+      cachedClient = new MongoClient(uri, { serverSelectionTimeoutMS: 3000 });
       await cachedClient.connect();
     }
     const doc = await cachedClient.db('vanguard').collection('system_config').findOne({ key: 'active_backend' });
@@ -30,7 +31,7 @@ async function getBackendUrl() {
   } catch (err) {
     console.error('Mongo error in proxy:', err);
   }
-  return null;
+  return FALLBACK_RENDER_URL;
 }
 
 module.exports = async (req, res) => {
@@ -50,11 +51,6 @@ module.exports = async (req, res) => {
   }
 
   const backendUrl = await getBackendUrl();
-  if (!backendUrl) {
-    return res.status(503).json({
-      error: "The intelligence engine is currently provisioning resources. Please try again shortly."
-    });
-  }
 
   try {
     const targetUrl = `${backendUrl}/api/run`;
