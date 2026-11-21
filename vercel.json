@@ -1,5 +1,68 @@
 {
   "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/favicon.ico",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/x-icon"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, s-maxage=2592000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/favicon-48x48.png",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/png"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, s-maxage=2592000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(favicon-.*\\.png|apple-touch-icon.*\\.png|favicon\\.svg)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, s-maxage=2592000, immutable"
+        }
+      ]
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/backend-url",
@@ -54,11 +117,39 @@
       "destination": "/api/proxy?path=:path*"
     },
     {
-      "source": "/tools/:tool*",
-      "destination": "/tool.html"
+      "source": "/tools/instagram-leads",
+      "destination": "/tools/instagram-leads/index.html"
+    },
+    {
+      "source": "/tools/google-leads",
+      "destination": "/tools/google-leads/index.html"
+    },
+    {
+      "source": "/tools/influencer-score",
+      "destination": "/tools/influencer-score/index.html"
+    },
+    {
+      "source": "/tools/youtube",
+      "destination": "/tools/youtube/index.html"
+    },
+    {
+      "source": "/tools/linkedin",
+      "destination": "/tools/linkedin/index.html"
+    },
+    {
+      "source": "/tools/x-twitter",
+      "destination": "/tools/x-twitter/index.html"
+    },
+    {
+      "source": "/tools/automate-ai",
+      "destination": "/tools/automate-ai/index.html"
     },
     {
       "source": "/tools",
+      "destination": "/tools/index.html"
+    },
+    {
+      "source": "/tools/:tool*",
       "destination": "/tool.html"
     },
     {

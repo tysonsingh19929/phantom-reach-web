@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="description" content="Internal administrative portal for managing Vanguard Social services, verifying system health, audit logs, and configuring multi-tenant workspaces.">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Vanguard Social — Master Control Plane</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230F172A'/%3E%3Cpath d='M6 6h3.4L12 14.6 14.6 6H18l-5 12h-2L6 6Z' fill='white'/%3E%3C/svg%3E">
+  <title>Vanguard Social Control Plane — Admin Console</title>
+  <link rel="canonical" href="https://www.socialbyvanguard.com/admin">
+  <!-- Google-Compliant Favicon Infrastructure -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <!-- Open Graph / Social Suite -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.socialbyvanguard.com/admin">
+  <meta property="og:site_name" content="Vanguard Social">
+  <meta property="og:title" content="Vanguard Social Control Plane — Admin Console">
+  <meta property="og:description" content="Internal administrative portal for managing Vanguard Social services, verifying system health, audit logs, and configuring multi-tenant workspaces.">
+  <meta property="og:image" content="https://www.socialbyvanguard.com/assets/og-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@vanguardsocial">
+  <meta name="twitter:title" content="Vanguard Social Control Plane — Admin Console">
+  <meta name="twitter:description" content="Internal administrative portal for managing Vanguard Social services, verifying system health, audit logs, and configuring multi-tenant workspaces.">
+  <meta name="twitter:image" content="https://www.socialbyvanguard.com/assets/og-preview.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -90,6 +111,45 @@
     }
     .modal-overlay.active { display: flex; }
   </style>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.socialbyvanguard.com/admin#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.socialbyvanguard.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Admin",
+          "item": "https://www.socialbyvanguard.com/admin"
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.socialbyvanguard.com/admin#webapp",
+      "name": "Vanguard Social Control Plane",
+      "url": "https://www.socialbyvanguard.com/admin",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "Internal administrative portal for managing Vanguard Social services, verifying system health, audit logs, and configuring multi-tenant workspaces.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Vanguard Social",
+        "url": "https://www.socialbyvanguard.com"
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body class="flex flex-col min-h-screen">
 
