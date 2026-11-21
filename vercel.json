@@ -117,6 +117,18 @@
       "destination": "/api/proxy?path=:path*"
     },
     {
+      "source": "/tools/influencer-score/:slug",
+      "destination": "/tools/influencer-score/:slug/index.html"
+    },
+    {
+      "source": "/tools/google-leads/:slug",
+      "destination": "/tools/google-leads/:slug/index.html"
+    },
+    {
+      "source": "/tools/instagram-leads/:slug",
+      "destination": "/tools/instagram-leads/:slug/index.html"
+    },
+    {
       "source": "/tools/instagram-leads",
       "destination": "/tools/instagram-leads/index.html"
     },
