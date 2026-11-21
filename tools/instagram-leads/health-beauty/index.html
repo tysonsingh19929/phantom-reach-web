@@ -420,7 +420,7 @@
             </span>
             <span class="text-slate-400 text-[11px]">Real 2026 Response Rate: 42%</span>
           </div>
-          <p class="text-xs sm:text-sm font-mono leading-relaxed bg-slate-950/70 p-3.5 rounded-xl border border-slate-800/80 text-slate-300 select-all">"Hi [Beauty Team], I've been testing your [Specific Serum/Product] over the past 3 weeks and the hydration results on my sensitive skin have been incredible. My audience (32k beauty enthusiasts, 85% female 20-34) loves detailed ingredient breakdowns and honest skin routines. I'd love to partner on a dedicated 'Morning Skincare Routine' Reel. Can I send over my media kit?"</p>
+          <p class="text-xs sm:text-sm font-mono leading-relaxed bg-slate-950/70 p-3.5 rounded-xl border border-slate-800/80 text-slate-300 select-all">"Hi Maya, I've been testing the barrier repair serum from your line over the past three weeks and the hydration results on my sensitive skin have been fantastic. My audience of 32k beauty enthusiasts (85% women ages 20 to 34) loves honest, unedited texture breakdowns without skin filters. I'd love to partner on a dedicated Morning Routine Reel showing real before-and-after results. Let me know if your PR team has collaboration openings this month."</p>
         </div>
         
       <div class="mt-5 pt-4 border-t border-slate-200/70 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
@@ -1056,7 +1056,7 @@
             const ageSeconds = (Date.now() - (existing.startTime || 0)) / 1000;
             if (ageSeconds < 1200) { // Active within last 20 minutes
               errBox.classList.remove('hidden');
-              errBox.innerHTML = `<strong>[NOTICE] Extraction Already in Progress:</strong><br>An extraction task is already ${existing.status} from this device (${existing.toolName || 'Tool'}, ID: ${existing.taskId}).<br><div class="mt-2.5 flex items-center gap-2 flex-wrap"><a href="${existing.toolUrl || '/tools'}" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold inline-flex items-center gap-1 transition">View Active Extraction</a><button type="button" onclick="localStorage.removeItem('vanguard_active_task'); location.reload();" class="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl text-xs font-semibold cursor-pointer transition">Dismiss &amp; Reset</button></div>`;
+              errBox.innerHTML = `<strong>Extraction in Progress:</strong><br>An extraction task is already ${existing.status} from this device (${existing.toolName || 'Tool'}, ID: ${existing.taskId}).<br><div class="mt-2.5 flex items-center gap-2 flex-wrap"><a href="${existing.toolUrl || '/tools'}" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold inline-flex items-center gap-1 transition">View Active Extraction</a><button type="button" onclick="localStorage.removeItem('vanguard_active_task'); location.reload();" class="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl text-xs font-semibold cursor-pointer transition">Dismiss &amp; Reset</button></div>`;
               return;
             }
           }
@@ -1399,7 +1399,7 @@
       badge.innerText = 'ERROR';
 
       errBox.classList.remove('hidden');
-      errBox.innerHTML = '<strong>[ERROR] Task Execution Error:</strong><br>' + msg + '<br><span class="text-[10px] text-slate-500 mt-1 block">Check your backend server connection or configure a valid API URL.</span>';
+      errBox.innerHTML = '<strong>Task Execution Paused:</strong><br>' + msg + '<br><span class="text-[10px] text-slate-500 mt-1 block">Check your backend server connection or configure a valid API URL.</span>';
     }
 
     function finishTaskSuccess(task) {
