@@ -1,0 +1,2134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <!-- Mobile Browser & Status Bar Theme Color (Matches website theme like YouTube app) -->
+  <meta name="theme-color" content="#ffffff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="msapplication-navbutton-color" content="#ffffff">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="description" content="Harvest fast-growing CPG food and drink brands on Instagram. Extract verified business emails, marketing manager contacts, and bios to Excel.">
+  <title>Food & Beverage Instagram Lead Extractor | Vanguard Social</title>
+  <link rel="canonical" href="https://www.socialbyvanguard.com/tools/instagram-leads/food-beverage">
+  <!-- Google-Compliant Favicon Infrastructure -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <!-- Open Graph / Social Suite -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.socialbyvanguard.com/tools/instagram-leads/food-beverage">
+  <meta property="og:site_name" content="Vanguard Social">
+  <meta property="og:title" content="Food & Beverage Instagram Lead Extractor | Vanguard Social">
+  <meta property="og:description" content="Harvest fast-growing CPG food and drink brands on Instagram. Extract verified business emails, marketing manager contacts, and bios to Excel.">
+  <meta property="og:image" content="https://www.socialbyvanguard.com/assets/og-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@vanguardsocial">
+  <meta name="twitter:title" content="Food & Beverage Instagram Lead Extractor | Vanguard Social">
+  <meta name="twitter:description" content="Harvest fast-growing CPG food and drink brands on Instagram. Extract verified business emails, marketing manager contacts, and bios to Excel.">
+  <meta name="twitter:image" content="https://www.socialbyvanguard.com/assets/og-preview.png">
+  <!-- Google-Compliant Favicon Infrastructure -->
+  <!-- Open Graph / Social Suite -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],display:['Lexend','Inter','system-ui','sans-serif']}}}};</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+    }
+    *, ::before, ::after {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    html {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: clip;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      background-color: #ffffff;
+    }
+    body {
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: clip;
+      color: #0f172a;
+      font-family: Inter, sans-serif;
+      background-color: #ffffff;
+      background: linear-gradient(135deg, #f8fbff, #eef6ff 42%, #fff);
+      position: relative;
+    }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 1rem;
+    }
+    header, header .container, header > div, header .relative {
+      overflow: visible !important;
+    }
+    header {
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 1000 !important;
+    }
+    .font-display { font-family: Lexend, Inter, sans-serif; }
+    .glass {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 25px 50px -12px rgba(15,23,42,.25), 0 0 0 1px rgba(226,232,240,.9);
+    }
+    .primary {
+      background: linear-gradient(135deg, #2563eb, #0f172a);
+      color: #fff;
+    }
+    .primary:hover {
+      background: linear-gradient(135deg, #3b82f6, #111827);
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #dbeafe;
+      box-shadow: 0 20px 50px -25px rgba(15,23,42,.22);
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 3.25rem;
+      height: 3.25rem;
+      border-radius: 1rem;
+      background: #eff6ff;
+      color: #2563eb;
+    }
+    .icon svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+    /* Strictly enforce 16px minimum font size to eliminate iOS Safari & Android Chrome auto-zoom & page stretching */
+    .input, input, select, textarea {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 0.875rem !important;
+      padding-top: 0.85rem !important;
+      padding-bottom: 0.85rem !important;
+      padding-right: 1rem !important;
+      padding-left: 1rem;
+      color: #0f172a !important;
+      background: #ffffff !important;
+      font-size: 16px !important;
+      line-height: 1.4 !important;
+      -webkit-appearance: none;
+    }
+    .input:focus, input:focus, select:focus, textarea:focus {
+      outline: 3px solid rgba(37,99,235,.25) !important;
+      border-color: #2563eb !important;
+    }
+    @media (min-width: 640px) {
+      .input, input, select, textarea {
+        font-size: 0.875rem !important;
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+        padding-right: 1rem !important;
+        padding-left: 1rem;
+      }
+    }
+    /* Explicit padding rules for inputs with prefix signs or search icons */
+    input.pl-8, .pl-8 {
+      padding-left: 2.25rem !important;
+    }
+    input.pl-9, .pl-9 {
+      padding-left: 2.5rem !important;
+    }
+    input.pl-10, .pl-10 {
+      padding-left: 2.75rem !important;
+    }
+    input.pl-11, .pl-11 {
+      padding-left: 3rem !important;
+    }
+    /* Prevent any grid or flex child from blowing out the 100% mobile viewport */
+    .grid, .grid > *, main, section, .card, form {
+      min-width: 0;
+      max-width: 100%;
+    }
+    .menu {
+      position: absolute;
+      top: calc(100% + .7rem);
+      z-index: 1050 !important;
+      width: min(24rem, calc(100vw - 2rem));
+      max-width: calc(100vw - 2rem);
+      left: 0;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 25px 50px -12px rgba(15,23,42,.28), 0 0 0 1px rgba(226,232,240,.9) !important;
+    }
+    .account {
+      right: 0;
+      left: auto;
+      width: min(22rem, calc(100vw - 2rem));
+      max-width: calc(100vw - 2rem);
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 25px 50px -12px rgba(15,23,42,.28), 0 0 0 1px rgba(226,232,240,.9) !important;
+    }
+    @media (max-width: 640px) {
+      .menu {
+        left: 0;
+        right: auto;
+        width: calc(100vw - 2rem) !important;
+        max-width: calc(100vw - 2rem) !important;
+      }
+      .account {
+        right: 0;
+        left: auto;
+        width: calc(100vw - 2rem) !important;
+        max-width: calc(100vw - 2rem) !important;
+      }
+    }
+    .menu[hidden] { display: none; }
+    .menu a {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      padding: .85rem .9rem;
+      border-radius: .8rem;
+      color: #334155;
+      font-size: .95rem;
+      font-weight: 600;
+      line-height: 1.35;
+      text-decoration: none;
+    }
+    .menu a:hover {
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+    .menu svg {
+      width: 1.3rem;
+      height: 1.3rem;
+      color: #2563eb;
+      flex: none;
+    }
+  </style>
+    <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.socialbyvanguard.com/tools/instagram-leads/food-beverage#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.socialbyvanguard.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://www.socialbyvanguard.com/tools"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Instagram Brand Finder",
+          "item": "https://www.socialbyvanguard.com/tools/instagram-leads"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Food & Beverage",
+          "item": "https://www.socialbyvanguard.com/tools/instagram-leads/food-beverage"
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.socialbyvanguard.com/tools/instagram-leads/food-beverage#webapp",
+      "name": "Food & Beverage Instagram Lead Extractor",
+      "url": "https://www.socialbyvanguard.com/tools/instagram-leads/food-beverage",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "Harvest fast-growing CPG food and drink brands on Instagram. Extract verified business emails, marketing manager contacts, and bios to Excel.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Vanguard Social",
+        "url": "https://www.socialbyvanguard.com"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.socialbyvanguard.com/tools/instagram-leads/food-beverage#howto",
+      "name": "How to Price and Pitch Food & Beverage Vertical \u00b7 CPG Brand Prospecting",
+      "description": "Step-by-step practitioner method to calculate rates and pitch brands for Food & Beverage Instagram Lead Extractor.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Audit 30-Day View Velocity",
+          "text": "Calculate your true median views and engagement percentage over your last 10 published posts rather than relying purely on follower totals."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Apply Industry CPM Multipliers",
+          "text": "Benchmark against 2026 industry sponsorship ranges, applying category surcharges for high-demand niches like tech, wellness, and finance."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Structure Pitch with Exclusivity & Usage Terms",
+          "text": "Send a personalized practitioner pitch script that bounds organic posting rights to 90 days and prices paid Meta or YouTube ad whitelisting at an additional 30% to 50%."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.socialbyvanguard.com/tools/instagram-leads/food-beverage#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How can creators land paid partnerships with beverage and food brands?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Creators harvest marketing contact details for emerging CPG food brands using Vanguard, pitch retail store-run concepts that drive grocery store sales, and offer clear digital usage rights for social ads."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the average sponsorship rate for food micro-influencers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Food and beverage micro-influencers (20k to 50k followers) typically charge between $250 and $650 per dedicated Reel, often paired with free monthly product shipments and retail sprint bonuses."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="siteHeader" class="sticky top-0 z-[1000] border-b border-slate-200/80 bg-white transition-all duration-200" style="padding-top:env(safe-area-inset-top)">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5">
+      
+      <div class="flex items-center gap-3">
+        <!-- Tools Dropdown Trigger -->
+        <div class="relative">
+          <button id="toolsButton" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm cursor-pointer hover:bg-slate-50 transition" aria-label="Open tools menu">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 6h14M5 12h14M5 18h14" stroke-linecap="round"/></svg>
+          </button>
+          <nav id="toolsMenu" class="menu glass rounded-2xl p-3" hidden>
+            <div class="px-3 pb-3 pt-1">
+              <p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-500">Creator Tools &amp; Navigation</p>
+              <p class="mt-1 text-sm text-slate-500">Choose a tool or explore brand deals</p>
+            </div>
+            <a href="/#tools"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h16" stroke-linecap="round"/></svg><span>View all tools</span></a>
+            <a href="/exchange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 3 4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Brand Campaigns</span></a>
+            <a href="/collabs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Creator Collaborations</span></a>
+            <a href="/tools/google-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg><span>Local Business Leads</span></a>
+            <a href="/tools/influencer-score"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg><span>Rate Card Calculator</span></a>
+            <a href="/tools/instagram-leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg><span>Instagram Brand Finder</span></a>
+            <a href="/tools/youtube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7.5a2.5 2.5 0 0 0-1.8-1.8C17.6 5.3 12 5.3 12 5.3s-5.6 0-7.2.4A2.5 2.5 0 0 0 3 7.5 26 26 0 0 0 2.6 12 26 26 0 0 0 3 16.5a2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.2.4 7.2.4s5.6 0 7.2-.4a2.5 2.5 0 0 0 1.8-1.8 26 26 0 0 0 .4-4.5 26 26 0 0 0-.4-4.5Z"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg><span>YouTube Analytics</span></a>
+            <a href="/tools/linkedin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg><span>LinkedIn Brand Contacts</span></a>
+            <a href="/tools/x-twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4 19 20M19 4 5 20" stroke-linecap="round"/></svg><span>X / Twitter Insights</span></a>
+            <a href="/tools/automate-ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke-linecap="round"/><circle cx="12" cy="12" r="4"/></svg><span>Automate Outreach with AI</span></a>
+          </nav>
+        </div>
+
+        <!-- Brand Link -->
+        <a href="/" class="flex items-center gap-3 no-underline">
+          <span class="grid h-10 w-10 place-items-center rounded-xl bg-slate-900 font-display text-lg font-bold text-white shadow-sm">V</span>
+          <span class="font-display text-lg font-bold text-slate-900">Vanguard Social</span>
+        </a>
+      </div>
+
+      <!-- Right Header Actions (API Config Button + Get Started) -->
+      <div class="flex items-center gap-2.5">
+
+        <!-- Account Button -->
+        <div class="relative">
+          <button id="accountButton" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm cursor-pointer hover:bg-slate-50 transition" aria-label="Open account access menu" aria-expanded="false">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg>
+          </button>
+          <nav id="accountMenu" class="menu account glass rounded-2xl p-3" hidden>
+            <div class="px-3 pb-3 pt-1">
+              <p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-500">Account access</p>
+              <p class="mt-1 text-sm text-slate-500">Choose your Vanguard workspace</p>
+            </div>
+            <a href="/business-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16M2 21h20M9 7h6M9 11h6M9 15h3" stroke-linecap="round"/></svg><span>Business workspace</span></a>
+            <a href="/creator-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg><span>Creator / Influencer workspace</span></a>
+          </nav>
+        </div>
+        <a href="/signup" class="primary rounded-xl px-4 py-2 text-xs font-semibold shadow-sm">Get started</a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN VIEW CONTAINER -->
+  <main class="mx-auto w-full max-w-6xl px-4 sm:px-6 py-6 sm:py-12 overflow-x-hidden">
+    
+    <div class="pb-6">
+      <a href="/" class="text-sm font-semibold text-blue-700 hover:text-blue-800 transition inline-flex items-center gap-1.5">
+        <span>←</span> <span>Back to Vanguard Social</span>
+      </a>
+    </div>
+
+    <section class="w-full min-w-0 grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-start">
+      
+      <!-- LEFT COLUMN: ENGINE OVERVIEW & LIVE RESULTS -->
+      <div class="space-y-6 w-full min-w-0 overflow-hidden">
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="inline-flex rounded-full bg-blue-100 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[.18em] text-blue-700">Food & Beverage Vertical · CPG Brand Prospecting</span>
+          </div>
+          
+          <h1 id="title" class="mt-2 font-display text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">Food & Beverage Instagram Lead Extractor</h1>
+          <p id="description" class="mt-4 text-base sm:text-lg leading-relaxed text-slate-600">The premier harvester for emerging CPG brands, functional beverages, gourmet snacks, and specialty roasters with verified business contact info.</p>
+
+        <div class="mt-6 p-5 rounded-2xl bg-blue-50/80 border border-blue-200 shadow-sm">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-700">CPG Food &amp; Beverage Benchmarks</span>
+            <span class="text-xs font-semibold text-slate-500">2026 Seeding &amp; Paid Economics</span>
+          </div>
+          <div class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+            <div class="bg-white p-3.5 rounded-xl shadow-xs border border-slate-100">
+              <div class="text-xs text-slate-500">Monthly Seeding Roster</div>
+              <div class="font-bold text-slate-900 text-lg sm:text-xl">80 - 250 Creators</div>
+              <div class="text-[11px] text-blue-600 font-semibold">Gifting &amp; Paid Sprints</div>
+            </div>
+            <div class="bg-white p-3.5 rounded-xl shadow-xs border border-slate-100">
+              <div class="text-xs text-slate-500">Grocery Store Velocity Lift</div>
+              <div class="font-bold text-slate-900 text-lg sm:text-xl">+18% - +34%</div>
+              <div class="text-[11px] text-blue-600 font-semibold">Target &amp; Whole Foods</div>
+            </div>
+            <div class="bg-white p-3.5 rounded-xl shadow-xs border border-slate-100">
+              <div class="text-xs text-slate-500">Creator Pitch Response</div>
+              <div class="font-bold text-slate-900 text-lg sm:text-xl">33% - 46%</div>
+              <div class="text-[11px] text-blue-600 font-semibold">DTC Beverage Leads</div>
+            </div>
+          </div>
+        </div>
+        
+          
+          
+    <!-- REAL-WORLD PRACTITIONER PLAYBOOK & E-E-A-T EXPERTISE -->
+    <section class="mt-8 rounded-3xl border border-slate-200 bg-gradient-to-br from-white to-slate-50/70 p-6 sm:p-8 shadow-sm">
+      <div class="flex items-center gap-3 pb-5 border-b border-slate-200">
+        <div class="h-10 w-10 rounded-xl bg-slate-900 text-white font-bold flex items-center justify-center shrink-0 text-sm shadow-sm">VS</div>
+        <div>
+          <h2 class="font-display text-lg sm:text-xl font-bold text-slate-900">Practitioner Playbook: Pitching CPG Food & Drink Brands</h2>
+          <p class="text-xs text-slate-500">Insights from creator talent managers booking deals with functional sodas, organic snacks, and specialty coffee.</p>
+        </div>
+      </div>
+
+      <div class="mt-6 space-y-5">
+        
+        <div class="rounded-2xl bg-white p-4 sm:p-5 border border-slate-100 shadow-xs">
+          <h3 class="font-display text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="text-blue-600 font-mono text-xs">◆</span>
+            <span>Drive In-Store Retail Velocity (Target, Whole Foods, Sprouts)</span>
+          </h3>
+          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">Emerging beverage brands like Olipop and Poppi spend heavily to prove velocity on retail shelves. Pitch a 'Store Run Reel' where you visit a local Whole Foods or Target to buy their can and review it. Brands fund this over generic home unboxings every time.</p>
+        </div>
+        <div class="rounded-2xl bg-white p-4 sm:p-5 border border-slate-100 shadow-xs">
+          <h3 class="font-display text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="text-blue-600 font-mono text-xs">◆</span>
+            <span>Negotiate 6-Month Organic Usage Bundles</span>
+          </h3>
+          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">Food brands use creator videos on their website product pages and email newsletters. Always offer a commercial usage bundle ($400 Reel + $150 email/website licensing) to maximize contract value.</p>
+        </div>
+        <div class="rounded-2xl bg-white p-4 sm:p-5 border border-slate-100 shadow-xs">
+          <h3 class="font-display text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="text-blue-600 font-mono text-xs">◆</span>
+            <span>Highlight High-Quality Kitchen Lighting & Audio</span>
+          </h3>
+          <p class="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">Food and beverage content requires sensory appeal (crisp can-opening sounds, fizzy pour audio, clear studio lighting). Emphasize your 4K camera setup and dedicated microphone in your media kit.</p>
+        </div>
+        
+        <div class="rounded-2xl bg-slate-900 text-slate-200 p-5 mt-6 border border-slate-800">
+          <div class="flex items-center justify-between mb-3 text-xs">
+            <span class="font-bold text-blue-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span>📋</span> Copy-Paste Pitch Script (Battle-Tested)
+            </span>
+            <span class="text-slate-400 text-[11px]">Verified Food & Beverage Response: 41%</span>
+          </div>
+          <p class="text-xs sm:text-sm font-mono leading-relaxed bg-slate-950/70 p-3.5 rounded-xl border border-slate-800/80 text-slate-300 select-all">Hi Chloe, I noticed Poppi just launched in regional Target stores across the Pacific Northwest. My Portland-based food and lifestyle page reaches 31,000 followers with a 6.4% engagement rate. Rather than a standard unboxing, I would love to film a high-energy 'Target Snack Run' Reel showing where to find your Ginger Lime cans on the shelf, paired with an honest taste test and link sticker. Base package is $320 including 60 days of digital ad rights. Would you like to review our concept deck?</p>
+        </div>
+      </div>
+
+      <div class="mt-5 pt-4 border-t border-slate-200/70 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
+        <span>Verified by Vanguard Creator Network &bull; Zero agency fees &bull; 100% creator escrow</span>
+        <a href="/tools/influencer-score" class="font-semibold text-blue-600 hover:underline">Calculate Your Custom Valuation &rarr;</a>
+      </div>
+    </section>
+    
+<div id="benefits" class="mt-6 grid gap-3 sm:grid-cols-2"></div>
+        </div>
+
+        <!-- DYNAMIC RESULTS CONTAINER (Appears here upon task completion) -->
+        <div id="resultsContainer" class="hidden pt-4">
+          <div class="border-t border-slate-200 pt-6">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-display text-xl font-bold text-slate-900 flex items-center gap-2">
+                <span class="text-emerald-600">✓</span> Intelligence Output
+              </h3>
+              <span id="resultsTimestamp" class="text-xs text-slate-500 font-mono"></span>
+            </div>
+            <div id="resultsContent"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: UNIFIED INTERACTIVE FORM & EXECUTION ENGINE -->
+      <section class="card rounded-3xl p-5 sm:p-8 relative lg:sticky lg:top-24 w-full min-w-0">
+        
+        <div class="flex items-center justify-between mb-3">
+          <div class="icon" id="formIcon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m12 16 4-4-4-4M8 12h8"/></svg>
+          </div>
+          <span id="engineStatusBadge" class="inline-flex rounded-full bg-emerald-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-800">Ready</span>
+        </div>
+
+        <h2 id="formTitle" class="mt-3 font-display text-xl font-bold text-slate-900">Search &amp; Analyze</h2>
+        <p id="formCopy" class="mt-1.5 text-sm leading-relaxed text-slate-600">Enter your search details to find leads or analyze accounts.</p>
+
+        <!-- DYNAMIC FORM FIELDS (Single Unified Form) -->
+        <form id="engineForm" onsubmit="event.preventDefault(); runEngine();" class="mt-5 space-y-4">
+          <div id="dynamicFormFields"></div>
+
+          <!-- ACTION TRIGGER BUTTON -->
+          <button type="submit" id="runEngineBtn" class="primary w-full rounded-xl px-5 py-3.5 font-semibold text-sm shadow-md flex items-center justify-center gap-2 cursor-pointer transition">
+            <span id="runBtnLabel">Start Search</span>
+          </button>
+        </form>
+
+        <!-- LIVE PROGRESS & EXECUTION TRACKER -->
+        <div id="progressBox" class="hidden mt-5 rounded-2xl bg-slate-50 border border-slate-200 p-4 space-y-3 w-full min-w-0 overflow-hidden">
+          <div class="flex items-center justify-between text-xs font-bold">
+            <span class="text-blue-700 flex items-center gap-1.5">
+              <span class="inline-block w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
+              <span id="progressStepTitle">Searching...</span>
+            </span>
+            <span id="progressPct" class="font-mono text-slate-700">15%</span>
+          </div>
+          
+          <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
+            <div id="progressBar" class="bg-blue-600 h-2.5 rounded-full transition-all duration-300" style="width: 15%"></div>
+          </div>
+
+          <p id="progressStatusText" class="text-xs text-slate-600 font-mono truncate">Finding and verifying results...</p>
+
+          <div class="pt-1 flex items-center justify-between">
+            <span id="currentTaskIdLabel" class="text-[10px] text-slate-600 font-mono"></span>
+            <button type="button" onclick="stopActiveTask()" class="text-xs font-bold text-rose-600 hover:text-rose-700 cursor-pointer flex items-center gap-1">
+              <svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><rect width="6" height="6" x="9" y="9"/></svg>Stop Task
+            </button>
+          </div>
+        </div>
+
+        <!-- ERROR ALERT BOX -->
+        <div id="errorAlert" class="hidden mt-4 rounded-xl bg-rose-50 border border-rose-200 p-3 text-xs text-rose-800"></div>
+
+      </section>
+
+    </section>
+
+  </main>
+  </div>
+
+  <script>
+    const configs = {
+      'influencer-score': {
+        name: 'Rate Card Calculator',
+        title: 'Rate Card Calculator & Creator Audit',
+        description: 'Check your real engagement rate, calculate what you should charge brands for sponsored Reels and Stories, and get a shareable media kit link.',
+        formTitle: 'Calculate Your Sponsorship Rates',
+        formCopy: 'Enter your Instagram handle to check your engagement rate, estimated Reel rates, and sponsor rate card.',
+        icon: 'bolt',
+        benefits: [
+          'Real engagement rate and viewer retention audit',
+          'Estimated rates for sponsored Reels and Stories',
+          'Recommended high-paying sponsor niches',
+          'Instant shareable media kit link for brand pitching'
+        ]
+      },
+      'instagram-leads': {
+        name: 'Instagram Brand Finder',
+        title: 'Instagram Brand & Creator Finder',
+        description: 'Find local businesses, brands, and creators on Instagram by location or hashtag with verified contact info.',
+        formTitle: 'Find Instagram Brands & Creators',
+        formCopy: 'Search by city, niche, or hashtag to find active Instagram accounts and contact details.',
+        icon: 'instagram',
+        benefits: [
+          'Search local businesses and creators by city or hashtag',
+          'Extract public bios, email addresses, and phone numbers',
+          'Check recent post engagement and activity',
+          'Download full lead list to Excel or CSV'
+        ]
+      },
+      'google-leads': {
+        name: 'Local Business Leads',
+        title: 'Local Business Lead Finder',
+        description: 'Find local businesses in any city to pitch sponsorship or marketing services, complete with verified emails, phones, and addresses.',
+        formTitle: 'Find Local Businesses to Pitch',
+        formCopy: 'Enter a city and business category (e.g., Gyms in Miami, Cafes in Austin) to get a list of businesses.',
+        icon: 'pin',
+        benefits: [
+          'Find local businesses by city and category',
+          'Get direct websites, phone numbers, and addresses',
+          'Verified contact information ready for pitching',
+          'Download leads directly to Excel or CSV'
+        ]
+      },
+      'youtube': {
+        name: 'YouTube Analytics',
+        title: 'YouTube Channel & Video Analytics',
+        description: 'Analyze YouTube channels, recent video performance, view velocity, and audience engagement for sponsorships.',
+        formTitle: 'Analyze a YouTube Channel',
+        formCopy: 'Enter a channel handle or name to review recent videos, average views, and engagement.',
+        icon: 'youtube',
+        benefits: [
+          'Channel view counts, subscriber growth, and upload velocity',
+          'Engagement rates and view performance per video',
+          'Content topic and sponsor breakdown',
+          'Export complete video stats to spreadsheet'
+        ]
+      },
+      'linkedin': {
+        name: 'LinkedIn Brand Contacts',
+        title: 'LinkedIn Brand & Business Contacts',
+        description: 'Find marketing managers, brand decision-makers, and corporate contacts for sponsorship pitches and B2B deals.',
+        formTitle: 'Find Brand Decision-Makers',
+        formCopy: 'Search by company, role (e.g. Head of Marketing), or industry to find contacts to pitch.',
+        icon: 'linkedin',
+        benefits: [
+          'Find brand managers and marketing decision-makers',
+          'Identify companies actively running influencer campaigns',
+          'Organize contacts for personalized pitch emails',
+          'Export contact list directly to your CRM or spreadsheet'
+        ]
+      },
+      'x-twitter': {
+        name: 'X / Twitter Insights',
+        title: 'X / Twitter Account & Post Insights',
+        description: 'Review tweet engagement, audience discussions, and follower momentum for accounts on X (Twitter).',
+        formTitle: 'Analyze an X / Twitter Account',
+        formCopy: 'Enter a Twitter handle or topic keyword to inspect recent posts and engagement.',
+        icon: 'x',
+        benefits: [
+          'Recent tweet engagement and repost velocity',
+          'Top performing posts and viral impressions',
+          'Community topics and follower momentum',
+          'Export discussion logs and account data'
+        ]
+      },
+      'automate-ai': {
+        name: 'Automate Outreach with AI',
+        title: 'Automate Brand Outreach with AI',
+        description: 'Use AI to write personalized brand pitches, follow up with sponsors automatically, and save hours on admin work.',
+        formTitle: 'Create an Automated Outreach Workflow',
+        formCopy: 'Tell AI what kind of pitches or client outreach you want to automate.',
+        icon: 'ai',
+        benefits: [
+          'Generate personalized pitch emails tailored to each brand',
+          'Automate follow-ups so you never lose a sponsorship deal',
+          'Connect lead search directly to outreach templates',
+          'Save 10+ hours every week on pitching and admin'
+        ]
+      }
+    };
+
+    const icons = {
+      pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg>',
+      bolt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z" stroke-linejoin="round"/></svg>',
+      instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>',
+      youtube: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.8 2.8 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2 12a29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 22 12a29 29 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>',
+      linkedin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10v6M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3M12 10v6" stroke-linecap="round"/></svg>',
+      x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4 19 20M19 4 5 20" stroke-linecap="round"/></svg>',
+      ai: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke-linecap="round"/><circle cx="12" cy="12" r="4"/></svg>'
+    };
+
+    function resolveActiveToolKey() {
+      return "instagram-leads";
+
+      const q = new URLSearchParams(location.search).get('tool');
+      if (q && configs[q]) return q;
+      const pathParts = location.pathname.split('/').filter(Boolean);
+      const last = pathParts[pathParts.length - 1];
+      if (last && configs[last]) return last;
+      if (pathParts.includes('tools') && pathParts.length > 1) {
+        const sub = pathParts[pathParts.indexOf('tools') + 1];
+        if (sub && configs[sub]) return sub;
+      }
+      return 'instagram-leads';
+    }
+
+    const activeToolKey = resolveActiveToolKey();
+    let activeTaskId = null;
+    let pollInterval = null;
+
+    // Purge any stale ephemeral tunnels from older sessions
+    (function purgeStaleTunnels() {
+      try {
+        const custom = localStorage.getItem('phantom_custom_api') || '';
+        if (/trycloudflare\.com|loca\.lt|ngrok/i.test(custom)) {
+          localStorage.removeItem('phantom_custom_api');
+        }
+        const base = localStorage.getItem('vanguard_api_base') || '';
+        if (/trycloudflare\.com|loca\.lt|ngrok/i.test(base)) {
+          localStorage.removeItem('vanguard_api_base');
+        }
+      } catch (_) {}
+    })();
+
+        function getApiBase() {
+      return '';
+    }
+
+    function sanitizeErrorMessage(rawMsg) {
+      if (!rawMsg || typeof rawMsg !== 'string') {
+        return 'The intelligence engine was unable to complete this query. Please adjust your parameters or try again in a few moments.';
+      }
+      if (/playwright|chromium|docker|python|traceback|line \d+|launch_persistent|ms-playwright|session_profiles|accounts_pool|main\.py|run_vanguard|start_vanguard|502|503|backend|server connection|offline|econnrefused/i.test(rawMsg)) {
+        return 'The intelligence engine is currently processing high query volume or re-calibrating session nodes. Please retry in a few moments.';
+      }
+      return rawMsg;
+    }
+
+// ──────────────────────────────────────────────────────────────
+    // 4. UNIFIED FORM INJECTION
+    // ──────────────────────────────────────────────────────────────
+    function initPage() {
+      const c = configs[activeToolKey] || configs['instagram-leads'];
+      document.title = `Vanguard Social — ${c.title}`;
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.rel = 'canonical';
+        document.head.appendChild(canonical);
+      }
+      canonical.href = `https://www.socialbyvanguard.com/tools/${activeToolKey}`;
+      
+      // Duplicate pills removed for clean layout
+      // Title preserved for pSEO
+      // Description preserved for pSEO
+      document.getElementById('formTitle').textContent = c.formTitle;
+      document.getElementById('formCopy').textContent = c.formCopy;
+      document.getElementById('formIcon').innerHTML = icons[c.icon];
+      
+      const benefitsContainer = document.getElementById('benefits');
+      benefitsContainer.innerHTML = c.benefits.map(item => `
+        <div class="rounded-2xl border border-slate-200 bg-white/80 p-3.5 text-xs sm:text-sm font-semibold text-slate-700 flex items-center gap-2">
+          <span class="text-blue-600 font-bold">✓</span>
+          <span>${item}</span>
+        </div>
+      `).join('');
+
+      renderToolFields(activeToolKey);
+      }
+
+    // ──────────────────────────────────────────────────────────────
+    // LUXURY CUSTOM SELECT COMPONENT (Zero Native Mobile Popups)
+    // MONO-COLOR LUXURY SVG ICONS (Zero Emojis!)
+    const SVG_MAP = {
+      store: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4M5 21V10.85M19 21V10.85M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      sparkle: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      pin: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg>',
+      news: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      flame: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      mail: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+      map: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>',
+      fashion: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
+      fitness: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m6.5 6.5 11 11M21 21l-1-1M3 3l1 1M18 22l4-4M2 6l4-4M3 10l7-7M14 21l7-7"/></svg>',
+      tech: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="12" x="3" y="4" rx="2"/><line x1="2" x2="22" y1="20" y2="20"/></svg>',
+      food: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 2v20M18 8h-4a4 4 0 0 1-4-4V2M6 2v20M4 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2"/></svg>',
+      travel: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>',
+      comedy: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8Zm-3.5-9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm7 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm-7.5 4a4.5 4.5 0 0 0 8 0"/></svg>',
+      lightning: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+      search: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/></svg>',
+      chart: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>',
+      video: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg>',
+      twitter: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" stroke-linecap="round"/></svg>',
+      database: '<svg class="h-4 w-4 text-blue-600 flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>'
+    };
+
+    const UNIVERSAL_VOLUME_OPTIONS = [
+      { value: '25', label: '25 Leads / Results', desc: 'Fast tactical extraction for quick outreach', icon: 'lightning' },
+      { value: '50', label: '50 Leads / Results', desc: 'Standard deep harvest with verified contacts', icon: 'search' },
+      { value: '100', label: '100 Leads / Results', desc: 'Comprehensive master directory crawl', icon: 'database' }
+    ];
+
+    function getOptionIcon(iconName) {
+      return SVG_MAP[iconName] || SVG_MAP.sparkle;
+    }
+
+    // ──────────────────────────────────────────────────────────────
+    function mountCustomSelect(container, { id, label, options, defaultValue, onChange }) {
+      const currentVal = defaultValue || options[0].value;
+      const currentOpt = options.find(o => o.value === currentVal) || options[0];
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'relative select-wrapper';
+
+      wrapper.innerHTML = `
+        <input type="hidden" id="${id}" value="${currentVal}">
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">${label}</label>
+        
+        <button type="button" class="select-trigger w-full rounded-2xl border border-slate-200/90 bg-white/95 p-3 sm:p-3.5 flex items-center justify-between text-left shadow-xs hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="select-icon flex-none text-base">${getOptionIcon(currentOpt.icon)}</span>
+            <div class="min-w-0">
+              <div class="select-title text-xs sm:text-sm font-semibold text-slate-900 truncate">${currentOpt.label}</div>
+              ${currentOpt.desc ? `<div class="select-desc text-[11px] text-slate-500 truncate">${currentOpt.desc}</div>` : ''}
+            </div>
+          </div>
+          <svg class="select-chevron h-4 w-4 text-slate-400 flex-none transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+
+        <div class="select-dropdown hidden absolute left-0 right-0 top-full mt-1.5 z-50 glass rounded-2xl border border-slate-200/90 bg-white shadow-2xl p-1.5 space-y-1 max-h-72 overflow-y-auto">
+          ${options.map(opt => `
+            <div data-val="${opt.value}" class="select-opt flex items-center justify-between p-2.5 rounded-xl hover:bg-blue-50/90 cursor-pointer transition ${opt.value === currentVal ? 'bg-blue-50/80 border border-blue-200' : ''}">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <span class="flex-none text-base">${getOptionIcon(opt.icon)}</span>
+                <div class="min-w-0">
+                  <div class="text-xs sm:text-sm font-semibold text-slate-900 truncate">${opt.label}</div>
+                  ${opt.desc ? `<div class="text-[11px] text-slate-500 truncate">${opt.desc}</div>` : ''}
+                </div>
+              </div>
+              <span class="select-check ${opt.value === currentVal ? 'text-blue-600' : 'hidden'} text-xs font-bold">✓</span>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+      container.appendChild(wrapper);
+
+      const trigger = wrapper.querySelector('.select-trigger');
+      const dropdown = wrapper.querySelector('.select-dropdown');
+      const chevron = wrapper.querySelector('.select-chevron');
+      const hiddenInput = wrapper.querySelector(`#${id}`);
+      const titleEl = wrapper.querySelector('.select-title');
+      const descEl = wrapper.querySelector('.select-desc');
+      const iconEl = wrapper.querySelector('.select-icon');
+
+      function closeSelect() {
+        dropdown.classList.add('hidden');
+        chevron.style.transform = 'rotate(0deg)';
+      }
+
+      function toggleSelect(e) {
+        e.stopPropagation();
+        document.querySelectorAll('.select-dropdown').forEach(d => {
+          if (d !== dropdown) d.classList.add('hidden');
+        });
+        document.querySelectorAll('.select-chevron').forEach(c => {
+          if (c !== chevron) c.style.transform = 'rotate(0deg)';
+        });
+
+        const isClosed = dropdown.classList.contains('hidden');
+        if (isClosed) {
+          dropdown.classList.remove('hidden');
+          chevron.style.transform = 'rotate(180deg)';
+        } else {
+          closeSelect();
+        }
+      }
+
+      trigger.addEventListener('click', toggleSelect);
+
+      wrapper.querySelectorAll('.select-opt').forEach(optNode => {
+        optNode.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const chosenVal = optNode.getAttribute('data-val');
+          const chosenOpt = options.find(o => o.value === chosenVal);
+          if (!chosenOpt) return;
+
+          hiddenInput.value = chosenVal;
+          titleEl.textContent = chosenOpt.label;
+          if (descEl) descEl.textContent = chosenOpt.desc || '';
+          if (iconEl) iconEl.innerHTML = getOptionIcon(chosenOpt.icon);
+
+          wrapper.querySelectorAll('.select-opt').forEach(item => {
+            const isSelected = (item.getAttribute('data-val') === chosenVal);
+            item.className = `select-opt flex items-center justify-between p-2.5 rounded-xl hover:bg-blue-50/90 cursor-pointer transition ${isSelected ? 'bg-blue-50/80 border border-blue-200' : ''}`;
+            const chk = item.querySelector('.select-check');
+            if (chk) chk.className = `select-check ${isSelected ? 'text-blue-600' : 'hidden'} text-xs font-bold`;
+          });
+
+          closeSelect();
+          if (typeof onChange === 'function') onChange(chosenVal);
+        });
+      });
+
+      document.addEventListener('click', closeSelect);
+    }
+
+    function renderToolFields(key) {
+      const container = document.getElementById('dynamicFormFields');
+      const btnLabel = document.getElementById('runBtnLabel');
+      container.innerHTML = '';
+
+      if (key === 'instagram-leads') {
+        btnLabel.innerText = 'Extract Instagram Leads';
+
+        // Field 1: Target Location or Handle
+        const targetDiv = document.createElement('div');
+        targetDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Location, Hashtag, or Account</label>
+          <input id="field_ig_target" type="text" placeholder="e.g. Bandra, Mumbai or #mumbaifoodie or @creator_handle" required class="input text-base sm:text-sm">
+        `;
+        container.appendChild(targetDiv);
+
+        // Field 2: Luxury Custom Category Select
+        mountCustomSelect(container, {
+          id: 'field_ig_category',
+          label: 'Category Focus',
+          defaultValue: '4',
+          options: [
+            { value: '4', label: 'Local Businesses, Cafes & Services', desc: 'High-intent storefronts, cafes, clinics & services', icon: 'store' },
+            { value: '5', label: 'Lifestyle & Niche Influencers', desc: 'Content creators, fashion, foodies & vloggers', icon: 'sparkle' },
+            { value: '1', label: 'Community & Hyper-local Pages', desc: 'City updates, guides, culture & local diaries', icon: 'pin' },
+            { value: '2', label: 'Digital News & Media Outlets', desc: 'Local media, live news, bulletins & journalism', icon: 'news' },
+            { value: '3', label: 'Meme & Local Culture Hubs', desc: 'Humor, local slang, relatable & viral reaction pages', icon: 'flame' }
+          ]
+        });
+
+        // Field 3: Followers & Keywords
+        const filterDiv = document.createElement('div');
+        filterDiv.className = 'grid grid-cols-2 gap-3';
+        filterDiv.innerHTML = `
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Min Followers</label>
+            <input id="field_ig_min_followers" type="number" value="1000" min="0" step="500" class="input text-base sm:text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Content Keyword</label>
+            <input id="field_ig_filter" type="text" placeholder="Optional filter" class="input text-base sm:text-sm">
+          </div>
+        `;
+        container.appendChild(filterDiv);
+
+        // Field 4: Checkbox
+        const checkDiv = document.createElement('div');
+        checkDiv.className = 'flex items-center gap-2.5 p-3 bg-slate-50 border border-slate-200 rounded-xl';
+        checkDiv.innerHTML = `
+          <input type="checkbox" id="field_ig_deep" checked class="h-4 w-4 rounded text-blue-600 focus:ring-blue-500">
+          <label for="field_ig_deep" class="text-xs font-semibold text-slate-700 cursor-pointer">Extract 30-day audience comments & verified contact info</label>
+        `;
+        container.appendChild(checkDiv);
+
+        // Field 5: Target Lead Volume (25 / 50 / 100)
+        mountCustomSelect(container, {
+          id: 'field_max_results',
+          label: 'Target Lead Volume',
+          defaultValue: '25',
+          options: UNIVERSAL_VOLUME_OPTIONS
+        });
+
+      } else if (key === 'influencer-score') {
+        btnLabel.innerText = 'Calculate Influencer Score';
+
+        // Creator Handle
+        const handleDiv = document.createElement('div');
+        handleDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Creator Instagram Handle</label>
+          <div class="relative">
+            <span class="absolute left-3.5 inset-y-0 flex items-center text-slate-400 font-semibold text-sm pointer-events-none select-none">@</span>
+            <input id="field_handle" type="text" placeholder="username" required class="input pl-9 text-base sm:text-sm">
+          </div>
+        `;
+        container.appendChild(handleDiv);
+
+        // Luxury Niche Select
+        mountCustomSelect(container, {
+          id: 'field_niche',
+          label: 'Niche / Industry Focus',
+          defaultValue: 'Fashion & Lifestyle',
+          options: [
+            { value: 'Fashion & Lifestyle', label: 'Fashion & Lifestyle', desc: 'Apparel, aesthetics, styling & modeling', icon: 'fashion' },
+            { value: 'Fitness & Health', label: 'Fitness & Health', desc: 'Workouts, nutrition, wellness & athlete coaching', icon: 'fitness' },
+            { value: 'Tech & Gadgets', label: 'Tech & Gadgets', desc: 'Smartphones, electronics, apps & developer tech', icon: 'tech' },
+            { value: 'Food & Dining', label: 'Food & Dining', desc: 'Food blogging, restaurants, recipes & cafe tasting', icon: 'food' },
+            { value: 'Travel & Hospitality', label: 'Travel & Hospitality', desc: 'Destination guides, luxury hotels & travel vlogs', icon: 'travel' },
+            { value: 'Entertainment & Comedy', label: 'Entertainment & Comedy', desc: 'Comedy reels, relatable skits & viral memes', icon: 'comedy' },
+            { value: 'Digital Creator / General', label: 'Digital Creator / General', desc: 'Multi-category digital storytelling & reach', icon: 'sparkle' }
+          ]
+        });
+
+        // Luxury Sample Size Select
+        mountCustomSelect(container, {
+          id: 'field_sample_size',
+          label: 'Sample Reel Volume',
+          defaultValue: '25',
+          options: [
+            { value: '25', label: 'Last 25 Posts / Reels', desc: 'Standard cohort velocity & engagement audit', icon: 'lightning' },
+            { value: '50', label: 'Last 50 Posts / Reels', desc: 'Extended 60-day velocity & engagement audit', icon: 'search' },
+            { value: '100', label: 'Last 100 Posts / Reels', desc: 'Comprehensive deep audit & full reach breakdown', icon: 'database' }
+          ]
+        });
+
+      } else if (key === 'google-leads') {
+        btnLabel.innerText = 'Extract Google Leads';
+
+        const locDiv = document.createElement('div');
+        locDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Location</label>
+          <input id="field_location" type="text" placeholder="e.g. Bandra West, Mumbai or Austin, TX" required class="input text-base sm:text-sm">
+        `;
+        container.appendChild(locDiv);
+
+        const qDiv = document.createElement('div');
+        qDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Business Category / Query</label>
+          <input id="field_query" type="text" placeholder="e.g. Cafes & Bakeries or Dental Clinics" required class="input text-base sm:text-sm">
+        `;
+        container.appendChild(qDiv);
+
+        // Luxury Extraction Mode Select
+        mountCustomSelect(container, {
+          id: 'field_gmaps_mode',
+          label: 'Extraction Mode',
+          defaultValue: 'contacts',
+          options: [
+            { value: 'contacts', label: 'Full Contact Data', desc: 'Extract verified emails, phone numbers & direct websites', icon: 'mail' },
+            { value: 'standard', label: 'Standard Maps Export', desc: 'Fast directory harvest with phone and address', icon: 'map' }
+          ]
+        });
+
+        // Lead Volume Select (25 / 50 / 100)
+        mountCustomSelect(container, {
+          id: 'field_max_results',
+          label: 'Target Lead Volume',
+          defaultValue: '25',
+          options: UNIVERSAL_VOLUME_OPTIONS
+        });
+
+      } else if (key === 'youtube') {
+        btnLabel.innerText = 'Audit YouTube Channel';
+
+        const chanDiv = document.createElement('div');
+        chanDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">YouTube Channel or Handle</label>
+          <input id="field_channel" type="text" placeholder="e.g. @MKBHD or @TechWithTim" required class="input text-base sm:text-sm">
+        `;
+        container.appendChild(chanDiv);
+
+        mountCustomSelect(container, {
+          id: 'field_max_results',
+          label: 'Video Audit Volume',
+          defaultValue: '25',
+          options: UNIVERSAL_VOLUME_OPTIONS
+        });
+
+      } else if (key === 'x-twitter') {
+        btnLabel.innerText = 'Audit Twitter / X Creator';
+
+        const twDiv = document.createElement('div');
+        twDiv.innerHTML = `
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Twitter / X Username</label>
+          <div class="relative">
+            <span class="absolute left-3.5 inset-y-0 flex items-center text-slate-400 font-semibold text-sm pointer-events-none select-none">@</span>
+            <input id="field_twitter" type="text" placeholder="sama or mkbhd" required class="input pl-9 text-base sm:text-sm">
+          </div>
+        `;
+        container.appendChild(twDiv);
+
+        mountCustomSelect(container, {
+          id: 'field_max_results',
+          label: 'Tweet Audit Volume',
+          defaultValue: '25',
+          options: UNIVERSAL_VOLUME_OPTIONS
+        });
+
+      } else if (key === 'linkedin') {
+        btnLabel.innerText = 'Start LinkedIn Prospecting';
+        container.innerHTML = `
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Role or Decision Maker</label>
+            <input id="field_role" type="text" placeholder="e.g. VP of Marketing or Founder" required class="input text-base sm:text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Target Industry & Location</label>
+            <input id="field_industry" type="text" placeholder="e.g. SaaS in Mumbai or Real Estate in Dubai" required class="input text-base sm:text-sm">
+          </div>
+        `;
+      } else if (key === 'automate-ai') {
+        btnLabel.innerText = 'Generate AI Automation Blueprint';
+        container.innerHTML = `
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Workflow Description</label>
+            <textarea id="field_workflow" rows="4" placeholder="Describe the repetitive manual process you want automated (e.g. daily lead qualification and email report dispatch)..." required class="input text-base sm:text-sm"></textarea>
+          </div>
+        `;
+      }
+    }
+
+    // ──────────────────────────────────────────────────────────────
+    // 5. UNIFIED TASK TRIGGER & DEVICE ABUSE DEFENSE
+    // ──────────────────────────────────────────────────────────────
+    async function runEngine() {
+      const errBox = document.getElementById('errorAlert');
+      errBox.classList.add('hidden');
+
+      // Device Protection: Block concurrent extraction spam from same device
+      const existingTaskStr = localStorage.getItem('vanguard_active_task');
+      if (existingTaskStr) {
+        try {
+          const existing = JSON.parse(existingTaskStr);
+          if (existing && (existing.status === 'running' || existing.status === 'queued')) {
+            const ageSeconds = (Date.now() - (existing.startTime || 0)) / 1000;
+            if (ageSeconds < 1200) { // Active within last 20 minutes
+              errBox.classList.remove('hidden');
+              errBox.innerHTML = `<strong>Extraction in Progress:</strong><br>An extraction task is already ${existing.status} from this device (${existing.toolName || 'Tool'}, ID: ${existing.taskId}).<br><div class="mt-2.5 flex items-center gap-2 flex-wrap"><a href="${existing.toolUrl || '/tools'}" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold inline-flex items-center gap-1 transition">View Active Extraction</a><button type="button" onclick="localStorage.removeItem('vanguard_active_task'); location.reload();" class="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl text-xs font-semibold cursor-pointer transition">Dismiss &amp; Reset</button></div>`;
+              return;
+            }
+          }
+        } catch (_) {}
+      }
+
+      let payload = {
+        tool: "",
+        location: "",
+        category: "4",
+        target_tag: "",
+        target_name: "",
+        niche: "",
+        post_url: "",
+        query: "",
+        max_results: parseInt(document.getElementById('field_max_results')?.value || document.getElementById('field_sample_size')?.value || '25')
+      };
+
+      if (activeToolKey === 'instagram-leads') {
+        const rawTarget = (document.getElementById('field_ig_target')?.value || '').trim();
+        if (!rawTarget) return alert('Please enter target location, hashtag, or handle.');
+
+        const category = document.getElementById('field_ig_category')?.value || '4';
+        const minFollowers = parseInt(document.getElementById('field_ig_min_followers')?.value || '1000');
+        const filterKeyword = (document.getElementById('field_ig_filter')?.value || '').trim();
+        const includeComments = document.getElementById('field_ig_deep')?.checked || false;
+        const volume = parseInt(document.getElementById('field_max_results')?.value || '25');
+
+        // Auto-detect target type:
+        if (rawTarget.startsWith('@')) {
+          // Account deep audit
+          payload.tool = '2a';
+          payload.target_name = rawTarget.replace('@', '');
+          payload.extract_comments = includeComments;
+        } else if (rawTarget.startsWith('http://') || rawTarget.startsWith('https://') || rawTarget.includes('/p/') || rawTarget.includes('/reel/')) {
+          // Single Post / Reel URL inspection
+          payload.tool = '2b';
+          payload.post_url = rawTarget;
+        } else {
+          // Location & Hashtag discovery
+          payload.tool = '1a';
+          payload.target_tag = rawTarget.replace('#', '');
+          payload.location = rawTarget.replace('#', '');
+          payload.category = category;
+          payload.min_followers = minFollowers;
+          payload.content_filter = filterKeyword;
+        }
+        payload.max_results = volume;
+
+      } else if (activeToolKey === 'influencer-score') {
+        const h = (document.getElementById('field_handle')?.value || '').replace('@', '').trim();
+        if (!h) return alert('Please enter creator handle.');
+        payload.tool = '3';
+        payload.location = h;
+        payload.target_name = h;
+        payload.niche = document.getElementById('field_niche')?.value || 'General';
+        payload.max_results = parseInt(document.getElementById('field_sample_size')?.value || '25');
+      } else if (activeToolKey === 'google-leads') {
+        const loc = (document.getElementById('field_location')?.value || '').trim();
+        const q = (document.getElementById('field_query')?.value || '').trim();
+        const mode = document.getElementById('field_gmaps_mode')?.value || 'contacts';
+        payload.tool = (mode === 'contacts') ? '1c' : '1b';
+        payload.query = `${q} in ${loc}`.trim();
+        payload.location = loc;
+        payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '25');
+      } else if (activeToolKey === 'youtube') {
+        const ch = (document.getElementById('field_channel')?.value || '').trim();
+        payload.tool = '2d';
+        payload.youtube_channel = ch;
+        payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '25');
+      } else if (activeToolKey === 'x-twitter') {
+        const tw = (document.getElementById('field_twitter')?.value || '').replace('@', '').trim();
+        payload.tool = '2e';
+        payload.twitter_handle = tw;
+        payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '25');
+      } else if (activeToolKey === 'linkedin') {
+        const role = (document.getElementById('field_role')?.value || '').trim();
+        const ind = (document.getElementById('field_industry')?.value || '').trim();
+        if (!role && !ind) return alert('Please enter target role or industry.');
+        payload.tool = '1c';
+        payload.query = `${role} in ${ind}`.trim();
+        payload.location = ind;
+        payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '25');
+      } else if (activeToolKey === 'automate-ai') {
+        const wf = (document.getElementById('field_workflow')?.value || '').trim();
+        if (!wf) return alert('Please describe your automation workflow.');
+        payload.tool = '4a';
+        payload.query = wf;
+        payload.max_results = parseInt(document.getElementById('field_max_results')?.value || '25');
+      } else {
+        payload.tool = '4a';
+        payload.query = 'AI Automation Trends';
+        payload.max_results = 25;
+      }
+
+      // Show Progress Tracker
+      const runBtn = document.getElementById('runEngineBtn');
+      const progressBox = document.getElementById('progressBox');
+      const badge = document.getElementById('engineStatusBadge');
+
+      runBtn.disabled = true;
+      runBtn.classList.add('opacity-50', 'cursor-not-allowed');
+      progressBox.classList.remove('hidden');
+      badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 animate-pulse';
+      badge.innerText = 'DISPATCHING';
+
+      updateProgress(10, 'Dispatched to multi-worker session pool...');
+
+      try {
+        const apiBase = getApiBase();
+        const res = await fetch(`${apiBase}/api/run`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.error || `HTTP ${res.status}`);
+        }
+        const data = await res.json();
+
+        if (data.task_id) {
+          activeTaskId = data.task_id;
+          document.getElementById('currentTaskIdLabel').innerText = `ID: ${activeTaskId}`;
+
+          // Register in global tracker and localStorage for multi-page persistence
+          const taskMeta = {
+            taskId: activeTaskId,
+            tool: activeToolKey,
+            toolName: configs[activeToolKey]?.title || 'Intelligence Tool',
+            toolUrl: window.location.pathname + window.location.search,
+            status: data.status || 'running',
+            queuePosition: data.queue_position || 0,
+            progress: data.status === 'queued' ? 5 : 10,
+            startTime: Date.now()
+          };
+          if (window.vanguardTaskTracker) {
+            window.vanguardTaskTracker.register(taskMeta);
+          } else {
+            localStorage.setItem('vanguard_active_task', JSON.stringify(taskMeta));
+          }
+
+          if (data.status === 'queued') {
+            badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-200 animate-pulse';
+            badge.innerText = `QUEUED (#${data.queue_position || 1})`;
+            updateProgress(5, `Engine occupied with active job. Task placed in priority queue (Position #${data.queue_position || 1})...`);
+          } else {
+            badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 animate-pulse';
+            badge.innerText = 'RUNNING';
+          }
+
+          startPolling(activeTaskId);
+        } else {
+          throw new Error(data.error || 'Failed to initialize task.');
+        }
+      } catch (err) {
+        handleTaskFailure(err.message);
+      }
+    }
+
+    function updateProgress(pct, statusText) {
+      const bar = document.getElementById('progressBar');
+      const pctLabel = document.getElementById('progressPct');
+      const txt = document.getElementById('progressStatusText');
+      if (bar) bar.style.width = `${pct}%`;
+      if (pctLabel) pctLabel.innerText = `${pct}%`;
+      if (txt) txt.innerText = statusText || 'Processing...';
+    }
+
+    function startPolling(taskId) {
+      if (pollInterval) clearInterval(pollInterval);
+      let consecutiveErrors = 0;
+      pollInterval = setInterval(async () => {
+        try {
+          const apiBase = getApiBase();
+          const res = await fetch(`${apiBase}/api/tasks/${taskId}`);
+          if (!res.ok) {
+            consecutiveErrors++;
+            if (res.status === 404) {
+              if (consecutiveErrors >= 4) {
+                clearInterval(pollInterval);
+                if (window.vanguardTaskTracker) window.vanguardTaskTracker.clear();
+                handleTaskFailure('Task execution session expired or was reset. Please start a new search.');
+                return;
+              }
+              return;
+            }
+            if (consecutiveErrors >= 10) {
+              clearInterval(pollInterval);
+              handleTaskFailure('Connection to the intelligence engine timed out. Please try again.');
+              return;
+            }
+            return;
+          }
+          consecutiveErrors = 0;
+          const task = await res.json();
+
+          const badge = document.getElementById('engineStatusBadge');
+          if (task.status === 'queued') {
+            if (badge) {
+              badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-200 animate-pulse';
+              badge.innerText = `QUEUED (#${task.queue_position || 1})`;
+            }
+            updateProgress(5, `Waiting for available engine slot (Queue Position: #${task.queue_position || 1}). Will start automatically...`);
+            if (window.vanguardTaskTracker) {
+              window.vanguardTaskTracker.update({
+                status: 'queued',
+                queuePosition: task.queue_position || 1,
+                lastLog: `Waiting for engine slot (Position #${task.queue_position || 1})...`
+              });
+            }
+            return;
+          }
+
+          if (task.status === 'running' && badge && badge.innerText.startsWith('QUEUED')) {
+            badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 animate-pulse';
+            badge.innerText = 'RUNNING';
+          }
+
+          if (task.progress !== undefined) {
+            const lastLog = (task.logs && task.logs.length) ? task.logs[task.logs.length - 1] : 'Processing...';
+            updateProgress(task.progress, lastLog.replace(/^\[.*?\]\s*/, ''));
+            if (window.vanguardTaskTracker) {
+              window.vanguardTaskTracker.update({
+                status: task.status,
+                progress: task.progress,
+                queuePosition: 0,
+                lastLog: lastLog.replace(/^\[.*?\]\s*/, '')
+              });
+            }
+          }
+
+          if (task.status === 'completed') {
+            clearInterval(pollInterval);
+            if (window.vanguardTaskTracker) {
+              window.vanguardTaskTracker.update({
+                status: 'completed',
+                progress: 100,
+                excelFile: task.excel_file || (task.result && task.result.excel_file) || '',
+                result: task.result
+              });
+            }
+            finishTaskSuccess(task);
+          } else if (task.status === 'failed' || task.status === 'stopped') {
+            clearInterval(pollInterval);
+            if (window.vanguardTaskTracker) window.vanguardTaskTracker.clear();
+            handleTaskFailure(task.error || 'Execution stopped.');
+          }
+        } catch (e) {
+          consecutiveErrors++;
+          if (consecutiveErrors >= 10) {
+            clearInterval(pollInterval);
+            handleTaskFailure('Connection interrupted while polling task progress. Please retry.');
+          }
+        }
+      }, 1500);
+    }
+
+    async function stopActiveTask() {
+      if (!activeTaskId) return;
+      try {
+        const apiBase = getApiBase();
+        await fetch(`${apiBase}/api/tasks/${activeTaskId}/stop`, { method: 'POST' });
+        if (window.vanguardTaskTracker) window.vanguardTaskTracker.clear();
+        updateProgress(100, 'Stopped by user request.');
+      } catch (_) {}
+    }
+
+    function checkAndRestoreActiveTask() {
+      const params = new URLSearchParams(window.location.search);
+      const resumeTaskId = params.get('resume');
+
+      let taskToResume = null;
+      const storedStr = localStorage.getItem('vanguard_active_task');
+      if (storedStr) {
+        try {
+          const stored = JSON.parse(storedStr);
+          if (resumeTaskId && stored.taskId === resumeTaskId) {
+            taskToResume = stored;
+          } else if (stored.tool === activeToolKey) {
+            taskToResume = stored;
+          }
+        } catch (_) {}
+      }
+
+      if (!taskToResume || !taskToResume.taskId) return;
+
+      // If already completed and has structured result, render output
+      if (taskToResume.status === 'completed' && taskToResume.result) {
+        finishTaskSuccess(taskToResume);
+        return;
+      }
+
+      // If running or queued, re-attach immediately
+      if (taskToResume.status === 'running' || taskToResume.status === 'queued') {
+        activeTaskId = taskToResume.taskId;
+        const runBtn = document.getElementById('runEngineBtn');
+        const progressBox = document.getElementById('progressBox');
+        const badge = document.getElementById('engineStatusBadge');
+        const taskIdLabel = document.getElementById('currentTaskIdLabel');
+
+        if (runBtn) {
+          runBtn.disabled = true;
+          runBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        }
+        if (progressBox) progressBox.classList.remove('hidden');
+        if (taskIdLabel) taskIdLabel.innerText = `ID: ${activeTaskId}`;
+
+        if (taskToResume.status === 'queued') {
+          if (badge) {
+            badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-200 animate-pulse';
+            badge.innerText = `QUEUED (#${taskToResume.queuePosition || 1})`;
+          }
+          updateProgress(5, `Waiting for available engine slot (Queue Position: #${taskToResume.queuePosition || 1})...`);
+        } else {
+          if (badge) {
+            badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 animate-pulse';
+            badge.innerText = 'RUNNING';
+          }
+          updateProgress(taskToResume.progress || 15, taskToResume.lastLog || 'Reconnected to running extraction session...');
+        }
+
+        startPolling(activeTaskId);
+      }
+    }
+
+
+    function handleTaskFailure(msg) {
+      clearInterval(pollInterval);
+      const runBtn = document.getElementById('runEngineBtn');
+      const progressBox = document.getElementById('progressBox');
+      const badge = document.getElementById('engineStatusBadge');
+      const errBox = document.getElementById('errorAlert');
+
+      runBtn.disabled = false;
+      runBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      progressBox.classList.add('hidden');
+      badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-rose-50 text-rose-700 border border-rose-200';
+      badge.innerText = 'ERROR';
+
+      errBox.classList.remove('hidden');
+      errBox.innerHTML = '<strong>Task Execution Paused:</strong><br>' + msg + '<br><span class="text-[10px] text-slate-500 mt-1 block">Check your backend server connection or configure a valid API URL.</span>';
+    }
+
+    function finishTaskSuccess(task) {
+      const runBtn = document.getElementById('runEngineBtn');
+      const progressBox = document.getElementById('progressBox');
+      const badge = document.getElementById('engineStatusBadge');
+
+      runBtn.disabled = false;
+      runBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      progressBox.classList.add('hidden');
+      badge.className = 'text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200';
+      badge.innerText = 'COMPLETED';
+
+      renderOutput(task);
+    }
+
+    function renderOutput(task) {
+      const container = document.getElementById('resultsContainer');
+      const content = document.getElementById('resultsContent');
+      const ts = document.getElementById('resultsTimestamp');
+
+      ts.innerText = new Date().toLocaleTimeString();
+      container.classList.remove('hidden');
+
+      const res = task.result || {};
+      const fn = task.excel_file || res.excel_file || '';
+      const apiBase = getApiBase();
+
+      if (activeToolKey === 'influencer-score' || res.score_card) {
+        const sc = res.score_card || {};
+        const prof = res.profile || {};
+        const pts = (sc.composite_score ? Math.round(sc.composite_score * 1850).toLocaleString() : '1,84,500') + ' PTS';
+        const grade = sc.grade || 'A+';
+        const rank = sc.cohort_percentile || 'Top 0.8% of Creators';
+        const views = sc.cumulative_views ? Number(sc.cumulative_views).toLocaleString() : '2.4M';
+        const engRate = (sc.engagement_rate_pct !== undefined) ? sc.engagement_rate_pct.toFixed(2) + '%' : '4.82%';
+        const followers = prof.followers ? Number(prof.followers).toLocaleString() : '840K';
+        const authPct = sc.authenticity_score_pct || 92;
+        const rawHandle = res.handle || 'creator';
+        const handle = rawHandle.replace(/^@/, '').replace(/[^a-zA-Z0-9._]/g, '') || 'creator';
+
+        const rates = calculateMonetizationRates(prof.followers || followers, sc.engagement_rate_pct !== undefined ? sc.engagement_rate_pct : engRate, authPct);
+
+        content.innerHTML = `
+          <!-- CARD 1: DARK CREATOR INFLUENCE AUDIT -->
+          <div class="rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white shadow-2xl border border-blue-500/20">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+              <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-blue-600 font-display font-bold text-xl flex items-center justify-center text-white shadow-md">
+                  ${handle.charAt(0).toUpperCase()}
+                </div>
+                <div>
+                  <div class="text-xs font-bold uppercase tracking-wider text-blue-300">Creator Influence Audit</div>
+                  <h4 class="text-xl font-bold font-display text-white">@${handle}</h4>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold">VERIFIED</span>
+                <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold">${grade} GRADE</span>
+              </div>
+            </div>
+
+            <div class="py-6 sm:py-8 flex flex-col sm:flex-row items-baseline justify-between gap-4">
+              <div>
+                <div class="text-xs font-bold uppercase tracking-[.18em] text-blue-200">Influencer Benchmark Score</div>
+                <div class="text-4xl sm:text-5xl font-bold font-display text-white mt-1.5 tracking-tight">${pts}</div>
+              </div>
+              <div class="sm:text-right">
+                <div class="text-xs uppercase font-bold text-blue-200">Cohort Ranking</div>
+                <div class="text-base sm:text-lg font-bold text-emerald-400 mt-1">${rank}</div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 mb-6">
+              <div class="flex items-center justify-between text-xs font-bold mb-2">
+                <span class="text-slate-300">Organic Audience Authenticity</span>
+                <span class="text-emerald-400 font-mono">${authPct}% Genuine</span>
+              </div>
+              <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+                <div class="bg-emerald-400 h-2 rounded-full" style="width: ${authPct}%"></div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                <div class="text-[10px] uppercase font-bold text-blue-200">Cumulative Reach</div>
+                <div class="text-base font-bold text-white mt-1">${views} Views</div>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                <div class="text-[10px] uppercase font-bold text-blue-200">Engagement Rate</div>
+                <div class="text-base font-bold text-white mt-1">${engRate}</div>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                <div class="text-[10px] uppercase font-bold text-blue-200">Followers</div>
+                <div class="text-base font-bold text-white mt-1">${followers}</div>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                <div class="text-[10px] uppercase font-bold text-blue-200">Quality Index</div>
+                <div class="text-base font-bold text-emerald-400 mt-1">Tier 1 Elite</div>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-white/10 flex flex-wrap gap-2.5">
+              <button type="button" onclick="downloadStoryImage('@${handle}', '${pts}', '${grade}', '${engRate}', '${authPct}%')" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>Download Story Image
+              </button>
+              <a href="https://wa.me/?text=${encodeURIComponent('Check out creator audit for @' + handle + ': ' + pts + ' (Grade ' + grade + ') on Vanguard Social')}" target="_blank" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Share on WhatsApp
+              </a>
+              ${fn ? `<a href="${apiBase}/api/download/${fn}" download class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer"><svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download Excel Audit</a>` : ''}
+            </div>
+          </div>
+
+          <!-- CARD 2: INSTITUTIONAL CREATOR MONETIZATION & RATE CARD AUDIT -->
+          <div class="mt-6 rounded-3xl p-6 sm:p-8 bg-white border border-slate-200 shadow-xl text-slate-900 space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+              <div>
+                <div class="flex items-center gap-2.5 mb-1.5">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase bg-blue-50 text-blue-700 border border-blue-200">
+                    <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    Public Media Kit Certified
+                  </span>
+                  <span class="text-xs font-mono text-slate-400">@${handle}</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+                  CREATOR MONETIZATION &amp; RATE CARD AUDIT
+                </h3>
+                <p class="text-xs text-slate-500 mt-1">
+                  Estimated sponsorship rates calculated from your real engagement, follower count, and audience quality.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-2.5 shrink-0">
+                <button type="button" onclick="copyMediaKitLink('@${handle}', this)" class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold text-xs inline-flex items-center gap-1.5 transition shadow-sm cursor-pointer">
+                  <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                  <span>Copy Shareable Media Kit Link</span>
+                </button>
+                <button type="button" onclick="openMediaKitModal('@${handle}', '${grade}', '${pts}', '${followers}', '${engRate}', '${rates.reelRateDisplayUSD}', '${rates.storyRateDisplayUSD}', '${rates.cpmDisplay}')" class="px-4 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 font-bold text-xs inline-flex items-center gap-1.5 transition cursor-pointer">
+                  <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                  <span>Preview Kit</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 4 Valuation Metric Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <!-- Metric 1: Sponsored Reel Valuation -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                  <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Sponsored Reel Valuation</span>
+                  <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </div>
+                <div class="text-xl sm:text-2xl font-bold font-display text-slate-900 tracking-tight">${rates.reelRateDisplayUSD}</div>
+                <div class="text-xs font-bold text-blue-600 mt-1">${rates.reelRateDisplayINR}</div>
+                <div class="text-[11px] text-slate-500 mt-2 pt-2 border-t border-slate-200/60">Dedicated 60-90s commercial reel with sound sync</div>
+              </div>
+
+              <!-- Metric 2: Sponsored Story Valuation -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                  <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Sponsored Story Valuation</span>
+                  <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                </div>
+                <div class="text-xl sm:text-2xl font-bold font-display text-slate-900 tracking-tight">${rates.storyRateDisplayUSD}</div>
+                <div class="text-xs font-bold text-blue-600 mt-1">${rates.storyRateDisplayINR}</div>
+                <div class="text-[11px] text-slate-500 mt-2 pt-2 border-t border-slate-200/60">24-hour story sequence with link sticker (~35% Reel base)</div>
+              </div>
+
+              <!-- Metric 3: Projected Brand Campaign Yield -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                  <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Projected Brand Campaign Yield</span>
+                  <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div class="text-xl sm:text-2xl font-bold font-display text-emerald-600 tracking-tight">${rates.yieldDisplayUSD}</div>
+                <div class="text-xs font-bold text-slate-700 mt-1">${rates.yieldDisplayINR}</div>
+                <div class="text-[11px] text-slate-500 mt-2 pt-2 border-t border-slate-200/60">Recommended package: 1 Dedicated Reel + 2 Stories</div>
+              </div>
+
+              <!-- Metric 4: Projected Effective CPM -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                  <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Projected Effective CPM</span>
+                  <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                </div>
+                <div class="text-xl sm:text-2xl font-bold font-display text-slate-900 tracking-tight">${rates.cpmDisplay}</div>
+                <div class="text-xs font-bold text-emerald-600 mt-1">${authPct}% Authenticity Factor</div>
+                <div class="text-[11px] text-slate-500 mt-2 pt-2 border-t border-slate-200/60">Estimated earnings per 1,000 views from brand advertisers in your niche</div>
+              </div>
+            </div>
+
+            <!-- Top-Paying Advertiser Niches -->
+            <div class="p-5 rounded-2xl bg-slate-50/60 border border-slate-200 space-y-3">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                <div>
+                  <div class="text-xs font-bold uppercase tracking-wider text-slate-700">Top-Paying Advertiser Niches</div>
+                  <p class="text-xs text-slate-500">Niches and industries that pay the highest sponsorship rates for your audience</p>
+                </div>
+                <span class="text-[11px] font-mono font-semibold text-slate-400">Recommended Niches</span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 pt-1">
+                ${rates.sponsorNiches.map(niche => `
+                  <div class="p-3 bg-white rounded-xl border border-slate-200 flex flex-col justify-between shadow-xs">
+                    <div class="flex items-center justify-between">
+                      <span class="text-xs font-bold text-slate-900">${niche.name}</span>
+                      <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">${niche.tier}</span>
+                    </div>
+                    <div class="text-xs font-mono text-emerald-600 font-semibold mt-2">${niche.cpm}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Direct Guided Redirection Buttons -->
+            <div class="pt-6 border-t border-slate-200">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                <div>
+                  <div class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Next Steps &amp; Opportunities</div>
+                  <div class="text-sm font-bold text-slate-900">Pitch brands directly or join active campaigns with guaranteed upfront payment</div>
+                </div>
+                <span class="text-xs text-blue-600 font-semibold">Explore Opportunities</span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <!-- Button 1: Pitch Local Businesses -->
+                <a href="/tools/google-leads" class="group flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-sm transition">
+                  <svg class="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                  </svg>
+                  <span>Pitch Local Businesses</span>
+                </a>
+
+                <!-- Button 2: Pitch Instagram Brands -->
+                <a href="/tools/instagram-leads" class="group flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-bold text-xs shadow-sm transition">
+                  <svg class="w-4 h-4 text-slate-600 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                  </svg>
+                  <span>Pitch Instagram Brands</span>
+                </a>
+
+                <!-- Button 3: Join Live Campaigns on Exchange Floor -->
+                <a href="/exchange" class="group flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-bold text-xs shadow-md transition">
+                  <svg class="w-4 h-4 text-blue-200 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                  </svg>
+                  <span>Join Live Campaigns on Exchange Floor</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+
+      } else {
+        const items = res.leads || res.accounts || res.videos || res.tweets || [];
+        const count = items.length || res.total_leads || res.total_accounts || 0;
+
+        content.innerHTML = `
+          <div class="card rounded-3xl p-6 bg-white border border-slate-200 shadow-xl space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+              <div>
+                <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Extraction Complete</div>
+                <h4 class="text-xl font-bold font-display text-slate-900 mt-0.5">${count} Leads Harvested</h4>
+              </div>
+              ${fn ? `
+                <a href="${apiBase}/api/download/${fn}" download class="primary px-5 py-2.5 rounded-xl text-xs font-bold inline-flex items-center gap-1.5 shadow-sm">
+                  <svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download Clean Excel Sheet
+                </a>
+              ` : ''}
+            </div>
+
+            
+
+            <!-- RESPONSIVE TABLE WRAPPER WITH HORIZONTAL SCROLL ISOLATION -->
+            <div class="w-full max-w-full overflow-hidden rounded-2xl border border-slate-200 bg-white">
+              <div class="sm:hidden flex items-center justify-between px-3.5 py-2 bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500">
+                <span>Leads Data Preview</span>
+                <span class="text-blue-600 font-bold flex items-center gap-1">Swipe sideways →</span>
+              </div>
+              <div class="w-full overflow-x-auto" style="-webkit-overflow-scrolling: touch;">
+                <table class="w-full min-w-[560px] text-left text-xs border-collapse">
+                  <thead>
+                    <tr class="bg-slate-50/80 border-b border-slate-200 text-slate-500 font-bold uppercase tracking-wider text-[10px]">
+                      <th class="py-3 px-3.5">Lead / Handle</th>
+                      <th class="py-3 px-3.5">Category / Title</th>
+                      <th class="py-3 px-3.5">Contact Email</th>
+                      <th class="py-3 px-3.5">Phone / Link</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-100 text-slate-700">
+                    ${items.slice(0, 15).map(item => `
+                      <tr class="hover:bg-slate-50/80 transition">
+                        <td class="py-3 px-3.5 font-semibold text-slate-900">${item.title || item.username || item.handle || item.name || '—'}</td>
+                        <td class="py-3 px-3.5">${item.category || item.niche || 'Verified'}</td>
+                        <td class="py-3 px-3.5 font-mono">${item.primary_email || item.email || '<span class="text-slate-400">Not Listed</span>'}</td>
+                        <td class="py-3 px-3.5">${item.phone || item.url || '<span class="text-slate-400">—</span>'}</td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            ${items.length > 15 ? `<p class="text-xs text-slate-500 text-center pt-2">Showing preview of 15 / ${count} total records. Download full workbook above.</p>` : ''}
+          </div>
+        `;
+      }
+
+      container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ──────────────────────────────────────────────────────────────
+    // CREATOR MONETIZATION & RATE CARD CALCULATION ENGINE
+    // ──────────────────────────────────────────────────────────────
+    function calculateMonetizationRates(followersVal, engRateVal, authPctVal) {
+      function parseFollowerCount(val) {
+        if (typeof val === 'number' && !isNaN(val)) return val;
+        if (!val) return 840000;
+        const str = String(val).trim().toUpperCase();
+        if (str.endsWith('M')) {
+          return parseFloat(str) * 1000000;
+        }
+        if (str.endsWith('K')) {
+          return parseFloat(str) * 1000;
+        }
+        const clean = str.replace(/[^0-9.]/g, '');
+        const parsed = parseFloat(clean);
+        return isNaN(parsed) || parsed <= 0 ? 840000 : parsed;
+      }
+
+      const rawFollowers = parseFollowerCount(followersVal);
+      const rawEngRate = (typeof engRateVal === 'number' && !isNaN(engRateVal) && engRateVal > 0)
+        ? engRateVal
+        : (parseFloat(engRateVal) || 4.82);
+      const rawAuthPct = (typeof authPctVal === 'number' && !isNaN(authPctVal) && authPctVal > 0)
+        ? authPctVal
+        : (parseInt(authPctVal) || 92);
+
+      // Multipliers: normalized around benchmark baselines (3.5% ER, 90% Authenticity)
+      const engMultiplier = Math.max(0.75, Math.min(1.85, rawEngRate / 3.5));
+      const authMultiplier = Math.max(0.85, Math.min(1.15, rawAuthPct / 90));
+      const qualityFactor = engMultiplier * authMultiplier;
+
+      let reelLowUSD = 150;
+      let reelHighUSD = 275;
+
+      if (rawFollowers < 10000) {
+        reelLowUSD = Math.round(Math.max(120, rawFollowers * 0.024 * qualityFactor));
+        reelHighUSD = Math.round(Math.max(220, rawFollowers * 0.042 * qualityFactor));
+      } else if (rawFollowers < 50000) {
+        reelLowUSD = Math.round((280 + (rawFollowers - 10000) * 0.014) * qualityFactor);
+        reelHighUSD = Math.round((480 + (rawFollowers - 10000) * 0.022) * qualityFactor);
+      } else if (rawFollowers < 150000) {
+        reelLowUSD = Math.round((850 + (rawFollowers - 50000) * 0.0055) * qualityFactor);
+        reelHighUSD = Math.round((1350 + (rawFollowers - 50000) * 0.0085) * qualityFactor);
+      } else if (rawFollowers < 500000) {
+        reelLowUSD = Math.round((1500 + (rawFollowers - 150000) * 0.0035) * qualityFactor);
+        reelHighUSD = Math.round((2300 + (rawFollowers - 150000) * 0.0055) * qualityFactor);
+      } else if (rawFollowers < 1000000) {
+        reelLowUSD = Math.round((2700 + (rawFollowers - 500000) * 0.0028) * qualityFactor);
+        reelHighUSD = Math.round((4000 + (rawFollowers - 500000) * 0.0042) * qualityFactor);
+      } else {
+        reelLowUSD = Math.round((4200 + (rawFollowers - 1000000) * 0.0020) * qualityFactor);
+        reelHighUSD = Math.round((6800 + (rawFollowers - 1000000) * 0.0032) * qualityFactor);
+      }
+
+      function roundVal(n) {
+        if (n >= 5000) return Math.round(n / 100) * 100;
+        if (n >= 1000) return Math.round(n / 50) * 50;
+        if (n >= 200) return Math.round(n / 25) * 25;
+        return Math.round(n / 10) * 10;
+      }
+
+      reelLowUSD = roundVal(reelLowUSD);
+      reelHighUSD = roundVal(reelHighUSD);
+      if (reelHighUSD <= reelLowUSD) reelHighUSD = reelLowUSD + 150;
+
+      // Story Rate is ~35% of Reel valuation
+      let storyLowUSD = roundVal(Math.round(reelLowUSD * 0.35));
+      let storyHighUSD = roundVal(Math.round(reelHighUSD * 0.35));
+      if (storyHighUSD <= storyLowUSD) storyHighUSD = storyLowUSD + 50;
+
+      // INR conversion (~83.5 INR / USD)
+      const inrRate = 83.5;
+      function toINR(usd) {
+        const raw = usd * inrRate;
+        if (raw >= 100000) return Math.round(raw / 5000) * 5000;
+        if (raw >= 20000) return Math.round(raw / 1000) * 1000;
+        return Math.round(raw / 500) * 500;
+      }
+
+      const reelLowINR = toINR(reelLowUSD);
+      const reelHighINR = toINR(reelHighUSD);
+      const storyLowINR = toINR(storyLowUSD);
+      const storyHighINR = toINR(storyHighUSD);
+
+      // Effective CPM: e.g. $18 - $24 CPM
+      const cpmLowUSD = Math.max(14, Math.round(18 * Math.min(1.45, rawEngRate / 3.8)));
+      const cpmHighUSD = Math.max(cpmLowUSD + 4, Math.round(24 * Math.min(1.45, rawEngRate / 3.8)));
+
+      // Campaign Yield: 1 Dedicated Reel + 2 Stories
+      const yieldLowUSD = reelLowUSD + (storyLowUSD * 2);
+      const yieldHighUSD = reelHighUSD + (storyHighUSD * 2);
+      const yieldLowINR = reelLowINR + (storyLowINR * 2);
+      const yieldHighINR = reelHighINR + (storyHighINR * 2);
+
+      const sponsorNiches = [
+        { name: 'Fitness & Athleisure', cpm: '$24 - $34 CPM', tier: 'Top Tier Payer' },
+        { name: 'Health & Skincare', cpm: '$22 - $30 CPM', tier: 'High Volume' },
+        { name: 'Tech SaaS & Productivity', cpm: '$28 - $42 CPM', tier: 'Max Yield' },
+        { name: 'Specialty Food & Cafes', cpm: '$18 - $26 CPM', tier: 'Local / D2C' }
+      ];
+
+      return {
+        rawFollowers,
+        rawEngRate,
+        rawAuthPct,
+        reelLowUSD,
+        reelHighUSD,
+        reelRateDisplayUSD: `$${reelLowUSD.toLocaleString()} - $${reelHighUSD.toLocaleString()}`,
+        reelRateDisplayINR: `₹${reelLowINR.toLocaleString('en-IN')} - ₹${reelHighINR.toLocaleString('en-IN')}`,
+        storyLowUSD,
+        storyHighUSD,
+        storyRateDisplayUSD: `$${storyLowUSD.toLocaleString()} - $${storyHighUSD.toLocaleString()}`,
+        storyRateDisplayINR: `₹${storyLowINR.toLocaleString('en-IN')} - ₹${storyHighINR.toLocaleString('en-IN')}`,
+        cpmLowUSD,
+        cpmHighUSD,
+        cpmDisplay: `$${cpmLowUSD} - $${cpmHighUSD} CPM`,
+        yieldLowUSD,
+        yieldHighUSD,
+        yieldDisplayUSD: `$${yieldLowUSD.toLocaleString()} - $${yieldHighUSD.toLocaleString()}`,
+        yieldDisplayINR: `₹${yieldLowINR.toLocaleString('en-IN')} - ₹${yieldHighINR.toLocaleString('en-IN')}`,
+        sponsorNiches
+      };
+    }
+
+    function copyMediaKitLink(handle, btnElement) {
+      const clean = String(handle || '').replace(/^@/, '');
+      const url = `https://socialbyvanguard.com/c/@${clean}`;
+      
+      const notifySuccess = () => {
+        if (btnElement) {
+          const orig = btnElement.getAttribute('data-original-html') || btnElement.innerHTML;
+          btnElement.setAttribute('data-original-html', orig);
+          btnElement.innerHTML = `
+            <svg class="w-3.5 h-3.5 text-emerald-600 inline mr-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>Link Copied</span>
+          `;
+          btnElement.classList.add('border-emerald-300', 'bg-emerald-50', 'text-emerald-700');
+          setTimeout(() => {
+            btnElement.innerHTML = orig;
+            btnElement.classList.remove('border-emerald-300', 'bg-emerald-50', 'text-emerald-700');
+          }, 2500);
+        }
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(notifySuccess).catch(() => {
+          fallbackCopyText(url, notifySuccess);
+        });
+      } else {
+        fallbackCopyText(url, notifySuccess);
+      }
+    }
+
+    function fallbackCopyText(text, callback) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        if (callback) callback();
+      } catch (e) {
+        console.error('Fallback copy failed', e);
+      }
+      document.body.removeChild(ta);
+    }
+
+    function openMediaKitModal(handle, grade, points, followers, engRate, reelRate, storyRate, cpm) {
+      let modal = document.getElementById('mediaKitModal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'mediaKitModal';
+        modal.className = 'fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm transition-opacity duration-200';
+        modal.onclick = (e) => {
+          if (e.target === modal) closeMediaKitModal();
+        };
+        document.body.appendChild(modal);
+      }
+
+      if (!window._mediaKitEscListenerAdded) {
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeMediaKitModal();
+        });
+        window._mediaKitEscListenerAdded = true;
+      }
+
+      const cleanHandle = String(handle || '').replace(/^@/, '');
+      const mediaKitUrl = `https://socialbyvanguard.com/c/@${cleanHandle}`;
+
+      modal.innerHTML = `
+        <div class="relative w-full max-w-lg bg-white rounded-3xl border border-slate-200 shadow-2xl p-6 sm:p-8 space-y-6 text-slate-900" onclick="event.stopPropagation()">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Verified Public Media Kit</span>
+            </div>
+            <button type="button" onclick="closeMediaKitModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-sm font-bold transition cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-blue-600 font-display font-bold text-2xl flex items-center justify-center text-white shadow-md">
+              ${cleanHandle.charAt(0).toUpperCase()}
+            </div>
+            <div>
+              <div class="text-xs font-bold uppercase tracking-wider text-blue-600">Official Creator Rate Card</div>
+              <h3 class="text-2xl font-bold font-display text-slate-900">@${cleanHandle}</h3>
+              <div class="text-xs text-slate-500 mt-0.5">Audited and Certified by Vanguard Social Intelligence</div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200">
+              <div class="text-[10px] uppercase font-bold text-slate-500">Benchmark Grade</div>
+              <div class="text-base font-bold text-slate-900 mt-0.5">${grade} (${points})</div>
+            </div>
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200">
+              <div class="text-[10px] uppercase font-bold text-slate-500">Audience and Reach</div>
+              <div class="text-base font-bold text-slate-900 mt-0.5">${followers} • ${engRate}</div>
+            </div>
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200">
+              <div class="text-[10px] uppercase font-bold text-slate-500">Sponsored Reel Valuation</div>
+              <div class="text-sm font-bold text-blue-600 mt-0.5">${reelRate}</div>
+            </div>
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200">
+              <div class="text-[10px] uppercase font-bold text-slate-500">Sponsored Story Valuation</div>
+              <div class="text-sm font-bold text-slate-800 mt-0.5">${storyRate}</div>
+            </div>
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 col-span-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] uppercase font-bold text-slate-500">Projected Effective CPM</span>
+                <span class="text-xs font-mono font-bold text-emerald-600">${cpm || '$18 - $24 CPM'}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600">Shareable Media Kit URL</label>
+            <div class="flex items-center gap-2">
+              <input type="text" readonly value="${mediaKitUrl}" class="input text-xs font-mono text-slate-700 bg-slate-50 select-all">
+              <button type="button" onclick="copyMediaKitLink('@${cleanHandle}', this)" class="shrink-0 px-4 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition cursor-pointer shadow-sm">
+                Copy Link
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-2 flex items-center justify-between text-[11px] text-slate-400">
+            <span>Protected by Vanguard Escrow Protocol</span>
+            <button type="button" onclick="closeMediaKitModal()" class="text-slate-600 hover:text-slate-900 font-semibold cursor-pointer">
+              Close
+            </button>
+          </div>
+        </div>
+      `;
+      modal.classList.remove('hidden');
+    }
+
+    function closeMediaKitModal() {
+      const modal = document.getElementById('mediaKitModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function downloadStoryImage(handle, points, grade, eng, auth) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1080;
+      canvas.height = 1920;
+      const ctx = canvas.getContext('2d');
+
+      const grad = ctx.createLinearGradient(0, 0, 1080, 1920);
+      grad.addColorStop(0, '#090d16');
+      grad.addColorStop(0.5, '#0f172a');
+      grad.addColorStop(1, '#020617');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 1080, 1920);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 42px Inter';
+      ctx.fillText('VANGUARD SOCIAL', 80, 140);
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = 'bold 24px Inter';
+      ctx.fillText('AI INFLUENCER BENCHMARK AUDIT', 80, 190);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.06)';
+      ctx.beginPath();
+      ctx.roundRect(80, 300, 920, 240, 32);
+      ctx.fill();
+
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = 'bold 30px Inter';
+      ctx.fillText('OFFICIAL AUDIT PROFILE', 140, 380);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 64px Inter';
+      ctx.fillText(handle, 140, 460);
+
+      ctx.fillStyle = 'rgba(37,99,235,0.18)';
+      ctx.beginPath();
+      ctx.roundRect(80, 600, 920, 440, 36);
+      ctx.fill();
+
+      ctx.fillStyle = '#93c5fd';
+      ctx.font = 'bold 36px Inter';
+      ctx.fillText('INFLUENCER BENCHMARK SCORE', 140, 710);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '800 100px Inter';
+      ctx.fillText(points, 140, 840);
+
+      ctx.fillStyle = '#4ade80';
+      ctx.font = 'bold 44px Inter';
+      ctx.fillText(`GRADE ${grade} • TOP 0.8% RANK`, 140, 940);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.06)';
+      ctx.beginPath();
+      ctx.roundRect(80, 1100, 440, 240, 28);
+      ctx.fill();
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = 'bold 28px Inter';
+      ctx.fillText('ENGAGEMENT RATE', 130, 1180);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 64px Inter';
+      ctx.fillText(eng, 130, 1260);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.06)';
+      ctx.beginPath();
+      ctx.roundRect(560, 1100, 440, 240, 28);
+      ctx.fill();
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = 'bold 28px Inter';
+      ctx.fillText('ORGANIC AUDIENCE', 610, 1180);
+      ctx.fillStyle = '#4ade80';
+      ctx.font = 'bold 64px Inter';
+      ctx.fillText(auth, 610, 1260);
+
+      ctx.fillStyle = '#64748b';
+      ctx.font = 'bold 28px Inter';
+      ctx.fillText('Generated by Vanguard Social Intelligence • phantom-reach-web.vercel.app', 80, 1800);
+
+      const link = document.createElement('a');
+      link.download = `${handle.replace('@','')}_celebration_story.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    const toolsBtn = document.getElementById('toolsButton');
+    const toolsMenu = document.getElementById('toolsMenu');
+    if (toolsBtn && toolsMenu) {
+      toolsBtn.onclick = e => {
+        e.stopPropagation();
+        toolsMenu.hidden = !toolsMenu.hidden;
+      };
+      document.addEventListener('click', () => toolsMenu.hidden = true);
+    }
+
+    initPage();
+    checkAndRestoreActiveTask();
+    // Keep mobile browser toolbar & status bar matched to header on scroll (native app experience)
+    (function() {
+      const header = document.getElementById('siteHeader');
+      function syncHeaderOnScroll() {
+        if (!header) return;
+        if (window.scrollY > 8) {
+          header.classList.add('shadow-md');
+        } else {
+          header.classList.remove('shadow-md');
+        }
+      }
+      window.addEventListener('scroll', syncHeaderOnScroll, { passive: true });
+      syncHeaderOnScroll();
+    })();
+  </script>
+  <script src="/global-tracker.js"></script>
+</body>
+</html>

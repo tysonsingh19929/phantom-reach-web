@@ -455,7 +455,42 @@
         </button>
       </div>
 
-      <div class="mt-6 overflow-x-auto">
+      
+      <!-- INTERACTIVE DWELL-TIME SLIDER MAGNET -->
+      <div class="mt-8 p-6 rounded-2xl bg-blue-50/70 border border-blue-200">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-700">Live Valuation Estimator</span>
+            <h3 class="font-display text-lg font-bold text-slate-900">Drag to Test Any Follower Count</h3>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-semibold text-slate-500">Selected Followers:</span>
+            <span id="sliderFollowerDisplay" class="font-mono text-sm font-bold text-blue-700 bg-white px-3 py-1 rounded-lg border border-slate-200">50,000</span>
+          </div>
+        </div>
+
+        <input type="range" id="quickFollowerSlider" min="1000" max="1000000" step="5000" value="50000" class="w-full accent-blue-600 cursor-pointer" oninput="updateQuickEstimator(this.value)">
+
+        <div class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+            <div class="text-xs text-slate-500 font-medium">Estimated Reel Fee</div>
+            <div id="quickReelUsd" class="font-bold text-slate-900 text-lg sm:text-xl">$450 - $1,200</div>
+            <div id="quickReelInr" class="text-[11px] text-blue-600 font-semibold">₹35,000 - ₹1.0L</div>
+          </div>
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+            <div class="text-xs text-slate-500 font-medium">Story with Link</div>
+            <div id="quickStoryUsd" class="font-bold text-slate-900 text-lg sm:text-xl">$150 - $350</div>
+            <div id="quickStoryInr" class="text-[11px] text-blue-600 font-semibold">₹12,000 - ₹28,000</div>
+          </div>
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+            <div class="text-xs text-slate-500 font-medium">Monthly Retainer</div>
+            <div id="quickRetainerUsd" class="font-bold text-slate-900 text-lg sm:text-xl">$1,800 - $4,500</div>
+            <div id="quickRetainerInr" class="text-[11px] text-blue-600 font-semibold">₹1.5L - ₹3.6L</div>
+          </div>
+        </div>
+      </div>
+
+<div class="mt-6 overflow-x-auto">
         <table class="w-full text-left text-xs sm:text-sm">
           <thead>
             <tr class="border-b border-slate-200 text-slate-500 uppercase tracking-wider text-[11px] font-bold">
@@ -468,6 +503,17 @@
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 text-slate-700">
+            <tr class="hover:bg-blue-50/40 transition">
+              <td class="py-3.5 px-4 font-semibold text-slate-900 flex items-center gap-1.5">
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                <span>Nano (1k - 10k)</span>
+              </td>
+              <td class="py-3.5 px-4 font-bold text-slate-900">$30 - $80</td>
+              <td class="py-3.5 px-4 font-bold text-blue-700">₹2,500 - ₹6,500</td>
+              <td class="py-3.5 px-4">$15 - $35</td>
+              <td class="py-3.5 px-4">$150 - $350</td>
+              <td class="py-3.5 px-4"><a href="/tools/influencer-score/1k-followers" class="font-bold text-blue-600 hover:underline">1k Calculator →</a></td>
+            </tr>
             <tr class="hover:bg-blue-50/40 transition">
               <td class="py-3.5 px-4 font-semibold text-slate-900 flex items-center gap-1.5">
                 <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
@@ -522,6 +568,17 @@
               <td class="py-3.5 px-4">$1,000 - $2,500</td>
               <td class="py-3.5 px-4">$15,000 - $40,000</td>
               <td class="py-3.5 px-4"><a href="/tools/influencer-score/500k-followers" class="font-bold text-blue-600 hover:underline">500k Calculator →</a></td>
+            </tr>
+                      <tr class="hover:bg-blue-50/40 transition">
+              <td class="py-3.5 px-4 font-semibold text-slate-900 flex items-center gap-1.5">
+                <span class="h-2 w-2 rounded-full bg-amber-500"></span>
+                <span>Celebrity / Mega (1M+)</span>
+              </td>
+              <td class="py-3.5 px-4 font-bold text-slate-900">$5,000 - $18,000</td>
+              <td class="py-3.5 px-4 font-bold text-blue-700">₹4.2L - ₹15.0L</td>
+              <td class="py-3.5 px-4">$1,500 - $4,500</td>
+              <td class="py-3.5 px-4">$15,000 - $45,000</td>
+              <td class="py-3.5 px-4"><a href="/tools/influencer-score/1m-followers" class="font-bold text-blue-600 hover:underline">1M+ Calculator →</a></td>
             </tr>
           </tbody>
         </table>

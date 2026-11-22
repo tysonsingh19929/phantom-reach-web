@@ -129,6 +129,14 @@
       "destination": "/tools/instagram-leads/:slug/index.html"
     },
     {
+      "source": "/tools/youtube/:slug",
+      "destination": "/tools/youtube/:slug/index.html"
+    },
+    {
+      "source": "/tools/engagement-rate-calculator",
+      "destination": "/tools/engagement-rate-calculator/index.html"
+    },
+    {
       "source": "/tools/instagram-leads",
       "destination": "/tools/instagram-leads/index.html"
     },
